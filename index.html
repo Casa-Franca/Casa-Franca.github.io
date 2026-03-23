@@ -39,7 +39,7 @@
             .cursor-hover .cursor-ring { width: 60px; height: 60px; background-color: rgba(184, 134, 11, 0.1); border-color: var(--gold); }
         }
 
-        /* === PRELOADER CORRETTO === */
+        /* === PRELOADER === */
         #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
         #preloader img { width: 120px; max-height: 120px; object-fit: contain; animation: pulse-preload 2s infinite; }
         @keyframes pulse-preload { 0% { transform: scale(0.95); opacity: 0.6; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.6; } }
@@ -89,7 +89,7 @@
         @keyframes shine { to { background-position: 200% center; } }
         .hero-content p { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #fff; font-style: italic; opacity: 0.9; margin-top: 5px; transition: opacity 0.4s, height 0.4s; }
 
-        /* === GRID CARDS (EFFETTO SPAVENTOSO) === */
+        /* === GRID CARDS (DRITTE, IMMOBILI E SROTOLABILI) === */
         .main-container { max-width: 1100px; margin: -50px auto 40px; padding: 0 20px; position: relative; z-index: 100; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; align-items: start; }
         
@@ -99,19 +99,12 @@
             background: var(--card-white); border-radius: 15px; overflow: hidden; 
             border: 1px solid var(--gold); box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
             color: var(--text-dark); position: relative; 
-            transition: transform 0.1s linear, box-shadow 0.3s ease; 
+            transition: box-shadow 0.4s ease, transform 0.4s ease; 
+            transform: translateY(0);
         }
         
-        .card-wrapper:hover .card { box-shadow: 0 40px 80px rgba(184, 134, 11, 0.3); z-index: 10; }
+        .card-wrapper:hover .card { box-shadow: 0 30px 60px rgba(184, 134, 11, 0.25); z-index: 10; transform: translateY(-5px); }
         
-        .card::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg); transition: all 0.7s ease; z-index: 20; pointer-events: none;
-        }
-        .card-wrapper:hover .card::after { left: 200%; }
-
-        /* Carousel leggermente più alto per esaltare le foto */
         .card-carousel { position: relative; width: 100%; height: 320px; overflow: hidden; background: #000; }
         .carousel-track { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
         .carousel-track img { min-width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); }
@@ -142,7 +135,7 @@
         .card-carousel:hover .carousel-btn.next { right: 15px; opacity: 1; transform: translateY(-50%) scale(1); }
         .carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: #000; transform: translateY(-50%) scale(1.15) !important; box-shadow: 0 0 20px rgba(184, 134, 11, 0.6); }
 
-        .card-body { padding: 30px 30px; text-align: center; position: relative; z-index: 10; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .card-body { padding: 30px 30px; text-align: center; position: relative; z-index: 10; }
         
         .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #111; margin: 0 0 10px 0; font-weight: 700; letter-spacing: 0.5px; transition: color 0.3s; }
         .card-wrapper:hover h3 { color: var(--gold); }
@@ -158,9 +151,9 @@
             margin-top: 0;
         }
         .card-wrapper:hover .card-reveal-wrapper {
-            max-height: 800px; /* Abbastanza grande da contenere tutto */
+            max-height: 800px;
             opacity: 1;
-            margin-top: 25px; /* Crea lo spazio quando si apre */
+            margin-top: 25px;
         }
         
         .card-reveal-wrapper p { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 0.95rem; line-height: 1.8; color: #555; margin: 0 0 30px 0; }
@@ -259,11 +252,11 @@
         
         .poi-logo-box { width: 45px; height: 45px; flex-shrink: 0; border-radius: 50%; background: #fff; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; padding: 5px; box-shadow: 0 0 10px rgba(184, 134, 11, 0.3); overflow: hidden; transition: border-color 0.3s; }
         .poi-item:hover .poi-logo-box { border-color: #000; }
-        .poi-logo-box img { width: 100%; height: 100%; object-fit: contain; }
+        .poi-logo-box img { width: 100%; height: 100%; object-fit: cover; }
         
         .poi-text strong { color: #f4f4f4; font-size: 1rem; font-weight: 600; display: block; margin-bottom: 3px; transition: color 0.3s; }
         .poi-item:hover strong { color: var(--gold); }
-        .poi-text small { color: #888; font-size: 0.8rem; font-weight: 300; text-transform: uppercase; letter-spacing: 1px; }
+        .poi-text small { color: #888; font-size: 0.8rem; font-weight: 300; text-transform: uppercase; letter-spacing: 1px; display: block; }
 
         /* === BANNER COOKIE & PRIVACY === */
         #cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--gold); padding: 15px 25px; border-radius: 30px; display: flex; align-items: center; gap: 20px; z-index: 100000; box-shadow: 0 10px 30px rgba(0,0,0,0.8); font-size: 0.85rem; opacity: 0; visibility: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -299,7 +292,7 @@
             .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; }
             #cookie-banner { flex-direction: column; text-align: center; width: 90%; gap: 10px; padding: 20px; }
             
-            /* Su mobile le card restano aperte fisse, non essendoci l'hover */
+            /* Su mobile le card restano aperte fisse */
             .card-reveal-wrapper { max-height: 1000px !important; opacity: 1 !important; margin-top: 20px !important; }
         }
     </style>
@@ -350,7 +343,7 @@
 <div class="main-container">
     <div class="grid">
         
-        <div class="card-wrapper tilt-wrapper">
+        <div class="card-wrapper">
             <div class="card">
                 <div class="card-carousel interactive-hover">
                     <div class="premium-badge" data-it="✨ Scelta Top" data-en="✨ Top Pick" data-fade>✨ Scelta Top</div>
@@ -407,7 +400,7 @@
             </div>
         </div>
 
-        <div class="card-wrapper tilt-wrapper">
+        <div class="card-wrapper">
             <div class="card">
                 <div class="card-carousel interactive-hover">
                     <button class="carousel-btn prev" onclick="moveSlide('track-alloggi', -1)">❮</button>
@@ -551,6 +544,7 @@
                 </div>
                 <div class="poi-text">
                     <strong data-it="QC Terme San Pellegrino ↗" data-en="QC Terme San Pellegrino ↗">QC Terme San Pellegrino ↗</strong>
+                    <small data-it="🎟️ Sconto Ingressi per i nostri ospiti" data-en="🎟️ Entry Discount for our guests" style="color: var(--gold); font-weight: 600;">🎟️ Sconto Ingressi per i nostri ospiti</small>
                     <small data-it="A 5 minuti a piedi" data-en="5 minutes walk">A 5 minuti a piedi</small>
                 </div>
             </a>
@@ -601,9 +595,16 @@
         <a href="tel:+393298158892" class="phone-link interactive-hover">+39 329 8158892</a>
     </p>
     <div class="footer-divider"></div>
+    
+    <p style="font-size: 0.65rem; color: #555; max-width: 800px; margin: 0 auto 20px auto; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.5px;" 
+       data-it="I marchi registrati (es. QC Terme, Sanpellegrino) e i relativi loghi o edifici appartengono ai legittimi proprietari e sono utilizzati su questo sito a puro scopo descrittivo e informativo per indicare i punti di interesse locali. Fatta eccezione per le convenzioni esplicitamente indicate (es. sconto dedicato agli ospiti), Casa Franca non vanta alcuna affiliazione o partnership ufficiale con tali enti o marchi." 
+       data-en="All registered trademarks (e.g., QC Terme, Sanpellegrino) and their respective logos or buildings belong to their rightful owners and are used on this site for descriptive and informational purposes only. With the exception of explicitly indicated agreements (e.g., guest discount), Casa Franca claims no official affiliation or partnership with these entities or brands.">
+       I marchi registrati (es. QC Terme, Sanpellegrino) e i relativi loghi o edifici appartengono ai legittimi proprietari e sono utilizzati su questo sito a puro scopo descrittivo e informativo per indicare i punti di interesse locali. Fatta eccezione per le convenzioni esplicitamente indicate (es. sconto dedicato agli ospiti), Casa Franca non vanta alcuna affiliazione o partnership ufficiale con tali enti o marchi.
+    </p>
+
     <p class="copyright">© 2026 Casa Franca. <span data-it="Tutti i diritti riservati." data-en="All rights reserved.">Tutti i diritti riservati.</span></p>
     
-    <a href="#" class="privacy-link interactive-hover" data-it="Privacy & Cookie Policy" data-en="Privacy & Cookie Policy">Privacy & Cookie Policy</a>
+    <a href="privacy.html" class="privacy-link interactive-hover" data-it="Privacy & Cookie Policy" data-en="Privacy & Cookie Policy">Privacy & Cookie Policy</a>
 </footer>
 
 <a href="tel:+393482422951" class="floating-phone interactive-hover" title="Chiama Ora">
@@ -619,18 +620,32 @@
 </a>
 
 <script>
-    // === MOTORE ANNUNCI GOOGLE FOGLI ===
+    // === MOTORE ANNUNCI GOOGLE FOGLI BILINGUE ===
     async function caricaAnnuncio() {
         const timestamp = new Date().getTime();
-        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSSAPGlJn4xralVJaALAhaqbmzbEsnrxSVICBsdvHBhVDUXqqfctPf-FFw9wXT6SAI21hCHerXJnu4h/pub?gid=0&single=true&output=csv&t=' + timestamp;
+        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSSAPGlJn4xralVJaALAhaqbmzbEsnrxSVICBsdvHBhVDUXqqfctPf-FFw9wXT6SAI21hCHerXJnu4h/pub?gid=0&single=true&output=tsv&t=' + timestamp;
         try {
             const response = await fetch(url, { cache: "no-store" });
             if (!response.ok) return; 
             const data = await response.text();
-            let testo = data.split(/[\r\n]+/)[0].replace(/^"|"$/g, '').trim();
-            if (testo && !testo.includes('<!DOCTYPE') && !testo.includes('<html') && testo.length > 1) {
-                document.getElementById('testo-annuncio').innerText = testo;
-                document.getElementById('barra-annunci').classList.remove('hidden');
+            
+            const riga = data.split(/[\r\n]+/)[0];
+            if (riga && !riga.includes('<!DOCTYPE') && !riga.includes('<html')) {
+                
+                const colonne = riga.split('\t');
+                const testoIT = colonne[0] ? colonne[0].replace(/^"|"$/g, '').trim() : '';
+                const testoEN = colonne[1] ? colonne[1].replace(/^"|"$/g, '').trim() : testoIT; 
+
+                if (testoIT.length > 1) {
+                    const divAnnuncio = document.getElementById('testo-annuncio');
+                    divAnnuncio.setAttribute('data-it', testoIT);
+                    divAnnuncio.setAttribute('data-en', testoEN);
+                    
+                    const linguaAttuale = document.documentElement.lang || 'it';
+                    divAnnuncio.innerText = linguaAttuale === 'en' ? testoEN : testoIT;
+                    
+                    document.getElementById('barra-annunci').classList.remove('hidden');
+                }
             }
         } catch (e) { console.log("Sistema Annunci in attesa."); }
     }
@@ -647,27 +662,6 @@
         document.getElementById('cookie-banner').classList.remove('show');
     }
     window.addEventListener('load', controllaCookie);
-
-    // === IL VERO EFFETTO 3D ISOLATO ===
-    if (window.matchMedia("(pointer: fine)").matches) {
-        const wrappers = document.querySelectorAll('.tilt-wrapper');
-        wrappers.forEach(wrapper => {
-            const card = wrapper.querySelector('.card');
-            wrapper.addEventListener('mousemove', e => {
-                const rect = wrapper.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -5; 
-                const rotateY = ((x - centerX) / centerX) * 5;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-            wrapper.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
-            });
-        });
-    }
 
     // === FUNZIONE APRI/CHIUDI CHECK-IN ===
     function toggleCheckin(event) {
@@ -711,6 +705,13 @@
             document.querySelectorAll('[data-it]').forEach(el => {
                 el.innerHTML = el.getAttribute('data-' + lang);
             });
+            
+            // AGGIORNA ANCHE L'ANNUNCIO DINAMICO DI GOOGLE FOGLI
+            const divAnnuncio = document.getElementById('testo-annuncio');
+            if(divAnnuncio && divAnnuncio.hasAttribute('data-' + lang)) {
+                divAnnuncio.innerText = divAnnuncio.getAttribute('data-' + lang);
+            }
+
             sezioniDaSfumare.forEach(el => el.style.opacity = '1');
         }, 300);
     }
