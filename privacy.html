@@ -4,21 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy & Cookie Policy | Casa Franca</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #0a0a0a; color: #f4f4f4; line-height: 1.6; padding: 40px 20px; max-width: 800px; margin: 0 auto; transition: opacity 0.3s; }
-        h1, h2 { color: #b8860b; }
-        h1 { border-bottom: 1px solid #b8860b; padding-bottom: 10px; margin-top: 40px; }
-        a { color: #b8860b; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .back-btn { display: inline-block; border: 1px solid #b8860b; padding: 8px 15px; border-radius: 5px; color: #b8860b; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        .back-btn:hover { background-color: #b8860b; color: #000; text-decoration: none; }
+        :root {
+            --gold: #b8860b;
+            --gold-light: #ffd700;
+            --bg-dark: #070707;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ccc;
+            line-height: 1.8;
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: opacity 0.4s ease;
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        h1 {
+            border-bottom: 1px solid rgba(184, 134, 11, 0.4);
+            padding-bottom: 15px;
+            margin-top: 50px;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+        h2 { font-size: 1.4rem; margin-top: 40px; }
+        a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--gold-light); }
+        strong { color: #fff; font-weight: 600; }
+        
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            border: 1px solid rgba(184, 134, 11, 0.5);
+            padding: 10px 20px; border-radius: 8px;
+            color: var(--gold); font-family: 'Montserrat', sans-serif;
+            font-weight: 600; font-size: 0.85rem; text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .back-btn:hover {
+            background-color: var(--gold); color: #000;
+            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
+            transform: translateX(-5px);
+        }
         
         /* Selettore Lingua */
-        .lang-switch { position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; }
+        .lang-switch {
+            position: absolute; top: 30px; right: 30px;
+            display: flex; gap: 10px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px;
+        }
         .lang-switch span { cursor: pointer; color: #666; transition: color 0.3s; padding: 5px; }
-        .lang-switch span.active { color: #b8860b; }
-        .lang-switch span:hover { color: #fff; }
+        .lang-switch span.active { color: var(--gold); }
+        .lang-switch span:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+
+        @media (max-width: 768px) {
+            body { padding: 40px 20px; }
+            .lang-switch { top: 20px; right: 20px; }
+        }
     </style>
 </head>
 <body lang="it" id="privacy-body">
@@ -28,15 +76,17 @@
         <span onclick="switchLang('en', this)">EN</span>
     </div>
 
-    <a href="index.html" class="back-btn" data-it="← Torna al sito principale" data-en="← Back to main site">← Torna al sito principale</a>
+    <a href="index.html" class="back-btn" data-it="❮ Torna al sito principale" data-en="❮ Back to main site">❮ Torna al sito principale</a>
 
     <h1 data-it="Privacy e Cookie Policy" data-en="Privacy and Cookie Policy">Privacy e Cookie Policy</h1>
     <p><em data-it="Ultimo aggiornamento: Marzo 2026" data-en="Last updated: March 2026">Ultimo aggiornamento: Marzo 2026</em></p>
 
     <h2 data-it="1. Titolare del Trattamento dei Dati" data-en="1. Data Controller">1. Titolare del Trattamento dei Dati</h2>
-    <p>Casa Franca Vacation Rental<br>
-    Viale della Vittoria 23, San Pellegrino Terme (BG) - Italy<br>
-    <span data-it="Email di contatto:" data-en="Contact email:">Email di contatto:</span> casafranca.avo@gmail.com</p>
+    <p>
+        <strong>Casa Franca Vacation Rental Apartment</strong><br>
+        Viale della Vittoria 23, San Pellegrino Terme (BG) - Italy<br>
+        <span data-it="Email di contatto:" data-en="Contact email:">Email di contatto:</span> <a href="mailto:casafranca.avo@gmail.com">casafranca.avo@gmail.com</a>
+    </p>
 
     <h2 data-it="2. Tipologia di Dati Raccolti" data-en="2. Types of Data Collected">2. Tipologia di Dati Raccolti</h2>
     <p data-it="Fra i Dati Personali raccolti da questo Sito Web, in modo autonomo o tramite terze parti, ci sono: Cookie, Dati di utilizzo, e dati forniti volontariamente dall'utente (es. tramite WhatsApp o Moduli Google per la registrazione)." data-en="Among the Personal Data collected by this Website, either independently or through third parties, there are: Cookies, Usage Data, and data voluntarily provided by the user (e.g., via WhatsApp or Google Forms for registration).">Fra i Dati Personali raccolti da questo Sito Web, in modo autonomo o tramite terze parti, ci sono: Cookie, Dati di utilizzo, e dati forniti volontariamente dall'utente (es. tramite WhatsApp o Moduli Google per la registrazione).</p>
@@ -46,7 +96,6 @@
     <ul>
         <li data-it="<strong>Google Maps:</strong> Utilizzato per visualizzare la mappa interattiva." data-en="<strong>Google Maps:</strong> Used to display the interactive map."><strong>Google Maps:</strong> Utilizzato per visualizzare la mappa interattiva.</li>
         <li data-it="<strong>Google Calendar:</strong> Utilizzato per mostrare la disponibilità degli appartamenti." data-en="<strong>Google Calendar:</strong> Used to show apartment availability."><strong>Google Calendar:</strong> Utilizzato per mostrare la disponibilità degli appartamenti.</li>
-        <li data-it="<strong>Google Fonts:</strong> Utilizzato per gli stili di testo del sito." data-en="<strong>Google Fonts:</strong> Used for the website's text styles."><strong>Google Fonts:</strong> Utilizzato per gli stili di testo del sito.</li>
         <li data-it="<strong>Moduli Google (Google Forms):</strong> Utilizzato, tramite link esterno, per la raccolta dei dati di check-in forniti volontariamente dall'utente." data-en="<strong>Google Forms:</strong> Used, via external link, for the collection of check-in data voluntarily provided by the user."><strong>Moduli Google (Google Forms):</strong> Utilizzato, tramite link esterno, per la raccolta dei dati di check-in forniti volontariamente dall'utente.</li>
         <li data-it="<strong>WhatsApp:</strong> Utilizzato come link diretto per permettere all'utente di contattare la struttura. L'interazione avviene direttamente sulla piattaforma WhatsApp." data-en="<strong>WhatsApp:</strong> Used as a direct link to allow the user to contact the property. The interaction takes place directly on the WhatsApp platform."><strong>WhatsApp:</strong> Utilizzato come link diretto per permettere all'utente di contattare la struttura. L'interazione avviene direttamente sulla piattaforma WhatsApp.</li>
     </ul>
@@ -58,6 +107,7 @@
     <p data-it="Gli Utenti possono esercitare determinati diritti con riferimento ai Dati trattati dal Titolare. In particolare, l'Utente ha il diritto di: revocare il consenso in ogni momento, opporsi al trattamento dei propri Dati, accedere ai propri Dati, verificare e chiedere la rettifica, ottenere la cancellazione dei propri Dati Personali. Per esercitare tali diritti, l'utente può scrivere a casafranca.avo@gmail.com." data-en="Users may exercise certain rights regarding their Data processed by the Owner. In particular, Users have the right to: withdraw consent at any time, object to the processing of their Data, access their Data, verify and seek rectification, and obtain the erasure of their Personal Data. To exercise these rights, the user can write to casafranca.avo@gmail.com.">Gli Utenti possono esercitare determinati diritti con riferimento ai Dati trattati dal Titolare. In particolare, l'Utente ha il diritto di: revocare il consenso in ogni momento, opporsi al trattamento dei propri Dati, accedere ai propri Dati, verificare e chiedere la rettifica, ottenere la cancellazione dei propri Dati Personali. Per esercitare tali diritti, l'utente può scrivere a casafranca.avo@gmail.com.</p>
 
     <script>
+        // Motore del cambio lingua (ora pulito e infallibile)
         function switchLang(lang, element) {
             document.querySelectorAll('.lang-switch span').forEach(el => el.classList.remove('active'));
             element.classList.add('active');

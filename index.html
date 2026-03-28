@@ -15,8 +15,9 @@
     <style>
         :root {
             --gold: #b8860b;
-            --gold-gradient: linear-gradient(45deg, #8a641b, #d4af37, #fceda1, #d4af37, #8a641b);
-            --bg-dark: #0a0a0a;
+            --gold-light: #ffd700;
+            --gold-gradient: linear-gradient(45deg, #8a641b, #ffd700, #fff6cc, #ffd700, #8a641b);
+            --bg-dark: #070707;
             --card-white: #ffffff;
             --text-dark: #1a1a1a;
             --whatsapp: #25D366;
@@ -48,76 +49,100 @@
         #scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--gold-gradient); background-size: 200% auto; animation: shine 3s linear infinite; z-index: 100000; transition: width 0.1s; }
 
         /* EFFETTO SCROLL REVEAL */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* === HEADER === */
+        /* === HEADER FLUIDO OVERLAY (COLPO DA MAESTRO) === */
         header { 
-            height: 140px; display: flex; align-items: center; justify-content: center; 
-            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(184, 134, 11, 0.4); 
-            position: sticky; top: 0; z-index: 1000; transition: height 0.3s ease;
+            height: 120px; display: flex; align-items: center; justify-content: center; 
+            background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(184, 134, 11, 0.2); 
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; 
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .header-logo { height: 100px; width: auto; max-width: 100%; transition: height 0.3s ease; }
+        .header-logo { height: 85px; width: auto; max-width: 100%; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); }
+        
+        header.scrolled { 
+            height: 80px; 
+            background: rgba(5, 5, 5, 0.95); 
+            border-bottom: 1px solid rgba(184, 134, 11, 0.8);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+        header.scrolled .header-logo { height: 55px; }
         
         .lang-switch {
             position: absolute; right: 30px; top: 50%; transform: translateY(-50%);
             display: flex; gap: 10px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px;
         }
-        .lang-switch span { cursor: pointer; color: #666; transition: color 0.3s; padding: 5px; }
+        .lang-switch span { cursor: pointer; color: #888; transition: color 0.3s; padding: 5px; }
         .lang-switch span.active { color: var(--gold); }
-        .lang-switch span:hover { color: #fff; }
+        .lang-switch span:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
 
         /* === HERO SLIDER === */
-        #hero { position: relative; height: 450px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; }
+        #hero { position: relative; height: 550px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; padding-top: 80px; }
         .slider-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .hero-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; filter: brightness(40%); opacity: 0; transform: scale(1);
+            object-fit: cover; filter: brightness(45%); opacity: 0; transform: scale(1);
             transition: opacity 2s ease-in-out, transform 8s linear;
         }
         .hero-img.active { opacity: 1; transform: scale(1.08); }
 
         .hero-content { position: relative; z-index: 10; text-align: center; padding: 0 20px; transition: opacity 0.4s; }
         .hero-content h1 { 
-            font-size: 3.2rem; text-transform: uppercase; letter-spacing: 4px; margin: 0; font-weight: 300;
+            font-size: 3.5rem; text-transform: uppercase; letter-spacing: 4px; margin: 0; font-weight: 300;
             background: var(--gold-gradient); background-size: 200% auto;
             color: transparent; -webkit-background-clip: text; background-clip: text;
-            animation: shine 4s linear infinite; filter: drop-shadow(0px 2px 10px rgba(184, 134, 11, 0.3));
+            animation: shine 4s linear infinite; filter: drop-shadow(0px 4px 15px rgba(184, 134, 11, 0.4));
             transition: all 0.4s ease;
         }
         @keyframes shine { to { background-position: 200% center; } }
-        .hero-content p { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #fff; font-style: italic; opacity: 0.9; margin-top: 5px; transition: opacity 0.4s, height 0.4s; }
+        .hero-content p { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; font-style: italic; opacity: 0.9; margin-top: 5px; transition: opacity 0.4s, height 0.4s; }
 
-        /* === GRID CARDS (DRITTE, IMMOBILI E SROTOLABILI) === */
-        .main-container { max-width: 1100px; margin: -50px auto 40px; padding: 0 20px; position: relative; z-index: 100; }
+        /* === GRID CARDS CON SUPER MEGA WOW === */
+        .main-container { max-width: 1100px; margin: -60px auto 50px; padding: 0 20px; position: relative; z-index: 100; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; align-items: start; }
         
-        .card-wrapper { position: relative; display: block; }
+        .card-wrapper { position: relative; display: block; perspective: 1000px; }
 
         .card { 
-            background: var(--card-white); border-radius: 15px; overflow: hidden; 
-            border: 1px solid var(--gold); box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
+            background: var(--card-white); border-radius: 16px; overflow: hidden; 
+            border: 1px solid rgba(184, 134, 11, 0.4); box-shadow: 0 15px 35px rgba(0,0,0,0.7); 
             color: var(--text-dark); position: relative; 
-            transition: box-shadow 0.4s ease, transform 0.4s ease; 
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             transform: translateY(0);
         }
         
-        .card-wrapper:hover .card { box-shadow: 0 30px 60px rgba(184, 134, 11, 0.25); z-index: 10; transform: translateY(-5px); }
+        .card::after {
+            content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); z-index: 20; pointer-events: none;
+        }
+
+        .card-wrapper:hover .card { 
+            box-shadow: 0 35px 70px rgba(184, 134, 11, 0.4), 0 0 20px rgba(184, 134, 11, 0.2); 
+            z-index: 10; 
+            transform: translateY(-15px) scale(1.02); 
+            border-color: var(--gold-light);
+        }
+        .card-wrapper:hover .card::after {
+            animation: card-glint 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        @keyframes card-glint { 0% { left: -150%; } 100% { left: 200%; } }
         
-        .card-carousel { position: relative; width: 100%; height: 320px; overflow: hidden; background: #000; }
+        .card-carousel { position: relative; width: 100%; height: 340px; overflow: hidden; background: #000; }
         .carousel-track { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
-        .carousel-track img { min-width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); }
-        .card-wrapper:hover .carousel-track img { transform: scale(1.06); } 
+        .carousel-track img { min-width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .card-wrapper:hover .carousel-track img { transform: scale(1.08); } 
         
         .premium-badge {
-            position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.65);
-            color: var(--gold); padding: 6px 16px; border-radius: 20px;
+            position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.75);
+            color: var(--gold); padding: 8px 18px; border-radius: 25px;
             font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
-            z-index: 25; border: 1px solid rgba(184, 134, 11, 0.6); backdrop-filter: blur(4px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.4s;
+            z-index: 25; border: 1px solid rgba(184, 134, 11, 0.6); backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.5s;
         }
-        .card-wrapper:hover .premium-badge { transform: translateY(-3px) scale(1.05); }
+        .card-wrapper:hover .premium-badge { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 20px rgba(184, 134, 11, 0.4); background: #000;}
 
         .carousel-btn {
             position: absolute; top: 50%; 
@@ -135,50 +160,42 @@
         .card-carousel:hover .carousel-btn.next { right: 15px; opacity: 1; transform: translateY(-50%) scale(1); }
         .carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: #000; transform: translateY(-50%) scale(1.15) !important; box-shadow: 0 0 20px rgba(184, 134, 11, 0.6); }
 
-        .card-body { padding: 30px 30px; text-align: center; position: relative; z-index: 10; }
+        .card-body { padding: 35px 30px; text-align: center; position: relative; z-index: 10; }
         
-        .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #111; margin: 0 0 10px 0; font-weight: 700; letter-spacing: 0.5px; transition: color 0.3s; }
+        .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #111; margin: 0 0 12px 0; font-weight: 700; letter-spacing: 0.5px; transition: color 0.4s; }
         .card-wrapper:hover h3 { color: var(--gold); }
-        .card-title-separator { width: 40px; height: 2px; background: var(--gold); margin: 0 auto; transition: width 0.4s; }
-        .card-wrapper:hover .card-title-separator { width: 80px; }
+        .card-title-separator { width: 40px; height: 3px; background: var(--gold); margin: 0 auto; transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 2px; }
+        .card-wrapper:hover .card-title-separator { width: 120px; background: var(--gold-light); box-shadow: 0 0 10px rgba(184, 134, 11, 0.5);}
         
-        /* === LA SCATOLA CHE SI APRE A SCOMPARSA === */
+        /* LA SCATOLA CHE SI APRE */
         .card-reveal-wrapper {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease, margin-top 0.5s ease;
+            max-height: 0; opacity: 0; overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease, margin-top 0.6s ease;
             margin-top: 0;
         }
-        .card-wrapper:hover .card-reveal-wrapper {
-            max-height: 800px;
-            opacity: 1;
-            margin-top: 25px;
-        }
-        
-        .card-reveal-wrapper p { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 0.95rem; line-height: 1.8; color: #555; margin: 0 0 30px 0; }
+        .card-wrapper:hover .card-reveal-wrapper { max-height: 800px; opacity: 1; margin-top: 25px; }
+        .card-reveal-wrapper p { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 0.95rem; line-height: 1.8; color: #555; margin: 0 0 30px 0; }
 
         .btn { display: flex; align-items: center; justify-content: center; padding: 15px; text-decoration: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); border: none; width: 100%; gap: 10px; margin-bottom: 20px; cursor: pointer; }
         .btn-whatsapp { background: var(--whatsapp); color: white; }
         .btn-direct-book { background: #000; color: var(--gold); border: 2px solid var(--gold); position: relative; overflow: hidden; animation: pulse-gold 2s infinite; }
         
-        .card-wrapper:hover .btn { transform: scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-        .btn-direct-book:hover { background: var(--gold-gradient); color: #fff; animation: none; transform: scale(1.06) translateY(-3px) !important; box-shadow: 0 15px 30px rgba(184, 134, 11, 0.5) !important; }
-        .btn-whatsapp:hover { transform: scale(1.06) translateY(-3px) !important; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4) !important; }
-        
+        .card-wrapper:hover .btn { transform: scale(1.02); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-direct-book:hover { background: var(--gold-gradient); color: #fff; animation: none; transform: scale(1.05) translateY(-3px) !important; box-shadow: 0 15px 30px rgba(184, 134, 11, 0.5) !important; }
+        .btn-whatsapp:hover { transform: scale(1.05) translateY(-3px) !important; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4) !important; }
         .btn-white { background: #fff; color: #000; border: 2px solid #fff; }
 
         .secondary-actions { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
-        .btn-minimal { background: transparent; color: #444; border: none; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s; padding: 5px; cursor: pointer; }
+        .btn-minimal { background: transparent; color: #666; border: none; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s; padding: 5px; cursor: pointer; }
         .btn-minimal:hover { color: var(--gold); }
         
-        .portals-text { font-size: 0.8rem; color: #777; border-top: 1px solid #eee; padding-top: 20px; margin-top: 10px; }
+        .portals-text { font-size: 0.8rem; color: #888; border-top: 1px solid #eee; padding-top: 20px; margin-top: 10px; }
         .portals-text a { color: var(--text-dark); text-decoration: none; font-weight: 700; border-bottom: 1px solid var(--gold); margin: 0 5px; transition: 0.3s; }
         .portals-text a:hover { color: var(--gold); }
 
         /* GOOGLE FOGLI ANNUNCI */
         .announcement-bar {
-            background: #151515; border-left: 4px solid var(--gold); padding: 15px 20px;
+            background: #111; border-left: 4px solid var(--gold); padding: 15px 20px;
             border-radius: 0 8px 8px 0; margin-bottom: 30px; display: flex; flex-direction: column;
             align-items: flex-start; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
@@ -190,20 +207,20 @@
         /* CALENDARI */
         .calendar-drawer { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); background: #000; position: relative; z-index: 30; }
         .calendar-drawer.open { max-height: 700px; border-top: 1px solid var(--gold); }
-        .cal-header-minimal { padding: 12px; text-align: center; background: #000; color: var(--gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; border-bottom: 1px solid #333; }
-        .cal-wrapper { position: relative; height: 480px; width: 100%; background: #000; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; overflow: hidden; }
+        .cal-header-minimal { padding: 12px; text-align: center; background: #000; color: var(--gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; border-bottom: 1px solid #222; }
+        .cal-wrapper { position: relative; height: 480px; width: 100%; background: #000; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; overflow: hidden; }
         .cal-wrapper iframe { width: 100%; height: 100%; border: none; }
-        .cal-wrapper::after { position: absolute; bottom: 0; left: 0; width: 100%; height: 38px; background-color: #000000; z-index: 10; color: var(--gold); text-align: center; line-height: 38px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; pointer-events: none; }
+        .cal-wrapper::after { position: absolute; bottom: 0; left: 0; width: 100%; height: 38px; background-color: #000; z-index: 10; color: var(--gold); text-align: center; line-height: 38px; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; pointer-events: none; }
         html[lang="it"] #cal-appartamento .cal-wrapper::after { content: "Check-in ore 14:00 • Check-out ore 10:00"; }
         html[lang="en"] #cal-appartamento .cal-wrapper::after { content: "Check-in 2:00 PM • Check-out 10:00 AM"; }
 
         /* TASTI FLUTTUANTI */
-        .floating-wa { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; background-color: var(--whatsapp); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 9999; text-decoration: none; animation: bounce-in 1s ease-out, pulse-wa 2.5s infinite; transition: transform 0.3s; }
-        .floating-wa:hover { transform: scale(1.1); }
+        .floating-wa { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; background-color: var(--whatsapp); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 9999; text-decoration: none; animation: bounce-in 1s ease-out, pulse-wa 2.5s infinite; transition: transform 0.3s; }
+        .floating-wa:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6); }
         .floating-wa svg { width: 30px; height: 30px; fill: white; }
 
-        .floating-phone { position: fixed; bottom: 95px; right: 28px; width: 48px; height: 48px; background-color: #111; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.6); z-index: 9999; text-decoration: none; animation: bounce-in 1.2s ease-out; transition: transform 0.3s, background 0.3s; }
-        .floating-phone:hover { transform: scale(1.1); background: var(--gold); }
+        .floating-phone { position: fixed; bottom: 95px; right: 28px; width: 48px; height: 48px; background-color: #111; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.6); z-index: 9999; text-decoration: none; animation: bounce-in 1.2s ease-out; transition: all 0.3s; }
+        .floating-phone:hover { transform: scale(1.1); background: var(--gold); box-shadow: 0 6px 20px rgba(184, 134, 11, 0.5); }
         .floating-phone svg { width: 20px; height: 20px; fill: var(--gold); transition: fill 0.3s; }
         .floating-phone:hover svg { fill: #111; }
 
@@ -212,20 +229,55 @@
         @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(184, 134, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0); } }
 
         /* === SEZIONE RECENSIONI === */
-        #recensioni { padding: 60px 20px; background-color: #050505; border-top: 1px solid #1a1a1a; transition: opacity 0.3s; }
+        #recensioni { padding: 80px 20px; background-color: #050505; border-top: 1px solid #1a1a1a; transition: opacity 0.3s; text-align: center; }
+        
+        /* === EFFETTO SUPER MEGA WOW PER IL PREMIO === */
+        .award-wrapper-wow {
+            position: relative; display: inline-block; border-radius: 14px;
+            padding: 6px; 
+            background: #000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px rgba(184, 134, 11, 0.3);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            cursor: pointer; overflow: hidden;
+        }
+        .award-gold-border {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(60deg, #8a641b, #ffd700, #fff6cc, #ffd700, #8a641b);
+            background-size: 300% 300%; animation: shine-border 3s linear infinite;
+            z-index: 1; border-radius: 14px;
+        }
+        @keyframes shine-border { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        .award-wrapper-wow img {
+            display: block; position: relative; z-index: 2; width: 100%; max-width: 380px;
+            border-radius: 10px; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .award-wrapper-wow:hover { 
+            transform: translateY(-15px) scale(1.06); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 50px rgba(184, 134, 11, 0.9); 
+        }
+        
+        .glint-wow {
+            position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); z-index: 10; pointer-events: none; mix-blend-mode: overlay; 
+        }
+        .award-wrapper-wow:hover .glint-wow { animation: glint-slide-wow 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
-        .review-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(184, 134, 11, 0.2); padding: 30px; border-radius: 12px; text-align: left; position: relative; backdrop-filter: blur(5px); transition: transform 0.3s, border-color 0.3s; }
-        .review-card:hover { transform: translateY(-5px); border-color: var(--gold); background: rgba(255, 255, 255, 0.05); }
-        .stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .review-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(184, 134, 11, 0.2); padding: 30px; border-radius: 12px; text-align: left; position: relative; backdrop-filter: blur(5px); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s, box-shadow 0.4s; }
+        .review-card:hover { transform: translateY(-8px); border-color: var(--gold-light); background: rgba(255, 255, 255, 0.06); box-shadow: 0 15px 30px rgba(184, 134, 11, 0.15); }
+        .stars { color: var(--gold-light); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; text-shadow: 0 0 10px rgba(184, 134, 11, 0.5); }
         .review-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: #ddd; font-style: italic; line-height: 1.6; margin-bottom: 20px; }
         .review-author { font-size: 0.85rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
         .review-author::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
         .review-source { font-size: 0.7rem; color: #666; font-weight: 400; text-transform: none; }
 
         /* === FAST CHECK-IN === */
-        #checkin-online { padding: 80px 20px; text-align: center; background: linear-gradient(to bottom, #050505, #111, #050505); border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; transition: opacity 0.3s; }
-        .checkin-wrapper { max-width: 800px; margin: 0 auto; position: relative; border-radius: 16px; padding: 2px; background: linear-gradient(60deg, #111, #b8860b, #111, #d4af37, #111); background-size: 300% 300%; animation: animatedGradient 6s ease infinite; box-shadow: 0 20px 50px rgba(0,0,0,0.8); cursor: pointer; transition: transform 0.3s; }
-        .checkin-wrapper:hover { transform: translateY(-3px); }
+        #checkin-online { padding: 80px 20px; text-align: center; background: linear-gradient(to bottom, #050505, #0d0d0d, #050505); border-top: 1px solid #111; border-bottom: 1px solid #111; transition: opacity 0.3s; }
+        .checkin-wrapper { max-width: 800px; margin: 0 auto; position: relative; border-radius: 16px; padding: 2px; background: linear-gradient(60deg, #111, #b8860b, #111, #d4af37, #111); background-size: 300% 300%; animation: animatedGradient 6s ease infinite; box-shadow: 0 20px 50px rgba(0,0,0,0.8); cursor: pointer; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .checkin-wrapper:hover { transform: translateY(-8px); box-shadow: 0 25px 60px rgba(184, 134, 11, 0.3); }
         @keyframes animatedGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .checkin-inner { background: #080808; padding: 30px 40px; border-radius: 14px; height: 100%; width: 100%; position: relative; }
         .checkin-header { display: flex; justify-content: center; align-items: center; gap: 15px; }
@@ -235,34 +287,35 @@
         .checkin-content { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); cursor: default; }
         .checkin-content.open { max-height: 400px; }
         .checkin-content-inner { padding-top: 30px; }
-        .checkin-content p { color: #999; margin-top: 0; margin-bottom: 30px; font-size: 1rem; font-weight: 300; line-height: 1.8; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .checkin-content p { color: #aaa; margin-top: 0; margin-bottom: 30px; font-size: 1rem; font-weight: 300; line-height: 1.8; max-width: 600px; margin-left: auto; margin-right: auto; }
         .checkin-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
-        /* === MAPPA E I POI "TUTTI CLICCABILI" === */
+        /* === MAPPA E I POI CON ICONE PREMIUM === */
         .map-wrapper { display: grid; grid-template-columns: 2fr 1.2fr; gap: 40px; margin-top: 50px; text-align: left; transition: opacity 0.3s; }
-        .map-frame { width: 100%; height: 420px; border-radius: 15px; border: 1px solid rgba(184, 134, 11, 0.4); filter: grayscale(0.8) contrast(1.1) brightness(0.9); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .map-frame { width: 100%; height: 420px; border-radius: 16px; border: 1px solid rgba(184, 134, 11, 0.3); filter: grayscale(0.8) contrast(1.1) brightness(0.9); box-shadow: 0 15px 40px rgba(0,0,0,0.6); transition: border-color 0.4s; }
+        .map-frame:hover { border-color: var(--gold); box-shadow: 0 15px 40px rgba(184, 134, 11, 0.2); }
         
         .poi-list { display: flex; flex-direction: column; gap: 15px; }
         .poi-item {
-            background: #0f0f0f; padding: 15px 20px; border-radius: 10px; border-left: 3px solid var(--gold); 
+            background: #0f0f0f; padding: 15px 20px; border-radius: 12px; border-left: 3px solid var(--gold); 
             display: flex; align-items: center; gap: 18px; text-decoration: none; color: inherit;
-            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
         }
-        .poi-item:hover { transform: translateX(8px); background: #151515; box-shadow: 0 5px 15px rgba(0,0,0,0.4); border-color: #fff; }
+        .poi-item:hover { transform: translateX(10px); background: #151515; box-shadow: 0 8px 25px rgba(0,0,0,0.5); border-color: var(--gold-light); }
         
-        .poi-logo-box { width: 45px; height: 45px; flex-shrink: 0; border-radius: 50%; background: #fff; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; padding: 5px; box-shadow: 0 0 10px rgba(184, 134, 11, 0.3); overflow: hidden; transition: border-color 0.3s; }
-        .poi-item:hover .poi-logo-box { border-color: #000; }
-        .poi-logo-box img { width: 100%; height: 100%; object-fit: cover; }
+        .poi-logo-box { width: 48px; height: 48px; flex-shrink: 0; border-radius: 50%; background: #050505; border: 1.5px solid rgba(184, 134, 11, 0.5); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); overflow: hidden; transition: all 0.4s ease; }
+        .poi-item:hover .poi-logo-box { border-color: var(--gold-light); box-shadow: 0 0 15px rgba(184, 134, 11, 0.6); background: #111; }
+        .poi-logo-box svg { width: 22px; height: 22px; fill: var(--gold); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+        .poi-item:hover .poi-logo-box svg { transform: scale(1.2); fill: var(--gold-light); }
         
         .poi-text strong { color: #f4f4f4; font-size: 1rem; font-weight: 600; display: block; margin-bottom: 3px; transition: color 0.3s; }
-        .poi-item:hover strong { color: var(--gold); }
+        .poi-item:hover strong { color: var(--gold-light); }
         .poi-text small { color: #888; font-size: 0.8rem; font-weight: 300; text-transform: uppercase; letter-spacing: 1px; display: block; }
 
-        /* === BANNER COOKIE & PRIVACY === */
-        #cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--gold); padding: 15px 25px; border-radius: 30px; display: flex; align-items: center; gap: 20px; z-index: 100000; box-shadow: 0 10px 30px rgba(0,0,0,0.8); font-size: 0.85rem; opacity: 0; visibility: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* === BANNER COOKIE === */
+        #cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--gold); padding: 15px 25px; border-radius: 30px; display: flex; align-items: center; gap: 20px; z-index: 100000; box-shadow: 0 10px 30px rgba(0,0,0,0.8); font-size: 0.85rem; opacity: 0; visibility: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         #cookie-banner.show { opacity: 1; visibility: visible; bottom: 30px; }
         #cookie-banner p { margin: 0; color: #ccc; }
-        #cookie-banner a { color: var(--gold); text-decoration: none; font-weight: bold; }
         #cookie-banner button { background: var(--gold); color: #000; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
         #cookie-banner button:hover { transform: scale(1.05); }
 
@@ -270,19 +323,21 @@
         .section-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #fff; margin: 0; transition: opacity 0.3s; }
         .divider { width: 60px; height: 2px; background: var(--gold); margin: 20px auto 40px; }
         
-        footer { background: #000; padding: 60px 20px 100px; text-align: center; border-top: 2px solid rgba(184, 134, 11, 0.5); color: #888; font-size: 0.85rem; transition: opacity 0.3s; }
+        footer { background: #000; padding: 60px 20px 100px; text-align: center; border-top: 2px solid rgba(184, 134, 11, 0.3); color: #888; font-size: 0.85rem; transition: opacity 0.3s; }
         .phone-link { color: #ccc; font-weight: bold; text-decoration: none; transition: color 0.3s; }
         .phone-link:hover { color: var(--gold); }
-        .footer-divider { width: 40px; height: 1px; background: #333; margin: 25px auto; }
+        .footer-divider { width: 40px; height: 1px; background: #222; margin: 25px auto; }
         .copyright { opacity: 0.6; font-size: 0.75rem; font-weight: 300; margin-bottom: 10px; }
-        .privacy-link { color: #666; text-decoration: none; font-size: 0.75rem; border-bottom: 1px solid #666; transition: 0.3s; }
+        .privacy-link { color: #666; text-decoration: none; font-size: 0.75rem; border-bottom: 1px dotted #666; transition: 0.3s; }
         .privacy-link:hover { color: var(--gold); border-color: var(--gold); }
 
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.2rem; }
             .map-wrapper { grid-template-columns: 1fr; gap: 20px; }
-            header { height: 110px; }
-            .header-logo { height: 75px; }
+            header { height: 100px; }
+            header.scrolled { height: 80px; }
+            .header-logo { height: 70px; }
+            header.scrolled .header-logo { height: 50px; }
             .lang-switch { right: 15px; top: 15px; transform: none; font-size: 0.75rem; }
             .checkin-buttons { flex-direction: column; gap: 10px; }
             .card-body { padding: 30px 20px; }
@@ -291,8 +346,6 @@
             .carousel-btn { opacity: 0.8; visibility: visible; transform: translateY(-50%) scale(0.9); }
             .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; }
             #cookie-banner { flex-direction: column; text-align: center; width: 90%; gap: 10px; padding: 20px; }
-            
-            /* Su mobile le card restano aperte fisse */
             .card-reveal-wrapper { max-height: 1000px !important; opacity: 1 !important; margin-top: 20px !important; }
         }
     </style>
@@ -343,7 +396,7 @@
 <div class="main-container">
     <div class="grid">
         
-        <div class="card-wrapper">
+        <div class="card-wrapper reveal active">
             <div class="card">
                 <div class="card-carousel interactive-hover">
                     <div class="premium-badge" data-it="✨ Scelta Top" data-en="✨ Top Pick" data-fade>✨ Scelta Top</div>
@@ -400,7 +453,7 @@
             </div>
         </div>
 
-        <div class="card-wrapper">
+        <div class="card-wrapper reveal active" style="transition-delay: 0.15s;">
             <div class="card">
                 <div class="card-carousel interactive-hover">
                     <button class="carousel-btn prev" onclick="moveSlide('track-alloggi', -1)">❮</button>
@@ -465,9 +518,19 @@
 </div>
 
 <section id="recensioni" data-fade>
-    <h2 class="section-title reveal" style="font-size: 1.8rem;" data-it="Dicono di noi" data-en="Guest Reviews">Dicono di noi</h2>
+    <h2 class="section-title reveal" data-it="Dicono di noi" data-en="Guest Reviews">Dicono di noi</h2>
     <div class="divider reveal"></div>
     
+    <div class="award-section reveal" style="margin-bottom: 70px; text-align: center;">
+        <h3 class="section-title" style="font-size: 1.2rem; color: var(--gold); margin-bottom: 25px; letter-spacing: 2px;" data-it="Eccellenza Riconosciuta" data-en="Recognized Excellence">Eccellenza Riconosciuta</h3>
+        
+        <div class="award-wrapper-wow interactive-hover">
+            <div class="award-gold-border"></div>
+            <img src="image.png" alt="Traveller Review Award 2026 Booking.com" onerror="this.style.display='none'">
+            <div class="glint-wow"></div>
+        </div>
+    </div>
+
     <div class="reviews-grid">
         <div class="review-card reveal interactive-hover">
             <div class="stars">★★★★★</div>
@@ -540,18 +603,18 @@
             
             <a href="https://www.qcterme.com/it/san-pellegrino/qc-terme-san-pellegrino" target="_blank" class="poi-item interactive-hover">
                 <div class="poi-logo-box">
-                    <img src="logo-qc.jpg" alt="QC Terme" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3256/3256114.png'">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
                 </div>
                 <div class="poi-text">
                     <strong data-it="QC Terme San Pellegrino ↗" data-en="QC Terme San Pellegrino ↗">QC Terme San Pellegrino ↗</strong>
-                    <small data-it="🎟️ Sconto Ingressi per i nostri ospiti" data-en="🎟️ Entry Discount for our guests" style="color: var(--gold); font-weight: 600;">🎟️ Sconto Ingressi per i nostri ospiti</small>
+                    <small onclick="apriSconto(event)" class="interactive-hover" data-it="🎟️ Sconto ingresso per i nostri ospiti (Vedi Voucher)" data-en="🎟️ Entry discount for our guests (See Voucher)" style="color: var(--gold); font-weight: 600; text-decoration: underline; cursor: pointer;" title="Clicca per aprire il voucher">🎟️ Sconto ingresso per i nostri ospiti (Vedi Voucher)</small>
                     <small data-it="A 5 minuti a piedi" data-en="5 minutes walk">A 5 minuti a piedi</small>
                 </div>
             </a>
             
             <a href="https://www.issanpellegrino.edu.it/" target="_blank" class="poi-item interactive-hover">
                 <div class="poi-logo-box">
-                    <img src="logo-scuola.jpg" alt="Istituto Alberghiero" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2945/2945325.png'">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
                 </div>
                 <div class="poi-text">
                     <strong data-it="Istituto Superiore Alberghiero ↗" data-en="Culinary Institute ↗">Istituto Superiore Alberghiero ↗</strong>
@@ -561,7 +624,7 @@
             
             <a href="https://www.visitbrembo.it/elemento/infopoint-san-pellegrino-terme/" target="_blank" class="poi-item interactive-hover">
                 <div class="poi-logo-box">
-                    <img src="logo-visit.jpg" alt="Visit Brembo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/6165/6165847.png'">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 </div>
                 <div class="poi-text">
                     <strong data-it="InfoPoint & Centro Storico ↗" data-en="InfoPoint & City Center ↗">InfoPoint & Centro Storico ↗</strong>
@@ -570,8 +633,8 @@
             </a>
             
             <a href="https://www.sanpellegrino.com/it/" target="_blank" class="poi-item interactive-hover">
-                <div class="poi-logo-box" style="padding: 2px;">
-                    <img src="logo-sp.jpg" alt="Sanpellegrino Water" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3014/3014491.png'">
+                <div class="poi-logo-box">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                 </div>
                 <div class="poi-text">
                     <strong data-it="Sanpellegrino Flagship Factory ↗" data-en="Sanpellegrino Flagship Factory ↗">Sanpellegrino Flagship Factory ↗</strong>
@@ -589,7 +652,9 @@
 <footer class="reveal" data-fade>
     <p><strong>CASA FRANCA VACATION RENTAL</strong></p>
     <p>San Pellegrino Terme (BG) • Viale della Vittoria 23</p>
-    <p>casafranca.avo@gmail.com</p>
+    
+    <p><a href="mailto:casafranca.avo@gmail.com" class="phone-link interactive-hover" style="font-weight: normal; letter-spacing: 1px;">casafranca.avo@gmail.com</a></p>
+    
     <p style="margin-top: 15px;">
         <a href="tel:+393482422951" class="phone-link interactive-hover">+39 348 2422951</a> • 
         <a href="tel:+393298158892" class="phone-link interactive-hover">+39 329 8158892</a>
@@ -631,7 +696,6 @@
             
             const riga = data.split(/[\r\n]+/)[0];
             if (riga && !riga.includes('<!DOCTYPE') && !riga.includes('<html')) {
-                
                 const colonne = riga.split('\t');
                 const testoIT = colonne[0] ? colonne[0].replace(/^"|"$/g, '').trim() : '';
                 const testoEN = colonne[1] ? colonne[1].replace(/^"|"$/g, '').trim() : testoIT; 
@@ -640,10 +704,8 @@
                     const divAnnuncio = document.getElementById('testo-annuncio');
                     divAnnuncio.setAttribute('data-it', testoIT);
                     divAnnuncio.setAttribute('data-en', testoEN);
-                    
                     const linguaAttuale = document.documentElement.lang || 'it';
                     divAnnuncio.innerText = linguaAttuale === 'en' ? testoEN : testoIT;
-                    
                     document.getElementById('barra-annunci').classList.remove('hidden');
                 }
             }
@@ -705,13 +767,10 @@
             document.querySelectorAll('[data-it]').forEach(el => {
                 el.innerHTML = el.getAttribute('data-' + lang);
             });
-            
-            // AGGIORNA ANCHE L'ANNUNCIO DINAMICO DI GOOGLE FOGLI
             const divAnnuncio = document.getElementById('testo-annuncio');
             if(divAnnuncio && divAnnuncio.hasAttribute('data-' + lang)) {
                 divAnnuncio.innerText = divAnnuncio.getAttribute('data-' + lang);
             }
-
             sezioniDaSfumare.forEach(el => el.style.opacity = '1');
         }, 300);
     }
@@ -719,7 +778,6 @@
     // === MOTORE CURSORE GIOIELLO ===
     const dot = document.getElementById("cursor-dot");
     const ring = document.getElementById("cursor-ring");
-    
     if (window.matchMedia("(pointer: fine)").matches) {
         window.addEventListener("mousemove", (e) => {
             dot.style.left = e.clientX + "px";
@@ -727,8 +785,7 @@
             ring.style.left = e.clientX + "px";
             ring.style.top = e.clientY + "px";
         });
-        
-        const interactiveElements = document.querySelectorAll('.interactive-hover, button, a, .card-wrapper, .carousel-btn, .lang-switch span');
+        const interactiveElements = document.querySelectorAll('.interactive-hover, button, a, .card-wrapper, .carousel-btn, .lang-switch span, .award-wrapper-wow');
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
             el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
@@ -747,22 +804,23 @@
         }, 500);
     });
 
-    // === GESTIONE SCROLL ===
+    // === GESTIONE SCROLL FLUIDO (Header + ProgressBar) ===
     window.addEventListener('scroll', () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
         document.getElementById("scroll-progress").style.width = scrolled + "%";
         
+        // Parallax Hero
         const heroContent = document.getElementById('hero-parallax');
         if (window.scrollY < 600) heroContent.style.transform = `translateY(${window.scrollY * 0.4}px)`;
         
+        // Header CSS Class Toggle (NIENTE PIÙ SFARFALLII, ADESSO È FISSO!)
         const header = document.getElementById('main-header');
-        const logo = document.getElementById('logo');
         if (window.scrollY > 50) {
-            header.style.height = '100px'; logo.style.maxHeight = '70px';
+            header.classList.add('scrolled');
         } else {
-            header.style.height = '140px'; logo.style.maxHeight = '100px';
+            header.classList.remove('scrolled');
         }
     });
 
@@ -830,6 +888,17 @@
         const isClickInsideCard = event.target.closest('.card-wrapper');
         if (!isClickInsideCard) document.querySelectorAll('.calendar-drawer').forEach(drawer => drawer.classList.remove('open'));
     });
+
+    // === GESTIONE CLICK SCONTO QC TERME ===
+    function apriSconto(event) {
+        event.preventDefault(); 
+        event.stopPropagation(); 
+        
+        const linguaAttuale = document.documentElement.lang || 'it';
+        const immagineVoucher = linguaAttuale === 'en' ? 'sconto-qc-en.jpg' : 'sconto-qc-it.jpg';
+        
+        window.open(immagineVoucher, '_blank');
+    }
 </script>
 
 </body>
