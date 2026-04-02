@@ -331,12 +331,11 @@
         @keyframes bounce-in { 0% { transform: scale(0); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
         @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(184, 134, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0); } }
 
-        /* === ICONE SERVIZI: SCORREVOLI === */
+        /* === ICONE SERVIZI === */
         #servizi { padding: 40px 0 60px; text-align: center; width: 100%; overflow: hidden; }
-        .amenities-wrapper { width: 100%; overflow-x: auto; scrollbar-width: none; padding: 10px 20px; }
-        .amenities-wrapper::-webkit-scrollbar { display: none; }
-        .amenities-grid { display: flex; flex-wrap: nowrap; gap: 25px; max-width: 1100px; margin: 0 auto; justify-content: center; }
-        .amenity-card { flex: 0 0 auto; width: 110px; display: flex; flex-direction: column; align-items: center; transition: all 0.4s ease; }
+        .amenities-wrapper { width: 100%; padding: 10px 20px; }
+        .amenities-grid { display: flex; flex-wrap: wrap; gap: 25px; max-width: 1100px; margin: 0 auto; justify-content: center; }
+        .amenity-card { width: 110px; display: flex; flex-direction: column; align-items: center; transition: all 0.4s ease; }
         .amenity-card:hover { transform: translateY(-5px); }
         .amenity-icon-svg { width: 40px; height: 40px; stroke: var(--gold); fill: none; stroke-width: 1.2; margin-bottom: 12px; transition: stroke 0.3s; }
         .amenity-card:hover .amenity-icon-svg { stroke: var(--gold-light); filter: drop-shadow(0 0 5px rgba(184, 134, 11, 0.4)); }
@@ -348,7 +347,6 @@
         .host-text { font-family: 'Playfair Display', serif; font-style: normal; font-size: 1.2rem; color: #ddd; line-height: 1.8; margin-bottom: 25px; font-weight: 300; }
         .host-signature { display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--gold); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; border-top: 1px solid rgba(184, 134, 11, 0.3); padding-top: 15px; }
 
- 
         /* === SEZIONE RECENSIONI === */
         #recensioni { padding: 80px 20px; background-color: #030303; border-top: 1px solid #1a1a1a; transition: opacity 0.3s; text-align: center; }
         
@@ -425,14 +423,27 @@
         .poi-item:hover strong { color: var(--gold-light); }
         .poi-text small { color: #888; font-size: 0.8rem; font-weight: 300; text-transform: uppercase; letter-spacing: 1px; display: block; }
  
-        /* === FAQ ELEGANTI (INLINE ACCORDION) === */
+        /* === FAQ ELEGANTI (A SCATOLA CHIUSA) === */
         #faq { padding: 60px 20px 80px; max-width: 850px; margin: 0 auto; text-align: left; }
-        .faq-item { border-bottom: 1px solid rgba(184, 134, 11, 0.15); }
-        .faq-item:last-child { border-bottom: 1px solid rgba(184, 134, 11, 0.15); }
-        .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; background: transparent; border: none; color: #ddd; font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 1rem; cursor: pointer; text-align: left; padding: 25px 0; transition: color 0.3s; }
+        .faq-container { display: flex; flex-direction: column; gap: 15px; }
+        .faq-item { 
+            background: #0a0a0a; border: 1px solid rgba(184, 134, 11, 0.2); 
+            border-radius: 12px; transition: all 0.3s ease; 
+        }
+        .faq-item:hover { border-color: var(--gold-light); background: #111; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .faq-question { 
+            width: 100%; display: flex; justify-content: space-between; align-items: center; 
+            background: transparent; border: none; color: #f4f4f4; font-family: 'Montserrat', sans-serif; 
+            font-weight: 500; font-size: 0.95rem; cursor: pointer; text-align: left; 
+            padding: 20px; transition: color 0.3s; 
+        }
         .faq-question:hover { color: var(--gold-light); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease; color: #888; line-height: 1.7; font-size: 0.9rem; }
-        .faq-item.active .faq-answer { padding-bottom: 25px; max-height: 300px; }
+        .faq-answer { 
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease; 
+            color: #aaa; line-height: 1.6; font-size: 0.9rem; padding: 0 20px;
+        }
+        .faq-item.active { border-color: var(--gold); background: #0f0f0f; }
+        .faq-item.active .faq-answer { padding-bottom: 20px; max-height: 300px; }
         .faq-icon { color: var(--gold); font-size: 1.2rem; transition: transform 0.4s ease; font-weight: 300; }
         .faq-item.active .faq-icon { transform: rotate(45deg); color: var(--gold-light); }
         .faq-item.active .faq-question { color: var(--gold); }
@@ -472,8 +483,13 @@
             .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; }
             #cookie-banner { flex-direction: column; text-align: center; width: 90%; gap: 10px; padding: 20px; }
             .card-reveal-wrapper { max-height: 1000px !important; opacity: 1 !important; margin-top: 20px !important; }
-            .amenities-grid { justify-content: flex-start; } 
-            .host-text { font-size: 1.05rem; }
+            
+            /* Fix icone su mobile: Griglia elegante invece di scorrimento orizzontale */
+            .amenities-wrapper { padding: 0 10px; overflow: visible; }
+            .amenities-grid { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .amenity-card { width: calc(33% - 15px); margin-bottom: 10px; }
+            .amenity-title { font-size: 0.65rem; line-height: 1.2; }
+            
             #faq { padding: 40px 20px; }
         }
     </style>
@@ -558,7 +574,7 @@
                        </p>
                        
                        <a href="https://wa.me/393482422951?text=Salve%2C%20vorrei%20informazioni%20sulla%20disponibilit%C3%A0%20dell'Appartamento%20Vacanze%20San%20Pellegrino%20(Miglior%20Prezzo)!" target="_blank" class="btn btn-direct-book interactive-hover" aria-label="Richiedi il miglior prezzo su WhatsApp">
-                           <span data-it="✨ Richiedi il Miglior Prezzo" data-en="✨ Request Best Price">✨ Richiedi il Miglior Prezzo</span>
+                           <span data-it="✨ Prenota Ora (da 80€ / notte)" data-en="✨ Book Now (from €80 / night)">✨ Prenota Ora (da 80€ / notte)</span>
                        </a>
  
                        <div class="secondary-actions">
@@ -694,7 +710,7 @@
          data-en="Welcome to Casa Franca. We offer ideal apartments for short holidays and flexible solutions for any other stay requirement. Our commitment is simple: to provide you with practical, welcoming, and spotlessly clean spaces, ensuring a peaceful and worry-free stay.">
          Benvenuti a Casa Franca. Offriamo appartamenti ideali per brevi vacanze e soluzioni flessibili per ogni altra esigenza di soggiorno. Il nostro impegno è uno solo: farvi trovare spazi pratici, accoglienti e pulitissimi, per farvi stare sereni e senza pensieri.
     </div>
-    <span class="host-signature" data-it="La Famiglia di Casa Franca" data-en="Casa Franca Family">La Famiglia di Casa Franca</span>
+    <span class="host-signature" data-it="Lo Staff di Casa Franca" data-en="Casa Franca Staff">Lo Staff di Casa Franca</span>
 </section>
  
 <section id="recensioni" data-fade>
