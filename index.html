@@ -240,7 +240,7 @@
         .card-wrapper:hover .carousel-track img { transform: scale(1.08); } 
         
         .premium-badge {
-            position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.85);
+            position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.75);
             color: var(--gold); padding: 8px 18px; border-radius: 25px;
             font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
             z-index: 25; border: 1px solid rgba(184, 134, 11, 0.6); backdrop-filter: blur(5px);
@@ -279,17 +279,19 @@
         .card-wrapper:hover .card-reveal-wrapper { max-height: 800px; opacity: 1; margin-top: 25px; }
         .card-reveal-wrapper p { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 0.95rem; line-height: 1.8; color: #555; margin: 0 0 30px 0; }
  
-        /* === MAGIA TASTI PRENOTA (SHIMMER E HOVER) === */
+        /* === MAGIA TASTI PRENOTA === */
         .btn { display: flex; align-items: center; justify-content: center; padding: 15px 20px; text-decoration: none; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.85rem; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); border: none; width: 100%; gap: 10px; margin-bottom: 20px; cursor: pointer; position: relative; z-index: 1; overflow: hidden; }
         
         .btn-whatsapp { background: var(--whatsapp); color: white; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); }
         .btn-direct-book { background: #111; color: var(--gold-light); border: 1.5px solid var(--gold); box-shadow: 0 4px 15px rgba(184, 134, 11, 0.2); }
         
-        /* Effetto Shimmer continuo */
+        /* Effetto Riflesso di Luce Continuo (Shimmer) */
         .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%); transform: skewX(-25deg); z-index: -1; animation: shimmer-btn 3.5s infinite; pointer-events: none; }
         @keyframes shimmer-btn { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
         
         .card-wrapper:hover .btn { transform: scale(1.02); }
+        
+        /* Effetti Hover Potenziati */
         .btn-direct-book:hover { background: var(--gold-gradient); color: #000; border-color: transparent; transform: scale(1.05) translateY(-3px) !important; box-shadow: 0 15px 30px rgba(184, 134, 11, 0.5) !important; }
         .btn-whatsapp:hover { background: #20b858; transform: scale(1.05) translateY(-3px) !important; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4) !important; }
         .btn-white { background: #fff; color: #000; border: 1px solid #fff; }
@@ -429,28 +431,28 @@
         .poi-item:hover strong { color: var(--gold-light); }
         .poi-text small { color: #888; font-size: 0.8rem; font-weight: 300; text-transform: uppercase; letter-spacing: 1px; display: block; }
  
-        /* === FAQ ELEGANTI INSCATOLATE (BOXED ACCORDION) === */
+        /* === FAQ ELEGANTI (A SCATOLA CHIUSA) === */
         #faq { padding: 60px 20px 80px; max-width: 850px; margin: 0 auto; text-align: left; }
         .faq-container { display: flex; flex-direction: column; gap: 15px; }
         .faq-item { 
-            background: #111; border: 1px solid rgba(184, 134, 11, 0.3); 
-            border-radius: 12px; transition: all 0.3s ease; overflow: hidden; 
+            background: #0a0a0a; border: 1px solid rgba(184, 134, 11, 0.2); 
+            border-radius: 12px; transition: all 0.3s ease; 
         }
-        .faq-item:hover { border-color: var(--gold-light); box-shadow: 0 5px 20px rgba(184, 134, 11, 0.15); transform: translateY(-2px); }
+        .faq-item:hover { border-color: var(--gold-light); background: #111; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .faq-question { 
             width: 100%; display: flex; justify-content: space-between; align-items: center; 
             background: transparent; border: none; color: #f4f4f4; font-family: 'Montserrat', sans-serif; 
-            font-weight: 600; font-size: 1rem; cursor: pointer; text-align: left; 
-            padding: 20px 25px; transition: color 0.3s; 
+            font-weight: 500; font-size: 0.95rem; cursor: pointer; text-align: left; 
+            padding: 20px; transition: color 0.3s; 
         }
         .faq-question:hover { color: var(--gold-light); }
         .faq-answer { 
-            max-height: 0; padding: 0 25px; background: #0a0a0a; color: #aaa; 
-            line-height: 1.6; font-size: 0.95rem; transition: max-height 0.4s ease, padding 0.4s ease; opacity: 0;
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease; 
+            color: #aaa; line-height: 1.6; font-size: 0.9rem; padding: 0 20px;
         }
-        .faq-item.active { border-color: var(--gold); }
-        .faq-item.active .faq-answer { padding-bottom: 25px; max-height: 400px; opacity: 1; }
-        .faq-icon { color: var(--gold); font-size: 1.4rem; transition: transform 0.4s ease; font-weight: 300; }
+        .faq-item.active { border-color: var(--gold); background: #0f0f0f; }
+        .faq-item.active .faq-answer { padding-bottom: 20px; max-height: 300px; }
+        .faq-icon { color: var(--gold); font-size: 1.2rem; transition: transform 0.4s ease; font-weight: 300; }
         .faq-item.active .faq-icon { transform: rotate(45deg); color: var(--gold-light); }
         .faq-item.active .faq-question { color: var(--gold); }
 
@@ -473,7 +475,6 @@
         .privacy-link { color: #555; text-decoration: none; font-size: 0.75rem; border-bottom: 1px dotted #555; transition: 0.3s; }
         .privacy-link:hover { color: var(--gold); border-color: var(--gold); }
  
-        /* === MOBILE RESPONSIVE === */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.2rem; }
             .map-wrapper { grid-template-columns: 1fr; gap: 20px; }
@@ -491,15 +492,13 @@
             #cookie-banner { flex-direction: column; text-align: center; width: 90%; gap: 10px; padding: 20px; }
             .card-reveal-wrapper { max-height: 1000px !important; opacity: 1 !important; margin-top: 20px !important; }
             
-            /* Griglia perfetta per le icone su Mobile */
+            /* Fix icone su mobile: Griglia elegante invece di scorrimento orizzontale */
             .amenities-wrapper { padding: 0 10px; overflow: visible; }
-            .amenities-grid { flex-wrap: wrap; justify-content: space-between; gap: 15px 5px; }
-            .amenity-card { width: calc(33.333% - 10px); margin-bottom: 10px; }
-            .amenity-title { font-size: 0.65rem; line-height: 1.3; }
+            .amenities-grid { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .amenity-card { width: calc(33% - 15px); margin-bottom: 10px; }
+            .amenity-title { font-size: 0.65rem; line-height: 1.2; }
             
             #faq { padding: 40px 20px; }
-            .faq-question { padding: 15px; font-size: 0.9rem; }
-            .faq-answer { padding: 0 15px; }
         }
     </style>
 </head>
@@ -583,7 +582,7 @@
                        </p>
                        
                        <a href="https://wa.me/393482422951?text=Salve%21%20Vorrei%20informazioni%20sulla%20disponibilit%C3%A0%20dell%27Appartamento%20Vacanze%20San%20Pellegrino." target="_blank" rel="noopener noreferrer" class="btn btn-direct-book interactive-hover" aria-label="Richiedi il miglior prezzo su WhatsApp">
-                           <span data-it="✨ Prenota Ora (da 80€ / notte)" data-en="✨ Book Now (from €80 / night)">✨ Prenota Ora (da 80€ / notte)</span>
+                           <span data-it="✨ Prenota Ora (da 80€/notte)" data-en="✨ Book Now (from €80/night)">✨ Prenota Ora (da 80€/notte)</span>
                        </a>
  
                        <div class="secondary-actions">
@@ -859,3 +858,355 @@
  
             <a href="https://www.google.com/maps/dir/?api=1&destination=Viale+della+Vittoria+23,+San+Pellegrino+Terme" target="_blank" class="btn-minimal interactive-hover" aria-label="Apri le indicazioni su Google Maps" style="justify-content: flex-start; margin-top: 15px; font-size: 0.9rem;">
                <span data-it="🧭 Apri il Navigatore GPS" data-en="🧭 Open GPS Navigator">🧭 Apri il Navigatore GPS</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="reveal" data-fade>
+    <h2 class="section-title" data-it="Domande Frequenti" data-en="Frequently Asked Questions">Domande Frequenti</h2>
+    <div class="divider"></div>
+    <div class="faq-container">
+        
+        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false">
+                <span data-it="L'appartamento in affitto ha il parcheggio?" data-en="Does the vacation apartment have parking?">L'appartamento in affitto ha il parcheggio?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p data-it="Sì, Casa Franca offre l'esclusiva comodità del posto auto riservato, un servizio preziosissimo nel centro di San Pellegrino Terme." data-en="Yes, Casa Franca offers the exclusive convenience of a reserved parking space, an invaluable service in the center of San Pellegrino Terme.">Sì, Casa Franca offre l'esclusiva comodità del posto auto riservato, un servizio preziosissimo nel centro di San Pellegrino Terme.</p>
+            </div>
+        </div>
+
+        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false">
+                <span data-it="Quanto dista la casa vacanze dalle QC Terme?" data-en="How far is the vacation home from QC Terme?">Quanto dista la casa vacanze dalle QC Terme?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p data-it="I nostri alloggi si trovano in Viale della Vittoria, a soli 5 minuti a piedi dalle rinomate QC Terme di San Pellegrino." data-en="Our accommodations are located on Viale della Vittoria, just a 5-minute walk from the renowned QC Terme of San Pellegrino.">I nostri alloggi si trovano in Viale della Vittoria, a soli 5 minuti a piedi dalle rinomate QC Terme di San Pellegrino.</p>
+            </div>
+        </div>
+
+        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false">
+                <span data-it="Cosa include l'affitto dei vostri alloggi?" data-en="What is included in the rental of your accommodations?">Cosa include l'affitto dei vostri alloggi?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p data-it="L'affitto include biancheria da letto e da bagno di alta qualità, cucina attrezzata, Wi-Fi veloce, Smart TV e set di cortesia." data-en="The rental includes high-quality bed linen and towels, a fully equipped kitchen, fast Wi-Fi, Smart TV, and complimentary toiletries.">L'affitto include biancheria da letto e da bagno di alta qualità, cucina attrezzata, Wi-Fi veloce, Smart TV e set di cortesia.</p>
+            </div>
+        </div>
+
+        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false">
+                <span data-it="L'appartamento dispone di aria condizionata?" data-en="Does the apartment have air conditioning?">L'appartamento dispone di aria condizionata?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p data-it="Trovandoci in una splendida zona di montagna in Valle Brembana, godiamo di un clima naturalmente fresco e ventilato. Garantiamo un riposo eccellente senza necessità di aria condizionata artificiale." data-en="Being in a beautiful mountain area in the Brembana Valley, we enjoy a naturally cool and breezy climate. We guarantee excellent rest without the need for artificial air conditioning.">Trovandoci in una splendida zona di montagna in Valle Brembana, godiamo di un clima naturalmente fresco e ventilato. Garantiamo un riposo eccellente senza necessità di aria condizionata artificiale.</p>
+            </div>
+        </div>
+
+        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false">
+                <span data-it="Quali sono gli orari di check-in e check-out?" data-en="What are the check-in and check-out times?">Quali sono gli orari di check-in e check-out?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p data-it="Il check-in è disponibile dalle 14:00 in poi, mentre il check-out è richiesto entro le 10:00 del mattino. Offriamo inoltre un comodo servizio di Fast Check-in online per evitare attese al vostro arrivo." data-en="Check-in is available from 2:00 PM onwards, while check-out is required by 10:00 AM. We also offer a convenient online Fast Check-in service to avoid waiting upon your arrival.">Il check-in è disponibile dalle 14:00 in poi, mentre il check-out è richiesto entro le 10:00 del mattino. Offriamo inoltre un comodo servizio di Fast Check-in online per evitare attese al vostro arrivo.</p>
+            </div>
+        </div>
+
+        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+            <button class="faq-question" aria-expanded="false">
+                <span data-it="Sono ammessi animali domestici?" data-en="Are pets allowed?">Sono ammessi animali domestici?</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p data-it="Per garantire a tutti i nostri ospiti, compresi quelli con allergie, il massimo dell'igiene e della pulizia (che è il nostro punto di forza), al momento non siamo attrezzati per accogliere animali domestici." data-en="To guarantee all our guests, including those with allergies, the maximum hygiene and cleanliness (which is our strong point), we are currently not equipped to accommodate pets.">Per garantire a tutti i nostri ospiti, compresi quelli con allergie, il massimo dell'igiene e della pulizia (che è il nostro punto di forza), al momento non siamo attrezzati per accogliere animali domestici.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer class="reveal" data-fade role="contentinfo">
+   <p><strong>CASA FRANCA VACATION RENTAL APARTMENT</strong></p>
+   <p>San Pellegrino Terme (BG) • Viale della Vittoria 23</p>
+    
+    <p><a href="mailto:casafranca.avo@gmail.com" class="phone-link interactive-hover" aria-label="Invia una email" style="font-weight: normal; letter-spacing: 1px;">casafranca.avo@gmail.com</a></p>
+    
+    <p style="margin-top: 15px;">
+        <a href="tel:+393482422951" class="phone-link interactive-hover" aria-label="Chiama il numero principale">+39 348 2422951</a> • 
+        <a href="tel:+393298158892" class="phone-link interactive-hover" aria-label="Chiama il secondo numero">+39 329 8158892</a>
+    </p>
+    <div class="footer-divider"></div>
+    
+    <p style="font-size: 0.65rem; color: #555; max-width: 800px; margin: 0 auto 20px auto; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.5px;" 
+       data-it="I marchi registrati (es. QC Terme, Sanpellegrino) e i relativi loghi appartengono ai legittimi proprietari e sono utilizzati su questo sito a puro scopo descrittivo e informativo per indicare i punti di interesse locali. Fatta eccezione per le convenzioni esplicitamente indicate, Casa Franca non vanta alcuna affiliazione o partnership ufficiale con tali enti o marchi." 
+       data-en="All registered trademarks (e.g., QC Terme, Sanpellegrino) and their respective logos belong to their rightful owners and are used on this site for descriptive and informational purposes only. With the exception of explicitly indicated agreements, Casa Franca claims no official affiliation or partnership with these entities or brands.">
+       I marchi registrati (es. QC Terme, Sanpellegrino) e i relativi loghi appartengono ai legittimi proprietari e sono utilizzati su questo sito a puro scopo descrittivo e informativo per indicare i punti di interesse locali. Fatta eccezione per le convenzioni esplicitamente indicate, Casa Franca non vanta alcuna affiliazione o partnership ufficiale con tali enti o marchi.
+    </p>
+ 
+    <p class="copyright">© 2026 Casa Franca Vacation Rental Apartment. <span data-it="Tutti i diritti riservati." data-en="All rights reserved.">Tutti i diritti riservati.</span></p>
+
+    <a href="privacy.html" class="privacy-link interactive-hover" data-it="Privacy & Cookie Policy" data-en="Privacy & Cookie Policy">Privacy & Cookie Policy</a>
+</footer>
+ 
+<a href="tel:+393482422951" class="floating-phone interactive-hover" title="Chiama Ora" aria-label="Pulsante rapido per chiamare">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+    </svg>
+</a>
+ 
+<a href="https://wa.me/393482422951" target="_blank" class="floating-wa interactive-hover" title="Contattaci su WhatsApp" aria-label="Pulsante rapido WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.002 1.332A14.665 14.665 0 001.336 16c0 2.596.678 5.112 1.964 7.348L1.336 30.668l7.49-1.966a14.654 14.654 0 007.176 1.878h.006A14.668 14.668 0 0030.67 16 14.668 14.668 0 0016.002 1.332zm0 24.815h-.006a12.22 12.22 0 01-6.22-1.693l-.446-.264-4.625 1.213 1.233-4.508-.29-.46A12.188 12.188 0 013.784 16c0-6.736 5.485-12.223 12.224-12.223 3.264 0 6.331 1.272 8.638 3.58a12.15 12.15 0 013.578 8.64c-.002 6.738-5.488 12.224-12.222 12.224h-.002zm6.696-9.143c-.366-.184-2.172-1.073-2.51-1.196-.336-.123-.582-.184-.826.184-.246.368-.948 1.196-1.162 1.442-.214.246-.428.276-.796.092-.366-.184-1.55-.572-2.952-1.822-1.092-.972-1.83-2.173-2.044-2.54-.214-.368-.024-.566.16-.75.166-.164.366-.428.55-.644.184-.214.246-.368.366-.612.124-.246.062-.46-.03-.644-.092-.184-.826-1.992-1.132-2.728-.3-.72-.604-.622-.826-.632-.214-.012-.46-.012-.704-.012a1.35 1.35 0 00-.978.46c-.336.368-1.284 1.256-1.284 3.064s1.314 3.554 1.5 3.8c.184.246 2.594 3.96 6.282 5.55 3.688 1.59 3.688 1.072 4.36 1.01.674-.06 2.172-.888 2.478-1.748.306-.86.306-1.594.214-1.748-.09-.154-.336-.246-.704-.43z"/>
+    </svg>
+</a>
+ 
+<script>
+    // === MOTORE ANNUNCI GOOGLE FOGLI BILINGUE ===
+    async function caricaAnnuncio() {
+        const timestamp = new Date().getTime();
+        const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSSAPGlJn4xralVJaALAhaqbmzbEsnrxSVICBsdvHBhVDUXqqfctPf-FFw9wXT6SAI21hCHerXJnu4h/pub?gid=0&single=true&output=tsv&t=' + timestamp;
+        try {
+            const response = await fetch(url, { cache: "no-store" });
+            if (!response.ok) return; 
+            const data = await response.text();
+            
+            const riga = data.split(/[\r\n]+/)[0];
+            if (riga && !riga.includes('<!DOCTYPE') && !riga.includes('<html')) {
+                const colonne = riga.split('\t');
+                const testoIT = colonne[0] ? colonne[0].replace(/^"|"$/g, '').trim() : '';
+                const testoEN = colonne[1] ? colonne[1].replace(/^"|"$/g, '').trim() : testoIT; 
+                const linkEventi = colonne[2] ? colonne[2].replace(/^"|"$/g, '').trim() : ''; // COLONNA C
+ 
+                // GESTIONE BARRA AVVISI
+                if (testoIT.length > 1) {
+                   const divAnnuncio = document.getElementById('testo-annuncio');
+                   divAnnuncio.setAttribute('data-it', testoIT);
+                   divAnnuncio.setAttribute('data-en', testoEN);
+                   const linguaAttuale = document.documentElement.lang || 'it';
+                   divAnnuncio.innerText = linguaAttuale === 'en' ? testoEN : testoIT;
+                   document.getElementById('barra-annunci').classList.remove('hidden');
+                }
+
+                // GESTIONE TASTO EVENTI DEL MESE
+                const btnEventi = document.getElementById('btn-eventi-mese');
+                if (linkEventi.length > 5 && btnEventi) {
+                    btnEventi.href = linkEventi;
+                    btnEventi.style.display = 'flex';
+                }
+            }
+        } catch (e) { console.log("Sistema Annunci in attesa."); }
+    }
+   document.addEventListener('DOMContentLoaded', caricaAnnuncio);
+ 
+    // === GESTIONE BANNER COOKIE ===
+    function controllaCookie() {
+        if (!localStorage.getItem('cookieAccettati')) {
+           setTimeout(() => { document.getElementById('cookie-banner').classList.add('show'); }, 2000);
+        }
+    }
+    function accettaCookie() {
+       localStorage.setItem('cookieAccettati', 'true');
+       document.getElementById('cookie-banner').classList.remove('show');
+    }
+   window.addEventListener('load', controllaCookie);
+ 
+    // === FUNZIONE APRI/CHIUDI CHECK-IN ===
+    function toggleCheckin(event) {
+        if (event) event.stopPropagation();
+        const content = document.getElementById('checkin-content');
+        const arrow = document.getElementById('checkin-arrow');
+        
+        if (content.classList.contains('open')) {
+           content.classList.remove('open');
+           arrow.classList.remove('rotate-arrow');
+           event.currentTarget.setAttribute('aria-expanded', 'false');
+        } else {
+           content.classList.add('open');
+           arrow.classList.add('rotate-arrow');
+           event.currentTarget.setAttribute('aria-expanded', 'true');
+           setTimeout(() => {
+                const elementPosition = content.getBoundingClientRect().top + window.scrollY;
+               window.scrollTo({ top: elementPosition - 300, behavior: 'smooth' });
+            }, 300);
+        }
+    }
+
+    // === FUNZIONE APRI/CHIUDI FAQ ===
+    function toggleFaq(element) {
+        const isActive = element.classList.contains('active');
+        const btn = element.querySelector('.faq-question');
+        // Chiudi le altre
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+            item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        // Se era chiusa, apri
+        if (!isActive) {
+            element.classList.add('active');
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    }
+ 
+    // === MOTORE SELETTORE LINGUA ===
+    function switchLang(lang, element) {
+       document.querySelectorAll('.lang-switch span').forEach(el => el.classList.remove('active'));
+       element.classList.add('active');
+       document.documentElement.lang = lang;
+        
+        const sezioniDaSfumare = document.querySelectorAll('[data-fade]');
+       sezioniDaSfumare.forEach(el => el.style.opacity = '0');
+        
+        const subtitle = document.getElementById('hero-subtitle');
+        if (lang === 'en') {
+           subtitle.style.height = '0';
+           subtitle.style.overflow = 'hidden';
+           subtitle.style.marginTop = '0';
+        } else {
+           subtitle.style.height = 'auto';
+           subtitle.style.marginTop = '5px';
+        }
+ 
+        setTimeout(() => {
+           document.querySelectorAll('[data-it]').forEach(el => {
+               el.innerHTML = el.getAttribute('data-' + lang);
+            });
+            const divAnnuncio = document.getElementById('testo-annuncio');
+           if(divAnnuncio && divAnnuncio.hasAttribute('data-' + lang)) {
+               divAnnuncio.innerText = divAnnuncio.getAttribute('data-' + lang);
+            }
+           sezioniDaSfumare.forEach(el => el.style.opacity = '1');
+        }, 300);
+    }
+ 
+    // === MOTORE CURSORE GIOIELLO ===
+    const dot = document.getElementById("cursor-dot");
+    const ring = document.getElementById("cursor-ring");
+    if (window.matchMedia("(pointer: fine)").matches) {
+       window.addEventListener("mousemove", (e) => {
+           dot.style.left = e.clientX + "px";
+           dot.style.top = e.clientY + "px";
+           ring.style.left = e.clientX + "px";
+           ring.style.top = e.clientY + "px";
+        });
+        const interactiveElements = document.querySelectorAll('.interactive-hover, button, a, .card-wrapper, .carousel-btn, .lang-switch span, .award-wrapper-wow, .faq-item, .poi-item');
+       interactiveElements.forEach(el => {
+           el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+           el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+    } else {
+       dot.style.display = 'none';
+       ring.style.display = 'none';
+    }
+ 
+    // === RIMOZIONE PRELOADER ===
+   window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        setTimeout(() => {
+           preloader.style.opacity = '0';
+           preloader.style.visibility = 'hidden';
+        }, 500);
+    });
+ 
+    // === GESTIONE SCROLL FLUIDO ===
+   window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+       document.getElementById("scroll-progress").style.width = scrolled + "%";
+        
+        const heroContent = document.getElementById('hero-parallax');
+        if (window.scrollY < 600) heroContent.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+        
+        const header = document.getElementById('main-header');
+        if (window.scrollY > 50) {
+           header.classList.add('scrolled');
+        } else {
+           header.classList.remove('scrolled');
+        }
+    });
+ 
+    // === HERO SLIDER ===
+    setTimeout(() => {
+        const heroSlides = document.querySelectorAll('#hero-track .hero-img');
+       if(heroSlides.length > 0) {
+            let currentHero = 0;
+           heroSlides[currentHero].classList.add('active');
+           if(heroSlides.length > 1) {
+               setInterval(() => {
+                   heroSlides[currentHero].classList.remove('active');
+                   currentHero = (currentHero + 1) % heroSlides.length;
+                   heroSlides[currentHero].classList.add('active');
+                }, 6000);
+            }
+        }
+    }, 500); 
+ 
+    // === MOTORE SCROLL REVEAL ===
+   document.addEventListener("DOMContentLoaded", function() {
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+           entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                   entry.target.classList.add('active');
+                   revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+       revealElements.forEach(el => revealObserver.observe(el));
+    });
+ 
+    // === CAROSELLI IMMAGINI ===
+    const carouselState = { 'track-vacanze': 0, 'track-alloggi': 0 };
+    function moveSlide(trackId, step) {
+        const track = document.getElementById(trackId);
+        const images = track.querySelectorAll('img');
+        if (images.length <= 1) return;
+        
+       carouselState[trackId] += step;
+        if (carouselState[trackId] >= images.length) carouselState[trackId] = 0;
+        else if (carouselState[trackId] < 0) carouselState[trackId] = images.length - 1;
+        
+       track.style.transform = `translateX(-${carouselState[trackId] * 100}%)`;
+    }
+ 
+    // === CALENDARI ===
+    function toggleCalendar(id, event) {
+        if (event) event.stopPropagation();
+        const drawer = document.getElementById(id);
+        const isOpen = drawer.classList.contains('open');
+       document.querySelectorAll('.calendar-drawer').forEach(d => d.classList.remove('open'));
+        if (!isOpen) {
+           drawer.classList.add('open');
+           setTimeout(() => {
+                const offset = 120;
+                const elementPosition = drawer.getBoundingClientRect().top + window.scrollY;
+               window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+            }, 300);
+        }
+    }
+    function closeDrawer(id) { document.getElementById(id).classList.remove('open'); }
+   document.addEventListener('click', (event) => {
+        const isClickInsideCard = event.target.closest('.card-wrapper');
+        if (!isClickInsideCard) document.querySelectorAll('.calendar-drawer').forEach(drawer => drawer.classList.remove('open'));
+    });
+ 
+    // === GESTIONE CLICK SCONTO QC TERME ===
+    function apriSconto(event) {
+       event.preventDefault(); 
+       event.stopPropagation(); 
+        const linguaAttuale = document.documentElement.lang || 'it';
+        const immagineVoucher = linguaAttuale === 'en' ? 'sconto-qc-en.jpg' : 'sconto-qc-it.jpg';
+       window.open(immagineVoucher, '_blank');
+    }
+</script>
+ 
+</body>
+</html>
