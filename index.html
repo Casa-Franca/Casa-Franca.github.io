@@ -489,7 +489,7 @@
             .privacy-link:hover { color: var(--gold); border-color: var(--gold); }
         }
  
-@media (max-width: 768px) {
+        @media (max-width: 768px) {
             .hero-content h1 { font-size: 1.6rem; }
             .map-wrapper { grid-template-columns: 1fr; gap: 20px; }
             header { height: 100px; }
@@ -512,28 +512,28 @@
             .amenity-card { width: calc(33% - 15px); margin-bottom: 10px; }
             .amenity-title { font-size: 0.65rem; line-height: 1.2; }
 
-            /* --- NOVITÀ: RECENSIONI SWIPEABILI --- */
+            /* --- RECENSIONI SWIPEABILI --- */
             .reviews-grid {
                 display: flex;
                 flex-wrap: nowrap;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch; /* Fluidità nativa iOS */
-                scrollbar-width: none; /* Nasconde scrollbar su Firefox */
-                margin-left: -20px; /* Fa uscire le card dai bordi (Effetto App) */
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; 
+                margin-left: -20px; 
                 margin-right: -20px;
                 padding-left: 20px;
                 padding-right: 20px;
                 padding-bottom: 15px;
                 gap: 15px;
             }
-            .reviews-grid::-webkit-scrollbar { display: none; } /* Nasconde scrollbar su Chrome/Safari */
+            .reviews-grid::-webkit-scrollbar { display: none; }
             .review-card {
-                flex: 0 0 85%; /* Occupa l'85% dello schermo, la card dopo fa capolino */
+                flex: 0 0 85%;
                 scroll-snap-align: center;
             }
 
-            /* --- NOVITÀ: PUNTI DI INTERESSE MAPPA SWIPEABILI --- */
+            /* --- PUNTI DI INTERESSE MAPPA SWIPEABILI --- */
             .poi-list {
                 display: flex;
                 flex-direction: row;
@@ -553,15 +553,9 @@
             .poi-item {
                 flex: 0 0 85%;
                 scroll-snap-align: center;
-                margin: 0; /* Rimuove margini extra della versione desktop */
+                margin: 0;
             }
-            .poi-list .btn-minimal {
-                flex: 0 0 auto;
-                scroll-snap-align: center;
-                padding-right: 20px;
-                white-space: nowrap;
-            }
-        }        }
+        }
     </style>
 </head>
 <body lang="it">
@@ -601,12 +595,20 @@
         <img src="x5.jpg" alt="Casa Franca San Pellegrino Terme" class="hero-img" loading="lazy" onerror="this.remove()">
     </div>
     <div class="hero-content" id="hero-parallax" data-fade>
-        <h1 data-it="Appartamenti Vacanze a San Pellegrino Terme" data-en="Vacation Rental Apartments in San Pellegrino">Appartamenti Vacanze a San Pellegrino Terme</h1>
+        <h1 data-it="Appartamenti Vacanze San&nbsp;Pellegrino&nbsp;Terme" data-en="Vacation Rentals San&nbsp;Pellegrino">Appartamenti Vacanze San&nbsp;Pellegrino&nbsp;Terme</h1>
         <p id="hero-subtitle" data-it="Viale della Vittoria 23" data-en="">Viale della Vittoria 23</p>
     </div>
 </section>
  
 <div class="main-container">
+    
+    <div class="host-section reveal" data-fade style="margin-bottom: 50px; margin-top: 10px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 20px; text-align: center;">
+        <div class="host-line"></div>
+        <div class="host-text" id="welcome-text" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+            </div>
+        <span class="host-signature" data-it="Lo Staff di Casa Franca" data-en="Casa Franca Staff">Lo Staff di Casa Franca</span>
+    </div>
+
     <div class="grid">
         
         <div class="card-wrapper reveal">
@@ -769,16 +771,6 @@
         </div>
     </div>
 </section>
-
-<section class="host-section reveal" data-fade>
-    <div class="host-line"></div>
-    <div class="host-text" 
-         data-it="Benvenuti a Casa Franca. Offriamo appartamenti ideali per brevi vacanze e soluzioni flessibili per ogni altra esigenza di soggiorno. Il nostro impegno è uno solo: farvi trovare spazi pratici, accoglienti e pulitissimi, per farvi stare sereni e senza pensieri."
-         data-en="Welcome to Casa Franca. We offer ideal apartments for short holidays and flexible solutions for any other stay requirement. Our commitment is simple: to provide you with practical, welcoming, and spotlessly clean spaces, ensuring a peaceful and worry-free stay.">
-         Benvenuti a Casa Franca. Offriamo appartamenti ideali per brevi vacanze e soluzioni flessibili per ogni altra esigenza di soggiorno. Il nostro impegno è uno solo: farvi trovare spazi pratici, accoglienti e pulitissimi, per farvi stare sereni e senza pensieri.
-    </div>
-    <span class="host-signature" data-it="Lo Staff di Casa Franca" data-en="Casa Franca Staff">Lo Staff di Casa Franca</span>
-</section>
  
 <section id="recensioni" class="reveal" data-fade>
     <h2 class="section-title" data-it="Dicono di noi" data-en="Guest Reviews">Dicono di noi</h2>
@@ -862,62 +854,64 @@
     <div class="map-wrapper">
         <iframe class="map-frame" src="https://maps.google.com/maps?q=Viale%20della%20Vittoria%2023,%20San%20Pellegrino%20Terme&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Mappa della posizione di Casa Franca" allowfullscreen=""></iframe>
         
-        <div class="poi-list">
-            
-            <a href="https://www.qcterme.com/it/san-pellegrino/qc-terme-san-pellegrino" target="_blank" class="poi-item" aria-label="Vai al sito delle QC Terme San Pellegrino">
-               <div class="poi-logo-box">
-                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-               </div>
-               <div class="poi-text">
-                   <strong data-it="QC Terme San Pellegrino ↗" data-en="QC Terme San Pellegrino ↗">QC Terme San Pellegrino ↗</strong>
-                   <small onclick="apriSconto(event)" data-it="🎟️ Sconto ingresso (Vedi Voucher)" data-en="🎟️ Entry discount (See Voucher)" style="color: var(--gold); font-weight: 600; text-decoration: underline; cursor: pointer;" title="Clicca per aprire il voucher">🎟️ Sconto ingresso (Vedi Voucher)</small>
-                   <small data-it="A 5 minuti a piedi" data-en="5 minutes walk">A 5 minuti a piedi</small>
-               </div>
-            </a>
-            
-            <a href="https://www.issanpellegrino.edu.it/" target="_blank" class="poi-item" aria-label="Vai al sito dell'Istituto Superiore Alberghiero">
-               <div class="poi-logo-box">
-                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
-               </div>
-               <div class="poi-text">
-                   <strong data-it="Istituto Superiore Alberghiero ↗" data-en="Culinary Institute ↗">Istituto Superiore Alberghiero ↗</strong>
-                   <small data-it="A 50 metri di distanza" data-en="50 meters away">A 50 metri di distanza</small>
-               </div>
-            </a>
-            
-            <a href="https://www.visitbrembo.it/elemento/infopoint-san-pellegrino-terme/" target="_blank" class="poi-item" aria-label="Scopri l'InfoPoint di San Pellegrino">
-               <div class="poi-logo-box">
-                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-               </div>
-               <div class="poi-text">
-                   <strong data-it="InfoPoint & Centro Storico ↗" data-en="InfoPoint & City Center ↗">InfoPoint & Centro Storico ↗</strong>
-                   <small data-it="Nelle immediate vicinanze" data-en="In the immediate vicinity">Nelle immediate vicinanze</small>
-               </div>
-            </a>
-            
-            <a href="https://www.sanpellegrino.com/it/" target="_blank" class="poi-item" aria-label="Sito ufficiale Acqua Sanpellegrino">
-               <div class="poi-logo-box">
-                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-               </div>
-               <div class="poi-text">
-                   <strong data-it="Sanpellegrino Flagship Factory ↗" data-en="Sanpellegrino Flagship Factory ↗">Sanpellegrino Flagship Factory ↗</strong>
-                   <small data-it="L'iconica fabbrica dell'acqua" data-en="The iconic water factory">L'iconica fabbrica dell'acqua</small>
-               </div>
-            </a>
+        <div class="poi-sidebar" style="display: flex; flex-direction: column;">
+            <div class="poi-list">
+                <a href="https://www.qcterme.com/it/san-pellegrino/qc-terme-san-pellegrino" target="_blank" class="poi-item" aria-label="Vai al sito delle QC Terme San Pellegrino">
+                   <div class="poi-logo-box">
+                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                   </div>
+                   <div class="poi-text">
+                       <strong data-it="QC Terme San Pellegrino ↗" data-en="QC Terme San Pellegrino ↗">QC Terme San Pellegrino ↗</strong>
+                       <small onclick="apriSconto(event)" data-it="🎟️ Sconto ingresso (Vedi Voucher)" data-en="🎟️ Entry discount (See Voucher)" style="color: var(--gold); font-weight: 600; text-decoration: underline; cursor: pointer;" title="Clicca per aprire il voucher">🎟️ Sconto ingresso (Vedi Voucher)</small>
+                       <small data-it="A 5 minuti a piedi" data-en="5 minutes walk">A 5 minuti a piedi</small>
+                   </div>
+                </a>
+                
+                <a href="https://www.issanpellegrino.edu.it/" target="_blank" class="poi-item" aria-label="Vai al sito dell'Istituto Superiore Alberghiero">
+                   <div class="poi-logo-box">
+                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
+                   </div>
+                   <div class="poi-text">
+                       <strong data-it="Istituto Superiore Alberghiero ↗" data-en="Culinary Institute ↗">Istituto Superiore Alberghiero ↗</strong>
+                       <small data-it="A 50 metri di distanza" data-en="50 meters away">A 50 metri di distanza</small>
+                   </div>
+                </a>
+                
+                <a href="https://www.visitbrembo.it/elemento/infopoint-san-pellegrino-terme/" target="_blank" class="poi-item" aria-label="Scopri l'InfoPoint di San Pellegrino">
+                   <div class="poi-logo-box">
+                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                   </div>
+                   <div class="poi-text">
+                       <strong data-it="InfoPoint & Centro Storico ↗" data-en="InfoPoint & City Center ↗">InfoPoint & Centro Storico ↗</strong>
+                       <small data-it="Nelle immediate vicinanze" data-en="In the immediate vicinity">Nelle immediate vicinanze</small>
+                   </div>
+                </a>
+                
+                <a href="https://www.sanpellegrino.com/it/" target="_blank" class="poi-item" aria-label="Sito ufficiale Acqua Sanpellegrino">
+                   <div class="poi-logo-box">
+                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                   </div>
+                   <div class="poi-text">
+                       <strong data-it="Sanpellegrino Flagship Factory ↗" data-en="Sanpellegrino Flagship Factory ↗">Sanpellegrino Flagship Factory ↗</strong>
+                       <small data-it="L'iconica fabbrica dell'acqua" data-en="The iconic water factory">L'iconica fabbrica dell'acqua</small>
+                   </div>
+                </a>
 
-            <a href="#" id="btn-eventi-mese" target="_blank" class="poi-item" aria-label="Scopri gli eventi del mese" style="display: none; border-left-color: #ff5722;">
-               <div class="poi-logo-box" style="border-color: rgba(255, 87, 34, 0.5);">
-                   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
-               </div>
-               <div class="poi-text">
-                   <strong data-it="📅 Eventi del Mese in Valle ↗" data-en="📅 Monthly Events in the Valley ↗">📅 Eventi del Mese in Valle ↗</strong>
-                   <small data-it="Scopri la newsletter aggiornata" data-en="Discover the updated newsletter">Scopri la newsletter aggiornata</small>
-               </div>
-            </a>
- 
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Viale+della+Vittoria+23,+San+Pellegrino+Terme" target="_blank" class="btn-minimal" aria-label="Apri le indicazioni su Google Maps" style="justify-content: flex-start; margin-top: 15px; font-size: 0.9rem;">
+                <a href="#" id="btn-eventi-mese" target="_blank" class="poi-item" aria-label="Scopri gli eventi del mese" style="display: none; border-left-color: #ff5722;">
+                   <div class="poi-logo-box" style="border-color: rgba(255, 87, 34, 0.5);">
+                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+                   </div>
+                   <div class="poi-text">
+                       <strong data-it="📅 Eventi del Mese in Valle ↗" data-en="📅 Monthly Events in the Valley ↗">📅 Eventi del Mese in Valle ↗</strong>
+                       <small data-it="Scopri la newsletter aggiornata" data-en="Discover the updated newsletter">Scopri la newsletter aggiornata</small>
+                   </div>
+                </a>
+            </div>
+
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Viale+della+Vittoria+23,+San+Pellegrino+Terme" target="_blank" class="btn-minimal" aria-label="Apri le indicazioni su Google Maps" style="justify-content: center; margin-top: 20px; font-size: 0.9rem; border: 1px solid rgba(184, 134, 11, 0.3); border-radius: 8px; padding: 12px; background: rgba(0,0,0,0.5);">
                <span data-it="🧭 Apri il Navigatore GPS" data-en="🧭 Open GPS Navigator">🧭 Apri il Navigatore GPS</span>
             </a>
+            
         </div>
     </div>
 </section>
@@ -1041,6 +1035,35 @@
 </a>
  
 <script>
+    // === SALUTO DINAMICO (BUONGIORNO / BUONASERA) ===
+    function impostaSaluto() {
+        const ora = new Date().getHours();
+        let salutoIT, salutoEN;
+
+        if (ora >= 5 && ora < 12) {
+            salutoIT = "Buongiorno e benvenuti";
+            salutoEN = "Good morning and welcome";
+        } else if (ora >= 12 && ora < 18) {
+            salutoIT = "Buon pomeriggio e benvenuti";
+            salutoEN = "Good afternoon and welcome";
+        } else {
+            salutoIT = "Buonasera e benvenuti";
+            salutoEN = "Good evening and welcome";
+        }
+
+        const testoIT = `${salutoIT} a Casa Franca. Offriamo appartamenti ideali per brevi vacanze e soluzioni flessibili per ogni altra esigenza di soggiorno. Il nostro impegno è uno solo: farvi trovare spazi pratici, accoglienti e pulitissimi, per garantirvi un soggiorno impeccabile e in totale tranquillità.`;
+        const testoEN = `${salutoEN} to Casa Franca. We offer ideal apartments for short holidays and flexible solutions for any other stay requirement. Our commitment is simple: to provide you with practical, welcoming, and spotlessly clean spaces, ensuring a flawless and completely peaceful stay.`;
+
+        const welcomeElement = document.getElementById('welcome-text');
+        if (welcomeElement) {
+            welcomeElement.setAttribute('data-it', testoIT);
+            welcomeElement.setAttribute('data-en', testoEN);
+            const linguaCorrente = document.documentElement.lang || 'it';
+            welcomeElement.innerHTML = linguaCorrente === 'en' ? testoEN : testoIT;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', impostaSaluto);
+
     // === MOTORE ANNUNCI GOOGLE FOGLI BILINGUE ===
     async function caricaAnnuncio() {
         const timestamp = new Date().getTime();
@@ -1174,15 +1197,10 @@
         });
     }
 
-    // Lancia l'animazione al normale scorrimento del mouse
     window.addEventListener('scroll', aggiornaReveal, { passive: true });
-    
-    // Controlla al primo caricamento
     document.addEventListener('DOMContentLoaded', aggiornaReveal);
     window.addEventListener('load', aggiornaReveal);
 
-    // FIX PER CHROME/SAFARI: Se l'utente clicca "Indietro" dalla pagina Privacy,
-    // il browser usa la cache e salta l'evento scroll. Questa riga riaccende tutto.
     window.addEventListener('pageshow', function(event) {
         if (event.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2)) {
             document.querySelectorAll('.reveal').forEach(el => {
