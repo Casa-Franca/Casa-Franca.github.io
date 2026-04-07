@@ -489,7 +489,7 @@
             .privacy-link:hover { color: var(--gold); border-color: var(--gold); }
         }
  
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
             .hero-content h1 { font-size: 1.6rem; }
             .map-wrapper { grid-template-columns: 1fr; gap: 20px; }
             header { height: 100px; }
@@ -506,12 +506,62 @@
             #cookie-banner { flex-direction: column; text-align: center; width: 90%; gap: 10px; padding: 20px; }
             .card-reveal-wrapper { max-height: 1000px !important; opacity: 1 !important; margin-top: 20px !important; }
             
-            /* Fix icone su mobile */
+            /* Fix icone servizi su mobile */
             .amenities-wrapper { padding: 0 10px; overflow: visible; }
             .amenities-grid { flex-wrap: wrap; justify-content: center; gap: 15px; }
             .amenity-card { width: calc(33% - 15px); margin-bottom: 10px; }
             .amenity-title { font-size: 0.65rem; line-height: 1.2; }
-        }
+
+            /* --- NOVITÀ: RECENSIONI SWIPEABILI --- */
+            .reviews-grid {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch; /* Fluidità nativa iOS */
+                scrollbar-width: none; /* Nasconde scrollbar su Firefox */
+                margin-left: -20px; /* Fa uscire le card dai bordi (Effetto App) */
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 15px;
+                gap: 15px;
+            }
+            .reviews-grid::-webkit-scrollbar { display: none; } /* Nasconde scrollbar su Chrome/Safari */
+            .review-card {
+                flex: 0 0 85%; /* Occupa l'85% dello schermo, la card dopo fa capolino */
+                scroll-snap-align: center;
+            }
+
+            /* --- NOVITÀ: PUNTI DI INTERESSE MAPPA SWIPEABILI --- */
+            .poi-list {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 15px;
+                gap: 15px;
+            }
+            .poi-list::-webkit-scrollbar { display: none; }
+            .poi-item {
+                flex: 0 0 85%;
+                scroll-snap-align: center;
+                margin: 0; /* Rimuove margini extra della versione desktop */
+            }
+            .poi-list .btn-minimal {
+                flex: 0 0 auto;
+                scroll-snap-align: center;
+                padding-right: 20px;
+                white-space: nowrap;
+            }
+        }        }
     </style>
 </head>
 <body lang="it">
