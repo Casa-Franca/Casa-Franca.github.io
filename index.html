@@ -56,6 +56,63 @@
     }
     </script>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "L'appartamento in affitto a San Pellegrino Terme ha il parcheggio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sì, Casa Franca offre l'esclusiva comodità del posto auto riservato, un servizio preziosissimo nel centro di San Pellegrino Terme."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto dista la casa vacanze dalle QC Terme?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I nostri alloggi si trovano in Viale della Vittoria, a soli 5 minuti a piedi dalle rinomate QC Terme di San Pellegrino."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa include l'affitto dei vostri alloggi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'affitto include biancheria da letto e da bagno di alta qualità, cucina attrezzata, Wi-Fi veloce, Smart TV e set di cortesia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "L'appartamento dispone di aria condizionata?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trovandoci in una splendida zona di montagna in Valle Brembana, godiamo di un clima naturalmente fresco e ventilato. Garantiamo un riposo eccellente senza necessità di aria condizionata artificiale."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quali sono gli orari di check-in e check-out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Il check-in è disponibile dalle 14:00 in poi. Il check-out è richiesto entro le 10:00 del mattino, ma è possibile concordare un orario di uscita flessibile in base alle tue esigenze (soggetto a disponibilità e con eventuale supplemento). Offriamo inoltre un comodo servizio di Fast Check-in online."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sono ammessi animali domestici?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per garantire a tutti i nostri ospiti il massimo dell'igiene e della pulizia (che è il nostro punto di forza), al momento non siamo attrezzati per accogliere animali domestici."
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
@@ -78,15 +135,6 @@
             -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
         }
  
-        /* === CURSORE GIOIELLO === */
-        @media (pointer: fine) {
-            body, a, button { cursor: none !important; }
-            .cursor-dot { width: 8px; height: 8px; background-color: var(--gold); position: fixed; border-radius: 50%; pointer-events: none; z-index: 999999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, background-color 0.2s, opacity 0.2s ease; }
-            .cursor-ring { width: 36px; height: 36px; border: 1px solid rgba(184, 134, 11, 0.6); position: fixed; border-radius: 50%; pointer-events: none; z-index: 999998; transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s, opacity 0.2s ease; transition-timing-function: ease-out; }
-            .cursor-hover .cursor-dot { width: 4px; height: 4px; background-color: #fff; }
-            .cursor-hover .cursor-ring { width: 60px; height: 60px; background-color: rgba(184, 134, 11, 0.1); border-color: var(--gold); }
-        }
- 
         /* === PRELOADER === */
         #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 99999; display: flex; justify-content: center; align-items: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
         #preloader img { width: 120px; max-height: 120px; object-fit: contain; animation: pulse-preload 2s infinite; }
@@ -95,7 +143,7 @@
         /* === SCROLL PROGRESS BAR === */
         #scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--gold-gradient); background-size: 200% auto; animation: shine 3s linear infinite; z-index: 100000; transition: width 0.1s; }
  
-        /* EFFETTO SCROLL REVEAL - INDISTRUTTIBILE */
+        /* EFFETTO SCROLL REVEAL */
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
         .reveal.active { opacity: 1 !important; transform: translateY(0) !important; }
  
@@ -140,7 +188,7 @@
  
         .hero-content { position: relative; z-index: 10; text-align: center; padding: 0 20px; transition: opacity 0.4s; }
         .hero-content h1 { 
-            font-size: 3.5rem; text-transform: uppercase; letter-spacing: 4px; margin: 0; font-weight: 300;
+            font-size: 2.8rem; text-transform: uppercase; letter-spacing: 2px; margin: 0; font-weight: 300;
             background: var(--gold-gradient); background-size: 200% auto;
             color: transparent; -webkit-background-clip: text; background-clip: text;
             animation: shine 4s linear infinite; filter: drop-shadow(0px 4px 15px rgba(184, 134, 11, 0.4));
@@ -272,10 +320,10 @@
         html[lang="en"] #cal-appartamento .cal-wrapper::after { content: "Check-in 2:00 PM • Check-out 10:00 AM"; }
  
         /* TASTI FLUTTUANTI */
-        .floating-wa { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; background-color: var(--whatsapp); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 9999; text-decoration: none; animation: bounce-in 1s ease-out, pulse-wa 2.5s infinite; transition: transform 0.3s; }
+        .floating-wa { position: fixed; bottom: 30px; right: 25px; width: 55px; height: 55px; background-color: var(--whatsapp); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 100001; text-decoration: none; animation: bounce-in 1s ease-out, pulse-wa 2.5s infinite; transition: transform 0.3s; }
         .floating-wa svg { width: 30px; height: 30px; fill: white; }
  
-        .floating-phone { position: fixed; bottom: 95px; right: 28px; width: 48px; height: 48px; background-color: #111; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.6); z-index: 9999; text-decoration: none; animation: bounce-in 1.2s ease-out; transition: all 0.3s; }
+        .floating-phone { position: fixed; bottom: 100px; right: 28px; width: 48px; height: 48px; background-color: #111; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.6); z-index: 100001; text-decoration: none; animation: bounce-in 1.2s ease-out; transition: all 0.3s; }
         .floating-phone svg { width: 20px; height: 20px; fill: var(--gold); transition: fill 0.3s; }
         
         @media (hover: hover) {
@@ -442,7 +490,7 @@
         }
  
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 1.6rem; }
             .map-wrapper { grid-template-columns: 1fr; gap: 20px; }
             header { height: 100px; }
             header.scrolled { height: 80px; }
@@ -468,9 +516,6 @@
 </head>
 <body lang="it">
  
-<div class="cursor-dot" id="cursor-dot"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
- 
 <div id="preloader">
     <img src="logo-casa-franca.png" alt="Caricamento Casa Franca" onerror="this.style.display='none'">
 </div>
@@ -488,7 +533,7 @@
 <header id="main-header" role="banner">
     <img src="logo-casa-franca.png" alt="Logo Casa Franca Vacation Rental" class="header-logo" id="logo">
     
-    <div class="lang-switch interactive-hover" aria-label="Cambia Lingua">
+    <div class="lang-switch" aria-label="Cambia Lingua">
         <span class="active" onclick="switchLang('it', this)" role="button" tabindex="0">IT</span> | 
         <span onclick="switchLang('en', this)" role="button" tabindex="0">EN</span>
     </div>
@@ -506,7 +551,7 @@
         <img src="x5.jpg" alt="Casa Franca San Pellegrino Terme" class="hero-img" loading="lazy" onerror="this.remove()">
     </div>
     <div class="hero-content" id="hero-parallax" data-fade>
-        <h1 data-it="San Pellegrino Terme" data-en="Your Vacation Rental Apartment">San Pellegrino Terme</h1>
+        <h1 data-it="Appartamenti Vacanze a San Pellegrino Terme" data-en="Vacation Rental Apartments in San Pellegrino">Appartamenti Vacanze a San Pellegrino Terme</h1>
         <p id="hero-subtitle" data-it="Viale della Vittoria 23" data-en="">Viale della Vittoria 23</p>
     </div>
 </section>
@@ -516,7 +561,7 @@
         
         <div class="card-wrapper reveal">
             <div class="card">
-               <div class="card-carousel interactive-hover">
+               <div class="card-carousel">
                    <div class="premium-badge" data-it="✨ Scelta Top" data-en="✨ Top Pick" data-fade>✨ Scelta Top</div>
                    <button class="carousel-btn prev" aria-label="Immagine precedente" onclick="moveSlide('track-vacanze', -1)">❮</button>
                    <div class="carousel-track" id="track-vacanze">
@@ -545,20 +590,20 @@
                           La tua base ideale in Valle Brembana. Un bilocale funzionale e dotato di ogni comfort, con l’esclusiva comodità del posto auto riservato. A pochi passi dalle meraviglie architettoniche del centro e dal relax delle QC Terme.
                        </p>
                        
-                       <a href="https://wa.me/393482422951?text=Salve%2C%20vorrei%20informazioni%20sulla%20disponibilit%C3%A0%20dell'Appartamento%20Vacanze%20San%20Pellegrino%20(Miglior%20Prezzo)!" target="_blank" class="btn btn-direct-book interactive-hover" aria-label="Richiedi il miglior prezzo su WhatsApp">
+                       <a href="https://wa.me/393482422951?text=Salve%2C%20vorrei%20informazioni%20sulla%20disponibilit%C3%A0%20dell'Appartamento%20Vacanze%20San%20Pellegrino%20(Miglior%20Prezzo)!" target="_blank" class="btn btn-direct-book" aria-label="Richiedi il miglior prezzo su WhatsApp">
                            <span data-it="✨ Prenota Ora (da 80€ / notte)" data-en="✨ Book Now (from €80 / night)">✨ Prenota Ora (da 80€ / notte)</span>
                        </a>
  
                        <div class="secondary-actions">
-                           <button type="button" class="btn-minimal interactive-hover" onclick="toggleCalendar('cal-appartamento', event)" aria-label="Mostra Calendario">
+                           <button type="button" class="btn-minimal" onclick="toggleCalendar('cal-appartamento', event)" aria-label="Mostra Calendario">
                                 <span data-it="📅 Mostra Calendario" data-en="📅 Show Calendar">📅 Mostra Calendario</span>
                            </button>
                        </div>
                        
                        <div class="portals-text">
                            <span data-it="Preferisci i portali? Trovaci su" data-en="Prefer booking portals? Find us on">Preferisci i portali? Trovaci su</span> 
-                           <a href="https://www.airbnb.it/rooms/1366692006544822914" target="_blank" class="interactive-hover" aria-label="Profilo Airbnb">Airbnb</a> <span data-it="o" data-en="or">o</span> 
-                           <a href="https://www.booking.com/hotel/it/casa-franca-vacation-aparment.it.html" target="_blank" class="interactive-hover" aria-label="Profilo Booking.com">Booking</a>.
+                           <a href="https://www.airbnb.it/rooms/1366692006544822914" target="_blank" aria-label="Profilo Airbnb">Airbnb</a> <span data-it="o" data-en="or">o</span> 
+                           <a href="https://www.booking.com/hotel/it/casa-franca-vacation-aparment.it.html" target="_blank" aria-label="Profilo Booking.com">Booking</a>.
                        </div>
                    </div>
                </div>
@@ -574,7 +619,7 @@
  
         <div class="card-wrapper reveal">
             <div class="card">
-               <div class="card-carousel interactive-hover">
+               <div class="card-carousel">
                    <button class="carousel-btn prev" aria-label="Immagine precedente" onclick="moveSlide('track-alloggi', -1)">❮</button>
                    <div class="carousel-track" id="track-alloggi">
                        <img src="z0.jpg" alt="Bilocali e Trilocali" loading="lazy" onerror="this.remove()">
@@ -612,12 +657,12 @@
                           Soluzioni dedicate ad affitti transitori e tradizionali per studenti e lavoratori nel medio e lungo termine. Ambienti curati e confortevoli, dotati di tutto il necessario per farti sentire comodamente a casa tua durante il periodo di permanenza.
                        </p>
                        
-                       <a href="https://wa.me/393482422951" class="btn btn-whatsapp interactive-hover" aria-label="Richiedi informazioni su WhatsApp">
+                       <a href="https://wa.me/393482422951" class="btn btn-whatsapp" aria-label="Richiedi informazioni su WhatsApp">
                            <span data-it="💬 Richiedi Info su WhatsApp" data-en="💬 Request Info via WhatsApp">💬 Richiedi Info su WhatsApp</span>
                        </a>
  
                        <div class="secondary-actions">
-                           <button type="button" class="btn-minimal interactive-hover" onclick="toggleCalendar('cal-alloggi', event)" aria-label="Verifica Disponibilità">
+                           <button type="button" class="btn-minimal" onclick="toggleCalendar('cal-alloggi', event)" aria-label="Verifica Disponibilità">
                                 <span data-it="📅 Verifica Disponibilità" data-en="📅 Check Availability">📅 Verifica Disponibilità</span>
                            </button>
                        </div>
@@ -692,7 +737,7 @@
     <div class="award-section" style="margin-bottom: 70px; text-align: center;">
         <h3 class="section-title" style="font-size: 1.2rem; color: var(--gold); margin-bottom: 25px; letter-spacing: 2px;" data-it="Eccellenza Riconosciuta" data-en="Recognized Excellence">Eccellenza Riconosciuta</h3>
         
-        <div class="award-wrapper-wow interactive-hover">
+        <div class="award-wrapper-wow">
             <div class="award-gold-border"></div>
             <img src="image.png" alt="Traveller Review Award Booking.com" loading="lazy" onerror="this.style.display='none'">
             <div class="glint-wow"></div>
@@ -700,7 +745,7 @@
     </div>
  
     <div class="reviews-grid">
-        <div class="review-card interactive-hover">
+        <div class="review-card">
             <div class="stars">★★★★★</div>
             <p class="review-text" 
               data-it='"Appartamento comodissimo e pulitissimo, in posizione perfetta e davvero vicinissima alle QC Terme. Permette di sentirsi subito come a casa, ideale per weekend di relax o permanenze più lunghe."'
@@ -710,7 +755,7 @@
             <div class="review-author">Alessio <span class="review-source" data-it="via Airbnb" data-en="via Airbnb">via Airbnb</span></div>
         </div>
         
-        <div class="review-card interactive-hover">
+        <div class="review-card">
             <div class="stars">★★★★★</div>
             <p class="review-text"
               data-it='"Ottima posizione a pochi passi dalle Terme. L'appartamento è molto carino e ha tutto il necessario per un soggiorno perfetto. Fantastico avere il parcheggio gratuito proprio di fronte."'
@@ -720,7 +765,7 @@
             <div class="review-author">Adriana - Canada <span class="review-source" data-it="via Booking.com" data-en="via Booking.com">via Booking.com</span></div>
         </div>
         
-        <div class="review-card interactive-hover">
+        <div class="review-card">
             <div class="stars">★★★★★</div>
             <p class="review-text"
               data-it='"Ottima posizione e appartamento impeccabile. Le indicazioni fornite per il check-in sono state chiarissime. La comodità del parcheggio gratuito sotto casa è un grandissimo valore aggiunto."'
@@ -733,7 +778,7 @@
 </section>
  
 <section id="checkin-online" class="reveal" data-fade>
-    <div class="checkin-wrapper interactive-hover" onclick="toggleCheckin(event)" role="button" aria-expanded="false" tabindex="0">
+    <div class="checkin-wrapper" onclick="toggleCheckin(event)" role="button" aria-expanded="false" tabindex="0">
         <div class="checkin-inner">
             <div class="checkin-header">
                 <h2 data-it="⚡ Fast Check-in Online" data-en="⚡ Fast Online Check-in">⚡ Fast Check-in Online</h2>
@@ -748,10 +793,10 @@
                    </p>
                    
                    <div class="checkin-buttons">
-                       <a href="https://forms.gle/46LY3mpccnq1d1Q39" target="_blank" class="btn btn-white interactive-hover" aria-label="Compila il Modulo di Registrazione" style="max-width: 320px; margin: 0;">
+                       <a href="https://forms.gle/46LY3mpccnq1d1Q39" target="_blank" class="btn btn-white" aria-label="Compila il Modulo di Registrazione" style="max-width: 320px; margin: 0;">
                            <span data-it="📝 Modulo di Registrazione" data-en="📝 Registration Form">📝 Modulo di Registrazione</span>
                        </a>
-                       <a href="https://wa.me/393298158892?text=Ciao%2C%20ti%20invio%20le%20foto%20dei%20documenti%20per%20il%20Check-in%20a%20Casa%20Franca!" target="_blank" class="btn btn-whatsapp interactive-hover" aria-label="Invia Documenti tramite WhatsApp" style="max-width: 320px; margin: 0;">
+                       <a href="https://wa.me/393298158892?text=Ciao%2C%20ti%20invio%20le%20foto%20dei%20documenti%20per%20il%20Check-in%20a%20Casa%20Franca!" target="_blank" class="btn btn-whatsapp" aria-label="Invia Documenti tramite WhatsApp" style="max-width: 320px; margin: 0;">
                            <span data-it="📸 Invia Documenti WhatsApp" data-en="📸 Send ID via WhatsApp">📸 Invia Documenti WhatsApp</span>
                        </a>
                    </div>
@@ -765,22 +810,22 @@
     <h2 class="section-title" data-it="Dove Siamo" data-en="Location">Dove Siamo</h2>
     <div class="divider"></div>
     <div class="map-wrapper">
-        <iframe class="map-frame interactive-hover" src="https://maps.google.com/maps?q=Viale%20della%20Vittoria%2023,%20San%20Pellegrino%20Terme&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Mappa della posizione di Casa Franca" allowfullscreen=""></iframe>
+        <iframe class="map-frame" src="https://maps.google.com/maps?q=Viale%20della%20Vittoria%2023,%20San%20Pellegrino%20Terme&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Mappa della posizione di Casa Franca" allowfullscreen=""></iframe>
         
         <div class="poi-list">
             
-            <a href="https://www.qcterme.com/it/san-pellegrino/qc-terme-san-pellegrino" target="_blank" class="poi-item interactive-hover" aria-label="Vai al sito delle QC Terme San Pellegrino">
+            <a href="https://www.qcterme.com/it/san-pellegrino/qc-terme-san-pellegrino" target="_blank" class="poi-item" aria-label="Vai al sito delle QC Terme San Pellegrino">
                <div class="poi-logo-box">
                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
                </div>
                <div class="poi-text">
                    <strong data-it="QC Terme San Pellegrino ↗" data-en="QC Terme San Pellegrino ↗">QC Terme San Pellegrino ↗</strong>
-                   <small onclick="apriSconto(event)" class="interactive-hover" data-it="🎟️ Sconto ingresso (Vedi Voucher)" data-en="🎟️ Entry discount (See Voucher)" style="color: var(--gold); font-weight: 600; text-decoration: underline; cursor: pointer;" title="Clicca per aprire il voucher">🎟️ Sconto ingresso (Vedi Voucher)</small>
+                   <small onclick="apriSconto(event)" data-it="🎟️ Sconto ingresso (Vedi Voucher)" data-en="🎟️ Entry discount (See Voucher)" style="color: var(--gold); font-weight: 600; text-decoration: underline; cursor: pointer;" title="Clicca per aprire il voucher">🎟️ Sconto ingresso (Vedi Voucher)</small>
                    <small data-it="A 5 minuti a piedi" data-en="5 minutes walk">A 5 minuti a piedi</small>
                </div>
             </a>
             
-            <a href="https://www.issanpellegrino.edu.it/" target="_blank" class="poi-item interactive-hover" aria-label="Vai al sito dell'Istituto Superiore Alberghiero">
+            <a href="https://www.issanpellegrino.edu.it/" target="_blank" class="poi-item" aria-label="Vai al sito dell'Istituto Superiore Alberghiero">
                <div class="poi-logo-box">
                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>
                </div>
@@ -790,7 +835,7 @@
                </div>
             </a>
             
-            <a href="https://www.visitbrembo.it/elemento/infopoint-san-pellegrino-terme/" target="_blank" class="poi-item interactive-hover" aria-label="Scopri l'InfoPoint di San Pellegrino">
+            <a href="https://www.visitbrembo.it/elemento/infopoint-san-pellegrino-terme/" target="_blank" class="poi-item" aria-label="Scopri l'InfoPoint di San Pellegrino">
                <div class="poi-logo-box">
                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                </div>
@@ -800,7 +845,7 @@
                </div>
             </a>
             
-            <a href="https://www.sanpellegrino.com/it/" target="_blank" class="poi-item interactive-hover" aria-label="Sito ufficiale Acqua Sanpellegrino">
+            <a href="https://www.sanpellegrino.com/it/" target="_blank" class="poi-item" aria-label="Sito ufficiale Acqua Sanpellegrino">
                <div class="poi-logo-box">
                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                </div>
@@ -810,7 +855,7 @@
                </div>
             </a>
 
-            <a href="#" id="btn-eventi-mese" target="_blank" class="poi-item interactive-hover" aria-label="Scopri gli eventi del mese" style="display: none; border-left-color: #ff5722;">
+            <a href="#" id="btn-eventi-mese" target="_blank" class="poi-item" aria-label="Scopri gli eventi del mese" style="display: none; border-left-color: #ff5722;">
                <div class="poi-logo-box" style="border-color: rgba(255, 87, 34, 0.5);">
                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
                </div>
@@ -820,7 +865,7 @@
                </div>
             </a>
  
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Viale+della+Vittoria+23,+San+Pellegrino+Terme" target="_blank" class="btn-minimal interactive-hover" aria-label="Apri le indicazioni su Google Maps" style="justify-content: flex-start; margin-top: 15px; font-size: 0.9rem;">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Viale+della+Vittoria+23,+San+Pellegrino+Terme" target="_blank" class="btn-minimal" aria-label="Apri le indicazioni su Google Maps" style="justify-content: flex-start; margin-top: 15px; font-size: 0.9rem;">
                <span data-it="🧭 Apri il Navigatore GPS" data-en="🧭 Open GPS Navigator">🧭 Apri il Navigatore GPS</span>
             </a>
         </div>
@@ -828,10 +873,10 @@
 </section>
 
 <section id="faq-trigger-section" class="reveal">
-    <div class="faq-banner interactive-hover">
+    <div class="faq-banner">
         <h2 style="font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.8rem; margin-top: 0;" data-it="Hai altre domande?" data-en="Have more questions?">Hai altre domande?</h2>
         <p style="color: #aaa; margin-bottom: 30px;" data-it="Consulta le nostre Domande Frequenti su check-in, parcheggio e servizi." data-en="Check our FAQs about check-in, parking, and amenities.">Consulta le nostre Domande Frequenti su check-in, parcheggio e servizi.</p>
-        <button onclick="document.getElementById('faq-sidebar').classList.add('open'); document.getElementById('faq-overlay').classList.add('open'); document.body.style.overflow='hidden';" class="btn btn-direct-book interactive-hover" style="max-width: 280px; margin: 0 auto;">
+        <button onclick="document.getElementById('faq-sidebar').classList.add('open'); document.getElementById('faq-overlay').classList.add('open'); document.body.style.overflow='hidden';" class="btn btn-direct-book" style="max-width: 280px; margin: 0 auto;">
             <span data-it="📚 Leggi le FAQ" data-en="📚 Read FAQs">📚 Leggi le FAQ</span>
         </button>
     </div>
@@ -841,11 +886,11 @@
 <div id="faq-sidebar" class="faq-sidebar">
     <div class="faq-sidebar-header">
         <h3 data-it="Domande Frequenti" data-en="FAQs">Domande Frequenti</h3>
-        <button class="close-faq-btn interactive-hover" onclick="document.getElementById('faq-sidebar').classList.remove('open'); document.getElementById('faq-overlay').classList.remove('open'); document.body.style.overflow='auto';">✕</button>
+        <button class="close-faq-btn" onclick="document.getElementById('faq-sidebar').classList.remove('open'); document.getElementById('faq-overlay').classList.remove('open'); document.body.style.overflow='auto';">✕</button>
     </div>
     <div class="faq-sidebar-content">
         
-        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)">
             <button class="faq-question" aria-expanded="false">
                 <span data-it="L'appartamento in affitto ha il parcheggio?" data-en="Does the vacation apartment have parking?">L'appartamento in affitto ha il parcheggio?</span>
                 <span class="faq-icon">+</span>
@@ -855,7 +900,7 @@
             </div>
         </div>
 
-        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)">
             <button class="faq-question" aria-expanded="false">
                 <span data-it="Quanto dista la casa vacanze dalle QC Terme?" data-en="How far is the vacation home from QC Terme?">Quanto dista la casa vacanze dalle QC Terme?</span>
                 <span class="faq-icon">+</span>
@@ -865,7 +910,7 @@
             </div>
         </div>
 
-        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)">
             <button class="faq-question" aria-expanded="false">
                 <span data-it="Cosa include l'affitto dei vostri alloggi?" data-en="What is included in the rental of your accommodations?">Cosa include l'affitto dei vostri alloggi?</span>
                 <span class="faq-icon">+</span>
@@ -875,7 +920,7 @@
             </div>
         </div>
 
-        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)">
             <button class="faq-question" aria-expanded="false">
                 <span data-it="L'appartamento dispone di aria condizionata?" data-en="Does the apartment have air conditioning?">L'appartamento dispone di aria condizionata?</span>
                 <span class="faq-icon">+</span>
@@ -885,7 +930,7 @@
             </div>
         </div>
 
-        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)">
             <button class="faq-question" aria-expanded="false">
                 <span data-it="Quali sono gli orari di check-in e check-out?" data-en="What are the check-in and check-out times?">Quali sono gli orari di check-in e check-out?</span>
                 <span class="faq-icon">+</span>
@@ -895,7 +940,7 @@
             </div>
         </div>
 
-        <div class="faq-item interactive-hover" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)">
             <button class="faq-question" aria-expanded="false">
                 <span data-it="Sono ammessi animali domestici?" data-en="Are pets allowed?">Sono ammessi animali domestici?</span>
                 <span class="faq-icon">+</span>
@@ -914,11 +959,11 @@
    <p><strong>CASA FRANCA VACATION RENTAL APARTMENT</strong></p>
    <p>San Pellegrino Terme (BG) • Viale della Vittoria 23</p>
    
-    <p><a href="mailto:casafranca.avo@gmail.com" class="phone-link interactive-hover" aria-label="Invia una email" style="font-weight: normal; letter-spacing: 1px;">casafranca.avo@gmail.com</a></p>
+    <p><a href="mailto:casafranca.avo@gmail.com" class="phone-link" aria-label="Invia una email" style="font-weight: normal; letter-spacing: 1px;">casafranca.avo@gmail.com</a></p>
     
     <p style="margin-top: 15px;">
-        <a href="tel:+393482422951" class="phone-link interactive-hover" aria-label="Chiama il numero principale">+39 348 2422951</a> • 
-        <a href="tel:+393298158892" class="phone-link interactive-hover" aria-label="Chiama il secondo numero">+39 329 8158892</a>
+        <a href="tel:+393482422951" class="phone-link" aria-label="Chiama il numero principale">+39 348 2422951</a> • 
+        <a href="tel:+393298158892" class="phone-link" aria-label="Chiama il secondo numero">+39 329 8158892</a>
     </p>
     <div class="footer-divider"></div>
     
@@ -930,16 +975,16 @@
  
     <p class="copyright">© 2026 Casa Franca Vacation Rental Apartment. <span data-it="Tutti i diritti riservati." data-en="All rights reserved.">Tutti i diritti riservati.</span></p>
 
-    <a href="privacy.html" class="privacy-link interactive-hover" data-it="Privacy & Cookie Policy" data-en="Privacy & Cookie Policy">Privacy & Cookie Policy</a>
+    <a href="privacy.html" class="privacy-link" data-it="Privacy & Cookie Policy" data-en="Privacy & Cookie Policy">Privacy & Cookie Policy</a>
 </footer>
  
-<a href="tel:+393482422951" class="floating-phone interactive-hover" title="Chiama Ora" aria-label="Pulsante rapido per chiamare">
+<a href="tel:+393482422951" class="floating-phone" title="Chiama Ora" aria-label="Pulsante rapido per chiamare">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
     </svg>
 </a>
  
-<a href="https://wa.me/393482422951" target="_blank" class="floating-wa interactive-hover" title="Contattaci su WhatsApp" aria-label="Pulsante rapido WhatsApp">
+<a href="https://wa.me/393482422951" target="_blank" class="floating-wa" title="Contattaci su WhatsApp" aria-label="Pulsante rapido WhatsApp">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
         <path d="M16.002 1.332A14.665 14.665 0 001.336 16c0 2.596.678 5.112 1.964 7.348L1.336 30.668l7.49-1.966a14.654 14.654 0 007.176 1.878h.006A14.668 14.668 0 0030.67 16 14.668 14.668 0 0016.002 1.332zm0 24.815h-.006a12.22 12.22 0 01-6.22-1.693l-.446-.264-4.625 1.213 1.233-4.508-.29-.46A12.188 12.188 0 013.784 16c0-6.736 5.485-12.223 12.224-12.223 3.264 0 6.331 1.272 8.638 3.58a12.15 12.15 0 013.578 8.64c-.002 6.738-5.488 12.224-12.222 12.224h-.002zm6.696-9.143c-.366-.184-2.172-1.073-2.51-1.196-.336-.123-.582-.184-.826.184-.246.368-.948 1.196-1.162 1.442-.214.246-.428.276-.796.092-.366-.184-1.55-.572-2.952-1.822-1.092-.972-1.83-2.173-2.044-2.54-.214-.368-.024-.566.16-.75.166-.164.366-.428.55-.644.184-.214.246-.368.366-.612.124-.246.062-.46-.03-.644-.092-.184-.826-1.992-1.132-2.728-.3-.72-.604-.622-.826-.632-.214-.012-.46-.012-.704-.012a1.35 1.35 0 00-.978.46c-.336.368-1.284 1.256-1.284 3.064s1.314 3.554 1.5 3.8c.184.246 2.594 3.96 6.282 5.55 3.688 1.59 3.688 1.072 4.36 1.01.674-.06 2.172-.888 2.478-1.748.306-.86.306-1.594.214-1.748-.09-.154-.336-.246-.704-.43z"/>
     </svg>
@@ -1059,52 +1104,6 @@
         }, 300);
     }
  
-    // === MOTORE CURSORE GIOIELLO (COMPLETAMENTE RISCRITTO) ===
-    const dot = document.getElementById("cursor-dot");
-    const ring = document.getElementById("cursor-ring");
-    
-    if (window.matchMedia("(pointer: fine)").matches) {
-        let cursorVisible = false;
-
-        // Segue il mouse
-        window.addEventListener("mousemove", (e) => {
-            if (!cursorVisible) {
-                dot.style.opacity = '1';
-                ring.style.opacity = '1';
-                cursorVisible = true;
-            }
-            dot.style.left = e.clientX + "px";
-            dot.style.top = e.clientY + "px";
-            ring.style.left = e.clientX + "px";
-            ring.style.top = e.clientY + "px";
-        });
-
-        // Spegne il cursore con calcolo geometrico se tocca la barra di Chrome o esce dai lati
-        document.addEventListener("mouseout", (e) => {
-            if (!e.relatedTarget && (e.clientY <= 5 || e.clientX <= 5 || e.clientX >= window.innerWidth - 5 || e.clientY >= window.innerHeight - 5)) {
-                dot.style.opacity = '0';
-                ring.style.opacity = '0';
-                cursorVisible = false;
-            }
-        });
-
-        // Hover animato
-        const interactiveElements = document.querySelectorAll('.interactive-hover, button, a, .card-wrapper, .carousel-btn, .lang-switch span, .award-wrapper-wow, .faq-item, .poi-item');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-        });
-
-        // Spegni sulle mappe/calendari
-        document.querySelectorAll('.cal-wrapper, .map-frame').forEach(el => {
-            el.addEventListener('mouseenter', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
-            el.addEventListener('mouseleave', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
-        });
-    } else {
-       dot.style.display = 'none';
-       ring.style.display = 'none';
-    }
- 
     // === RIMOZIONE PRELOADER ===
    window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
@@ -1115,23 +1114,35 @@
     });
  
     // ====================================================================
-    // === MOTORE SCROLL REVEAL "FORZA BRUTA" (RISOLUZIONE TOTALE BUG) ===
+    // === MOTORE SCROLL REVEAL DEFINITIVO (PULITO E SENZA LAG) ===
     // ====================================================================
     function aggiornaReveal() {
         document.querySelectorAll('.reveal:not(.active)').forEach(el => {
-            // Se l'elemento entra nella visuale (anche se spinto da Chrome) lo accende!
             if (el.getBoundingClientRect().top < window.innerHeight + 150) {
                 el.classList.add('active');
             }
         });
     }
 
-    // 1. Lo lancia durante lo scroll (per l'animazione classica morbida)
+    // Lancia l'animazione al normale scorrimento del mouse
     window.addEventListener('scroll', aggiornaReveal, { passive: true });
     
-    // 2. LA MAGIA: Lo lancia a raffica 4 volte al secondo, PER SEMPRE. 
-    // Questo frega Live Server e i "ritorni indietro" di Chrome che cambiano la visuale senza avvisare.
-    setInterval(aggiornaReveal, 250);
+    // Controlla al primo caricamento
+    document.addEventListener('DOMContentLoaded', aggiornaReveal);
+    window.addEventListener('load', aggiornaReveal);
+
+    // FIX PER CHROME/SAFARI: Se l'utente clicca "Indietro" dalla pagina Privacy,
+    // il browser usa la cache e salta l'evento scroll. Questa riga riaccende tutto.
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted || (window.performance && window.performance.navigation && window.performance.navigation.type === 2)) {
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.style.transition = "none";
+                el.classList.add('active');
+            });
+        } else {
+            aggiornaReveal();
+        }
+    });
     // ====================================================================
 
     // === GESTIONE EFFETTI HEADER / PARALLAX ===
