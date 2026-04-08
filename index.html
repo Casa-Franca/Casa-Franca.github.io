@@ -492,6 +492,7 @@
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 1.6rem; }
             .map-wrapper { grid-template-columns: 1fr; gap: 20px; }
+            .map-frame { height: 350px; } /* Mappa leggermente più bassa per mobile */
             header { height: 100px; }
             header.scrolled { height: 80px; }
             .header-logo { height: 70px; }
@@ -533,7 +534,13 @@
                 scroll-snap-align: center;
             }
 
-            /* --- PUNTI DI INTERESSE MAPPA SWIPEABILI --- */
+            /* --- PUNTI DI INTERESSE SWIPEABILI E SICURI --- */
+            .poi-sidebar {
+                display: flex;
+                flex-direction: column;
+                min-width: 0; /* LA MAGIA: impedisce alla griglia di esplodere */
+                width: 100%;
+            }
             .poi-list {
                 display: flex;
                 flex-direction: row;
@@ -553,7 +560,7 @@
             .poi-item {
                 flex: 0 0 85%;
                 scroll-snap-align: center;
-                margin: 0;
+                margin: 0; 
             }
         }
     </style>
@@ -595,7 +602,7 @@
         <img src="x5.jpg" alt="Casa Franca San Pellegrino Terme" class="hero-img" loading="lazy" onerror="this.remove()">
     </div>
     <div class="hero-content" id="hero-parallax" data-fade>
-        <h1 data-it="Appartamenti Vacanze San&nbsp;Pellegrino&nbsp;Terme" data-en="Vacation Rentals San&nbsp;Pellegrino">Appartamenti Vacanze San&nbsp;Pellegrino&nbsp;Terme</h1>
+        <h1 data-it="Appartamenti Vacanze San Pellegrino Terme" data-en="Vacation Rentals San Pellegrino">Appartamenti Vacanze San Pellegrino Terme</h1>
         <p id="hero-subtitle" data-it="Viale della Vittoria 23" data-en="">Viale della Vittoria 23</p>
     </div>
 </section>
@@ -854,7 +861,7 @@
     <div class="map-wrapper">
         <iframe class="map-frame" src="https://maps.google.com/maps?q=Viale%20della%20Vittoria%2023,%20San%20Pellegrino%20Terme&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Mappa della posizione di Casa Franca" allowfullscreen=""></iframe>
         
-        <div class="poi-sidebar" style="display: flex; flex-direction: column;">
+        <div class="poi-sidebar">
             <div class="poi-list">
                 <a href="https://www.qcterme.com/it/san-pellegrino/qc-terme-san-pellegrino" target="_blank" class="poi-item" aria-label="Vai al sito delle QC Terme San Pellegrino">
                    <div class="poi-logo-box">
