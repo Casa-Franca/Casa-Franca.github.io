@@ -553,22 +553,37 @@
             .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; }
             #cookie-banner { flex-direction: column; text-align: center; width: 90%; gap: 10px; padding: 20px; }
             
-            /* --- FIX APPARTAMENTI: NIENTE SCROLL E FOTO PERFETTE --- */
+            /* --- FIX APPARTAMENTI: SWIPE ORIZZONTALE STILOSO --- */
             .host-section { margin-bottom: 25px !important; }
             
-            /* Grid ora è perfettamente incolonnata e bloccata in larghezza */
-            .grid { 
-                display: flex; 
-                flex-direction: column; 
-                gap: 30px; 
-                width: 100%; 
-                max-width: 100vw;
-            }
-            .card-wrapper { width: 100%; }
-            .main-container { margin-bottom: 0 !important; padding: 0 15px; overflow-x: hidden; }
+            /* Rimossa la "gabbia" overflow-x:hidden per permettere lo scorrimento interno */
+            .main-container { margin-bottom: 0 !important; padding: 0 20px; } 
             #servizi { padding-top: 5px !important; }
             
-            /* Il carosello ha un'altezza fissa ottimale, nascondendo gli sbordamenti */
+            /* Trasforma la griglia verticale in un "binario" orizzontale fluidissimo */
+            .grid { 
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Nasconde scrollbar Firefox */
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 20px;
+                gap: 20px;
+            }
+            .grid::-webkit-scrollbar { display: none; } /* Nasconde scrollbar Chrome/Safari */
+            
+            /* La card prende quasi tutto lo schermo, lasciando "sbirciare" la successiva */
+            .card-wrapper { 
+                flex: 0 0 90%; 
+                scroll-snap-align: center;
+            }
+
             .card-carousel { height: 320px; width: 100%; overflow: hidden; }
             
             .card-body { padding: 25px 20px; }
