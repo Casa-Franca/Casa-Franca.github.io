@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNMR2RR54P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FNMR2RR54P');
+    </script>
+
     <title>Casa Franca | Appartamenti Vacanze a San Pellegrino Terme</title>
     <meta name="description" content="Casa Franca a San Pellegrino Terme. La tua base ideale in Valle Brembana a pochi passi dalle QC Terme. Affitto bilocali e trilocali per vacanze o soluzioni flessibili per ogni esigenza.">
     <meta name="keywords" content="San Pellegrino Terme, QC Terme, appartamento vacanze, Valle Brembana, Casa Franca, affitto bilocale, alloggi pratici, affitto breve, affitto transitorio">
@@ -30,6 +38,15 @@
       "description": "Benvenuti a Casa Franca. Offriamo appartamenti ideali per brevi vacanze e soluzioni flessibili per ogni altra esigenza di soggiorno.",
       "url": "https://www.casafranca.eu/",
       "telephone": "+393482422951",
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "CIN",
+        "value": "IT016190C2MTOZ74DP"
+      },
+      "containsPlace": {
+        "@type": "Apartment",
+        "name": "Appartamento Casa Franca"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Viale della Vittoria 23",
@@ -125,6 +142,7 @@
             --card-white: #ffffff;
             --text-dark: #1a1a1a;
             --whatsapp: #25D366;
+            --glow: 0 0 15px rgba(184, 134, 11, 0.4);
         }
  
         /* RESET & BASE */
@@ -337,17 +355,28 @@
         @keyframes bounce-in { 0% { transform: scale(0); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
         @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(184, 134, 11, 0); } 100% { box-shadow: 0 0 0 0 rgba(184, 134, 11, 0); } }
 
-        /* === ICONE SERVIZI === */
+        /* === ICONE SERVIZI GLOW === */
         #servizi { padding: 40px 0 60px; text-align: center; width: 100%; overflow: hidden; }
         .amenities-wrapper { width: 100%; padding: 10px 20px; }
-        .amenities-grid { display: flex; flex-wrap: wrap; gap: 25px; max-width: 1100px; margin: 0 auto; justify-content: center; }
-        .amenity-card { width: 110px; display: flex; flex-direction: column; align-items: center; transition: all 0.4s ease; }
-        .amenity-icon-svg { width: 40px; height: 40px; stroke: var(--gold); fill: none; stroke-width: 1.2; margin-bottom: 12px; transition: stroke 0.3s; }
-        .amenity-title { font-size: 0.75rem; font-weight: 400; color: #ccc; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
-        @media (hover: hover) {
-            .amenity-card:hover { transform: translateY(-5px); }
-            .amenity-card:hover .amenity-icon-svg { stroke: var(--gold-light); filter: drop-shadow(0 0 5px rgba(184, 134, 11, 0.4)); }
+        .amenities-grid { display: flex; flex-wrap: wrap; gap: 30px; max-width: 1100px; margin: 0 auto; justify-content: center; }
+        .amenity-card { width: 130px; display: flex; flex-direction: column; align-items: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .amenity-icon-container {
+            width: 65px; height: 65px; border-radius: 50%;
+            background: rgba(184, 134, 11, 0.05);
+            border: 1px solid rgba(184, 134, 11, 0.2);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px; position: relative; transition: all 0.4s ease;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
+        .amenity-icon-svg { width: 32px; height: 32px; stroke: var(--gold); fill: none; stroke-width: 1.5; filter: drop-shadow(0 0 2px rgba(184,134,11,0.5)); transition: all 0.4s ease; }
+        .amenity-title { font-size: 0.7rem; font-weight: 500; color: #bbb; text-transform: uppercase; letter-spacing: 1px; text-align: center; line-height: 1.4; transition: color 0.3s; }
+        
+        @media (hover: hover) {
+            .amenity-card:hover .amenity-icon-container { background: rgba(184, 134, 11, 0.15); border-color: var(--gold-light); box-shadow: var(--glow); transform: scale(1.1); }
+            .amenity-card:hover .amenity-icon-svg { stroke: var(--gold-light); filter: drop-shadow(0 0 8px var(--gold)); transform: scale(1.1); }
+            .amenity-card:hover .amenity-title { color: #fff; }
+        }
+        .amenity-card:active .amenity-icon-container { transform: scale(0.9); }
 
         /* === BENVENUTI (HOST SECTION) === */
         .host-section { max-width: 800px; margin: 0 auto 80px auto; padding: 0 20px; text-align: center; }
@@ -508,10 +537,12 @@
             .card-reveal-wrapper { max-height: 1000px !important; opacity: 1 !important; margin-top: 20px !important; }
             
             /* Fix icone servizi su mobile */
-            .amenities-wrapper { padding: 0 10px; overflow: visible; }
+            .amenities-wrapper { padding: 0 5px; overflow: visible; }
             .amenities-grid { flex-wrap: wrap; justify-content: center; gap: 15px; }
             .amenity-card { width: calc(33% - 15px); margin-bottom: 10px; }
-            .amenity-title { font-size: 0.65rem; line-height: 1.2; }
+            .amenity-icon-container { width: 55px; height: 55px; } 
+            .amenity-icon-svg { width: 28px; height: 28px; }
+            .amenity-title { font-size: 0.6rem; line-height: 1.2; }
 
             /* --- RECENSIONI SWIPEABILI --- */
             .reviews-grid {
@@ -602,7 +633,7 @@
         <img src="x5.jpg" alt="Casa Franca San Pellegrino Terme" class="hero-img" loading="lazy" onerror="this.remove()">
     </div>
     <div class="hero-content" id="hero-parallax" data-fade>
-        <h1 data-it="Appartamenti Vacanze San Pellegrino Terme" data-en="Vacation Rentals San Pellegrino">Appartamenti Vacanze San Pellegrino Terme</h1>
+        <h1 data-it="Appartamenti Vacanze San Pellegrino Terme" data-en="Vacation Rentals San Pellegrino">Appartamenti Vacanze San Pellegrino Terme</h1>
         <p id="hero-subtitle" data-it="Viale della Vittoria 23" data-en="">Viale della Vittoria 23</p>
     </div>
 </section>
@@ -744,35 +775,75 @@
     <div class="amenities-wrapper">
         <div class="amenities-grid">
             <div class="amenity-card">
-                <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M4 11V7a2 2 0 012-2h12a2 2 0 012 2v4M2 11h20v6h-2v-3H4v3H2v-6z"/></svg>
-                <div class="amenity-title" data-it="Lenzuola e Asciugamani" data-en="Linens & Towels">Lenzuola e Asciugamani</div>
-            </div>
-            <div class="amenity-card">
-                <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M8 8h4a3 3 0 010 6H8V8zm0 10V4h5a5 5 0 010 10H8v4z"/></svg>
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M8 8h4a3 3 0 010 6H8V8zm0 10V4h5a5 5 0 010 10H8v4z"/></svg>
+                </div>
                 <div class="amenity-title" data-it="Parcheggio Riservato" data-en="Private Parking">Parcheggio Riservato</div>
             </div>
             <div class="amenity-card">
-                <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M5 10a10 10 0 0114 0M8 13a6 6 0 018 0M12 16h.01"/></svg>
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M5 10a10 10 0 0114 0M8 13a6 6 0 018 0M12 16h.01"/></svg>
+                </div>
                 <div class="amenity-title" data-it="Wi-Fi Veloce" data-en="Fast Wi-Fi">Wi-Fi Veloce</div>
             </div>
             <div class="amenity-card">
-                <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M8 4v8M12 4v8M16 4v8M6 12h12v8H6z"/></svg>
-                <div class="amenity-title" data-it="Cucina Attrezzata" data-en="Equipped Kitchen">Cucina Attrezzata</div>
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zm0 0h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+                </div>
+                <div class="amenity-title" data-it="Kit Colazione Benvenuto" data-en="Welcome Breakfast Kit">Kit Colazione Benvenuto</div>
             </div>
             <div class="amenity-card">
-                <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 4h8v4H6z"/></svg>
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 4h8v4H6z"/></svg>
+                </div>
                 <div class="amenity-title" data-it="Macchina Caffè" data-en="Coffee Machine">Macchina Caffè</div>
             </div>
             <div class="amenity-card">
-                <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M4 7h16v10H4zM8 4l4 3 4-3"/></svg>
-                <div class="amenity-title" data-it="Smart TV" data-en="Smart TV">Smart TV</div>
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M4 12h12v4a4 4 0 01-4 4H8a4 4 0 01-4-4v-4zm12 2h2a2 2 0 010 4h-2M10 6v3M14 6v3M6 6v3M8 12V9c0-1.66 1.34-3 3-3s3 1.34 3 3v3"/></svg>
+                </div>
+                <div class="amenity-title" data-it="Bollitore e Tisane" data-en="Kettle & Tea">Bollitore e Tisane</div>
             </div>
             <div class="amenity-card">
-                <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M4 14h16v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM12 10V4m-4 6V6m8 4V6"/></svg>
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M8 4v8M12 4v8M16 4v8M6 12h12v8H6z"/></svg>
+                </div>
+                <div class="amenity-title" data-it="Cucina Attrezzata" data-en="Equipped Kitchen">Cucina Attrezzata</div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M4 11V7a2 2 0 012-2h12a2 2 0 012 2v4M2 11h20v6h-2v-3H4v3H2v-6z"/></svg>
+                </div>
+                <div class="amenity-title" data-it="Lenzuola e Asciugamani" data-en="Linens & Towels">Lenzuola e Asciugamani</div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M4 14h16v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM12 10V4m-4 6V6m8 4V6"/></svg>
+                </div>
                 <div class="amenity-title" data-it="Set Cortesia" data-en="Toiletries">Set Cortesia</div>
             </div>
             <div class="amenity-card">
-                <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M4 7h16v10H4zM8 4l4 3 4-3"/></svg>
+                </div>
+                <div class="amenity-title" data-it="Smart TV" data-en="Smart TV">Smart TV</div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M12 14a4 4 0 100 8 4 4 0 000-8zm0-12a2 2 0 00-2 2v9.3a4 4 0 004 0V4a2 2 0 00-2-2zM12 8h3M12 5h3"/></svg>
+                </div>
+                <div class="amenity-title" data-it="Riscaldamento Autonomo" data-en="Independent Heating">Riscaldamento Autonomo</div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M4 15h14l2-6a2 2 0 00-2-2H8c-2 0-3.5 1-4.5 3L3 13a2 2 0 001 2zm0 0v2a2 2 0 002 2h12a2 2 0 002-2v-2M15 7v2M12 7v2"/></svg>
+                </div>
+                <div class="amenity-title" data-it="Ferro da Stiro" data-en="Iron">Ferro da Stiro</div>
+            </div>
+            <div class="amenity-card">
+                <div class="amenity-icon-container">
+                    <svg class="amenity-icon-svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
                 <div class="amenity-title" data-it="Posizione Centrale" data-en="Central Location">Posizione Centrale</div>
             </div>
         </div>
@@ -987,7 +1058,7 @@
                 <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-                <p data-it="Il check-in è disponibile dalle 14:00 in poi. Il check-out standard è entro le 10:00 del mattino, ma è possibile concordare un orario di uscita flessibile in base alle tue esigenze (soggetto a disponibilità e con eventuale supplemento). Offriamo inoltre un comodo servizio di Fast Check-in online." data-en="Check-in is from 2:00 PM. Check-out is by 10:00 AM, but flexible check-out is available on request (subject to availability/fee). We also offer a convenient online Fast Check-in service.">Il check-in è disponibile dalle 14:00 in poi. Il check-out standard è entro le 10:00 del mattino, ma è possibile concordare un orario di uscita flessibile in base alle tue esigenze (soggetto a disponibilità e con eventuale supplemento). Offriamo inoltre un comodo servizio di Fast Check-in online.</p>
+                <p data-it="Il check-in è disponibile dalle 14:00 in poi. Il check-out è richiesto entro le 10:00 del mattino, ma è possibile concordare un orario di uscita flessibile in base alle tue esigenze (soggetto a disponibilità e con eventuale supplemento). Offriamo inoltre un comodo servizio di Fast Check-in online." data-en="Check-in is from 2:00 PM. Check-out is by 10:00 AM, but flexible check-out is available on request (subject to availability/fee). We also offer a convenient online Fast Check-in service.">Il check-in è disponibile dalle 14:00 in poi. Il check-out è richiesto entro le 10:00 del mattino, ma è possibile concordare un orario di uscita flessibile in base alle tue esigenze (soggetto a disponibilità e con eventuale supplemento). Offriamo inoltre un comodo servizio di Fast Check-in online.</p>
             </div>
         </div>
 
