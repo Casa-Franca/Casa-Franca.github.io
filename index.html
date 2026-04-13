@@ -518,55 +518,44 @@
             .privacy-link:hover { color: var(--gold); border-color: var(--gold); }
         }
  
+        /* =========================================
+           OTTIMIZZAZIONE ULTRA TOP PER MOBILE 
+           ========================================= */
         @media (max-width: 768px) {
-/* --- CARDS APPARTAMENTI SWIPEABILI DA MOBILE --- */
-            .grid {
-                display: flex;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                margin-left: -20px;
-                margin-right: -20px;
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-bottom: 25px;
-                gap: 15px;
-            }
-            .grid::-webkit-scrollbar { display: none; }
-            .card-wrapper {
-                flex: 0 0 88%; /* Mostra l'88% della card e lascia intravedere la successiva */
-                scroll-snap-align: center;
-                margin-bottom: 0;
-            }
-            
-            /* Riduciamo lo spazio vuoto tra le schede e le icone */
-            .main-container { margin-bottom: 5px; }
-            #servizi { padding-top: 0; }
             .hero-content h1 { font-size: 1.6rem; }
             .map-wrapper { grid-template-columns: 1fr; gap: 20px; }
-            .map-frame { height: 350px; } /* Mappa leggermente più bassa per mobile */
+            .map-frame { height: 350px; }
             header { height: 100px; }
             header.scrolled { height: 80px; }
             .header-logo { height: 70px; }
             header.scrolled .header-logo { height: 50px; }
             .lang-switch { right: 15px; top: 15px; transform: none; font-size: 0.75rem; }
             .checkin-buttons { flex-direction: column; gap: 10px; }
-            .card-body { padding: 30px 20px; }
             .secondary-actions { flex-direction: column; gap: 15px; align-items: center; }
             .checkin-header h2 { font-size: 1.3rem; }
             .carousel-btn { opacity: 0.8; visibility: visible; transform: translateY(-50%) scale(0.9); }
             .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; }
             #cookie-banner { flex-direction: column; text-align: center; width: 90%; gap: 10px; padding: 20px; }
-            .card-reveal-wrapper { max-height: 1000px !important; opacity: 1 !important; margin-top: 20px !important; }
             
-            /* Fix icone servizi su mobile */
+            /* --- COMPATTEZZA MASSIMA DELLE CARDS --- */
+            .host-section { margin-bottom: 25px !important; }
+            .grid { display: grid; grid-template-columns: 1fr; gap: 25px; } /* Tornate verticali perfette, no lag */
+            .main-container { margin-bottom: 0 !important; padding: 0 15px; }
+            #servizi { padding-top: 5px !important; }
+            
+            .card-carousel { height: 230px; } /* Molto meno alto: velocizza lo scroll enormemente */
+            .card-body { padding: 25px 20px; }
+            .card-body h3 { font-size: 1.6rem; }
+            .card-reveal-wrapper { max-height: 1000px !important; opacity: 1 !important; margin-top: 15px !important; }
+            .card-reveal-wrapper p { font-size: 0.85rem; margin-bottom: 20px; line-height: 1.6; }
+            .btn { padding: 12px; font-size: 0.75rem; margin-bottom: 15px; }
+            
+            /* --- ICONE SERVIZI COMPATTE E VICINE --- */
             .amenities-wrapper { padding: 0 5px; overflow: visible; }
-            .amenities-grid { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .amenities-grid { flex-wrap: wrap; justify-content: center; gap: 12px; }
             .amenity-card { width: calc(33% - 15px); margin-bottom: 10px; }
-            .amenity-icon-container { width: 55px; height: 55px; } 
-            .amenity-icon-svg { width: 28px; height: 28px; }
+            .amenity-icon-container { width: 55px; height: 55px; margin-bottom: 8px; } 
+            .amenity-icon-svg { width: 26px; height: 26px; }
             .amenity-title { font-size: 0.6rem; line-height: 1.2; }
 
             /* --- RECENSIONI SWIPEABILI --- */
@@ -590,11 +579,11 @@
                 scroll-snap-align: center;
             }
 
-            /* --- PUNTI DI INTERESSE SWIPEABILI E SICURI --- */
+            /* --- MAPPA/POI SWIPEABILI --- */
             .poi-sidebar {
                 display: flex;
                 flex-direction: column;
-                min-width: 0; /* LA MAGIA: impedisce alla griglia di esplodere */
+                min-width: 0;
                 width: 100%;
             }
             .poi-list {
@@ -665,7 +654,7 @@
  
 <div class="main-container">
     
-    <div class="host-section reveal" data-fade style="margin-bottom: 50px; margin-top: 10px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 20px; text-align: center;">
+    <div class="host-section reveal" data-fade>
         <div class="host-line"></div>
         <div class="host-text" id="welcome-text" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
             </div>
@@ -796,7 +785,7 @@
     </div>
 </div>
 
-<section id="servizi" class="reveal" style="padding-top: 10px;" data-fade>
+<section id="servizi" class="reveal" data-fade>
     <div class="amenities-wrapper">
         <div class="amenities-grid">
             <div class="amenity-card">
@@ -1083,7 +1072,7 @@
                 <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
-                <p data-it="Il check-in è disponibile dalle 14:00 in poi. Il check-out è richiesto entro le 10:00 del mattino, ma è possibile concordare un orario di uscita flessibile in base alle tue esigenze (soggetto a disponibilità e con eventuale supplemento). Offriamo inoltre un comodo servizio di Fast Check-in online." data-en="Check-in is from 2:00 PM. Check-out is by 10:00 AM, but flexible check-out is available on request (subject to availability/fee). We also offer a convenient online Fast Check-in service.">Il check-in è disponibile dalle 14:00 in poi. Il check-out è richiesto entro le 10:00 del mattino, ma è possibile concordare un orario di uscita flessibile in base alle tue esigenze (soggetto a disponibilità e con eventuale supplemento). Offriamo inoltre un comodo servizio di Fast Check-in online.</p>
+                <p data-it="Il check-in è disponibile dalle 14:00 in poi. Il check-out standard è entro le 10:00 del mattino, ma è possibile concordare un orario di uscita flessibile in base alle tue esigenze (soggetto a disponibilità e con eventuale supplemento). Offriamo inoltre un comodo servizio di Fast Check-in online." data-en="Check-in is from 2:00 PM. Check-out is by 10:00 AM, but flexible check-out is available on request (subject to availability/fee). We also offer a convenient online Fast Check-in service.">Il check-in è disponibile dalle 14:00 in poi. Il check-out standard è entro le 10:00 del mattino, ma è possibile concordare un orario di uscita flessibile in base alle tue esigenze (soggetto a disponibilità e con eventuale supplemento). Offriamo inoltre un comodo servizio di Fast Check-in online.</p>
             </div>
         </div>
 
