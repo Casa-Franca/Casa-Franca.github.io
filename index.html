@@ -519,6 +519,31 @@
         }
  
         @media (max-width: 768px) {
+/* --- CARDS APPARTAMENTI SWIPEABILI DA MOBILE --- */
+            .grid {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-bottom: 25px;
+                gap: 15px;
+            }
+            .grid::-webkit-scrollbar { display: none; }
+            .card-wrapper {
+                flex: 0 0 88%; /* Mostra l'88% della card e lascia intravedere la successiva */
+                scroll-snap-align: center;
+                margin-bottom: 0;
+            }
+            
+            /* Riduciamo lo spazio vuoto tra le schede e le icone */
+            .main-container { margin-bottom: 5px; }
+            #servizi { padding-top: 0; }
             .hero-content h1 { font-size: 1.6rem; }
             .map-wrapper { grid-template-columns: 1fr; gap: 20px; }
             .map-frame { height: 350px; } /* Mappa leggermente più bassa per mobile */
