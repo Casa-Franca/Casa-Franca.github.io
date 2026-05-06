@@ -18,7 +18,8 @@
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
         
         .header { text-align: center; margin-bottom: 30px; position: relative; }
-        .logo { font-size: 28px; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--primary); letter-spacing: 2px; transition: opacity 0.3s; }
+        .logo:hover { opacity: 0.8; }
         .logo span { color: var(--accent); }
         .btn-lang { position: absolute; top: 0; right: 0; background: var(--white); border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         
@@ -39,7 +40,6 @@
         .promo-box { background: var(--primary); color: white; padding: 30px; border-radius: 16px; text-align: center; margin-top: 20px; }
         .promo-box a { display: inline-block; margin-top: 15px; padding: 12px 25px; background: var(--accent); color: var(--primary); text-decoration: none; font-weight: bold; border-radius: 25px; }
         
-        /* Stile per la TUA immagine completa */
         .guide-img-full { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: block; margin: 0 auto; }
         
         .warning-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 15px; border-radius: 0 8px 8px 0; margin-top: 15px; font-size: 0.95em; }
@@ -51,7 +51,10 @@
 
 <div class="container">
     <div class="header">
-        <div class="logo">CASA<span>FRANCA</span></div>
+        <!-- IL LOGO ORA È CLICCABILE E PORTA ALLA HOME -->
+        <a href="https://www.casafranca.eu" style="text-decoration: none;">
+            <div class="logo">CASA<span>FRANCA</span></div>
+        </a>
         <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
     </div>
 
@@ -79,7 +82,7 @@
     <div id="area-ospite">
         <h2 id="greet" style="color: var(--primary);"></h2>
 
-        <!-- LA TUA IMMAGINE COMPLETA (Gestita dal motore delle lingue) -->
+        <!-- LA TUA IMMAGINE COMPLETA -->
         <div style="margin-bottom: 25px;">
             <img src="" id="img-istruzioni" alt="Istruzioni Casa Franca" class="guide-img-full">
         </div>
@@ -92,7 +95,7 @@
             <p style="font-size: 0.9em; color: #666;" id="key-note"></p>
         </div>
 
-        <!-- RECAP TESTUALE PARCHEGGIO (Come promemoria) -->
+        <!-- RECAP TESTUALE PARCHEGGIO -->
         <div class="card">
             <h3 id="park-title"></h3>
             <p id="park-main"></p>
@@ -128,6 +131,12 @@
                 <li id="out-4"></li>
             </ul>
         </div>
+        
+        <!-- PULSANTE PER TORNARE AL SITO -->
+        <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+            <a href="https://www.casafranca.eu" id="btn-back-site" style="background: var(--primary); color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">🌍 Torna al sito principale</a>
+        </div>
+
     </div>
 </div>
 
@@ -183,9 +192,9 @@
             promoTitle: "Torni a trovarci?",
             promoText: "Prenota sul nostro sito ufficiale per avere sempre la tariffa migliore garantita!",
             promoBtn: "Prenota Direttamente",
+            btnBackSite: "🌍 Torna al sito principale",
             
-            // LA TUA IMMAGINE COMPLETA IN ITALIANO
-            imgIstruzioni: "LINK_DELLA_TUA_IMMAGINE_COMPLETA_IN_ITALIANO.jpg"
+            imgIstruzioni: "istruzioni-ita.jpg"
         },
         en: {
             greet: `Hello ${nome}, welcome to Casa Franca! 🏡`,
@@ -214,9 +223,9 @@
             promoTitle: "Coming back?",
             promoText: "Next time, book directly on our official website to get the best guaranteed rate!",
             promoBtn: "Book Directly",
+            btnBackSite: "🌍 Back to main site",
             
-            // LA TUA IMMAGINE COMPLETA IN INGLESE
-            imgIstruzioni: "LINK_DELLA_TUA_IMMAGINE_COMPLETA_IN_INGLESE.jpg" 
+            imgIstruzioni: "istruzioni-eng.jpg" 
         }
     };
 
@@ -249,8 +258,9 @@
         document.getElementById('promo-title').innerHTML = t.promoTitle;
         document.getElementById('promo-text').innerHTML = t.promoText;
         document.getElementById('promo-btn').innerHTML = t.promoBtn;
+        
+        document.getElementById('btn-back-site').innerHTML = t.btnBackSite;
 
-        // AGGIORNAMENTO DELL'UNICA IMMAGINE IN BASE ALLA LINGUA
         document.getElementById('img-istruzioni').src = t.imgIstruzioni;
     }
 
@@ -265,8 +275,8 @@
     }
 
     if (isTooEarly(arrivo)) {
-        const testoAttesaIT = "<h3>⏳ Codici non ancora disponibili</h3><p>I codici saranno visibili qui a partire dalle ore 06:00 del giorno di arrivo.</p>";
-        const testoAttesaEN = "<h3>⏳ Codes not yet available</h3><p>Codes will be visible here from 06:00 AM on arrival day.</p>";
+        const testoAttesaIT = "<h3>⏳ Codici non ancora disponibili</h3><p>I codici saranno visibili qui a partire dalle ore 06:00 del giorno di arrivo.</p><br><a href='https://www.casafranca.eu' style='color: var(--primary);'>Torna al sito</a>";
+        const testoAttesaEN = "<h3>⏳ Codes not yet available</h3><p>Codes will be visible here from 06:00 AM on arrival day.</p><br><a href='https://www.casafranca.eu' style='color: var(--primary);'>Back to site</a>";
         document.getElementById('area-bloccata').innerHTML = (lang === 'it') ? testoAttesaIT : testoAttesaEN;
         document.getElementById('area-bloccata').style.display = 'block';
 
@@ -286,7 +296,7 @@
         updateUI();
 
     } else {
-        document.getElementById('area-bloccata').innerHTML = "<h3>🔒 Area Riservata</h3><p>Usa il link ricevuto su WhatsApp.</p>";
+        document.getElementById('area-bloccata').innerHTML = "<h3>🔒 Area Riservata</h3><p>Usa il link ricevuto su WhatsApp.</p><br><a href='https://www.casafranca.eu' style='color: var(--primary);'>Torna al sito</a>";
         document.getElementById('area-bloccata').style.display = 'block';
     }
 </script>
