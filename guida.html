@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Ospiti | Casa Franca</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #d4af37;
+            --bg: #f4f7f6;
+            --white: #ffffff;
+            --text: #333333;
+            --danger: #e74c3c;
+        }
+        
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        
+        .header { text-align: center; margin-bottom: 30px; position: relative; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
+        .logo span { color: var(--accent); }
+        .btn-lang { position: absolute; top: 0; right: 0; background: var(--white); border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        
+        .card { background: var(--white); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 4px solid transparent; }
+        .card h3 { margin-top: 0; color: var(--primary); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+        
+        .secret-card { border-top-color: var(--accent); background: linear-gradient(145deg, #ffffff, #fdfbf7); text-align: center; }
+        .code-display { font-size: 42px; font-weight: 900; letter-spacing: 4px; color: var(--primary); margin: 15px 0; background: #eee; padding: 10px; border-radius: 10px; display: inline-block; }
+        
+        .btn-copy { background: var(--bg); border: 1px solid #ccc; padding: 5px 15px; border-radius: 8px; cursor: pointer; font-size: 0.9em; transition: 0.2s; }
+        .btn-copy:active { background: var(--accent); color: white; }
+        ul.checklist { padding-left: 0; list-style: none; }
+        ul.checklist li { margin-bottom: 10px; padding-left: 30px; position: relative; }
+        ul.checklist li::before { content: "✓"; color: var(--accent); position: absolute; left: 0; font-weight: bold; font-size: 1.2em; }
+        
+        .checkout-card { border-top-color: var(--danger); }
+        
+        .promo-box { background: var(--primary); color: white; padding: 30px; border-radius: 16px; text-align: center; margin-top: 20px; }
+        .promo-box a { display: inline-block; margin-top: 15px; padding: 12px 25px; background: var(--accent); color: var(--primary); text-decoration: none; font-weight: bold; border-radius: 25px; }
+        
+        /* Stile per la TUA immagine completa */
+        .guide-img-full { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: block; margin: 0 auto; }
+        
+        .warning-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 15px; border-radius: 0 8px 8px 0; margin-top: 15px; font-size: 0.95em; }
+
+        #area-ospite, #area-scaduta, #area-bloccata { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logo">CASA<span>FRANCA</span></div>
+        <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
+    </div>
+
+    <!-- AREA BLOCCATA -->
+    <div id="area-bloccata" class="card" style="text-align: center; border-top-color: #999;"></div>
+
+    <!-- AREA SCADUTA -->
+    <div id="area-scaduta">
+        <div class="card" style="text-align: center; border-top-color: var(--primary);">
+            <h2 id="exp-title"></h2>
+            <p id="exp-text"></p>
+            <hr style="border:0; border-top:1px solid #eee; margin: 20px 0;">
+            <h3 id="rev-title"></h3>
+            <p id="rev-text"></p>
+            <a href="INSERISCI_LINK_GOOGLE" target="_blank" style="background:#4285F4; color:white; padding:10px 20px; text-decoration:none; border-radius:20px; font-weight:bold; display:inline-block;" id="rev-btn">⭐ Lascia una recensione</a>
+        </div>
+        <div class="promo-box">
+            <h3 id="promo-title"></h3>
+            <p id="promo-text"></p>
+            <a href="https://www.casafranca.eu" id="promo-btn"></a>
+        </div>
+    </div>
+
+    <!-- AREA OSPITE -->
+    <div id="area-ospite">
+        <h2 id="greet" style="color: var(--primary);"></h2>
+
+        <!-- LA TUA IMMAGINE COMPLETA (Gestita dal motore delle lingue) -->
+        <div style="margin-bottom: 25px;">
+            <img src="" id="img-istruzioni" alt="Istruzioni Casa Franca" class="guide-img-full">
+        </div>
+
+        <!-- CODICE CHIAVI -->
+        <div class="card secret-card">
+            <h3 style="justify-content: center;" id="key-title"></h3>
+            <p id="key-desc"></p>
+            <div class="code-display" id="codice-chiavi">----</div>
+            <p style="font-size: 0.9em; color: #666;" id="key-note"></p>
+        </div>
+
+        <!-- RECAP TESTUALE PARCHEGGIO (Come promemoria) -->
+        <div class="card">
+            <h3 id="park-title"></h3>
+            <p id="park-main"></p>
+            <div class="warning-box">
+                <p id="park-alt"></p>
+            </div>
+        </div>
+
+        <!-- WI-FI -->
+        <div class="card">
+            <h3 id="wifi-title"></h3>
+            <p><strong>Network:</strong> APP.1<br>
+            <strong>Password:</strong> Atene001 <button class="btn-copy" onclick="copyWifi()" id="btn-copy-text">Copia</button></p>
+        </div>
+
+        <!-- TERME E INFO -->
+        <div class="card">
+            <h3 id="info-title"></h3>
+            <ul class="checklist">
+                <li id="info-terme"></li>
+                <li id="info-tax"></li>
+                <li id="local-trash"></li>
+            </ul>
+        </div>
+
+        <!-- CHECK-OUT -->
+        <div class="card checkout-card">
+            <h3 id="out-title"></h3>
+            <ul class="checklist">
+                <li id="out-1"></li>
+                <li id="out-2"></li>
+                <li id="out-3"></li>
+                <li id="out-4"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    let lang = urlParams.get('l') || 'it';
+    let nome = urlParams.get('n') || localStorage.getItem('cf_nome');
+    let codice = urlParams.get('c') || localStorage.getItem('cf_codice');
+    let arrivo = urlParams.get('in') || localStorage.getItem('cf_arrivo');
+    let scadenza = urlParams.get('out') || localStorage.getItem('cf_scadenza');
+
+    function isTooEarly(dataStr) {
+        if (!dataStr || dataStr.length !== 8) return false;
+        const anno = parseInt(dataStr.substring(0, 4));
+        const mese = parseInt(dataStr.substring(4, 6)) - 1;
+        const giorno = parseInt(dataStr.substring(6, 8));
+        return new Date() < new Date(anno, mese, giorno, 6, 0, 0); 
+    }
+
+    function isExpired(dataStr) {
+        if (!dataStr || dataStr.length !== 8) return false;
+        const anno = parseInt(dataStr.substring(0, 4));
+        const mese = parseInt(dataStr.substring(4, 6)) - 1;
+        const giorno = parseInt(dataStr.substring(6, 8));
+        return new Date() > new Date(anno, mese, giorno, 12, 0, 0);
+    }
+
+    const dict = {
+        it: {
+            greet: `Ciao ${nome}, benvenuto a Casa Franca! 🏡`,
+            keyTitle: "🔑 Codice Segreto",
+            keyDesc: "Il codice per aprire la cassetta di sicurezza nera (indicata nella foto sopra) è:",
+            keyNote: "<em>(Inserisci il codice e tira leggermente verso di te. Ricorda di richiudere la cassetta)</em>",
+            parkTitle: "🚗 Promemoria Parcheggi",
+            parkMain: "<strong>Parcheggio Principale:</strong> Posto riservato nelle strisce gialle davanti alla struttura. Ricorda di esporre sul cruscotto il pass che trovi sul tavolo.",
+            parkAlt: "<strong>N.B. (Parcheggio temporaneo):</strong> Nel caso in cui il parcheggio riservato non fosse disponibile, sarà possibile lasciare temporaneamente l'auto nell'area sottostante illustrata nella foto.",
+            wifiTitle: "📶 Connessione Wi-Fi",
+            btnCopy: "Copia",
+            infoTitle: "🌿 Terme & Info",
+            infoTerme: "<strong>QC Terme San Pellegrino:</strong> Hai diritto al 10% di sconto! Trovi il voucher cartaceo precompilato sul tavolo.",
+            infoTax: "<strong>Tassa di soggiorno:</strong> 1€ a notte per persona. Puoi lasciarli sul tavolo o via PayPal (casafranca.avo@gmail.com - modalità Amici).",
+            localTrash: "<strong>Rifiuti:</strong> Ti preghiamo di differenziare i rifiuti nei bidoncini sotto il lavello.",
+            outTitle: "🚪 Check-out (Entro le 10:00)",
+            out1: "Chiudere l'appartamento a chiave.",
+            out2: "Inserire le chiavi nella <strong>cassetta postale</strong> posta sulla facciata.",
+            out3: "Lasciare il contrassegno auto sul tavolo.",
+            out4: "Regolare il termostato al minimo.",
+            expTitle: "✨ Grazie di essere stato con noi!",
+            expText: "Il tuo soggiorno è terminato e l'accesso ai codici è stato disattivato.",
+            revTitle: "Ci aiuteresti a crescere?",
+            revText: "Ci vuole solo un minuto per lasciarci una recensione su Google!",
+            revBtn: "⭐ Lascia una recensione",
+            promoTitle: "Torni a trovarci?",
+            promoText: "Prenota sul nostro sito ufficiale per avere sempre la tariffa migliore garantita!",
+            promoBtn: "Prenota Direttamente",
+            
+            // LA TUA IMMAGINE COMPLETA IN ITALIANO
+            imgIstruzioni: "LINK_DELLA_TUA_IMMAGINE_COMPLETA_IN_ITALIANO.jpg"
+        },
+        en: {
+            greet: `Hello ${nome}, welcome to Casa Franca! 🏡`,
+            keyTitle: "🔑 Secret Code",
+            keyDesc: "The code to open the black keybox (shown in the image above) is:",
+            keyNote: "<em>(Enter the code and pull slightly towards you. Remember to close the box afterwards)</em>",
+            parkTitle: "🚗 Parking Reminder",
+            parkMain: "<strong>Main Parking:</strong> Reserved spot in the yellow lines in front of the building. Display the permit (found on the table) on your dashboard.",
+            parkAlt: "<strong>N.B. (Temporary parking):</strong> In case the reserved parking is unavailable, you can temporarily leave your car in the area below as shown in the picture.",
+            wifiTitle: "📶 Wi-Fi Connection",
+            btnCopy: "Copy",
+            infoTitle: "🌿 Thermal Baths & Info",
+            infoTerme: "<strong>QC Terme San Pellegrino:</strong> You get a 10% discount! You will find the pre-filled paper voucher on the table.",
+            infoTax: "<strong>Tourist tax:</strong> €1 per night per person. Please leave cash on the table or use PayPal (casafranca.avo@gmail.com - Friends mode).",
+            localTrash: "<strong>Waste:</strong> Please separate your waste in the bins under the sink.",
+            outTitle: "🚪 Check-out (By 10:00 AM)",
+            out1: "Lock the apartment door.",
+            out2: "Drop the keys inside the <strong>mailbox</strong> on the front of the building.",
+            out3: "Leave the parking permit on the table.",
+            out4: "Set the thermostat to the minimum.",
+            expTitle: "✨ Thank you for staying with us!",
+            expText: "Your stay has ended and access to security codes has been disabled.",
+            revTitle: "Would you help us grow?",
+            revText: "It only takes a minute to leave a review on Google. It makes a huge difference!",
+            revBtn: "⭐ Leave a review",
+            promoTitle: "Coming back?",
+            promoText: "Next time, book directly on our official website to get the best guaranteed rate!",
+            promoBtn: "Book Directly",
+            
+            // LA TUA IMMAGINE COMPLETA IN INGLESE
+            imgIstruzioni: "LINK_DELLA_TUA_IMMAGINE_COMPLETA_IN_INGLESE.jpg" 
+        }
+    };
+
+    function updateUI() {
+        const t = dict[lang];
+        document.getElementById('greet').innerHTML = t.greet;
+        document.getElementById('key-title').innerHTML = t.keyTitle;
+        document.getElementById('key-desc').innerHTML = t.keyDesc;
+        document.getElementById('key-note').innerHTML = t.keyNote;
+        document.getElementById('park-title').innerHTML = t.parkTitle;
+        document.getElementById('park-main').innerHTML = t.parkMain;
+        document.getElementById('park-alt').innerHTML = t.parkAlt;
+        document.getElementById('wifi-title').innerHTML = t.wifiTitle;
+        document.getElementById('btn-copy-text').innerHTML = t.btnCopy;
+        document.getElementById('info-title').innerHTML = t.infoTitle;
+        document.getElementById('info-terme').innerHTML = t.infoTerme;
+        document.getElementById('info-tax').innerHTML = t.infoTax;
+        document.getElementById('local-trash').innerHTML = t.localTrash;
+        document.getElementById('out-title').innerHTML = t.outTitle;
+        document.getElementById('out-1').innerHTML = t.out1;
+        document.getElementById('out-2').innerHTML = t.out2;
+        document.getElementById('out-3').innerHTML = t.out3;
+        document.getElementById('out-4').innerHTML = t.out4;
+        
+        document.getElementById('exp-title').innerHTML = t.expTitle;
+        document.getElementById('exp-text').innerHTML = t.expText;
+        document.getElementById('rev-title').innerHTML = t.revTitle;
+        document.getElementById('rev-text').innerHTML = t.revText;
+        document.getElementById('rev-btn').innerHTML = t.revBtn;
+        document.getElementById('promo-title').innerHTML = t.promoTitle;
+        document.getElementById('promo-text').innerHTML = t.promoText;
+        document.getElementById('promo-btn').innerHTML = t.promoBtn;
+
+        // AGGIORNAMENTO DELL'UNICA IMMAGINE IN BASE ALLA LINGUA
+        document.getElementById('img-istruzioni').src = t.imgIstruzioni;
+    }
+
+    function toggleLang() {
+        lang = (lang === 'it') ? 'en' : 'it';
+        updateUI();
+    }
+
+    function copyWifi() {
+        navigator.clipboard.writeText("Atene001");
+        alert(lang === 'it' ? "Password copiata!" : "Password copied!");
+    }
+
+    if (isTooEarly(arrivo)) {
+        const testoAttesaIT = "<h3>⏳ Codici non ancora disponibili</h3><p>I codici saranno visibili qui a partire dalle ore 06:00 del giorno di arrivo.</p>";
+        const testoAttesaEN = "<h3>⏳ Codes not yet available</h3><p>Codes will be visible here from 06:00 AM on arrival day.</p>";
+        document.getElementById('area-bloccata').innerHTML = (lang === 'it') ? testoAttesaIT : testoAttesaEN;
+        document.getElementById('area-bloccata').style.display = 'block';
+
+    } else if (isExpired(scadenza)) {
+        localStorage.clear();
+        document.getElementById('area-scaduta').style.display = 'block';
+        updateUI();
+
+    } else if (nome && codice) {
+        localStorage.setItem('cf_nome', nome);
+        localStorage.setItem('cf_codice', codice);
+        if (arrivo) localStorage.setItem('cf_arrivo', arrivo);
+        if (scadenza) localStorage.setItem('cf_scadenza', scadenza);
+        
+        document.getElementById('codice-chiavi').innerText = codice;
+        document.getElementById('area-ospite').style.display = 'block';
+        updateUI();
+
+    } else {
+        document.getElementById('area-bloccata').innerHTML = "<h3>🔒 Area Riservata</h3><p>Usa il link ricevuto su WhatsApp.</p>";
+        document.getElementById('area-bloccata').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
