@@ -5,25 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guida Ospiti | Casa Franca</title>
     <style>
-        :root { --primary: #2c3e50; --accent: #d4af37; --bg: #f4f7f6; --white: #ffffff; --danger: #e74c3c; }
+        :root { --p: #2c3e50; --a: #d4af37; --bg: #f4f7f6; --w: #ffffff; --d: #e74c3c; }
         body { font-family: -apple-system, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 0; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
         .header { text-align: center; margin-bottom: 30px; position: relative; }
-        .logo { font-size: 28px; font-weight: bold; color: var(--primary); letter-spacing: 2px; text-decoration: none; display: block; }
-        .logo span { color: var(--accent); }
-        .btn-lang { position: absolute; top: 0; right: 0; background: var(--white); border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; }
-        .card { background: var(--white); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 4px solid transparent; }
-        .card h3 { margin-top: 0; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-        .secret-card { border-top-color: var(--accent); text-align: center; background: linear-gradient(145deg, #ffffff, #fdfbf7); }
-        .code-display { font-size: 42px; font-weight: 900; letter-spacing: 4px; color: var(--primary); margin: 15px 0; background: #eee; padding: 10px; border-radius: 10px; display: inline-block; min-width: 150px; }
-        .btn { display: inline-block; padding: 12px 25px; background: var(--primary); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--p); letter-spacing: 2px; text-decoration: none; display: block; }
+        .logo span { color: var(--a); }
+        .btn-lang { position: absolute; top: 0; right: 0; background: var(--w); border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        .card { background: var(--w); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 4px solid transparent; }
+        .card h3 { margin-top: 0; color: var(--p); display: flex; align-items: center; gap: 10px; }
+        .secret-card { border-top-color: var(--a); text-align: center; background: linear-gradient(145deg, #ffffff, #fdfbf7); }
+        .code-display { font-size: 42px; font-weight: 900; letter-spacing: 5px; color: var(--p); margin: 15px 0; background: #eee; padding: 15px; border-radius: 12px; display: inline-block; min-width: 160px; }
+        .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; }
         .guide-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
         .warning-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 15px; border-radius: 0 8px 8px 0; font-size: 0.95em; }
         ul.checklist { padding-left: 0; list-style: none; }
         ul.checklist li { margin-bottom: 10px; padding-left: 30px; position: relative; }
-        ul.checklist li::before { content: "✓"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
-        #area-ospite, #area-password, #area-scaduta { display: none; }
-        input { padding: 12px; width: 80%; margin: 15px 0; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
+        ul.checklist li::before { content: "✓"; color: var(--a); position: absolute; left: 0; font-weight: bold; }
+        #area-ospite, #area-scaduta, #area-errore { display: none; }
     </style>
 </head>
 <body>
@@ -34,145 +33,105 @@
         <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
     </div>
 
-    <div id="area-password" class="card" style="text-align: center;">
-        <h3 id="pass-title" style="justify-content: center;">🔒 Accesso Protetto</h3>
-        <p id="pass-desc">Inserisci la password di Casa Franca per visualizzare la tua guida:</p>
-        <input type="password" id="pass-input">
-        <br>
-        <button class="btn" onclick="checkPass()">Accedi / Login</button>
+    <div id="area-errore" class="card" style="text-align: center; border-top-color: var(--d);">
+        <h3 style="justify-content: center;">⚠️ Link non valido</h3>
+        <p>Il link è corrotto o incompleto. Usa il link originale inviato dall'host.</p>
     </div>
 
-    <div id="area-scaduta">
-        <div class="card" style="text-align: center; border-top-color: var(--primary);">
-            <h2 id="exp-title"></h2>
-            <p id="exp-text"></p>
-            <hr style="border:0; border-top:1px solid #eee; margin: 20px 0;">
-            <a href="LINK_GOOGLE_BUSINESS" id="rev-btn" class="btn" style="background:#4285F4;">⭐ Lascia una recensione</a>
-        </div>
+    <div id="area-scaduta" class="card" style="text-align: center; border-top-color: var(--p);">
+        <h2 id="exp-title"></h2>
+        <p id="exp-text"></p>
+        <a href="INSERISCI_QUI_LINK_GOOGLE_BUSINESS" class="btn" style="background:#4285F4; margin-top:20px;">⭐ Lascia una recensione</a>
     </div>
 
     <div id="area-ospite">
-        <h2 id="greet" style="color: var(--primary);"></h2>
-
+        <h2 id="greet" style="color: var(--p);"></h2>
         <div style="text-align: center; margin-bottom: 25px;">
-            <a href="LINK_GOOGLE_DRIVE" target="_blank" id="btn-video" class="btn" style="background: var(--danger);">🎥 Video Tutorial</a>
+            <a href="INSERISCI_QUI_LINK_VIDEO_DRIVE" target="_blank" id="btn-video" class="btn" style="background: var(--d);">🎥 Video Tutorial</a>
         </div>
-
         <img src="" id="img-istruzioni" class="guide-img">
-
         <div class="card secret-card">
             <h3 style="justify-content: center;" id="key-title"></h3>
-            <div class="code-display" id="codice-chiavi">----</div>
+            <div id="lock-msg" style="color: #666; font-style: italic; margin: 15px 0;"></div>
+            <div id="code-box" class="code-display" style="display:none;"></div>
             <p id="key-note" style="font-size: 0.9em; color: #666;"></p>
         </div>
-
         <div class="card">
             <h3 id="park-title"></h3>
             <p id="park-main"></p>
             <div class="warning-box"><p id="park-alt"></p></div>
         </div>
-
         <div class="card">
             <h3 id="wifi-title"></h3>
-            <p><strong>Password:</strong> <span id="wifi-pass"></span></p>
+            <p><strong>Password:</strong> <span id="wifi-val">••••••••</span></p>
         </div>
-
         <div class="card">
             <h3 id="info-title"></h3>
-            <ul class="checklist">
-                <li id="info-terme"></li>
-                <li id="info-tax"></li>
-                <li id="local-trash"></li>
-            </ul>
+            <ul class="checklist"><li id="info-terme"></li><li id="info-tax"></li><li id="local-trash"></li></ul>
         </div>
-
-        <div class="card" style="border-top-color: var(--danger);">
+        <div class="card" style="border-top-color: var(--d);">
             <h3 id="out-title"></h3>
             <ul class="checklist"><li id="out-1"></li><li id="out-2"></li><li id="out-3"></li><li id="out-4"></li></ul>
-        </div>
-
-        <div style="text-align: center; margin-bottom: 40px;">
-            <a href="https://www.casafranca.eu" id="btn-back" class="btn">🌍 Torna al Sito</a>
         </div>
     </div>
 </div>
 
 <script>
-    // CONFIGURAZIONE
-    const PASSWORD_FISSA = "franca2024"; // Sostituisci con la tua password
+    const p = new URLSearchParams(window.location.search);
+    
+    // FUNZIONE DI DECRIPTAZIONE
+    function dec(s) { try { return atob(s); } catch(e) { return null; } }
 
-    const params = new URLSearchParams(window.location.search);
-    let lang = params.get('l') || localStorage.getItem('cf_l') || 'it';
-    const nome = params.get('n') || localStorage.getItem('cf_n');
-    const codice = params.get('c') || localStorage.getItem('cf_c');
-    const arrivo = params.get('in') || localStorage.getItem('cf_in');
-    const scadenza = params.get('out') || localStorage.getItem('cf_out');
+    let n = dec(p.get('n')) || localStorage.getItem('cf_n');
+    let c = dec(p.get('c')) || localStorage.getItem('cf_c');
+    let i = dec(p.get('in')) || localStorage.getItem('cf_in');
+    let o = dec(p.get('out')) || localStorage.getItem('cf_out');
+    let l = p.get('l') || localStorage.getItem('cf_l') || 'it';
+
+    if (p.get('n')) {
+        if (!n || !c || !i) { document.getElementById('area-errore').style.display = 'block'; }
+        else {
+            localStorage.setItem('cf_n', n); localStorage.setItem('cf_c', c);
+            localStorage.setItem('cf_in', i); localStorage.setItem('cf_out', o);
+            localStorage.setItem('cf_l', l);
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    }
 
     const dict = {
         it: {
-            greet: `Ciao ${nome || 'Ospite'}, benvenuto!`,
-            btnVideo: "🎥 Guarda Video Tutorial",
-            keyTitle: "🔑 Codice Cassetta",
-            keyNote: "Inserisci il codice e tira verso di te.",
+            greet: `Ciao ${n}, benvenuto!`, btnVideo: "🎥 Video Tutorial",
+            keyTitle: "🔑 Codice Cassetta", keyNote: "Inserisci il codice e tira verso di te.",
             keyWait: "Disponibile dalle 06:00 del giorno di arrivo",
-            parkTitle: "🚗 Parcheggio",
-            parkMain: "Posto riservato nelle strisce gialle. Esponi il pass sul cruscotto.",
-            parkAlt: "N.B. Se occupato, usa temporaneamente l'area sottostante.",
-            wifiTitle: "📶 Wi-Fi",
-            infoTitle: "🌿 Info Utili",
+            parkTitle: "🚗 Parcheggio", parkMain: "Posto riservato nelle strisce gialle. Pass sul tavolo.",
+            parkAlt: "N.B. Se occupato, usa l'area sottostante temporaneamente.",
+            wifiTitle: "📶 Wi-Fi", infoTitle: "🌿 Info",
             infoTerme: "QC Terme: 10% sconto col voucher sul tavolo.",
             infoTax: "Tassa soggiorno: 1€ notte/persona.",
             localTrash: "Rifiuti: differenzia sotto il lavello.",
-            outTitle: "🚪 Check-out (10:00)",
-            out1: "Chiudi l'appartamento.", out2: "Chiavi nella cassetta postale.", out3: "Pass auto sul tavolo.", out4: "Termostato al minimo.",
-            expTitle: "✨ Grazie!", expText: "Soggiorno terminato. Torna a trovarci!",
-            btnBack: "🌍 Torna al Sito", img: "istruzioni-ita.jpg"
+            outTitle: "🚪 Check-out (10:00)", out1: "Chiudi a chiave.", out2: "Chiavi nella posta.", out3: "Pass sul tavolo.", out4: "Termostato al minimo.",
+            expTitle: "✨ Grazie!", expText: "Soggiorno terminato. Torna a trovarci!", img: "istruzioni-ita.jpg"
         },
         en: {
-            greet: `Hello ${nome || 'Guest'}, welcome!`,
-            btnVideo: "🎥 Watch Video Tutorial",
-            keyTitle: "🔑 Keybox Code",
-            keyNote: "Enter the code and pull towards you.",
+            greet: `Hello ${n}, welcome!`, btnVideo: "🎥 Video Tutorial",
+            keyTitle: "🔑 Keybox Code", keyNote: "Enter code and pull towards you.",
             keyWait: "Available from 06:00 AM on arrival day",
-            parkTitle: "🚗 Parking",
-            parkMain: "Reserved spot in yellow lines. Display the permit.",
+            parkTitle: "🚗 Parking", parkMain: "Reserved spot in yellow lines. Permit on table.",
             parkAlt: "N.B. If full, use the area below temporarily.",
-            wifiTitle: "📶 Wi-Fi",
-            infoTitle: "🌿 Useful Info",
+            wifiTitle: "📶 Wi-Fi", infoTitle: "🌿 Info",
             infoTerme: "QC Terme: 10% off with voucher on table.",
             infoTax: "Tourist tax: 1€ per night/person.",
             localTrash: "Waste: separate under the sink.",
-            outTitle: "🚪 Check-out (10:00 AM)",
-            out1: "Lock the apartment.", out2: "Keys in the mailbox.", out3: "Parking permit on table.", out4: "Min thermostat.",
-            expTitle: "✨ Thank you!", expText: "Stay ended. See you next time!",
-            btnBack: "🌍 Back to Site", img: "istruzioni-eng.jpg"
+            outTitle: "🚪 Check-out (10:00 AM)", out1: "Lock door.", out2: "Keys in mailbox.", out3: "Permit on table.", out4: "Min thermostat.",
+            expTitle: "✨ Thank you!", expText: "Stay ended. See you next time!", img: "istruzioni-eng.jpg"
         }
     };
 
-    function isTooEarly(d) {
-        if(!d) return false;
-        return new Date() < new Date(d.substring(0,4), d.substring(4,6)-1, d.substring(6,8), 6, 0, 0);
-    }
-    function isExpired(d) {
-        if(!d) return false;
-        return new Date() > new Date(d.substring(0,4), d.substring(4,6)-1, d.substring(6,8), 12, 0, 0);
-    }
-
-    function checkPass() {
-        if (document.getElementById('pass-input').value === PASSWORD_FISSA) {
-            localStorage.setItem('cf_auth', 'ok');
-            start();
-        } else { alert("Password errata!"); }
-    }
-
-    function toggleLang() {
-        lang = (lang === 'it') ? 'en' : 'it';
-        localStorage.setItem('cf_l', lang);
-        updateUI();
-    }
+    function isEarly() { return i && new Date() < new Date(i.substring(0,4), i.substring(4,6)-1, i.substring(6,8), 6, 0, 0); }
+    function isOut() { return o && new Date() > new Date(o.substring(0,4), o.substring(4,6)-1, o.substring(6,8), 12, 0, 0); }
 
     function updateUI() {
-        const t = dict[lang];
+        const t = dict[l];
         document.getElementById('greet').innerText = t.greet;
         document.getElementById('btn-video').innerText = t.btnVideo;
         document.getElementById('key-title').innerText = t.keyTitle;
@@ -189,42 +148,24 @@
         document.getElementById('out-3').innerText = t.out3; document.getElementById('out-4').innerText = t.out4;
         document.getElementById('exp-title').innerText = t.expTitle;
         document.getElementById('exp-text').innerText = t.expText;
-        document.getElementById('btn-back').innerText = t.btnBack;
         document.getElementById('img-istruzioni').src = t.img;
 
-        if (isTooEarly(arrivo)) {
-            document.getElementById('codice-chiavi').innerText = "----";
-            document.getElementById('key-note').innerText = t.keyWait;
-            document.getElementById('wifi-pass').innerText = "---";
+        if (isEarly()) {
+            document.getElementById('lock-msg').innerText = t.keyWait;
+            document.getElementById('code-box').style.display = 'none';
         } else {
-            document.getElementById('codice-chiavi').innerText = codice || "----";
+            document.getElementById('lock-msg').style.display = 'none';
+            document.getElementById('code-box').style.display = 'inline-block';
+            document.getElementById('code-box').innerText = c;
             document.getElementById('key-note').innerText = t.keyNote;
-            document.getElementById('wifi-pass').innerText = "Atene001";
+            document.getElementById('wifi-val').innerText = "Atene001";
         }
     }
 
-    function start() {
-        document.getElementById('area-password').style.display = 'none';
-        if (isExpired(scadenza)) {
-            document.getElementById('area-scaduta').style.display = 'block';
-        } else {
-            document.getElementById('area-ospite').style.display = 'block';
-        }
-        updateUI();
-    }
+    function toggleLang() { l = (l === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', l); updateUI(); }
 
-    // Salva i dati se presenti nel link
-    if (params.has('n')) {
-        localStorage.setItem('cf_n', nome);
-        localStorage.setItem('cf_c', codice);
-        localStorage.setItem('cf_in', arrivo);
-        localStorage.setItem('cf_out', scadenza);
-        localStorage.setItem('cf_auth', 'ok');
-    }
-
-    // Controllo accesso
-    if (localStorage.getItem('cf_auth') === 'ok') { start(); } 
-    else { document.getElementById('area-password').style.display = 'block'; }
+    if (isOut()) { document.getElementById('area-scaduta').style.display = 'block'; updateUI(); }
+    else if (n) { document.getElementById('area-ospite').style.display = 'block'; updateUI(); }
 </script>
 
 </body>
