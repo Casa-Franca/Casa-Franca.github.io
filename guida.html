@@ -9,44 +9,40 @@
         body { font-family: -apple-system, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 0; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
         .header { text-align: center; margin-bottom: 30px; position: relative; }
-        .logo img { max-height: 80px; width: auto; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--p); letter-spacing: 2px; text-decoration: none; display: block; }
+        .logo span { color: var(--a); }
         .btn-lang { position: absolute; top: 0; right: 0; background: var(--w); border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; }
         .card { background: var(--w); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 4px solid transparent; }
         .card h3 { margin-top: 0; color: var(--p); display: flex; align-items: center; gap: 10px; }
         .secret-card { border-top-color: var(--a); text-align: center; background: linear-gradient(145deg, #ffffff, #fdfbf7); }
         .code-display { font-size: 42px; font-weight: 900; letter-spacing: 5px; color: var(--p); margin: 15px 0; background: #eee; padding: 15px; border-radius: 12px; display: inline-block; min-width: 160px; }
-        .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; box-sizing: border-box; text-align: center; }
+        .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; box-sizing: border-box; }
         .guide-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
         .warning-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 15px; border-radius: 0 8px 8px 0; font-size: 0.95em; }
         ul.checklist { padding-left: 0; list-style: none; }
         ul.checklist li { margin-bottom: 10px; padding-left: 30px; position: relative; }
         ul.checklist li::before { content: "✓"; color: var(--a); position: absolute; left: 0; font-weight: bold; }
         #area-ospite, #area-scaduta, #area-errore { display: none; }
-        .error-msg { color: #666; font-size: 0.95em; margin-top: 10px; }
-        .error-icon { font-size: 40px; margin-bottom: 15px; display: block; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="header">
-        <a href="https://www.casafranca.eu" class="logo">
-            <img src="logo-casa-franca.png" alt="Casa Franca">
+        <a href="https://www.casafranca.eu" class="logo" style="display:inline-block;">
+            <img src="logo-casa-franca.png" alt="Casa Franca" style="max-height: 80px; width: auto;">
         </a>
         <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
     </div>
 
     <div id="area-errore" class="card" style="text-align: center; border-top-color: var(--d);">
-        <span class="error-icon">⚠️</span>
-        <h3 style="justify-content: center;">Accesso non riuscito</h3>
-        <p class="error-msg">Il link utilizzato non è corretto o è incompleto.<br>Per favore, utilizza il link originale ricevuto tramite messaggio.</p>
-        <a href="https://www.casafranca.eu" class="btn" style="margin-top:20px;">Torna al sito</a>
+        <h3 style="justify-content: center;">⚠️ Link non valido</h3>
+        <p>Il link è corrotto o incompleto. Usa il link originale inviato dall'host.</p>
     </div>
 
     <div id="area-scaduta" class="card" style="text-align: center; border-top-color: var(--p);">
-        <span class="error-icon">✨</span>
         <h2 id="exp-title"></h2>
-        <p id="exp-text" class="error-msg"></p>
+        <p id="exp-text"></p>
         <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" class="btn" style="background:#4285F4; margin-top:20px;">⭐ Lascia una recensione</a>
     </div>
 
@@ -58,7 +54,7 @@
             <p id="checkin-desc"></p>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px; align-items: center;">
                 <a href="https://forms.gle/46LY3mpccnq1d1Q39" target="_blank" class="btn" id="btn-form" style="width: 100%; max-width: 320px; background: var(--p);"></a>
-                <a href="https://wa.me/3903451660127?text=Ciao%2C%20ti%20invio%20le%20foto%20dei%20documenti%20per%20il%20Check-in%20a%20Casa%20Franca!" target="_blank" class="btn" id="btn-wa" style="width: 100%; max-width: 320px; background: #25D366;"></a>
+                <a href="https://wa.me/393298158892?text=Ciao%2C%20ti%20invio%20le%20foto%20dei%20documenti%20per%20il%20Check-in%20a%20Casa%20Franca!" target="_blank" class="btn" id="btn-wa" style="width: 100%; max-width: 320px; background: #25D366;"></a>
             </div>
         </div>
 
@@ -81,12 +77,15 @@
         <div class="card">
             <h3 id="park-title"></h3>
             <p id="park-main"></p>
-            <img src="parcheggio-principale.jpg" alt="Parcheggio" class="guide-img" style="margin-bottom: 15px;">
+            <img src="parcheggio-principale.jpg" alt="Parcheggio Principale" style="width: 100%; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            
             <div class="warning-box">
                 <p id="park-alt"></p>
-                <img src="parcheggio-temporaneo.jpg" alt="Parcheggio temporaneo" class="guide-img" style="margin-top: 10px; margin-bottom: 0;">
+                <img src="parcheggio-temporaneo.jpg" alt="Parcheggio Temporaneo" style="width: 100%; border-radius: 8px; margin-top: 10px;">
             </div>
         </div>
+
+        <img src="" id="img-istruzioni" class="guide-img">
 
         <div class="card">
             <h3 id="wifi-title"></h3>
@@ -105,7 +104,10 @@
         <div class="card" style="border-top-color: var(--d);">
             <h3 id="out-title"></h3>
             <ul class="checklist">
-                <li id="out-1"></li><li id="out-2"></li><li id="out-3"></li><li id="out-4"></li>
+                <li id="out-1"></li>
+                <li id="out-2"></li>
+                <li id="out-3"></li>
+                <li id="out-4"></li>
             </ul>
         </div>
 
@@ -122,7 +124,12 @@
 
 <script>
     const p = new URLSearchParams(window.location.search);
-    function dec(s) { try { return atob(s); } catch(e) { return null; } }
+    
+    // FUNZIONE DI DECRIPTAZIONE CORRETTA (Aggiunto controllo se s è vuoto/null)
+    function dec(s) { 
+        if (!s) return null; 
+        try { return atob(s); } catch(e) { return null; } 
+    }
 
     let n = dec(p.get('n')) || localStorage.getItem('cf_n');
     let c = dec(p.get('c')) || localStorage.getItem('cf_c');
@@ -130,6 +137,7 @@
     let o = dec(p.get('out')) || localStorage.getItem('cf_out');
     let l = p.get('l') || localStorage.getItem('cf_l') || 'it';
 
+    // SALVATAGGIO E PULIZIA LINK
     if (p.get('n')) {
         if (!n || !c || !i) { document.getElementById('area-errore').style.display = 'block'; }
         else {
@@ -142,56 +150,64 @@
 
     const dict = {
         it: {
-            greet: `Ciao ${n}, benvenuto!`,
+            greet: `Ciao ${n}, benvenuto a Casa Franca! 🏡`,
             checkinTitle: "📋 Self Check-in",
-            checkinDesc: "Prima dell'arrivo, registra i documenti di tutti gli ospiti.",
-            btnForm: "📝 Modulo Registrazione",
+            checkinDesc: "Prima del tuo arrivo, ti preghiamo di registrare i documenti di tutti gli ospiti.",
+            btnForm: "📝 Modulo di Registrazione",
             btnWa: "📸 Invia Documenti via WhatsApp",
-            btnVideo: "🎥 Guarda Video Tutorial",
+            btnVideo: "🎥 Guarda il Video Tutorial",
             keyTitle: "🔑 Codice Segreto",
-            keyNote: "<em>Inserisci il codice e tira verso di te. Richiudi la cassetta dopo l'uso.</em>",
-            keyWait: "Disponibile dalle 06:00 del giorno di arrivo",
-            parkTitle: "🚗 Parcheggi",
-            parkMain: "<strong>Posto riservato:</strong> strisce gialle davanti alla struttura. Esponi il pass che trovi sul tavolo.",
-            parkAlt: "<strong>Se occupato:</strong> usa temporaneamente l'area sottostante (vedi foto).",
-            wifiTitle: "📶 Wi-Fi",
-            infoTitle: "🌿 Info Utili",
-            infoTerme: "<strong>QC Terme:</strong> 10% sconto col voucher sul tavolo.",
-            infoTax: "<strong>Tassa soggiorno:</strong> 1€ notte/persona (Contanti o PayPal: casafranca.avo@gmail.com).",
-            localTrash: "<strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.",
-            outTitle: "🚪 Check-out (10:00)",
-            out1: "Chiudi a chiave.", out2: "Chiavi nella cassetta postale.", out3: "Pass auto sul tavolo.", out4: "Termostato al minimo.",
+            keyNote: "<em>(Inserisci il codice e tira leggermente verso di te. Ricorda di richiudere la cassetta)</em>",
+            keyWait: "<span style='font-size: 16px; color: #666;'>Disponibile dalle 06:00<br>del giorno di arrivo</span>",
+            parkTitle: "🚗 Promemoria Parcheggi",
+            parkMain: "<strong>Parcheggio Principale:</strong> Posto riservato nelle strisce gialle davanti alla struttura. Ricorda di esporre sul cruscotto il pass che trovi sul tavolo.",
+            parkAlt: "<strong>N.B. (Parcheggio temporaneo):</strong> Nel caso in cui il parcheggio riservato non fosse disponibile, sarà possibile lasciare temporaneamente l'auto nell'area sottostante illustrata nella foto.",
+            wifiTitle: "📶 Connessione Wi-Fi",
+            infoTitle: "🌿 Terme & Info",
+            infoTerme: "<strong>QC Terme San Pellegrino:</strong> Hai diritto al 10% di sconto! Trovi il voucher cartaceo precompilato sul tavolo.",
+            infoTax: "<strong>Tassa di soggiorno:</strong> 1€ a notte per persona. Puoi lasciarli sul tavolo o via PayPal (casafranca.avo@gmail.com - modalità Amici).",
+            localTrash: "<strong>Rifiuti:</strong> Ti preghiamo di differenziare i rifiuti nei bidoncini sotto il lavello.",
+            outTitle: "🚪 Check-out (Entro le 10:00)",
+            out1: "Chiudere l'appartamento a chiave.",
+            out2: "Inserire le chiavi nella <strong>cassetta postale</strong> posta sulla facciata.",
+            out3: "Lasciare il contrassegno auto sul tavolo.",
+            out4: "Regolare il termostato al minimo.",
+            expTitle: "✨ Grazie di essere stato con noi!",
+            expText: "Il tuo soggiorno è terminato e l'accesso ai codici è stato disattivato.",
             revTitle: "⭐ Ti sta piacendo il soggiorno?",
-            revDesc: "Prima di partire, lasciaci una recensione a 5 stelle! Torna su questa pagina a fine soggiorno per il link diretto.",
-            expTitle: "Grazie di essere stato con noi!",
-            expText: "Il soggiorno è terminato e l'accesso ai codici è stato disattivato.",
-            btnBack: "Torna al sito principale"
+            revDesc: "Prima di partire, ci farebbe un enorme piacere se lasciassi una recensione a 5 stelle! Torna su questa pagina a fine soggiorno per trovare il link diretto.",
+            btnBack: "🌍 Torna al sito principale",
+            img: "istruzioni-ita.jpg"
         },
         en: {
-            greet: `Hello ${n}, welcome!`,
+            greet: `Hello ${n}, welcome to Casa Franca! 🏡`,
             checkinTitle: "📋 Self Check-in",
-            checkinDesc: "Please register all guest documents before arrival.",
+            checkinDesc: "Before your arrival, please register the ID documents for all guests.",
             btnForm: "📝 Registration Form",
-            btnWa: "📸 Send Documents via WhatsApp",
-            btnVideo: "🎥 Watch Video Tutorial",
+            btnWa: "📸 Send ID via WhatsApp",
+            btnVideo: "🎥 Watch the Video Tutorial",
             keyTitle: "🔑 Secret Code",
-            keyNote: "<em>Enter the code and pull towards you. Please close the box after use.</em>",
-            keyWait: "Available from 06:00 AM on arrival day",
-            parkTitle: "🚗 Parking",
-            parkMain: "<strong>Reserved spot:</strong> yellow lines in front. Display the permit found on the table.",
-            parkAlt: "<strong>If full:</strong> use the lower area temporarily (see photo).",
-            wifiTitle: "📶 Wi-Fi",
-            infoTitle: "🌿 Useful Info",
-            infoTerme: "<strong>QC Terme:</strong> 10% discount with the voucher on the table.",
-            infoTax: "<strong>Tourist tax:</strong> 1€/night/person (Cash or PayPal: casafranca.avo@gmail.com).",
-            localTrash: "<strong>Waste:</strong> Please separate waste in the bins under the sink.",
-            outTitle: "🚪 Check-out (10:00 AM)",
-            out1: "Lock the door.", out2: "Keys in the mailbox.", out3: "Permit on the table.", out4: "Min thermostat.",
-            revTitle: "⭐ Enjoying your stay?",
-            revDesc: "Please leave us a 5-star review! Come back here at the end of your stay for the link.",
-            expTitle: "Thank you for staying with us!",
-            expText: "Your stay has ended and codes have been disabled.",
-            btnBack: "Back to main site"
+            keyNote: "<em>(Enter the code and pull slightly towards you. Remember to close the box afterwards)</em>",
+            keyWait: "<span style='font-size: 16px; color: #666;'>Available from 06:00 AM<br>on arrival day</span>",
+            parkTitle: "🚗 Parking Reminder",
+            parkMain: "<strong>Main Parking:</strong> Reserved spot in the yellow lines in front of the building. Display the permit (found on the table) on your dashboard.",
+            parkAlt: "<strong>N.B. (Temporary parking):</strong> In case the reserved parking is unavailable, you can temporarily leave your car in the area below as shown in the picture.",
+            wifiTitle: "📶 Wi-Fi Connection",
+            infoTitle: "🌿 Thermal Baths & Info",
+            infoTerme: "<strong>QC Terme San Pellegrino:</strong> You get a 10% discount! You will find the pre-filled paper voucher on the table.",
+            infoTax: "<strong>Tourist tax:</strong> €1 per night per person. Please leave cash on the table or use PayPal (casafranca.avo@gmail.com - Friends mode).",
+            localTrash: "<strong>Waste:</strong> Please separate your waste in the bins under the sink.",
+            outTitle: "🚪 Check-out (By 10:00 AM)",
+            out1: "Lock the apartment door.",
+            out2: "Drop the keys inside the <strong>mailbox</strong> on the front of the building.",
+            out3: "Leave the parking permit on the table.",
+            out4: "Set the thermostat to the minimum.",
+            expTitle: "✨ Thank you for staying with us!",
+            expText: "Your stay has ended and access to security codes has been disabled.",
+            revTitle: "⭐ Are you enjoying your stay?",
+            revDesc: "Before you leave, it would mean the world to us if you left a 5-star review! Come back to this page at the end of your stay to find the direct link.",
+            btnBack: "🌍 Back to main site",
+            img: "istruzioni-eng.jpg"
         }
     };
 
@@ -216,13 +232,16 @@
         document.getElementById('info-tax').innerHTML = t.infoTax;
         document.getElementById('local-trash').innerHTML = t.localTrash;
         document.getElementById('out-title').innerText = t.outTitle;
-        document.getElementById('out-1').innerHTML = t.out1; document.getElementById('out-2').innerHTML = t.out2;
-        document.getElementById('out-3').innerHTML = t.out3; document.getElementById('out-4').innerHTML = t.out4;
+        document.getElementById('out-1').innerHTML = t.out1; 
+        document.getElementById('out-2').innerHTML = t.out2;
+        document.getElementById('out-3').innerHTML = t.out3; 
+        document.getElementById('out-4').innerHTML = t.out4;
         document.getElementById('exp-title').innerText = t.expTitle;
         document.getElementById('exp-text').innerText = t.expText;
-        document.getElementById('rev-title').innerText = t.revTitle;
-        document.getElementById('rev-desc').innerText = t.revDesc;
+        if(document.getElementById('rev-title')) document.getElementById('rev-title').innerText = t.revTitle;
+        if(document.getElementById('rev-desc')) document.getElementById('rev-desc').innerText = t.revDesc;
         document.getElementById('btn-back').innerText = t.btnBack;
+        document.getElementById('img-istruzioni').src = t.img;
 
         if (isEarly()) {
             document.getElementById('lock-msg').innerHTML = t.keyWait;
@@ -241,7 +260,6 @@
 
     if (isOut()) { document.getElementById('area-scaduta').style.display = 'block'; updateUI(); }
     else if (n) { document.getElementById('area-ospite').style.display = 'block'; updateUI(); }
-    else { document.getElementById('area-errore').style.display = 'block'; }
 </script>
 
 </body>
