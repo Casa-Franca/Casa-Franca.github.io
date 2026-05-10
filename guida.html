@@ -65,6 +65,7 @@
                 <a href="https://forms.gle/46LY3mpccnq1d1Q39" target="_blank" class="btn" id="btn-form" style="width: 100%; max-width: 320px; background: var(--p);"></a>
                 <a href="https://wa.me/393298158892?text=Ciao%2C%20ti%20invio%20le%20foto%20dei%20documenti%20per%20il%20Check-in%20a%20Casa%20Franca!" target="_blank" class="btn" id="btn-wa" style="width: 100%; max-width: 320px; background: #25D366;"></a>
             </div>
+            <p id="checkin-note" style="font-size: 0.85em; color: #777; margin-top: 15px;"></p>
         </div>
 
         <div class="card" style="text-align: center;">
@@ -75,7 +76,7 @@
 
         <div class="card secret-card">
             <h3 style="justify-content: center;" id="key-title"></h3>
-            <p id="key-loc" style="margin-top: 0; color: #555; font-weight: bold;"></p>
+            <p id="key-loc" style="margin-top: 0; color: #555; text-align: left;"></p>
             <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 10px;">
                 <div style="text-align: center;">
                     <div id="lock-msg" style="color: #666; margin-bottom: 10px;"></div>
@@ -83,7 +84,7 @@
                 </div>
                 <img src="porta-cassetta.jpg" alt="Cassetta chiavi" style="width: 120px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
             </div>
-            <p id="key-note" style="font-size: 0.9em; color: #666; margin-top: 15px;"></p>
+            <p id="key-note" style="font-size: 0.9em; color: #666; margin-top: 15px; text-align: left;"></p>
         </div>
 
         <div style="text-align: center; margin-bottom: 25px;">
@@ -96,15 +97,14 @@
             <img src="parcheggio-principale.jpg" alt="Parcheggio Principale" style="width: 100%; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
             
             <div class="warning-box">
-                <p id="park-alt"></p>
-                <img src="parcheggio-temporaneo.jpg" alt="Parcheggio Temporaneo" style="width: 100%; border-radius: 8px; margin-top: 10px;">
+                <p id="park-alt" style="margin: 0;"></p>
             </div>
+            <img src="parcheggio-temporaneo.jpg" alt="Parcheggio Temporaneo" style="width: 100%; border-radius: 8px; margin-top: 10px;">
         </div>
-
-        <img src="" id="img-istruzioni" class="guide-img">
 
         <div class="card">
             <h3 id="wifi-title"></h3>
+            <p id="wifi-desc"></p>
             <p><strong>Network:</strong> APP.1<br><strong>Password:</strong> <span id="wifi-val">••••••••</span></p>
         </div>
 
@@ -119,6 +119,7 @@
 
         <div class="card" style="border-top-color: var(--d);">
             <h3 id="out-title"></h3>
+            <p id="out-desc" style="font-size: 0.95em; margin-top: 0; margin-bottom: 15px;"></p>
             <ul class="checklist">
                 <li id="out-1"></li>
                 <li id="out-2"></li>
@@ -135,7 +136,7 @@
         </div>
 
         <div style="text-align: center; margin-bottom: 40px;">
-            <a href="https://www.casafranca.eu" id="btn-back" class="btn">🌍 Torna al Sito</a>
+            <a href="https://www.casafranca.eu" id="btn-back" class="btn">🌍 Torna al Sito Principale</a>
         </div>
     </div>
 </div>
@@ -166,81 +167,87 @@
 
     const dict = {
         it: {
-            greet: `Ciao ${n}, benvenuto! 🏡`,
-            checkinTitle: "📋 Prima del suo arrivo (Self Check-in)",
-            checkinDesc: "Al fine di ottemperare all'obbligo di registrazione, la invitiamo a inoltrarci copia di un documento d'identità. I suoi dati saranno utilizzati solo per obblighi di registrazione (PS – Alloggiati Web).",
+            greet: `Ciao ${n}, benvenuto!`,
+            checkinTitle: "📋 Prima del suo arrivo (self check-in)",
+            checkinDesc: "In vista del suo arrivo, al fine di ottemperare all’obbligo di registrazione degli ospiti, la invitiamo ad inoltrarci copia di un documento d’identità (carta d’identità o passaporto), suo e dell’ospite che viaggerà con lei.",
             btnForm: "📝 Modulo Registrazione",
             btnWa: "📸 Invia Documenti via WhatsApp",
+            checkinNote: "I suoi dati saranno utilizzati solo per obblighi di registrazione (PS – Alloggiati Web).",
             mapTitle: "🗺️ Come raggiungerci",
-            mapDesc: "Viale della Vittoria 23, San Pellegrino Terme (BG)",
+            mapDesc: "La struttura è raggiungibile inserendo in Google Maps l’indirizzo Viale della Vittoria, 23, San Pellegrino Terme (BG) oppure:",
             btnMap: "📍 Indicazioni tramite Maps",
             keyTitle: "🔑 Come accedere alla struttura",
-            keyLoc: "L'appartamento si trova al piano terra, prima porta a sinistra.",
-            keyNote: "<em>(Inserisca il codice e tiri leggermente verso di sé per aprire la cassetta e prelevare le chiavi.)</em>",
-            keyWait: "<span>Codice disponibile dalle 06:00 del giorno di arrivo</span>",
+            keyLoc: "Una volta arrivato presso la struttura, potrà ritirare le chiavi del suo appartamento all’interno della piccola cassetta nera situata sotto la cassetta postale, accanto all’ingresso (in fotografia).",
+            keyNote: "<em>Il codice segreto è riportato di seguito. Dopo averlo inserito, tiri leggermente verso di sé per aprire la cassetta e prelevare le chiavi. Con queste potrà accedere sia alla struttura sia al suo appartamento, che si trova al piano terra, alla prima porta sulla sinistra.</em>",
+            keyWait: "<span>Codice Segreto<br>Disponibile dalle 06:00 del giorno di arrivo</span>",
             btnVideo: "🎥 Guarda Video Tutorial",
             parkTitle: "🚗 Parcheggio riservato",
-            parkMain: "Posto auto riservato nei parcheggi con strisce gialle di fronte alla struttura. Esporre il contrassegno presente sul tavolo.",
-            parkAlt: "N.B.: Se il parcheggio è occupato, usare temporaneamente l'area sottostante in foto.",
-            wifiTitle: "📶 Connessione Wi-Fi",
+            parkMain: "È disponibile un posto auto riservato (massimo un veicolo) nei due parcheggi con strisce gialle di fronte alla struttura. È necessario esporre il contrassegno che troverà sul tavolo all’interno dell’appartamento.",
+            parkAlt: "Se il parcheggio è occupato per sosta non autorizzata, è possibile usare temporaneamente l'area sottostante.",
+            wifiTitle: "📶 Wi-Fi",
+            wifiDesc: "La struttura è dotata di rete Wi-Fi veloce, per accedere:",
             infoTitle: "🌿 Altre Info Utili",
-            infoTerme: "<strong>QC Terme:</strong> Voucher sconto sul tavolo. Prenotare dal sito selezionando 'paga in struttura'. Convenzione non valida durante ponti/festività.",
-            infoTax: "<strong>Tassa di soggiorno (1€ notte/ospite):</strong> Troverà la ricevuta già compilata. Saldo in contanti o via PayPal (casafranca.avo@gmail.com - modalità 'Amici').",
+            infoTerme: "<strong>Convenzione QC Terme:</strong> la struttura è convenzionata con QC Terme. Al suo arrivo troverà un voucher sconto sul tavolo dell’appartamento, da presentare alla reception del centro termale per ottenere lo sconto. Per usufruire correttamente del buono, la invitiamo a prenotare l’ingresso tramite il sito di QC Terme, selezionando l’opzione di pagamento “paga in struttura”. La convenzione potrebbe non essere valida durante ponti e festività, secondo quanto stabilito dal gestore del centro termale.",
+            infoTax: "<strong>Tassa soggiorno:</strong> E’ previsto il pagamento della tassa di soggiorno (1€ a notte per ospite). Sul tavolo troverà la ricevuta di pagamento della tassa di soggiorno già compilata. La invitiamo a saldare l’importo lasciando i contanti sul tavolo al termine del soggiorno o condividendo l'importo tramite Paypal a casafranca.avo@gmail.com utilizzando la modalità \"AMICI e/o FAMILIARI\".",
             localTrash: "<strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.",
-            outTitle: "🚪 Check-out (Entro le 10:00)",
-            out1: "Chiuda a chiave l'appartamento.",
-            out2: "Inserisca le chiavi nella cassetta postale.",
-            out3: "Lasci il contrassegno del parcheggio sul tavolo.",
-            out4: "Imposti il termostato al minimo.",
+            outTitle: "🚪 Check-out",
+            outDesc: "Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.",
+            out1: "Chiuda a chiave l’appartamento",
+            out2: "Ricordi di lasciare il contrassegno del parcheggio sul tavolo.",
+            out3: "Imposti il termostato al minimo",
+            out4: "Inserisca le chiavi nella cassetta postale.",
             expTitle: "✨ Grazie di essere stato con noi!",
             expText: "Speriamo che il soggiorno sia stato di tuo gradimento. L'accesso ai codici è ora disattivato.",
             refTitleExp: "🎁 Regala uno sconto ai tuoi amici",
             refTextExp: "Consiglia Casa Franca ai tuoi amici! Se prenotano direttamente sul nostro sito usando questo codice, riceveranno subito uno <strong>sconto del 10%</strong>.",
             refLinkNote: "Possono prenotare direttamente su:",
             btnSiteExp: "🌍 www.casafranca.eu",
-            revTitle: "⭐ Ti piace Casa Franca?",
-            revDesc: "Consigliaci ai tuoi amici! Se prenotano sul sito col codice sotto avranno il 10% di sconto.",
+            revTitle: "⭐ Ti sta piacendo il soggiorno?",
+            revDesc: "Prima di partire, lasciaci una recensione a 5 stelle! Torna su questa pagina a fine soggiorno per il link diretto. Se consiglierai Casa Franca ai tuoi amici usando il codice qui sotto, avranno il 10% di sconto sul nostro sito.",
             revLinkText: "Sito web: www.casafranca.eu",
-            btnBack: "🌍 Vai al Sito",
+            btnBack: "🌍 Torna al sito principale",
             img: "istruzioni-ita.jpg"
         },
         en: {
-            greet: `Hello ${n}, welcome! 🏡`,
-            checkinTitle: "📋 Before arrival (Self Check-in)",
-            checkinDesc: "To comply with registration laws, please send a copy of your ID. Data is used for official registration only.",
+            greet: `Hello ${n}, welcome!`,
+            checkinTitle: "📋 Before your arrival (self check-in)",
+            checkinDesc: "In preparation for your arrival and to comply with guest registration laws, we kindly ask you to send us a copy of an ID document (ID card or passport) for you and the guest traveling with you.",
             btnForm: "📝 Registration Form",
-            btnWa: "📸 Send ID via WhatsApp",
+            btnWa: "📸 Send Documents via WhatsApp",
+            checkinNote: "Your data will only be used for registration obligations (Police portal).",
             mapTitle: "🗺️ How to reach us",
-            mapDesc: "Viale della Vittoria 23, San Pellegrino Terme (BG)",
-            btnMap: "📍 Open Maps",
+            mapDesc: "The property can be reached by entering the address Viale della Vittoria, 23, San Pellegrino Terme (BG) on Google Maps, or:",
+            btnMap: "📍 Directions via Maps",
             keyTitle: "🔑 Accessing the property",
-            keyLoc: "Apartment on ground floor, first door on the left.",
-            keyNote: "<em>(Enter the code and pull slightly to open the box and retrieve keys.)</em>",
-            keyWait: "<span>Code available from 06:00 AM on arrival day</span>",
+            keyLoc: "Once you arrive at the property, you can collect your apartment keys from the small black box located under the mailbox, next to the entrance (in the photo).",
+            keyNote: "<em>The secret code is shown below. After entering it, pull slightly towards you to open the box and retrieve the keys. With these, you can access both the building and your apartment, which is on the ground floor, first door on the left.</em>",
+            keyWait: "<span>Secret Code<br>Available from 06:00 AM on arrival day</span>",
             btnVideo: "🎥 Watch Video Tutorial",
             parkTitle: "🚗 Reserved Parking",
-            parkMain: "Reserved spot in yellow lines in front of the building. Display the permit found on the table.",
-            parkAlt: "N.B.: If spot is occupied, use the area shown in the photo temporarily.",
-            wifiTitle: "📶 Wi-Fi Connection",
+            parkMain: "There is a reserved parking space (maximum one vehicle) in the two yellow-lined parking spots in front of the building. You must display the parking permit that you will find on the table inside the apartment.",
+            parkAlt: "If the parking space is occupied by an unauthorized vehicle, you can temporarily use the area shown below.",
+            wifiTitle: "📶 Wi-Fi",
+            wifiDesc: "The property is equipped with a fast Wi-Fi network. To access:",
             infoTitle: "🌿 Useful Info",
-            infoTerme: "<strong>QC Terme:</strong> Discount voucher on the table. Book online and select 'pay at property'. Not valid on holidays.",
-            infoTax: "<strong>Tourist tax (€1/night/guest):</strong> Pre-filled receipt on table. Pay cash or via PayPal (casafranca.avo@gmail.com - 'Friends').",
-            localTrash: "<strong>Waste:</strong> Separate waste in bins under the sink.",
-            outTitle: "🚪 Check-out (By 10:00 AM)",
+            infoTerme: "<strong>QC Terme Discount:</strong> we have an agreement with QC Terme. Upon arrival, you will find a discount voucher on the apartment table to present at the spa reception. To properly use the voucher, please book your entry on the QC Terme website, selecting the 'pay at the property' option. The discount may not be valid during long weekends and holidays, as determined by the spa management.",
+            infoTax: "<strong>Tourist Tax:</strong> The payment of the tourist tax is required (€1 per night per guest). On the table, you will find the pre-filled receipt for the tourist tax. Please settle the amount by leaving cash on the table at the end of your stay or by sharing the amount via PayPal to casafranca.avo@gmail.com using the \"FRIENDS and/or FAMILY\" option.",
+            localTrash: "<strong>Waste:</strong> Separate waste in the bins under the sink.",
+            outTitle: "🚪 Check-out",
+            outDesc: "Check-out must be completed by 10:00 AM, unless otherwise agreed.",
             out1: "Lock the apartment.",
-            out2: "Drop keys in the mailbox.",
-            out3: "Leave parking permit on the table.",
-            out4: "Set thermostat to minimum.",
-            expTitle: "✨ Thank you for staying!",
-            expText: "We hope you enjoyed your stay. Security codes access is now disabled.",
+            out2: "Remember to leave the parking permit on the table.",
+            out3: "Set the thermostat to the minimum.",
+            out4: "Drop the keys in the mailbox.",
+            expTitle: "✨ Thank you for staying with us!",
+            expText: "We hope you enjoyed your stay. Access to security codes is now disabled.",
             refTitleExp: "🎁 Gift a discount to friends",
-            refTextExp: "Recommend Casa Franca! If your friends book directly on our site using this code, they'll get a <strong>10% discount</strong>.",
-            refLinkNote: "They can book at:",
+            refTextExp: "Recommend Casa Franca to your friends! If they book directly on our site using this code, they will immediately receive a <strong>10% discount</strong>.",
+            refLinkNote: "They can book directly at:",
             btnSiteExp: "🌍 www.casafranca.eu",
-            revTitle: "⭐ Like Casa Franca?",
-            revDesc: "Recommend us! Friends booking on our site with this code get 10% off.",
+            revTitle: "⭐ Are you enjoying your stay?",
+            revDesc: "Before leaving, please leave us a 5-star review! Come back to this page at the end of your stay for the direct link. If you recommend us to your friends using the code below, they will get a 10% discount on our website.",
             revLinkText: "Website: www.casafranca.eu",
-            btnBack: "🌍 Visit Website",
+            btnBack: "🌍 Back to main site",
             img: "istruzioni-eng.jpg"
         }
     };
@@ -252,24 +259,33 @@
         const t = dict[l];
         document.getElementById('greet').innerHTML = t.greet;
         document.getElementById('checkin-title').innerText = t.checkinTitle;
-        document.getElementById('checkin-desc').innerText = t.checkinDesc;
+        document.getElementById('checkin-desc').innerHTML = t.checkinDesc;
         document.getElementById('btn-form').innerText = t.btnForm;
         document.getElementById('btn-wa').innerText = t.btnWa;
+        document.getElementById('checkin-note').innerHTML = t.checkinNote;
+        
         document.getElementById('map-title').innerText = t.mapTitle;
         document.getElementById('map-desc').innerText = t.mapDesc;
         document.getElementById('btn-map').innerText = t.btnMap;
+        
         document.getElementById('key-title').innerText = t.keyTitle;
         document.getElementById('key-loc').innerText = t.keyLoc;
         document.getElementById('btn-video').innerText = t.btnVideo;
+        
         document.getElementById('park-title').innerText = t.parkTitle;
         document.getElementById('park-main').innerHTML = t.parkMain;
         document.getElementById('park-alt').innerHTML = t.parkAlt;
+        
         document.getElementById('wifi-title').innerText = t.wifiTitle;
+        document.getElementById('wifi-desc').innerText = t.wifiDesc;
+        
         document.getElementById('info-title').innerText = t.infoTitle;
         document.getElementById('info-terme').innerHTML = t.infoTerme;
         document.getElementById('info-tax').innerHTML = t.infoTax;
         document.getElementById('local-trash').innerHTML = t.localTrash;
+        
         document.getElementById('out-title').innerText = t.outTitle;
+        document.getElementById('out-desc').innerText = t.outDesc;
         document.getElementById('out-1').innerHTML = t.out1; 
         document.getElementById('out-2').innerHTML = t.out2;
         document.getElementById('out-3').innerHTML = t.out3; 
@@ -289,7 +305,6 @@
         document.getElementById('rev-link-text').innerText = t.revLinkText;
 
         document.getElementById('btn-back').innerText = t.btnBack;
-        document.getElementById('img-istruzioni').src = t.img;
 
         if (isEarly()) {
             document.getElementById('lock-msg').innerHTML = t.keyWait;
