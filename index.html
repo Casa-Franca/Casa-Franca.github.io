@@ -191,13 +191,14 @@
         .lang-switch span { cursor: pointer; color: #888; transition: color 0.3s; padding: 5px; }
         .lang-switch span.active { color: var(--gold); }
         
-        /* === TASTO GUIDA TOP === */
+        /* === TASTO GUIDA TOP (Nascosto di Default) === */
         .btn-guida-top {
             position: absolute; left: 30px; top: 50%; transform: translateY(-50%);
             background: var(--gold); color: #000; text-decoration: none;
             padding: 8px 15px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;
             text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 2000;
+            display: none; /* NASCOSTO PER CHI NON HA ACCESSO */
         }
         
         @media (hover: hover) {
@@ -612,7 +613,7 @@
 </div>
  
 <header id="main-header" role="banner">
-    <a href="guida.html" class="btn-guida-top" data-it="🔑 Guida Ospiti" data-en="🔑 Guest Guide">🔑 Guida Ospiti</a>
+    <a href="guida.html" id="btn-guida-top" class="btn-guida-top" data-it="🔑 Guida Ospiti" data-en="🔑 Guest Guide">🔑 Guida Ospiti</a>
     <img src="logo-casa-franca.png" alt="Logo Casa Franca Vacation Rental" class="header-logo" id="logo">
     
     <div class="lang-switch" aria-label="Cambia Lingua">
@@ -877,7 +878,7 @@
         <div class="review-card">
             <div class="stars">★★★★★</div>
             <p class="review-text"
-            data-it='"Ottima posizione a pochi passi dalle Terme. L&apos;appartamento è molto carino e ha tutto il necessario per un soggiorno perfetto. Fantastico avere il parcheggio gratuito proprio di fronte."'
+            data-it='"Ottima posizione a pochi passi dalle Terme. L'appartamento è molto carino e ha tutto il necessario per un soggiorno perfetto. Fantastico avere il parcheggio gratuito proprio di fronte."'
             data-en='"Great location just a few steps from the Thermal Baths. The apartment is lovely and has everything needed for a perfect stay. Having free parking right in front is fantastic."'>
             "Ottima posizione a pochi passi dalle Terme. L'appartamento è molto carino e ha tutto il necessario per un soggiorno perfetto. Fantastico avere il parcheggio gratuito proprio di fronte."
             </p>
@@ -1083,6 +1084,19 @@
 </a>
  
 <script>
+    // === CONTROLLO ACCESSO GUIDA ===
+    // Questo script verifica se l'utente ha già effettuato l'accesso alla guida in precedenza.
+    // In caso positivo, rende visibile il pulsante "Guida Ospiti" in alto.
+    function verificaAccessoGuida() {
+        if (localStorage.getItem('cf_n') || localStorage.getItem('cf_nome')) {
+            const btnGuida = document.getElementById('btn-guida-top');
+            if (btnGuida) {
+                btnGuida.style.display = 'inline-block';
+            }
+        }
+    }
+    document.addEventListener('DOMContentLoaded', verificaAccessoGuida);
+
     // === SALUTO DINAMICO (BUONGIORNO / BUONASERA) ===
     function impostaSaluto() {
         const ora = new Date().getHours();
@@ -1158,6 +1172,27 @@
       document.getElementById('cookie-banner').classList.remove('show');
     }
  window.addEventListener('load', controllaCookie);
+ 
+    // === FUNZIONE APRI/CHIUDI CHECK-IN ===
+    function toggleCheckin(event) {
+        if (event) event.stopPropagation();
+        const content = document.getElementById('checkin-content');
+        const arrow = document.getElementById('checkin-arrow');
+        
+        if (content.classList.contains('open')) {
+         content.classList.remove('open');
+         arrow.classList.remove('rotate-arrow');
+         event.currentTarget.setAttribute('aria-expanded', 'false');
+        } else {
+         content.classList.add('open');
+         arrow.classList.add('rotate-arrow');
+         event.currentTarget.setAttribute('aria-expanded', 'true');
+         setTimeout(() => {
+                const elementPosition = content.getBoundingClientRect().top + window.scrollY;
+             window.scrollTo({ top: elementPosition - 300, behavior: 'smooth' });
+            }, 300);
+        }
+    }
  
     // === FUNZIONE APRI/CHIUDI FAQ ===
     function toggleFaq(element) {
