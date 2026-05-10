@@ -36,7 +36,9 @@
 <div class="container">
     <div class="header">
         <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
-        <img src="logo-casa-franca.png" alt="Casa Franca" style="max-height: 80px;">
+        <a href="https://www.casafranca.eu">
+            <img src="logo-casa-franca.png" alt="Casa Franca" style="max-height: 80px;">
+        </a>
     </div>
 
     <div id="area-errore" class="card" style="border-top-color: var(--d); text-align: center;">
@@ -313,7 +315,8 @@
     }
 
     function isEarly() { return i && new Date() < new Date(i.substring(0,4), i.substring(4,6)-1, i.substring(6,8), 6, 0, 0); }
-    function isOut() { return o && new Date() > new Date(o.substring(0,4), o.substring(4,6)-1, o.substring(6,8), 12, 0, 0); }
+    // Modificato orario uscita a 10:30 (10, 30, 0)
+    function isOut() { return o && new Date() > new Date(o.substring(0,4), o.substring(4,6)-1, o.substring(6,8), 10, 30, 0); }
 
     if (isOut()) { 
         document.getElementById('area-scaduta').style.display = 'block'; 
