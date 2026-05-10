@@ -191,8 +191,18 @@
         .lang-switch span { cursor: pointer; color: #888; transition: color 0.3s; padding: 5px; }
         .lang-switch span.active { color: var(--gold); }
         
+        /* === TASTO GUIDA TOP === */
+        .btn-guida-top {
+            position: absolute; left: 30px; top: 50%; transform: translateY(-50%);
+            background: var(--gold); color: #000; text-decoration: none;
+            padding: 8px 15px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 2000;
+        }
+        
         @media (hover: hover) {
             .lang-switch span:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+            .btn-guida-top:hover { background: #fff; transform: translateY(-50%) scale(1.05); box-shadow: 0 4px 15px rgba(255,255,255,0.4); }
         }
  
         /* === HERO SLIDER === */
@@ -429,22 +439,6 @@
             .review-card:hover { transform: translateY(-8px); border-color: var(--gold-light); background: rgba(255, 255, 255, 0.04); box-shadow: 0 15px 30px rgba(184, 134, 11, 0.1); }
         }
  
-        /* === FAST CHECK-IN === */
-        #checkin-online { padding: 80px 20px; text-align: center; background: linear-gradient(to bottom, #050505, #0d0d0d, #050505); border-top: 1px solid #111; border-bottom: 1px solid #111; transition: opacity 0.3s; }
-        .checkin-wrapper { max-width: 800px; margin: 0 auto; position: relative; border-radius: 16px; padding: 1px; background: linear-gradient(60deg, #111, #b8860b, #111, #d4af37, #111); background-size: 300% 300%; animation: animatedGradient 6s ease infinite; box-shadow: 0 20px 50px rgba(0,0,0,0.6); cursor: pointer; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-        @media (hover: hover) { .checkin-wrapper:hover { transform: translateY(-5px); box-shadow: 0 25px 60px rgba(184, 134, 11, 0.25); } }
-        @keyframes animatedGradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .checkin-inner { background: #080808; padding: 30px 40px; border-radius: 15px; height: 100%; width: 100%; position: relative; }
-        .checkin-header { display: flex; justify-content: center; align-items: center; gap: 15px; }
-        .checkin-header h2 { font-family: 'Playfair Display', serif; color: var(--gold); letter-spacing: 1px; margin: 0; font-size: 1.6rem; }
-        #checkin-arrow { color: var(--gold); font-size: 1rem; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .rotate-arrow { transform: rotate(180deg); }
-        .checkin-content { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); cursor: default; }
-        .checkin-content.open { max-height: 400px; }
-        .checkin-content-inner { padding-top: 30px; }
-        .checkin-content p { color: #aaa; margin-top: 0; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.8; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .checkin-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
- 
         /* === MAPPA E I POI CON ICONE PREMIUM === */
         .map-wrapper { display: grid; grid-template-columns: 2fr 1.2fr; gap: 40px; margin-top: 50px; text-align: left; transition: opacity 0.3s; }
         .map-frame { width: 100%; height: 420px; border-radius: 16px; border: 1px solid rgba(184, 134, 11, 0.3); filter: grayscale(0.8) contrast(1.1) brightness(0.9); box-shadow: 0 15px 40px rgba(0,0,0,0.6); transition: border-color 0.4s; }
@@ -528,6 +522,10 @@
             .header-logo { height: 70px; }
             header.scrolled .header-logo { height: 50px; }
             .lang-switch { right: 15px; top: 15px; transform: none; font-size: 0.75rem; }
+            
+            /* Tasto Guida Mobile */
+            .btn-guida-top { left: 15px; top: 15px; transform: none; font-size: 0.65rem; padding: 6px 10px; }
+
             .checkin-buttons { flex-direction: column; gap: 10px; }
             .card-body { padding: 30px 20px; }
             .secondary-actions { flex-direction: column; gap: 15px; align-items: center; }
@@ -614,6 +612,7 @@
 </div>
  
 <header id="main-header" role="banner">
+    <a href="guida.html" class="btn-guida-top" data-it="🔑 Guida Ospiti" data-en="🔑 Guest Guide">🔑 Guida Ospiti</a>
     <img src="logo-casa-franca.png" alt="Logo Casa Franca Vacation Rental" class="header-logo" id="logo">
     
     <div class="lang-switch" aria-label="Cambia Lingua">
@@ -673,14 +672,14 @@
                  <h3 data-it="Appartamento Vacanze" data-en="Vacation Apartment">Appartamento Vacanze</h3>
                  <div style="font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: 600;">CIN: IT016190C2MTOZ74DP</div>
                  <div class="card-title-separator"></div>
-                   
+                    
                  <div class="card-reveal-wrapper">
                      <p data-it="La tua base ideale in Valle Brembana. Un bilocale funzionale e dotato di ogni comfort, con l’esclusiva comodità del posto auto riservato. A pochi passi dalle meraviglie architettoniche del centro e dal relax delle QC Terme." 
                         data-en="Your ideal base in the Brembana Valley. A functional apartment equipped with every comfort, featuring the exclusive convenience of a reserved parking space. Just a short walk from the architectural wonders of the center and the relaxing QC Terme.">
                         La tua base ideale in Valle Brembana. Un bilocale funzionale e dotato di ogni comfort, con l’esclusiva comodità del posto auto riservato. A pochi passi dalle meraviglie architettoniche del centro e dal relax delle QC Terme.
                      </p>
                       
-                     <a href="https://wa.me/393482422951?text=Salve%2C%20vorrei%20informazioni%20sulla%20disponibilit%C3%A0%20dell'Appartamento%20Vacanze%20San%20Pellegrino%20(Miglior%20Prezzo)!" target="_blank" class="btn btn-direct-book" aria-label="Richiedi il miglior prezzo su WhatsApp">
+                     <a href="https://wa.me/3903451660127?text=Salve%2C%20vorrei%20informazioni%20sulla%20disponibilit%C3%A0%20dell'Appartamento%20Vacanze%20San%20Pellegrino%20(Miglior%20Prezzo)!" target="_blank" class="btn btn-direct-book" aria-label="Richiedi il miglior prezzo su WhatsApp">
                          <span data-it="✨ Prenota Ora (da 80€ / notte)" data-en="✨ Book Now (from €80 / night)">✨ Prenota Ora (da 80€ / notte)</span>
                      </a>
  
@@ -734,7 +733,7 @@
                <div class="card-body" data-fade>
                  <h3 data-it="Bilocali & Trilocali" data-en="One & Two-Bedroom Apartments">Bilocali & Trilocali</h3>
                  <div class="card-title-separator"></div>
-                   
+                    
                  <div class="card-reveal-wrapper">
                       
                      <div id="barra-annunci" class="announcement-bar hidden">
@@ -747,7 +746,7 @@
                         Soluzioni dedicate ad affitti transitori e tradizionali per studenti e lavoratori nel medio e lungo termine. Ambienti curati e confortevoli, dotati di tutto il necessario per farti sentire comodamente a casa tua durante il periodo di permanenza.
                      </p>
                       
-                     <a href="https://wa.me/393482422951" class="btn btn-whatsapp" aria-label="Richiedi informazioni su WhatsApp">
+                     <a href="https://wa.me/3903451660127" class="btn btn-whatsapp" aria-label="Richiedi informazioni su WhatsApp">
                          <span data-it="💬 Richiedi Info su WhatsApp" data-en="💬 Request Info via WhatsApp">💬 Richiedi Info su WhatsApp</span>
                      </a>
  
@@ -893,35 +892,6 @@
             "Ottima posizione e appartamento impeccabile. Le indicazioni fornite per il check-in sono state chiarissime. La comodità del parcheggio gratuito sotto casa è un grandissimo valore aggiunto."
             </p>
             <div class="review-author">Zydrunas <span class="review-source" data-it="via Google" data-en="via Google">via Google</span></div>
-        </div>
-    </div>
-</section>
- 
-<section id="checkin-online" class="reveal" data-fade>
-    <div class="checkin-wrapper" onclick="toggleCheckin(event)" role="button" aria-expanded="false" tabindex="0">
-        <div class="checkin-inner">
-            <div class="checkin-header">
-                <h2 data-it="⚡ Fast Check-in Online" data-en="⚡ Fast Online Check-in">⚡ Fast Check-in Online</h2>
-              <span id="checkin-arrow">▼</span>
-          </div>
-            
-            <div id="checkin-content" class="checkin-content" onclick="event.stopPropagation()">
-               <div class="checkin-content-inner">
-                 <p data-it="Hai già confermato la tua prenotazione? Risparmia tempo al tuo arrivo. Inviaci i dati per la registrazione in anticipo in modo comodo e sicuro."
-                    data-en="Have you already confirmed your reservation? Save time upon arrival. Send us your registration details in advance conveniently and securely.">
-                    Hai già confermato la tua prenotazione? Risparmia tempo al tuo arrivo. Inviaci i dati per la registrazione in anticipo in modo comodo e sicuro.
-                 </p>
-                   
-                 <div class="checkin-buttons">
-                     <a href="https://forms.gle/46LY3mpccnq1d1Q39" target="_blank" class="btn btn-white" aria-label="Compila il Modulo di Registrazione" style="max-width: 320px; margin: 0;">
-                         <span data-it="📝 Modulo di Registrazione" data-en="📝 Registration Form">📝 Modulo di Registrazione</span>
-                     </a>
-                     <a href="https://wa.me/393298158892?text=Ciao%2C%20ti%20invio%20le%20foto%20dei%20documenti%20per%20il%20Check-in%20a%20Casa%20Franca!" target="_blank" class="btn btn-whatsapp" aria-label="Invia Documenti tramite WhatsApp" style="max-width: 320px; margin: 0;">
-                         <span data-it="📸 Invia Documenti WhatsApp" data-en="📸 Send ID via WhatsApp">📸 Invia Documenti WhatsApp</span>
-                     </a>
-                 </div>
-             </div>
-          </div>
         </div>
     </div>
 </section>
@@ -1106,7 +1076,7 @@
     </svg>
 </a>
  
-<a href="https://wa.me/393482422951" target="_blank" class="floating-wa" title="Contattaci su WhatsApp" aria-label="Pulsante rapido WhatsApp">
+<a href="https://wa.me/3903451660127" target="_blank" class="floating-wa" title="Contattaci su WhatsApp" aria-label="Pulsante rapido WhatsApp">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
         <path d="M16.002 1.332A14.665 14.665 0 001.336 16c0 2.596.678 5.112 1.964 7.348L1.336 30.668l7.49-1.966a14.654 14.654 0 007.176 1.878h.006A14.668 14.668 0 0030.67 16 14.668 14.668 0 0016.002 1.332zm0 24.815h-.006a12.22 12.22 0 01-6.22-1.693l-.446-.264-4.625 1.213 1.233-4.508-.29-.46A12.188 12.188 0 013.784 16c0-6.736 5.485-12.223 12.224-12.223 3.264 0 6.331 1.272 8.638 3.58a12.15 12.15 0 013.578 8.64c-.002 6.738-5.488 12.224-12.222 12.224h-.002zm6.696-9.143c-.366-.184-2.172-1.073-2.51-1.196-.336-.123-.582-.184-.826.184-.246.368-.948 1.196-1.162 1.442-.214.246-.428.276-.796.092-.366-.184-1.55-.572-2.952-1.822-1.092-.972-1.83-2.173-2.044-2.54-.214-.368-.024-.566.16-.75.166-.164.366-.428.55-.644.184-.214.246-.368.366-.612.124-.246.062-.46-.03-.644-.092-.184-.826-1.992-1.132-2.728-.3-.72-.604-.622-.826-.632-.214-.012-.46-.012-.704-.012a1.35 1.35 0 00-.978.46c-.336.368-1.284 1.256-1.284 3.064s1.314 3.554 1.5 3.8c.184.246 2.594 3.96 6.282 5.55 3.688 1.59 3.688 1.072 4.36 1.01.674-.06 2.172-.888 2.478-1.748.306-.86.306-1.594.214-1.748-.09-.154-.336-.246-.704-.43z"/>
     </svg>
@@ -1188,27 +1158,6 @@
       document.getElementById('cookie-banner').classList.remove('show');
     }
  window.addEventListener('load', controllaCookie);
- 
-    // === FUNZIONE APRI/CHIUDI CHECK-IN ===
-    function toggleCheckin(event) {
-        if (event) event.stopPropagation();
-        const content = document.getElementById('checkin-content');
-        const arrow = document.getElementById('checkin-arrow');
-        
-        if (content.classList.contains('open')) {
-         content.classList.remove('open');
-         arrow.classList.remove('rotate-arrow');
-         event.currentTarget.setAttribute('aria-expanded', 'false');
-        } else {
-         content.classList.add('open');
-         arrow.classList.add('rotate-arrow');
-         event.currentTarget.setAttribute('aria-expanded', 'true');
-         setTimeout(() => {
-                const elementPosition = content.getBoundingClientRect().top + window.scrollY;
-             window.scrollTo({ top: elementPosition - 300, behavior: 'smooth' });
-            }, 300);
-        }
-    }
  
     // === FUNZIONE APRI/CHIUDI FAQ ===
     function toggleFaq(element) {
