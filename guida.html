@@ -40,15 +40,15 @@
 
     <div id="area-errore" class="card" style="border-top-color: var(--d); text-align: center;">
         <h3 style="justify-content: center;">⚠️ Link non valido</h3>
-        <p>Il link è incompleto o non corretto. Per favore usa il link originale inviato dall'host.</p>
+        <p>Il link è incompleto. Per favore usa il link originale inviato dall'host.</p>
     </div>
 
     <div id="area-scaduta" class="card" style="border-top-color: var(--p); text-align: center;">
         <h2 id="exp-title">✨ Grazie di essere stato con noi!</h2>
         <p id="exp-text">Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. L'accesso ai codici è terminato.</p>
         
-        <div style="background: #f9f9f9; padding: 20px; border-radius: 12px; margin-top: 20px;">
-            <h3 style="justify-content: center; border: none; margin-bottom: 10px;">🎁 Scopri la tua sorpresa</h3>
+        <div style="background: #fdfbf7; padding: 25px; border-radius: 16px; margin-top: 25px; border: 2px solid var(--a);">
+            <h3 style="justify-content: center; border: none; margin-bottom: 10px; color: var(--a);">🎁 Scopri la tua sorpresa</h3>
             <p id="rev-inv">Lasciaci una recensione a 5 stelle per sbloccare il regalo esclusivo per te e i tuoi amici!</p>
             <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" target="_blank" class="btn" style="background: var(--a);" onclick="mostraSorpresa()">🌟 Lascia la Recensione e Scopri il Regalo</a>
             
@@ -73,14 +73,14 @@
             <h3 id="c-tit">📋 Prima del suo arrivo (self check-in)</h3>
             <p id="c-txt">In vista del suo arrivo, al fine di ottemperare all’obbligo di registrazione degli ospiti, la invitiamo ad inoltrarci copia di un documento d’identità (carta d’identità o passaporto), suo e dell’ospite che viaggerà con lei.</p>
             <a href="https://forms.gle/46LY3mpccnq1d1Q39" target="_blank" class="btn" id="c-btn-f">📝 Modulo Registrazione</a>
-            <a href="https://wa.me/393298158892" target="_blank" class="btn btn-wa" id="c-btn-w">📸 Invia via WhatsApp</a>
+            <a href="https://wa.me/3903451660127" target="_blank" class="btn btn-wa" id="c-btn-w">📸 Invia via WhatsApp</a>
             <p style="font-size: 0.85em; color: #666;" id="c-ps">I suoi dati saranno utilizzati solo per obblighi di registrazione (PS – Alloggiati Web).</p>
         </div>
 
         <div class="card">
             <h3 id="m-tit">🗺️ Come raggiungerci</h3>
             <p id="m-txt">La struttura è raggiungibile inserendo in Google Maps l’indirizzo Viale della Vittoria, 23, San Pellegrino Terme (BG) oppure:</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=Casa+Franca+San+Pellegrino+Terme+Viale+della+Vittoria+23" target="_blank" class="btn btn-map" id="m-btn">📍 Indicazioni tramite Maps</a>
+            <a href="https://maps.app.goo.gl/ChIJcbwbNQD_g0cRZHlqJd8omvw" target="_blank" class="btn btn-map" id="m-btn">📍 Indicazioni tramite Maps</a>
         </div>
 
         <div class="card" style="border-top-color: var(--a); text-align: center;">
@@ -107,6 +107,12 @@
         </div>
 
         <div class="card">
+            <h3 id="w-tit">📶 Wi-Fi</h3>
+            <p id="w-txt">La struttura è dotata di rete Wi-Fi veloce, per accedere:</p>
+            <p><strong>Network:</strong> APP.1<br><strong>Password:</strong> <span id="wifi-val">••••••••</span></p>
+        </div>
+
+        <div class="card">
             <h3 id="i-tit">🌿 Altre Info Utili</h3>
             <ul class="checklist">
                 <li id="i-qc"><strong>Convenzione QC Terme:</strong> la struttura è convenzionata con QC Terme. Al suo arrivo troverà un voucher sconto sul tavolo dell’appartamento, da presentare alla reception del centro termale per ottenere lo sconto. Per usufruire correttamente del buono, la invitiamo a prenotare l’ingresso tramite il sito di QC Terme, selezionando l’opzione di pagamento “paga in struttura”. La convenzione potrebbe non essere valida durante ponti e festività, secondo quanto stabilito dal gestore del centro termale.</li>
@@ -124,6 +130,12 @@
                 <li id="o-3">Imposti il termostato al minimo</li>
                 <li id="o-4">Inserisca le chiavi nella cassetta postale.</li>
             </ul>
+        </div>
+
+        <div class="card" style="text-align: center; border: 2px dashed var(--a); background: #fdfbf7; margin-bottom: 30px;">
+            <h3 style="justify-content: center; border: none; color: var(--a);" id="s-tit">🎁 Sorpresa di fine soggiorno</h3>
+            <p id="s-txt">Ti sta piacendo il soggiorno? Prima di partire ricordati di lasciarci una recensione a 5 stelle: abbiamo riservato una <strong>sorpresa speciale</strong> per te e i tuoi amici!</p>
+            <p style="font-weight: bold; font-size: 0.9em; color: var(--p);" id="s-note">Torna su questa pagina dopo il check-out per scoprire il regalo.</p>
         </div>
 
         <div style="text-align: center; margin-bottom: 40px;">
@@ -153,7 +165,7 @@
         it: {
             greet: `Ciao ${n}, benvenuto!`,
             expTit: "✨ Grazie di essere stato con noi!",
-            expTxt: "Speriamo che il soggiorno sia stato di tuo gradimento. I codici di accesso sono stati disattivati.",
+            expTxt: "Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. I codici di accesso sono stati disattivati.",
             revInv: "Lasciaci una recensione a 5 stelle per sbloccare il regalo esclusivo per te e i tuoi amici!",
             cTit: "📋 Prima del suo arrivo (self check-in)",
             cTxt: "In vista del suo arrivo, al fine di ottemperare all’obbligo di registrazione degli ospiti, la invitiamo ad inoltrarci copia di un documento d’identità (carta d’identità o passaporto), suo e dell’ospite che viaggerà con lei.",
@@ -172,6 +184,8 @@
             pTit: "🚗 Parcheggio riservato",
             pTxt: "È disponibile un posto auto riservato (massimo un veicolo) nei due parcheggi con strisce gialle di fronte alla struttura. È necessario esporre il contrassegno che troverà sul tavolo all’interno dell’appartamento.",
             pWrn: "Se il parcheggio è occupato per sosta non autorizzata, è possibile usare temporaneamente l'area sottostante illustrata in foto.",
+            wTit: "📶 Wi-Fi",
+            wTxt: "La struttura è dotata di rete Wi-Fi veloce, per accedere:",
             iTit: "🌿 Altre Info Utili",
             oTit: "🚪 Check-out",
             oTxt: "Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.",
@@ -179,6 +193,9 @@
             o2: "Ricordi di lasciare il contrassegno del parcheggio sul tavolo.",
             o3: "Imposti il termostato al minimo",
             o4: "Inserisca le chiavi nella cassetta postale.",
+            sTit: "🎁 Sorpresa di fine soggiorno",
+            sTxt: "Ti sta piacendo il soggiorno? Prima di partire ricordati di lasciarci una recensione a 5 stelle: abbiamo riservato una sorpresa speciale per te e i tuoi amici!",
+            sNote: "Torna su questa pagina dopo il check-out per scoprire il regalo.",
             back: "🌍 Torna al sito principale"
         },
         en: {
@@ -203,6 +220,8 @@
             pTit: "🚗 Reserved Parking",
             pTxt: "One reserved parking spot is available in the yellow lines in front of the building. Please display the permit found on the table.",
             pWrn: "If the spot is occupied, you can temporarily use the area shown below.",
+            wTit: "📶 Wi-Fi",
+            wTxt: "Fast Wi-Fi available:",
             iTit: "🌿 Other Useful Info",
             oTit: "🚪 Check-out",
             oTxt: "Check-out must be done by 10:00 AM.",
@@ -210,6 +229,9 @@
             o2: "Leave the parking permit on the table.",
             o3: "Set thermostat to minimum",
             o4: "Drop keys in the mailbox.",
+            sTit: "🎁 End of stay surprise",
+            sTxt: "Enjoying your stay? Before leaving, remember to leave us a 5-star review: we've reserved a special surprise for you and your friends!",
+            sNote: "Come back to this page after check-out to discover the gift.",
             back: "🌍 Back to main site"
         }
     };
@@ -237,6 +259,8 @@
         document.getElementById('p-tit').innerText = t.pTit;
         document.getElementById('p-txt').innerText = t.pTxt;
         document.getElementById('p-warn').innerText = t.pWrn;
+        document.getElementById('w-tit').innerText = t.wTit;
+        document.getElementById('w-txt').innerText = t.wTxt;
         document.getElementById('i-tit').innerText = t.iTit;
         document.getElementById('o-tit').innerText = t.oTit;
         document.getElementById('o-txt').innerText = t.oTxt;
@@ -244,20 +268,19 @@
         document.getElementById('o-2').innerText = t.o2;
         document.getElementById('o-3').innerText = t.o3;
         document.getElementById('o-4').innerText = t.o4;
+        document.getElementById('s-tit').innerText = t.sTit;
+        document.getElementById('s-txt').innerHTML = t.sTxt;
+        document.getElementById('s-note').innerText = t.sNote;
         document.getElementById('back-site').innerText = t.back;
     }
 
     function toggleLang() { l = (l === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', l); updateUI(); }
     
-    function showsorpresa_ui() {
+    function mostraSorpresa() { 
+        document.getElementById('box-sorpresa').style.display = 'block'; 
         const msg = encodeURIComponent("Ciao! Ti consiglio Casa Franca a San Pellegrino Terme. Se prenoti dal loro sito www.casafranca.eu usa il codice FRANCA10 per avere il 10% di sconto!");
         document.getElementById('share-wa').href = "https://wa.me/?text=" + msg;
         document.getElementById('share-mail').href = "mailto:?subject=Consiglio Soggiorno a San Pellegrino&body=" + msg;
-    }
-
-    function mostraSorpresa() { 
-        document.getElementById('box-sorpresa').style.display = 'block'; 
-        showsorpresa_ui();
     }
 
     function isEarly() { return i && new Date() < new Date(i.substring(0,4), i.substring(4,6)-1, i.substring(6,8), 6, 0, 0); }
