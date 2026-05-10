@@ -9,97 +9,73 @@
         body { font-family: -apple-system, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 0; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
         .header { text-align: center; margin-bottom: 30px; position: relative; }
-        .logo { font-size: 28px; font-weight: bold; color: var(--p); letter-spacing: 2px; text-decoration: none; display: block; }
-        .logo span { color: var(--a); }
-        .btn-lang { position: absolute; top: 0; right: 0; background: var(--w); border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; }
         .card { background: var(--w); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 4px solid transparent; }
-        .card h3 { margin-top: 0; color: var(--p); display: flex; align-items: center; gap: 10px; }
-        .secret-card { border-top-color: var(--a); text-align: center; background: linear-gradient(145deg, #ffffff, #fdfbf7); }
-        .code-display { font-size: 42px; font-weight: 900; letter-spacing: 5px; color: var(--p); margin: 15px 0; background: #eee; padding: 15px; border-radius: 12px; display: inline-block; min-width: 160px; }
-        .promo-display { font-size: 24px; font-weight: 800; color: var(--a); background: #fdfbf7; border: 2px dashed var(--a); padding: 10px 20px; border-radius: 8px; display: inline-block; margin: 10px 0; }
-        .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; box-sizing: border-box; }
-        .guide-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .warning-box { background: #fff8e1; border-left: 4px solid #ffb300; padding: 15px; border-radius: 0 8px 8px 0; font-size: 0.95em; }
+        .card h3 { margin-top: 0; color: var(--p); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .code-display { font-size: 38px; font-weight: 900; letter-spacing: 5px; color: var(--p); margin: 15px 0; background: #eee; padding: 15px; border-radius: 12px; display: inline-block; min-width: 160px; border: 2px solid var(--a); }
+        .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; box-sizing: border-box; width: 100%; text-align: center; margin-bottom: 10px; }
+        .btn-wa { background: #25D366; }
+        .btn-video { background: var(--d); margin-top: 15px; }
+        .btn-map { background: #4285F4; }
+        .guide-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 15px 0; }
+        .ps-text { font-size: 0.85em; color: var(--d); font-weight: bold; margin-top: 5px; }
+        .promo-box { display: none; background: #fdfbf7; border: 2px dashed var(--a); padding: 15px; border-radius: 12px; margin-top: 15px; animation: fadeIn 0.5s; }
         ul.checklist { padding-left: 0; list-style: none; }
         ul.checklist li { margin-bottom: 10px; padding-left: 30px; position: relative; }
         ul.checklist li::before { content: "✓"; color: var(--a); position: absolute; left: 0; font-weight: bold; }
         #area-ospite, #area-scaduta, #area-errore { display: none; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="header">
-        <a href="https://www.casafranca.eu" class="logo" style="display:inline-block;">
-            <img src="logo-casa-franca.png" alt="Casa Franca" style="max-height: 80px; width: auto;">
+        <a href="https://www.casafranca.eu">
+            <img src="logo-casa-franca.png" alt="Casa Franca" style="max-height: 80px;">
         </a>
-        <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
+        <button class="btn-lang" onclick="toggleLang()" style="position: absolute; top: 0; right: 0; background: white; border: 1px solid #ddd; padding: 5px 10px; border-radius: 15px; cursor: pointer;">IT/EN</button>
     </div>
 
-    <div id="area-errore" class="card" style="text-align: center; border-top-color: var(--d);">
+    <div id="area-errore" class="card" style="border-top-color: var(--d); text-align: center;">
         <h3 style="justify-content: center;">⚠️ Link non valido</h3>
-        <p>Il link è corrotto o incompleto. Usa il link originale inviato dall'host.</p>
+        <p>Il link è incompleto. Usa il link originale inviato dall'host.</p>
     </div>
 
-    <div id="area-scaduta" class="card" style="text-align: center; border-top-color: var(--p);">
+    <div id="area-scaduta" class="card" style="border-top-color: var(--p); text-align: center;">
         <h2 id="exp-title"></h2>
         <p id="exp-text"></p>
-        <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" target="_blank" class="btn" style="background:#4285F4; margin-bottom: 25px; width: 100%; max-width: 300px;">⭐ Lascia una recensione</a>
-        
-        <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 10px;">
-            <h3 style="justify-content: center;" id="ref-title-exp"></h3>
-            <p id="ref-text-exp" style="font-size: 0.95em;"></p>
-            <div class="promo-display">FRANCA10</div>
-            <p style="font-size: 0.85em; color: #777;" id="ref-link-note"></p>
-            <a href="https://www.casafranca.eu" class="btn" style="background: var(--a); width: 100%; max-width: 300px;" id="btn-site-exp">🌍 www.casafranca.eu</a>
-        </div>
+        <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" target="_blank" class="btn" style="background:#4285F4;">⭐ Lascia una recensione</a>
     </div>
 
     <div id="area-ospite">
-        <h2 id="greet" style="color: var(--p); text-align: center;"></h2>
+        <h2 id="greet" style="color: var(--p); text-align: center; margin-bottom: 25px;"></h2>
 
-        <div class="card" style="border-top-color: #25D366; text-align: center;">
-            <h3 style="justify-content: center;" id="checkin-title"></h3>
+        <div class="card" style="border-top-color: #25D366;">
+            <h3 id="checkin-title"></h3>
             <p id="checkin-desc"></p>
-            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px; align-items: center;">
-                <a href="https://forms.gle/46LY3mpccnq1d1Q39" target="_blank" class="btn" id="btn-form" style="width: 100%; max-width: 320px; background: var(--p);"></a>
-                <a href="https://wa.me/393298158892?text=Ciao%2C%20ti%20invio%20le%20foto%20dei%20documenti%20per%20il%20Check-in%20a%20Casa%20Franca!" target="_blank" class="btn" id="btn-wa" style="width: 100%; max-width: 320px; background: #25D366;"></a>
-            </div>
-            <p id="checkin-note" style="font-size: 0.85em; color: #777; margin-top: 15px;"></p>
-        </div>
-
-        <div class="card" style="text-align: center;">
-            <h3 style="justify-content: center;" id="map-title"></h3>
-            <p id="map-desc"></p>
-            <a href="https://goo.gl/maps/tuo-link-esatto" target="_blank" class="btn" id="btn-map" style="background: #4285F4; margin-top: 10px;"></a>
-        </div>
-
-        <div class="card secret-card">
-            <h3 style="justify-content: center;" id="key-title"></h3>
-            <p id="key-loc" style="margin-top: 0; color: #555; text-align: left;"></p>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 10px;">
-                <div style="text-align: center;">
-                    <div id="lock-msg" style="color: #666; margin-bottom: 10px;"></div>
-                    <div id="code-box" class="code-display" style="display:none; margin: 0;"></div>
-                </div>
-                <img src="porta-cassetta.jpg" alt="Cassetta chiavi" style="width: 120px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-            </div>
-            <p id="key-note" style="font-size: 0.9em; color: #666; margin-top: 15px; text-align: left;"></p>
-        </div>
-
-        <div style="text-align: center; margin-bottom: 25px;">
-            <a href="https://drive.google.com/file/d/1t6-9V0G5hG9YS-RAUkeQuQUPu3btj0iJ/view?usp=sharing" target="_blank" id="btn-video" class="btn" style="background: var(--d);"></a>
+            <a href="https://forms.gle/46LY3mpccnq1d1Q39" target="_blank" class="btn" id="btn-form"></a>
+            <a href="https://wa.me/393298158892" target="_blank" class="btn btn-wa" id="btn-wa"></a>
+            <p id="checkin-ps" style="font-size: 0.85em; color: #666;"></p>
         </div>
 
         <div class="card">
-            <h3 id="park-title"></h3>
-            <p id="park-main"></p>
-            <img src="parcheggio-principale.jpg" alt="Parcheggio Principale" style="width: 100%; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <h3 id="map-title"></h3>
+            <p id="map-desc"></p>
+            <a href="https://maps.app.goo.gl/tuo-link-mappa" target="_blank" class="btn btn-map" id="btn-map"></a>
+        </div>
+
+        <div class="card" style="border-top-color: var(--a); text-align: center;">
+            <h3 id="key-title" style="justify-content: center;"></h3>
+            <p id="key-text" style="text-align: left;"></p>
+            <img src="porta-cassetta.jpg" alt="Cassetta chiavi" class="guide-img">
             
-            <div class="warning-box">
-                <p id="park-alt" style="margin: 0;"></p>
-            </div>
-            <img src="parcheggio-temporaneo.jpg" alt="Parcheggio Temporaneo" style="width: 100%; border-radius: 8px; margin-top: 10px;">
+            <p style="text-align: left; font-weight: bold; margin-bottom: 5px;" id="key-code-intro"></p>
+            <div id="code-box" class="code-display">----</div>
+            <p id="key-ps" class="ps-text"></p>
+            
+            <p id="key-after" style="text-align: left; font-size: 0.95em; margin-top: 15px;"></p>
+            
+            <a href="https://drive.google.com/file/d/1t6-9V0G5hG9YS-RAUkeQuQUPu3btj0iJ/view" target="_blank" class="btn btn-video" id="btn-video"></a>
         </div>
 
         <div class="card">
@@ -113,13 +89,13 @@
             <ul class="checklist">
                 <li id="info-terme"></li>
                 <li id="info-tax"></li>
-                <li id="local-trash"></li>
+                <li id="info-trash"></li>
             </ul>
         </div>
 
         <div class="card" style="border-top-color: var(--d);">
             <h3 id="out-title"></h3>
-            <p id="out-desc" style="font-size: 0.95em; margin-top: 0; margin-bottom: 15px;"></p>
+            <p id="out-desc" style="font-weight: bold;"></p>
             <ul class="checklist">
                 <li id="out-1"></li>
                 <li id="out-2"></li>
@@ -128,41 +104,39 @@
             </ul>
         </div>
 
-        <div class="card" style="text-align: center; border-top-color: var(--a); background: #fcfaf5;">
-            <h3 style="justify-content: center; color: var(--a);" id="rev-title"></h3>
-            <p id="rev-desc" style="font-size: 0.95em;"></p>
-            <div class="promo-display">FRANCA10</div>
-            <p id="rev-link-text" style="font-size: 0.85em; color: #777; margin-top: 10px;"></p>
+        <div class="card" style="text-align: center; border: 2px solid var(--a); background: #fdfbf7;">
+            <h3 id="rev-title" style="justify-content: center; border: none;"></h3>
+            <p id="rev-desc"></p>
+            <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" target="_blank" class="btn" style="background: var(--a);" onclick="mostraSorpresa()" id="btn-rev"></a>
+            
+            <div id="box-sorpresa" class="promo-box">
+                <p id="promo-msg" style="font-weight: bold; color: var(--p);"></p>
+                <div style="font-size: 28px; font-weight: 900; color: var(--a); margin: 10px 0;">FRANCA10</div>
+                <p id="promo-link" style="font-size: 0.9em;"></p>
+            </div>
         </div>
 
         <div style="text-align: center; margin-bottom: 40px;">
-            <a href="https://www.casafranca.eu" id="btn-back" class="btn">🌍 Torna al Sito Principale</a>
+            <a href="https://www.casafranca.eu" class="btn" id="btn-site"></a>
         </div>
     </div>
 </div>
 
 <script>
     const p = new URLSearchParams(window.location.search);
-    
-    function dec(s) { 
-        if (!s) return null; 
-        try { return atob(s); } catch(e) { return null; } 
-    }
+    function dec(s) { try { return atob(s); } catch(e) { return null; } }
 
-    let n = dec(p.get('n')) || localStorage.getItem('cf_n');
+    let n = dec(p.get('n')) || localStorage.getItem('cf_n') || "Ospite";
     let c = dec(p.get('c')) || localStorage.getItem('cf_c');
     let i = dec(p.get('in')) || localStorage.getItem('cf_in');
     let o = dec(p.get('out')) || localStorage.getItem('cf_out');
     let l = p.get('l') || localStorage.getItem('cf_l') || 'it';
 
     if (p.get('n')) {
-        if (!n || !c || !i) { document.getElementById('area-errore').style.display = 'block'; }
-        else {
-            localStorage.setItem('cf_n', n); localStorage.setItem('cf_c', c);
-            localStorage.setItem('cf_in', i); localStorage.setItem('cf_out', o);
-            localStorage.setItem('cf_l', l);
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
+        localStorage.setItem('cf_n', n); localStorage.setItem('cf_c', c);
+        localStorage.setItem('cf_in', i); localStorage.setItem('cf_out', o);
+        localStorage.setItem('cf_l', l);
+        window.history.replaceState({}, document.title, window.location.pathname);
     }
 
     const dict = {
@@ -172,83 +146,73 @@
             checkinDesc: "In vista del suo arrivo, al fine di ottemperare all’obbligo di registrazione degli ospiti, la invitiamo ad inoltrarci copia di un documento d’identità (carta d’identità o passaporto), suo e dell’ospite che viaggerà con lei.",
             btnForm: "📝 Modulo Registrazione",
             btnWa: "📸 Invia Documenti via WhatsApp",
-            checkinNote: "I suoi dati saranno utilizzati solo per obblighi di registrazione (PS – Alloggiati Web).",
+            checkinPs: "I suoi dati saranno utilizzati solo per obblighi di registrazione (PS – Alloggiati Web).",
             mapTitle: "🗺️ Come raggiungerci",
             mapDesc: "La struttura è raggiungibile inserendo in Google Maps l’indirizzo Viale della Vittoria, 23, San Pellegrino Terme (BG) oppure:",
             btnMap: "📍 Indicazioni tramite Maps",
-            keyTitle: "🔑 Come accedere alla struttura",
-            keyLoc: "Una volta arrivato presso la struttura, potrà ritirare le chiavi del suo appartamento all’interno della piccola cassetta nera situata sotto la cassetta postale, accanto all’ingresso (in fotografia).",
-            keyNote: "<em>Il codice segreto è riportato di seguito. Dopo averlo inserito, tiri leggermente verso di sé per aprire la cassetta e prelevare le chiavi. Con queste potrà accedere sia alla struttura sia al suo appartamento, che si trova al piano terra, alla prima porta sulla sinistra.</em>",
-            keyWait: "<span>Codice Segreto<br>Disponibile dalle 06:00 del giorno di arrivo</span>",
-            btnVideo: "🎥 Guarda Video Tutorial",
-            parkTitle: "🚗 Parcheggio riservato",
-            parkMain: "È disponibile un posto auto riservato (massimo un veicolo) nei due parcheggi con strisce gialle di fronte alla struttura. È necessario esporre il contrassegno che troverà sul tavolo all’interno dell’appartamento.",
-            parkAlt: "Se il parcheggio è occupato per sosta non autorizzata, è possibile usare temporaneamente l'area sottostante.",
+            keyTitle: "🔑 Accesso e Chiavi",
+            keyText: "Una volta arrivato presso la struttura, potrà ritirare le chiavi del suo appartamento all’interno della piccola cassetta nera situata sotto la cassetta postale, accanto all’ingresso (in fotografia).",
+            keyCodeIntro: "Il codice segreto è riportato di seguito:",
+            keyPs: "P.S. Il codice sarà disponibile dalle ore 06:00 del giorno dell'arrivo.",
+            keyAfter: "Dopo averlo inserito, tiri leggermente verso di sé per aprire la cassetta e prelevare le chiavi. Con queste potrà accedere sia alla struttura sia al suo appartamento, che si trova al piano terra, alla prima porta sulla sinistra.",
+            btnVideo: "🎥 Guarda Video Tutorial Accesso",
             wifiTitle: "📶 Wi-Fi",
             wifiDesc: "La struttura è dotata di rete Wi-Fi veloce, per accedere:",
             infoTitle: "🌿 Altre Info Utili",
-            infoTerme: "<strong>Convenzione QC Terme:</strong> la struttura è convenzionata con QC Terme. Al suo arrivo troverà un voucher sconto sul tavolo dell’appartamento, da presentare alla reception del centro termale per ottenere lo sconto. Per usufruire correttamente del buono, la invitiamo a prenotare l’ingresso tramite il sito di QC Terme, selezionando l’opzione di pagamento “paga in struttura”. La convenzione potrebbe non essere valida durante ponti e festività, secondo quanto stabilito dal gestore del centro termale.",
-            infoTax: "<strong>Tassa soggiorno:</strong> E’ previsto il pagamento della tassa di soggiorno (1€ a notte per ospite). Sul tavolo troverà la ricevuta di pagamento della tassa di soggiorno già compilata. La invitiamo a saldare l’importo lasciando i contanti sul tavolo al termine del soggiorno o condividendo l'importo tramite Paypal a casafranca.avo@gmail.com utilizzando la modalità \"AMICI e/o FAMILIARI\".",
-            localTrash: "<strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.",
+            infoTerme: "<strong>Convenzione QC Terme:</strong> Voucher sconto sul tavolo. Prenoti sul sito selezionando 'paga in struttura'. Convenzione soggetta a limitazioni nei festivi.",
+            infoTax: "<strong>Tassa soggiorno:</strong> 1€ a notte/ospite. Ricevuta già compilata sul tavolo. Saldo contanti o PayPal (casafranca.avo@gmail.com - modalità AMICI).",
+            infoTrash: "<strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.",
             outTitle: "🚪 Check-out",
-            outDesc: "Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.",
-            out1: "Chiuda a chiave l’appartamento",
-            out2: "Ricordi di lasciare il contrassegno del parcheggio sul tavolo.",
-            out3: "Imposti il termostato al minimo",
+            outDesc: "Entro le ore 10:00, salvo diversi accordi.",
+            out1: "Chiuda a chiave l’appartamento.",
+            out2: "Lasci il contrassegno del parcheggio sul tavolo.",
+            out3: "Imposti il termostato al minimo.",
             out4: "Inserisca le chiavi nella cassetta postale.",
-            expTitle: "✨ Grazie di essere stato con noi!",
-            expText: "Speriamo che il soggiorno sia stato di tuo gradimento. L'accesso ai codici è ora disattivato.",
-            refTitleExp: "🎁 Regala uno sconto ai tuoi amici",
-            refTextExp: "Consiglia Casa Franca ai tuoi amici! Se prenotano direttamente sul nostro sito usando questo codice, riceveranno subito uno <strong>sconto del 10%</strong>.",
-            refLinkNote: "Possono prenotare direttamente su:",
-            btnSiteExp: "🌍 www.casafranca.eu",
             revTitle: "⭐ Ti sta piacendo il soggiorno?",
-            revDesc: "Prima di partire, lasciaci una recensione a 5 stelle! Torna su questa pagina a fine soggiorno per il link diretto. Se consiglierai Casa Franca ai tuoi amici usando il codice qui sotto, avranno il 10% di sconto sul nostro sito.",
-            revLinkText: "Sito web: www.casafranca.eu",
-            btnBack: "🌍 Torna al sito principale",
-            img: "istruzioni-ita.jpg"
+            revDesc: "Prima di partire, lasciaci una recensione a 5 stelle! Clicca il tasto sotto per scoprire una sorpresa riservata a te.",
+            btnRev: "🌟 Lascia Recensione e Scopri la Sorpresa",
+            promoMsg: "GRAZIE! Ecco il tuo regalo per i tuoi amici (o per te):",
+            promoLink: "Prenotazioni dirette su: www.casafranca.eu",
+            btnSite: "🌍 Torna al Sito Principale",
+            expTitle: "✨ Soggiorno Terminato",
+            expText: "Grazie per essere stato con noi! L'accesso ai codici è scaduto."
         },
         en: {
             greet: `Hello ${n}, welcome!`,
-            checkinTitle: "📋 Before your arrival (self check-in)",
-            checkinDesc: "In preparation for your arrival and to comply with guest registration laws, we kindly ask you to send us a copy of an ID document (ID card or passport) for you and the guest traveling with you.",
+            checkinTitle: "📋 Before Arrival (self check-in)",
+            checkinDesc: "To comply with registration laws, please send us a copy of your ID (ID card or passport) for you and your guest.",
             btnForm: "📝 Registration Form",
-            btnWa: "📸 Send Documents via WhatsApp",
-            checkinNote: "Your data will only be used for registration obligations (Police portal).",
-            mapTitle: "🗺️ How to reach us",
-            mapDesc: "The property can be reached by entering the address Viale della Vittoria, 23, San Pellegrino Terme (BG) on Google Maps, or:",
+            btnWa: "📸 Send via WhatsApp",
+            checkinPs: "Data used for official registration only.",
+            mapTitle: "🗺️ How to Reach Us",
+            mapDesc: "Enter Viale della Vittoria, 23, San Pellegrino Terme (BG) on Google Maps or:",
             btnMap: "📍 Directions via Maps",
-            keyTitle: "🔑 Accessing the property",
-            keyLoc: "Once you arrive at the property, you can collect your apartment keys from the small black box located under the mailbox, next to the entrance (in the photo).",
-            keyNote: "<em>The secret code is shown below. After entering it, pull slightly towards you to open the box and retrieve the keys. With these, you can access both the building and your apartment, which is on the ground floor, first door on the left.</em>",
-            keyWait: "<span>Secret Code<br>Available from 06:00 AM on arrival day</span>",
+            keyTitle: "🔑 Access and Keys",
+            keyText: "Collect keys from the small black box under the mailbox at the entrance (see photo).",
+            keyCodeIntro: "The secret code is shown below:",
+            keyPs: "P.S. Code available from 06:00 AM on arrival day.",
+            keyAfter: "Enter the code and pull the box towards you. Use keys for both the building and your apartment (Ground Floor, first door on the left).",
             btnVideo: "🎥 Watch Video Tutorial",
-            parkTitle: "🚗 Reserved Parking",
-            parkMain: "There is a reserved parking space (maximum one vehicle) in the two yellow-lined parking spots in front of the building. You must display the parking permit that you will find on the table inside the apartment.",
-            parkAlt: "If the parking space is occupied by an unauthorized vehicle, you can temporarily use the area shown below.",
             wifiTitle: "📶 Wi-Fi",
-            wifiDesc: "The property is equipped with a fast Wi-Fi network. To access:",
+            wifiDesc: "Fast Wi-Fi available:",
             infoTitle: "🌿 Useful Info",
-            infoTerme: "<strong>QC Terme Discount:</strong> we have an agreement with QC Terme. Upon arrival, you will find a discount voucher on the apartment table to present at the spa reception. To properly use the voucher, please book your entry on the QC Terme website, selecting the 'pay at the property' option. The discount may not be valid during long weekends and holidays, as determined by the spa management.",
-            infoTax: "<strong>Tourist Tax:</strong> The payment of the tourist tax is required (€1 per night per guest). On the table, you will find the pre-filled receipt for the tourist tax. Please settle the amount by leaving cash on the table at the end of your stay or by sharing the amount via PayPal to casafranca.avo@gmail.com using the \"FRIENDS and/or FAMILY\" option.",
-            localTrash: "<strong>Waste:</strong> Separate waste in the bins under the sink.",
+            infoTerme: "<strong>QC Terme:</strong> Discount voucher on the table. Book online selecting 'pay at property'.",
+            infoTax: "<strong>Tourist Tax:</strong> €1/night/guest. Receipt on the table. Pay cash or PayPal (Friends mode).",
+            infoTrash: "<strong>Waste:</strong> Please separate trash in the bins under the sink.",
             outTitle: "🚪 Check-out",
-            outDesc: "Check-out must be completed by 10:00 AM, unless otherwise agreed.",
+            outDesc: "By 10:00 AM.",
             out1: "Lock the apartment.",
-            out2: "Remember to leave the parking permit on the table.",
-            out3: "Set the thermostat to the minimum.",
-            out4: "Drop the keys in the mailbox.",
-            expTitle: "✨ Thank you for staying with us!",
-            expText: "We hope you enjoyed your stay. Access to security codes is now disabled.",
-            refTitleExp: "🎁 Gift a discount to friends",
-            refTextExp: "Recommend Casa Franca to your friends! If they book directly on our site using this code, they will immediately receive a <strong>10% discount</strong>.",
-            refLinkNote: "They can book directly at:",
-            btnSiteExp: "🌍 www.casafranca.eu",
-            revTitle: "⭐ Are you enjoying your stay?",
-            revDesc: "Before leaving, please leave us a 5-star review! Come back to this page at the end of your stay for the direct link. If you recommend us to your friends using the code below, they will get a 10% discount on our website.",
-            revLinkText: "Website: www.casafranca.eu",
-            btnBack: "🌍 Back to main site",
-            img: "istruzioni-eng.jpg"
+            out2: "Leave the parking permit on the table.",
+            out3: "Set thermostat to minimum.",
+            out4: "Drop keys in the mailbox.",
+            revTitle: "⭐ Enjoying your stay?",
+            revDesc: "Leave us a 5-star review and discover a special surprise!",
+            btnRev: "🌟 Review & Reveal Surprise",
+            promoMsg: "THANK YOU! Here is a gift for you or your friends:",
+            promoLink: "Book directly at: www.casafranca.eu",
+            btnSite: "🌍 Back to Website",
+            expTitle: "✨ Stay Ended",
+            expText: "Thank you for staying with us! Code access has expired."
         }
     };
 
@@ -257,72 +221,57 @@
 
     function updateUI() {
         const t = dict[l];
-        document.getElementById('greet').innerHTML = t.greet;
+        document.getElementById('greet').innerText = t.greet;
         document.getElementById('checkin-title').innerText = t.checkinTitle;
-        document.getElementById('checkin-desc').innerHTML = t.checkinDesc;
+        document.getElementById('checkin-desc').innerText = t.checkinDesc;
         document.getElementById('btn-form').innerText = t.btnForm;
         document.getElementById('btn-wa').innerText = t.btnWa;
-        document.getElementById('checkin-note').innerHTML = t.checkinNote;
-        
+        document.getElementById('checkin-ps').innerText = t.checkinPs;
         document.getElementById('map-title').innerText = t.mapTitle;
         document.getElementById('map-desc').innerText = t.mapDesc;
         document.getElementById('btn-map').innerText = t.btnMap;
-        
         document.getElementById('key-title').innerText = t.keyTitle;
-        document.getElementById('key-loc').innerText = t.keyLoc;
+        document.getElementById('key-text').innerText = t.keyText;
+        document.getElementById('key-code-intro').innerText = t.keyCodeIntro;
+        document.getElementById('key-ps').innerText = t.keyPs;
+        document.getElementById('key-after').innerText = t.keyAfter;
         document.getElementById('btn-video').innerText = t.btnVideo;
-        
-        document.getElementById('park-title').innerText = t.parkTitle;
-        document.getElementById('park-main').innerHTML = t.parkMain;
-        document.getElementById('park-alt').innerHTML = t.parkAlt;
-        
         document.getElementById('wifi-title').innerText = t.wifiTitle;
         document.getElementById('wifi-desc').innerText = t.wifiDesc;
-        
         document.getElementById('info-title').innerText = t.infoTitle;
         document.getElementById('info-terme').innerHTML = t.infoTerme;
         document.getElementById('info-tax').innerHTML = t.infoTax;
-        document.getElementById('local-trash').innerHTML = t.localTrash;
-        
+        document.getElementById('info-trash').innerHTML = t.infoTrash;
         document.getElementById('out-title').innerText = t.outTitle;
         document.getElementById('out-desc').innerText = t.outDesc;
-        document.getElementById('out-1').innerHTML = t.out1; 
-        document.getElementById('out-2').innerHTML = t.out2;
-        document.getElementById('out-3').innerHTML = t.out3; 
-        document.getElementById('out-4').innerHTML = t.out4;
-        
-        // Testi post-check-out
-        document.getElementById('exp-title').innerText = t.expTitle;
-        document.getElementById('exp-text').innerText = t.expText;
-        document.getElementById('ref-title-exp').innerText = t.refTitleExp;
-        document.getElementById('ref-text-exp').innerHTML = t.refTextExp;
-        document.getElementById('ref-link-note').innerText = t.refLinkNote;
-        document.getElementById('btn-site-exp').innerText = t.btnSiteExp;
-
-        // Testi area ospite (durante soggiorno)
+        document.getElementById('out-1').innerText = t.out1;
+        document.getElementById('out-2').innerText = t.out2;
+        document.getElementById('out-3').innerText = t.out3;
+        document.getElementById('out-4').innerText = t.out4;
         document.getElementById('rev-title').innerText = t.revTitle;
         document.getElementById('rev-desc').innerText = t.revDesc;
-        document.getElementById('rev-link-text').innerText = t.revLinkText;
-
-        document.getElementById('btn-back').innerText = t.btnBack;
+        document.getElementById('btn-rev').innerText = t.btnRev;
+        document.getElementById('promo-msg').innerText = t.promoMsg;
+        document.getElementById('promo-link').innerText = t.promoLink;
+        document.getElementById('btn-site').innerText = t.btnSite;
+        document.getElementById('exp-title').innerText = t.expTitle;
+        document.getElementById('exp-text').innerText = t.expText;
 
         if (isEarly()) {
-            document.getElementById('lock-msg').innerHTML = t.keyWait;
-            document.getElementById('code-box').style.display = 'none';
-            document.getElementById('key-note').innerHTML = ""; 
+            document.getElementById('code-box').innerText = "----";
+            document.getElementById('key-ps').style.display = "block";
         } else {
-            document.getElementById('lock-msg').style.display = 'none';
-            document.getElementById('code-box').style.display = 'inline-block';
             document.getElementById('code-box').innerText = c;
-            document.getElementById('key-note').innerHTML = t.keyNote;
+            document.getElementById('key-ps').style.display = "none";
             document.getElementById('wifi-val').innerText = "Atene001";
         }
     }
 
     function toggleLang() { l = (l === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', l); updateUI(); }
+    function mostraSorpresa() { document.getElementById('box-sorpresa').style.display = 'block'; }
 
     if (isOut()) { document.getElementById('area-scaduta').style.display = 'block'; updateUI(); }
-    else if (n) { document.getElementById('area-ospite').style.display = 'block'; updateUI(); }
+    else { document.getElementById('area-ospite').style.display = 'block'; updateUI(); }
 </script>
 
 </body>
