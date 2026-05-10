@@ -22,8 +22,6 @@
         ul.checklist li { margin-bottom: 10px; padding-left: 30px; position: relative; }
         ul.checklist li::before { content: "✓"; color: var(--a); position: absolute; left: 0; font-weight: bold; }
         #area-ospite, #area-scaduta, #area-errore { display: none; }
-        
-        /* Stile messaggi errore puliti */
         .error-msg { color: #666; font-size: 0.95em; margin-top: 10px; }
         .error-icon { font-size: 40px; margin-bottom: 15px; display: block; }
     </style>
@@ -49,7 +47,7 @@
         <span class="error-icon">✨</span>
         <h2 id="exp-title"></h2>
         <p id="exp-text" class="error-msg"></p>
-        <a href="https://g.page/r/CUyPz9Pz-z-zEAI/review" class="btn" style="background:#4285F4; margin-top:20px;">⭐ Lascia una recensione</a>
+        <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" class="btn" style="background:#4285F4; margin-top:20px;">⭐ Lascia una recensione</a>
     </div>
 
     <div id="area-ospite">
@@ -89,8 +87,6 @@
                 <img src="parcheggio-temporaneo.jpg" alt="Parcheggio temporaneo" class="guide-img" style="margin-top: 10px; margin-bottom: 0;">
             </div>
         </div>
-
-        <img src="" id="img-istruzioni" class="guide-img">
 
         <div class="card">
             <h3 id="wifi-title"></h3>
@@ -169,7 +165,7 @@
             revDesc: "Prima di partire, lasciaci una recensione a 5 stelle! Torna su questa pagina a fine soggiorno per il link diretto.",
             expTitle: "Grazie di essere stato con noi!",
             expText: "Il soggiorno è terminato e l'accesso ai codici è stato disattivato.",
-            btnBack: "Torna al sito principale", img: "istruzioni-ita.jpg"
+            btnBack: "Torna al sito principale"
         },
         en: {
             greet: `Hello ${n}, welcome!`,
@@ -195,7 +191,7 @@
             revDesc: "Please leave us a 5-star review! Come back here at the end of your stay for the link.",
             expTitle: "Thank you for staying with us!",
             expText: "Your stay has ended and codes have been disabled.",
-            btnBack: "Back to main site", img: "istruzioni-eng.jpg"
+            btnBack: "Back to main site"
         }
     };
 
@@ -227,7 +223,6 @@
         document.getElementById('rev-title').innerText = t.revTitle;
         document.getElementById('rev-desc').innerText = t.revDesc;
         document.getElementById('btn-back').innerText = t.btnBack;
-        document.getElementById('img-istruzioni').src = t.img;
 
         if (isEarly()) {
             document.getElementById('lock-msg').innerHTML = t.keyWait;
