@@ -11,14 +11,17 @@
         .header { text-align: center; margin-bottom: 30px; }
         .card { background: var(--w); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 4px solid transparent; }
         .card h3 { margin-top: 0; color: var(--p); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .code-display { font-size: 38px; font-weight: 900; letter-spacing: 5px; color: var(--p); margin: 15px 0; background: #eee; padding: 15px; border-radius: 12px; display: inline-block; min-width: 160px; border: 2px solid var(--a); }
-        .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; box-sizing: border-box; width: 100%; text-align: center; margin-bottom: 10px; }
+        .code-display { font-size: 38px; font-weight: 900; letter-spacing: 5px; color: var(--p); margin: 10px 0; background: #eee; padding: 15px; border-radius: 12px; display: inline-block; min-width: 160px; border: 2px solid var(--a); }
+        .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; box-sizing: border-box; width: 100%; text-align: center; margin-bottom: 10px; transition: 0.3s; }
         .btn-wa { background: #25D366; }
-        .btn-video { background: var(--d); margin-top: 15px; }
+        .btn-email { background: #555; }
+        .btn-video { background: var(--d); margin-top: 20px; }
         .btn-map { background: #4285F4; }
         .guide-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 15px 0; }
-        .ps-text { font-size: 0.85em; color: var(--d); font-weight: bold; margin-top: 5px; }
+        .ps-text { font-size: 0.85em; color: var(--d); font-weight: bold; margin-bottom: 15px; display: block; }
         .promo-box { display: none; background: #fdfbf7; border: 2px dashed var(--a); padding: 20px; border-radius: 12px; margin-top: 20px; animation: fadeIn 0.8s ease forwards; }
+        .share-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+        .share-actions .btn { flex: 1; min-width: 140px; font-size: 0.85em; padding: 10px; }
         ul.checklist { padding-left: 0; list-style: none; }
         ul.checklist li { margin-bottom: 10px; padding-left: 30px; position: relative; }
         ul.checklist li::before { content: "✓"; color: var(--a); position: absolute; left: 0; font-weight: bold; }
@@ -40,18 +43,23 @@
 
     <div id="area-scaduta" class="card" style="border-top-color: var(--p); text-align: center;">
         <h2 id="exp-title">✨ Grazie di essere stato con noi!</h2>
-        <p id="exp-text">Speriamo che il soggiorno sia stato di tuo gradimento. I codici di accesso sono stati disattivati.</p>
+        <p id="exp-text">Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. L'accesso ai codici è terminato.</p>
         
         <div style="background: #f9f9f9; padding: 20px; border-radius: 12px; margin-top: 20px;">
-            <h3 style="justify-content: center; border: none; margin-bottom: 10px;">⭐ Regalo di fine soggiorno</h3>
-            <p id="rev-invite">Lasciaci una recensione a 5 stelle per sbloccare un regalo esclusivo per te e i tuoi amici!</p>
-            <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" target="_blank" class="btn" style="background: var(--a);" onclick="mostraSorpresa()">🌟 Lascia la Recensione e Scopri la Sorpresa</a>
+            <h3 style="justify-content: center; border: none; margin-bottom: 10px;">🎁 Scopri la tua sorpresa</h3>
+            <p>Lasciaci una recensione a 5 stelle per sbloccare il regalo che abbiamo riservato a te e ai tuoi amici!</p>
+            <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" target="_blank" class="btn" style="background: var(--a);" onclick="mostraSorpresa()">🌟 Lascia la Recensione e Scopri il Regalo</a>
             
             <div id="box-sorpresa" class="promo-box">
-                <p style="font-weight: bold; color: var(--p); margin-bottom: 5px;">GRAZIE! Ecco il tuo codice sconto:</p>
+                <p style="font-weight: bold; color: var(--p); margin-bottom: 5px;">ECCEZIONALE! Ecco il tuo codice sconto:</p>
                 <div style="font-size: 32px; font-weight: 900; color: var(--a); margin: 10px 0;">FRANCA10</div>
-                <p style="font-size: 0.9em; margin-bottom: 15px;">Uno <strong>sconto del 10%</strong> valido per te o i tuoi amici per la prossima prenotazione sul nostro sito!</p>
-                <a href="https://www.casafranca.eu" class="btn" style="background: var(--p);">🌍 Prenota su www.casafranca.eu</a>
+                <p style="font-size: 0.9em; margin-bottom: 15px;">Usa questo codice per ottenere uno <strong>sconto del 10%</strong> prenotando sul sito. Inoltrialo ai tuoi amici!</p>
+                
+                <div class="share-actions">
+                    <a id="share-wa" href="#" target="_blank" class="btn btn-wa">📲 WhatsApp</a>
+                    <a id="share-mail" href="#" class="btn btn-email">✉️ Email</a>
+                </div>
+                <a href="https://www.casafranca.eu" class="btn" style="background: var(--p); margin-top:15px;">🌍 www.casafranca.eu</a>
             </div>
         </div>
     </div>
@@ -70,55 +78,72 @@
         <div class="card">
             <h3>🗺️ Come raggiungerci</h3>
             <p>La struttura è raggiungibile inserendo in Google Maps l’indirizzo Viale della Vittoria, 23, San Pellegrino Terme (BG) oppure:</p>
-            <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2778.611111111111!2d9.666666666666666!3d45.83333333333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDUwJzAwLjAiTiA5wrA0MCcwMC4wIkU!5e0!3m2!1sit!2sit!4v1620000000000!5m2!1sit!2sit1" target="_blank" class="btn btn-map">📍 Indicazioni tramite Maps</a>
+            <a href="https://maps.app.goo.gl/tuo-link-corretto" target="_blank" class="btn btn-map">📍 Indicazioni tramite Maps</a>
         </div>
 
         <div class="card" style="border-top-color: var(--a); text-align: center;">
-            <h3 style="justify-content: center;">🔑 Accesso e Chiavi</h3>
+            <h3 style="justify-content: center;">🔑 Come accedere alla struttura</h3>
             <p style="text-align: left;">Una volta arrivato presso la struttura, potrà ritirare le chiavi del suo appartamento all’interno della piccola cassetta nera situata sotto la cassetta postale, accanto all’ingresso (in fotografia).</p>
+            
             <img src="porta-cassetta.jpg" alt="Cassetta chiavi" class="guide-img">
             
-            <p style="text-align: left; font-weight: bold; margin-bottom: 5px;">Il codice segreto è riportato di seguito:</p>
+            <p style="text-align: left; font-weight: bold; margin-bottom: 5px;">Codice Segreto:</p>
             <div id="code-box" class="code-display">----</div>
-            <p id="key-ps" class="ps-text">P.S. Il codice sarà disponibile dalle ore 06:00 del giorno dell'arrivo.</p>
+            <span id="key-ps" class="ps-text">P.S. Il codice sarà disponibile dalle ore 06:00 del giorno di arrivo.</span>
             
-            <p style="text-align: left; font-size: 0.95em; margin-top: 15px;">Dopo averlo inserito, tiri leggermente verso di sé per aprire la cassetta e prelevare le chiavi. Con queste potrà accedere sia alla struttura sia al suo appartamento, che si trova al piano terra, alla prima porta sulla sinistra.</p>
+            <p style="text-align: left; font-size: 0.95em;">Dopo averlo inserito, tiri leggermente verso di sé per aprire la cassetta e prelevare le chiavi. Con queste potrà accedere sia alla struttura sia al suo appartamento, che si trova al piano terra, alla prima porta sulla sinistra.</p>
             
             <a href="https://drive.google.com/file/d/1t6-9V0G5hG9YS-RAUkeQuQUPu3btj0iJ/view" target="_blank" class="btn btn-video">🎥 Guarda Video Tutorial Accesso</a>
         </div>
 
         <div class="card">
+            <h3>🚗 Parcheggio riservato</h3>
+            <p>È disponibile un posto auto riservato (massimo un veicolo) nei due parcheggi con strisce gialle di fronte alla struttura. È necessario esporre il contrassegno che troverà sul tavolo all’interno dell’appartamento.</p>
+            <img src="parcheggio-principale.jpg" class="guide-img">
+            <p style="font-size: 0.9em; background: #fff8e1; padding: 10px; border-radius: 8px;">Se il parcheggio è occupato per sosta non autorizzata, è possibile usare temporaneamente l'area sottostante illustrata in foto.</p>
+            <img src="parcheggio-temporaneo.jpg" class="guide-img">
+        </div>
+
+        <div class="card">
+            <h3>📶 Wi-Fi</h3>
+            <p>La struttura è dotata di rete Wi-Fi veloce, per accedere:</p>
+            <p><strong>Network:</strong> APP.1<br><strong>Password:</strong> <span id="wifi-val">••••••••</span></p>
+        </div>
+
+        <div class="card">
             <h3>🌿 Altre Info Utili</h3>
             <ul class="checklist">
-                <li><strong>QC Terme:</strong> Voucher sconto sul tavolo. Prenoti sul sito selezionando "paga in struttura".</li>
-                <li><strong>Tassa soggiorno:</strong> 1€ a notte/ospite. Ricevuta già compilata sul tavolo. Saldo contanti o PayPal (casafranca.avo@gmail.com - modalità AMICI).</li>
+                <li><strong>Convenzione QC Terme:</strong> Voucher sconto sul tavolo. Prenoti sul sito QC Terme selezionando "paga in struttura". (La convenzione potrebbe non essere valida in ponti/festività).</li>
+                <li><strong>Tassa soggiorno:</strong> 1€ a notte per ospite. Troverà la ricevuta già compilata sul tavolo. Saldo contanti o PayPal (casafranca.avo@gmail.com - modalità AMICI e/o FAMILIARI).</li>
                 <li><strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.</li>
             </ul>
         </div>
 
         <div class="card" style="border-top-color: var(--d);">
             <h3>🚪 Check-out</h3>
-            <p style="font-weight: bold; margin-top:0;">Entro le ore 10:00, salvo diversi accordi.</p>
+            <p style="font-weight: bold; margin-top:0;">Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.</p>
             <ul class="checklist">
                 <li>Chiuda a chiave l’appartamento.</li>
-                <li>Lasci il contrassegno del parcheggio sul tavolo.</li>
-                <li>Termostato al minimo.</li>
+                <li>Ricordi di lasciare il contrassegno del parcheggio sul tavolo.</li>
+                <li>Imposti il termostato al minimo.</li>
                 <li>Inserisca le chiavi nella cassetta postale.</li>
             </ul>
-            <div style="margin-top: 20px; padding: 10px; background: #fff8e1; border-radius: 8px; font-size: 0.9em; color: #856404;">
-                📢 <strong>Dopo il check-out:</strong> Torna su questa pagina per lasciarci una recensione e scoprire una <strong>sorpresa speciale</strong> riservata a te!
-            </div>
+        </div>
+
+        <div class="card" style="text-align: center; background: #fdfbf7; border: 1px dashed var(--a);">
+            <h3 style="justify-content: center; border: none;">⭐ Ti sta piacendo il soggiorno?</h3>
+            <p>Prima di partire, lasciaci una recensione a 5 stelle! Torna su questa pagina <strong>dopo il check-out</strong> per scoprire la sorpresa riservata a te.</p>
         </div>
 
         <div style="text-align: center; margin-bottom: 40px;">
-            <a href="https://www.casafranca.eu" class="btn">🌍 Torna al Sito Principale</a>
+            <a href="https://www.casafranca.eu" class="btn">🌍 Torna al sito principale</a>
         </div>
     </div>
 </div>
 
 <script>
     const p = new URLSearchParams(window.location.search);
-    function dec(s) { try { return atob(s); } catch(e) { return null; } }
+    function dec(s) { try { return s ? atob(s) : null; } catch(e) { return null; } }
 
     let n = dec(p.get('n')) || localStorage.getItem('cf_n') || "Ospite";
     let c = dec(p.get('c')) || localStorage.getItem('cf_c');
@@ -136,17 +161,25 @@
     function isEarly() { return i && new Date() < new Date(i.substring(0,4), i.substring(4,6)-1, i.substring(6,8), 6, 0, 0); }
     function isOut() { return o && new Date() > new Date(o.substring(0,4), o.substring(4,6)-1, o.substring(6,8), 12, 0, 0); }
 
-    function mostraSorpresa() { document.getElementById('box-sorpresa').style.display = 'block'; }
+    function mostraSorpresa() { 
+        document.getElementById('box-sorpresa').style.display = 'block'; 
+        
+        // Preparazione link condivisione
+        const msg = encodeURIComponent("Ciao! Ti consiglio Casa Franca a San Pellegrino Terme. Se prenoti dal loro sito www.casafranca.eu usa il codice FRANCA10 per avere il 10% di sconto!");
+        document.getElementById('share-wa').href = "https://wa.me/?text=" + msg;
+        document.getElementById('share-mail').href = "mailto:?subject=Consiglio Soggiorno a San Pellegrino&body=" + msg;
+    }
 
     if (isOut()) { 
         document.getElementById('area-scaduta').style.display = 'block'; 
-    } else if (dec(p.get('n')) || localStorage.getItem('cf_n')) {
+    } else if (localStorage.getItem('cf_n')) {
         document.getElementById('area-ospite').style.display = 'block'; 
         if (isEarly()) {
             document.getElementById('code-box').innerText = "----";
         } else {
             document.getElementById('code-box').innerText = c;
             document.getElementById('key-ps').style.display = "none";
+            document.getElementById('wifi-val').innerText = "Atene001";
         }
     } else {
         document.getElementById('area-errore').style.display = 'block';
