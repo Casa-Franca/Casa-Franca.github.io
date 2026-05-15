@@ -11,8 +11,7 @@
         .header { text-align: center; margin-bottom: 30px; position: relative; min-height: 80px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
         .btn-lang { position: absolute; top: 10px; right: 0; background: var(--w); border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 14px; z-index: 100; }
         
-        /* Aggiunta Banner Date */
-        .dates-banner { background: var(--p); color: white; padding: 15px; border-radius: 16px; margin-bottom: 20px; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; box-sizing: border-box; }
+        .dates-banner { background: var(--p); color: white; padding: 15px; border-radius: 16px; margin-bottom: 25px; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; box-sizing: border-box; }
         .dates-banner div { text-align: center; }
         .dates-banner label { display: block; font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: var(--a); margin-bottom: 4px; }
         .dates-banner span { font-weight: bold; font-size: 1.1em; }
@@ -26,7 +25,6 @@
         .btn-video { background: var(--d); margin-top: 15px; }
         .btn-email { background: #555; }
         
-        /* Stile per Wi-Fi e Tasto Copia */
         .wifi-box { background: #f8f9fa; border: 1px solid #ddd; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
         .copy-btn { background: var(--a); color: white; border: none; padding: 8px 15px; border-radius: 10px; cursor: pointer; font-size: 0.8em; font-weight: bold; }
 
@@ -38,7 +36,8 @@
         ul.checklist { padding-left: 0; list-style: none; }
         ul.checklist li { margin-bottom: 15px; padding-left: 30px; position: relative; }
         ul.checklist li::before { content: "✓"; color: var(--a); position: absolute; left: 0; font-weight: bold; }
-        #area-ospite, #area-scaduta, #area-errore { display: none; }
+        
+        #area-ospite, #area-scaduta, #area-errore, #area-negata { display: none; }
         .contact-box { background: #eef2f5; padding: 15px; border-radius: 12px; text-align: center; margin-top: 20px; font-size: 0.9em; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -56,6 +55,12 @@
     <div id="area-errore" class="card" style="border-top-color: var(--d); text-align: center;">
         <h3 style="justify-content: center;">⚠️ Link non valido</h3>
         <p>Il link è incompleto. Per favore usa il link originale inviato dall'host.</p>
+    </div>
+    
+    <div id="area-negata" class="card" style="border-top-color: var(--d); text-align: center;">
+        <h2 style="color: var(--d); margin-bottom: 10px;">🚫 Accesso Negato</h2>
+        <p>Questa prenotazione risulta cancellata o non più attiva.</p>
+        <p>Se ritieni sia un errore, contatta l'host.</p>
     </div>
 
     <div id="area-scaduta" class="card" style="border-top-color: var(--p); text-align: center;">
@@ -82,13 +87,13 @@
     </div>
 
     <div id="area-ospite">
+        <h2 id="greet" style="color: var(--p); text-align: center; margin-bottom: 25px; font-size: 1.6em;"></h2>
+
         <div class="dates-banner">
             <div><label id="lbl-checkin">Check-in</label><span id="date-in">--/--</span></div>
             <div style="font-size: 1.5em; opacity: 0.5;">→</div>
             <div><label id="lbl-checkout">Check-out</label><span id="date-out">--/--</span></div>
         </div>
-
-        <h2 id="greet" style="color: var(--p); text-align: center; margin-bottom: 25px;"></h2>
 
         <div class="card" style="border-top-color: #25D366;">
             <h3 id="c-tit">📋 Prima del suo arrivo (self check-in)</h3>
@@ -182,21 +187,21 @@
     let o = dec(p.get('out')) || localStorage.getItem('cf_out');
     let l = p.get('l') || localStorage.getItem('cf_l') || 'it';
     
-    // Nuove variabili per il registro
     let cognome = dec(p.get('s')) || localStorage.getItem('cf_s') || "";
     let fonte = dec(p.get('p')) || localStorage.getItem('cf_p') || "Diretta";
 
-    // Funzione per inviare data pulita (es: 15/05/2026) al foglio Google
     function formatFullD(str) { 
         if(!str || str.length < 8) return "--/--/----"; 
         return str.substring(6,8) + "/" + str.substring(4,6) + "/" + str.substring(0,4); 
     }
     
-    // Funzione per formattare data banner (es: 15/05)
     function formatBannerD(str) { 
         if(!str || str.length < 8) return "--/--"; 
         return str.substring(6,8) + "/" + str.substring(4,6); 
     }
+
+    // IL NUOVO URL DELLO SCRIPT GOOGLE
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwNZ2hTpjRpfiqf7kwi-oQLqrzjij8R5dx26r0P4gPCOcjGLZR3lbg2Q6iNUS-n0cZr/exec";
 
     if (p.get('n')) {
         localStorage.setItem('cf_n', n); localStorage.setItem('cf_c', c);
@@ -204,9 +209,8 @@
         localStorage.setItem('cf_l', l);
         localStorage.setItem('cf_s', cognome); localStorage.setItem('cf_p', fonte);
         
-        // --- INVIO DATI DECODIFICATI AL REGISTRO ---
+        // Tracking al Registro Letture (Avviene una sola volta)
         if (!localStorage.getItem('reg_' + i + n)) {
-            const scriptURL = "https://script.google.com/macros/s/AKfycbzOGhN9NUHp0Np65_Ntg6nQ4Aynpjshf_xFcRYehoNqmNTxf_wIKZz1CqlixH6fnB5O8w/exec";
             fetch(`${scriptURL}?nome=${encodeURIComponent(n)}&cognome=${encodeURIComponent(cognome)}&fonte=${encodeURIComponent(fonte)}&checkin=${encodeURIComponent(formatFullD(i))}&checkout=${encodeURIComponent(formatFullD(o))}`, { mode: 'no-cors' });
             localStorage.setItem('reg_' + i + n, 'true');
         }
@@ -216,10 +220,10 @@
 
     const dict = {
         it: {
-            greet: `Ti diamo il benvenuto a Casa Franca, ${n}!`,
+            greet: `Ciao ${n}, ti diamo il benvenuto a Casa Franca!`,
             copy: "Copia",
             expTit: "✨ Grazie di essere stato con noi!",
-            expTxt: "Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. I codici di accesso sono stati disattivati.",
+            expTxt: "Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. L'accesso ai codici è terminato.",
             sTitExp: "🎁 Scopri la tua sorpresa",
             revInv: "Lasciaci una recensione a 5 stelle per sbloccare il regalo esclusivo per te e i tuoi amici!",
             revBtnExp: "🌟 Lascia la Recensione e Scopri il Regalo",
@@ -261,7 +265,7 @@
             contactTxt: "Per qualsiasi necessità o informazione aggiuntiva, non esiti a contattarci su WhatsApp o al numero <a href=\"tel:+393482422951\" style=\"color: var(--a); text-decoration: none; font-weight: bold;\">+39 348 242 2951</a>."
         },
         en: {
-            greet: `Welcome to Casa Franca, ${n}! 😊`,
+            greet: `Hello ${n}, welcome to Casa Franca! 😊`,
             copy: "Copy",
             expTit: "Thank you for staying with us! 😊",
             expTxt: "We hope you enjoyed your stay at Casa Franca. Your access codes have now been deactivated.",
@@ -352,7 +356,6 @@
         document.getElementById('back-site').innerText = t.back;
         document.getElementById('contact-txt').innerHTML = t.contactTxt;
         
-        // Imposta date nel banner
         document.getElementById('date-in').innerText = formatBannerD(i);
         document.getElementById('date-out').innerText = formatBannerD(o);
         document.getElementById('lbl-checkin').innerText = "Check-in";
@@ -362,7 +365,6 @@
 
     function toggleLang() { l = (l === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', l); updateUI(); }
     
-    // Funzione copia Wi-Fi
     function copyWifi() {
         navigator.clipboard.writeText("Atene001").then(() => {
             const btn = document.getElementById('btn-copy');
@@ -386,8 +388,25 @@
         document.getElementById('area-scaduta').style.display = 'block'; 
         updateUI();
     } else if (localStorage.getItem('cf_n')) {
-        document.getElementById('area-ospite').style.display = 'block'; 
+        
+        // --- CONTROLLO CANCELLAZIONE LIVE (Interroga il server) ---
+        fetch(`${scriptURL}?azione=check&nome=${encodeURIComponent(n)}&checkin=${i}`)
+            .then(res => res.json())
+            .then(data => {
+                if(data.cancellato) {
+                    document.getElementById('area-ospite').style.display = 'none';
+                    document.getElementById('area-negata').style.display = 'block';
+                } else {
+                    document.getElementById('area-ospite').style.display = 'block'; 
+                }
+            })
+            .catch(err => {
+                // In caso di errore rete, fa vedere l'area normalmente
+                document.getElementById('area-ospite').style.display = 'block'; 
+            });
+
         updateUI();
+        
         if (isEarly()) {
             document.getElementById('code-box').innerText = "----";
         } else {
