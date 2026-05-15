@@ -8,31 +8,26 @@
         :root { --p: #2c3e50; --a: #d4af37; --bg: #f4f7f6; --w: #ffffff; --d: #e74c3c; }
         body { font-family: -apple-system, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 0; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { text-align: center; margin-bottom: 20px; position: relative; min-height: 80px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        .header { text-align: center; margin-bottom: 30px; position: relative; min-height: 80px; display: flex; align-items: center; justify-content: center; }
         .btn-lang { position: absolute; top: 10px; right: 0; background: var(--w); border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 14px; z-index: 100; }
-        
-        /* Banner Date Soggiorno */
-        .dates-banner { background: var(--p); color: white; padding: 15px; border-radius: 16px; margin-bottom: 20px; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .dates-banner div { text-align: center; }
-        .dates-banner label { display: block; font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: var(--a); margin-bottom: 4px; }
-        .dates-banner span { font-weight: bold; font-size: 1.1em; }
-
         .card { background: var(--w); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 4px solid transparent; }
         .card h3 { margin-top: 0; color: var(--p); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .code-display { font-size: 38px; font-weight: 900; letter-spacing: 5px; color: var(--p); margin: 10px 0; background: #eee; padding: 15px; border-radius: 12px; display: inline-block; min-width: 160px; border: 2px solid var(--a); }
-        
         .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; box-sizing: border-box; width: 100%; text-align: center; margin-bottom: 10px; }
         .btn-wa { background: #25D366; }
         .btn-map { background: #4285F4; }
         .btn-video { background: var(--d); margin-top: 15px; }
-        
-        .wifi-box { background: #f8f9fa; border: 1px solid #ddd; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
-        .copy-btn { background: var(--a); color: white; border: none; padding: 8px 15px; border-radius: 10px; cursor: pointer; font-size: 0.8em; font-weight: bold; }
-
+        .btn-email { background: #555; }
         .guide-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 15px 0; }
         .ps-text { font-size: 0.85em; color: var(--d); font-weight: bold; margin-bottom: 15px; display: block; }
+        .promo-box { display: none; background: #fdfbf7; border: 2px dashed var(--a); padding: 20px; border-radius: 12px; margin-top: 20px; animation: fadeIn 0.8s ease forwards; }
+        .share-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+        .share-actions .btn { flex: 1; min-width: 140px; font-size: 0.85em; padding: 10px; }
+        ul.checklist { padding-left: 0; list-style: none; }
+        ul.checklist li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+        ul.checklist li::before { content: "✓"; color: var(--a); position: absolute; left: 0; font-weight: bold; }
         #area-ospite, #area-scaduta, #area-errore { display: none; }
-        .contact-box { background: #eef2f5; padding: 15px; border-radius: 12px; text-align: center; margin: 20px 0 40px 0; font-size: 0.9em; }
+        .contact-box { background: #eef2f5; padding: 15px; border-radius: 12px; text-align: center; margin-top: 20px; font-size: 0.9em; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -42,7 +37,7 @@
     <div class="header">
         <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
         <a href="https://www.casafranca.eu">
-            <img src="logo-casa-franca.webp" alt="Casa Franca" style="max-height: 80px;">
+            <img src="logo-casa-franca.png" alt="Casa Franca" style="max-height: 80px;">
         </a>
     </div>
 
@@ -52,67 +47,107 @@
     </div>
 
     <div id="area-scaduta" class="card" style="border-top-color: var(--p); text-align: center;">
-        <h2 id="exp-title">✨ Grazie di essere stati con noi!</h2>
+        <h2 id="exp-title">✨ Grazie di essere stato con noi!</h2>
+        <p id="exp-text">Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. L'accesso ai codici è terminato.</p>
+        
         <div style="background: #fdfbf7; padding: 25px; border-radius: 16px; margin-top: 25px; border: 2px solid var(--a);">
-            <h3 style="justify-content: center; border: none; margin-bottom: 10px; color: var(--a);">🎁 Scoprite la sorpresa</h3>
-            <p id="rev-inv">Lasciateci una recensione a 5 stelle per sbloccare il regalo esclusivo!</p>
-            <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" target="_blank" class="btn" style="background: var(--a);" onclick="mostraSorpresa()" id="rev-btn-exp">🌟 Lasciate la Recensione</a>
-            <div id="box-sorpresa" style="display:none; margin-top:20px; border-top:1px dashed var(--a); padding-top:20px;">
-                <p>GRAZIE! Ecco il vostro codice sconto:</p>
+            <h3 style="justify-content: center; border: none; margin-bottom: 10px; color: var(--a);" id="s-tit-exp">🎁 Scopri la tua sorpresa</h3>
+            <p id="rev-inv">Lasciaci una recensione a 5 stelle per sbloccare il regalo esclusivo per te e i tuoi amici!</p>
+            <a href="https://g.page/r/CWR5aiXfKJr8EBM/review" target="_blank" class="btn" style="background: var(--a);" onclick="mostraSorpresa()" id="rev-btn-exp">🌟 Lascia la Recensione e Scopri il Regalo</a>
+            
+            <div id="box-sorpresa" class="promo-box">
+                <p style="font-weight: bold; color: var(--p); margin-bottom: 5px;" id="promo-thx">GRAZIE! Ecco il tuo codice sconto:</p>
                 <div style="font-size: 32px; font-weight: 900; color: var(--a); margin: 10px 0;">FRANCA10</div>
-                <p>10% di sconto sul prossimo soggiorno!</p>
+                <p style="font-size: 0.9em; margin-bottom: 15px;" id="promo-desc">Usa questo codice per ottenere il <strong>10% di sconto</strong> sul tuo prossimo soggiorno o inoltralo ai tuoi amici per condividerlo!</p>
+                
+                <div class="share-actions">
+                    <a id="share-wa" href="#" target="_blank" class="btn btn-wa">📲 WhatsApp</a>
+                    <a id="share-mail" href="#" class="btn btn-email">✉️ Email</a>
+                </div>
+                <a href="https://www.casafranca.eu" class="btn" style="background: var(--p); margin-top:15px;">🌍 www.casafranca.eu</a>
             </div>
         </div>
     </div>
 
     <div id="area-ospite">
-        <div class="dates-banner">
-            <div><label id="lbl-checkin">Check-in</label><span id="date-in">--/--</span></div>
-            <div style="font-size: 1.5em; opacity: 0.5;">→</div>
-            <div><label id="lbl-checkout">Check-out</label><span id="date-out">--/--</span></div>
-        </div>
-
         <h2 id="greet" style="color: var(--p); text-align: center; margin-bottom: 25px;"></h2>
 
         <div class="card" style="border-top-color: #25D366;">
             <h3 id="c-tit">📋 Prima del suo arrivo (self check-in)</h3>
-            <p id="c-txt">La invitiamo ad inoltrarci copia di un documento d’identità per la registrazione obbligatoria.</p>
+            <p id="c-txt">In vista del suo arrivo, al fine di ottemperare all’obbligo di registrazione degli ospiti, la invitiamo ad inoltrarci copia di un documento d’identità (carta d’identità o passaporto), suo e dell’ospite che viaggerà con lei.</p>
             <a href="https://forms.gle/46LY3mpccnq1d1Q39" target="_blank" class="btn" id="c-btn-f">📝 Modulo Registrazione</a>
             <a href="https://wa.me/3903451660127" target="_blank" class="btn btn-wa" id="c-btn-w">📸 Invia via WhatsApp</a>
+            <p style="font-size: 0.85em; color: #666;" id="c-ps">I suoi dati saranno utilizzati solo per obblighi di registrazione (PS – Alloggiati Web).</p>
+        </div>
+
+        <div class="card">
+            <h3 id="m-tit">🗺️ Come raggiungerci</h3>
+            <p id="m-txt">La struttura è raggiungibile inserendo in Google Maps l’indirizzo Viale della Vittoria, 23, San Pellegrino Terme (BG) oppure:</p>
+            <a href="https://maps.app.goo.gl/zdPvJyM22ZQyf2fM7" target="_blank" class="btn btn-map" id="m-btn">📍 Indicazioni tramite Maps</a>
         </div>
 
         <div class="card" style="border-top-color: var(--a); text-align: center;">
-            <h3 id="k-tit">🔑 Accesso alla struttura</h3>
-            <p style="text-align: left;">Ritiri le chiavi nella cassetta nera sotto la cassetta postale (in foto).</p>
-            <img src="porta-cassetta.webp" alt="Cassetta chiavi" class="guide-img">
-            <p style="text-align: left; font-weight: bold; margin-bottom: 5px;">Codice Segreto:</p>
+            <h3 id="k-tit" style="justify-content: center;">🔑 Come accedere alla struttura</h3>
+            <p id="k-txt" style="text-align: left;">Una volta arrivato presso la struttura, potrà ritirare le chiavi del suo appartamento all’interno della piccola cassetta nera situata sotto la cassetta postale, accanto all’ingresso (in fotografia).</p>
+            
+            <img src="porta-cassetta.jpg" alt="Cassetta chiavi" class="guide-img">
+            
+            <p style="text-align: left; font-weight: bold; margin-bottom: 5px;" id="k-cod-tit">Codice Segreto:</p>
             <div id="code-box" class="code-display">----</div>
-            <span id="key-ps" class="ps-text">Disponibile dalle ore 06:00 del giorno di arrivo.</span>
-            <p style="text-align: left; font-size: 0.95em;">Inserito il codice, tiri verso di sé. Check-in dalle ore 14:00.</p>
-            <a href="https://drive.google.com/file/d/1t6-9V0G5hG9YS-RAUkeQuQUPu3btj0iJ/view" target="_blank" class="btn btn-video">🎥 Video Tutorial</a>
+            <span id="key-ps" class="ps-text">Il codice sarà disponibile dalle ore 06:00 del giorno di arrivo.</span>
+            
+            <p style="text-align: left; font-size: 0.95em;" id="k-instr">Dopo averlo inserito, tiri leggermente verso di sé per aprire la cassetta e prelevare le chiavi. Con queste potrà accedere sia alla struttura sia al suo appartamento, che si trova al piano terra, alla prima porta sulla sinistra. Si ricorda che il check-in è consentito a partire dalle ore 14:00.</p>
+            
+            <a href="https://drive.google.com/file/d/1t6-9V0G5hG9YS-RAUkeQuQUPu3btj0iJ/view" target="_blank" class="btn btn-video" id="k-btn-v">🎥 Guarda Video Tutorial Accesso</a>
+        </div>
+
+        <div class="card">
+            <h3 id="p-tit">🚗 Parcheggio riservato</h3>
+            <p id="p-txt">È disponibile un posto auto riservato (massimo un veicolo) nei due parcheggi con strisce gialle di fronte alla struttura. È necessario esporre il contrassegno che troverà sul tavolo all’interno dell’appartamento.</p>
+            <img src="parcheggio-principale.jpg" class="guide-img">
+            <p id="p-warn" style="font-size: 0.9em; background: #fff8e1; padding: 10px; border-radius: 8px;">Se il parcheggio è occupato per sosta non autorizzata, è possibile usare temporaneamente l'area illustrata nella fotografia sottostante.</p>
+            <img src="parcheggio-temporaneo.jpg" class="guide-img">
         </div>
 
         <div class="card">
             <h3 id="w-tit">📶 Wi-Fi</h3>
-            <div class="wifi-box">
-                <div><strong>Password:</strong> <span id="wifi-val" style="font-family: monospace;">••••••••</span></div>
-                <button class="copy-btn" onclick="copyWifi()" id="btn-copy">Copia</button>
-            </div>
+            <p id="w-txt">La struttura è dotata di rete Wi-Fi veloce, per accedere:</p>
+            <p><strong>Network:</strong> APP.1<br><strong>Password:</strong> <span id="wifi-val">••••••••</span></p>
+        </div>
+
+        <div class="card">
+            <h3 id="i-tit">🌿 Altre Info Utili</h3>
+            <ul class="checklist">
+                <li id="i-qc"><strong>Convenzione QC Terme:</strong> la struttura è convenzionata con QC Terme. Al suo arrivo troverà un voucher sconto sul tavolo dell’appartamento, da presentare alla reception del centro termale per ottenere lo sconto. Per usufruire correttamente del buono, la invitiamo a prenotare l’ingresso tramite il sito di QC Terme, selezionando l’opzione di pagamento “paga in struttura”. La convenzione potrebbe non essere valida durante ponti e festività, secondo quanto stabilito dal gestore del centro termale.</li>
+                <li id="i-tx"><strong>Tassa soggiorno:</strong> E’ previsto il pagamento della tassa di soggiorno (1€ a notte per ospite). Sul tavolo troverà la ricevuta di pagamento della tassa di soggiorno già compilata. La invitiamo a saldare l’importo lasciando i contanti sul tavolo al termine del soggiorno o condividendo l'importo tramite Paypal a casafranca.avo@gmail.com utilizzando la modalità "AMICI e/o FAMILIARI".</li>
+                <li id="i-tr"><strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.</li>
+            </ul>
         </div>
 
         <div class="card" style="border-top-color: var(--d);">
             <h3 id="o-tit">🚪 Check-out</h3>
-            <p style="font-weight: bold;">Entro le ore 10:00.</p>
-            <ul style="text-align:left; padding-left:20px;">
-                <li>Chiuda a chiave l'appartamento</li>
-                <li>Lasci il contrassegno parcheggio sul tavolo</li>
-                <li>Inserisca le chiavi nella cassetta postale</li>
+            <p id="o-txt" style="font-weight: bold; margin-top:0;">Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.</p>
+            <ul class="checklist">
+                <li id="o-1">Chiuda a chiave l’appartamento</li>
+                <li id="o-2">Ricordi di lasciare il contrassegno del parcheggio sul tavolo.</li>
+                <li id="o-3">Imposti il termostato al minimo</li>
+                <li id="o-4">Inserisca le chiavi nella cassetta postale.</li>
             </ul>
         </div>
 
-        <div class="contact-box">
-            <p id="contact-txt"></p>
+        <div class="card" style="text-align: center; border: 2px dashed var(--a); background: #fdfbf7; margin-bottom: 30px;">
+            <h3 style="justify-content: center; border: none; color: var(--a);" id="s-tit">🎁 Sorpresa di fine soggiorno</h3>
+            <p id="s-txt">Ti sta piacendo il soggiorno? Prima di partire ricordati di lasciare una recensione a 5 stelle: abbiamo riservato una <strong>sorpresa speciale</strong> per te e i tuoi amici!</p>
+            <p style="font-weight: bold; font-size: 0.9em; color: var(--p);" id="s-note">Torna su questa pagina dopo il check-out per scoprire il regalo.</p>
         </div>
+
+        <div style="text-align: center; margin-bottom: 40px;">
+            <a href="https://www.casafranca.eu" class="btn" id="back-site">🌍 Torna al sito principale</a>
+        </div>
+    </div>
+    
+    <div class="contact-box">
+        <p id="contact-txt" style="margin: 0; color: var(--p);">Per qualsiasi necessità o informazione aggiuntiva, non esiti a contattarci su WhatsApp o al numero <a href="tel:+393482422951" style="color: var(--a); text-decoration: none; font-weight: bold;">+39 348 242 2951</a>.</p>
     </div>
 </div>
 
@@ -120,73 +155,185 @@
     const p = new URLSearchParams(window.location.search);
     function dec(s) { try { return s ? atob(s) : null; } catch(e) { return null; } }
 
-    const nome = dec(p.get('n')) || localStorage.getItem('cf_n') || "Ospite";
-    const cognome = dec(p.get('s')) || localStorage.getItem('cf_s') || "";
-    const fonte = dec(p.get('p')) || localStorage.getItem('cf_p') || "Diretta";
-    const cod = dec(p.get('c')) || localStorage.getItem('cf_c');
-    const dIn = p.get('in') || localStorage.getItem('cf_in');
-    const dOut = p.get('out') || localStorage.getItem('cf_out');
-    let lang = p.get('l') || localStorage.getItem('cf_l') || 'it';
+    let n = dec(p.get('n')) || localStorage.getItem('cf_n') || "Ospite";
+    let c = dec(p.get('c')) || localStorage.getItem('cf_c');
+    let i = dec(p.get('in')) || localStorage.getItem('cf_in');
+    let o = dec(p.get('out')) || localStorage.getItem('cf_out');
+    let l = p.get('l') || localStorage.getItem('cf_l') || 'it';
 
-    // --- REGISTRAZIONE AUTOMATICA SUL FOGLIO ---
-    if (p.get('n') && !localStorage.getItem('reg_' + dIn + nome)) {
-        const scriptURL = "https://script.google.com/macros/s/AKfycbzOGhN9NUHp0Np65_Ntg6nQ4Aynpjshf_xFcRYehoNqmNTxf_wIKZz1CqlixH6fnB5O8w/exec"; 
-        
-        fetch(`${scriptURL}?nome=${encodeURIComponent(nome)}&cognome=${encodeURIComponent(cognome)}&fonte=${encodeURIComponent(fonte)}&checkin=${dIn}&checkout=${dOut}`, { mode: 'no-cors' });
-        
-        localStorage.setItem('cf_n', nome); localStorage.setItem('cf_s', cognome);
-        localStorage.setItem('cf_c', cod); localStorage.setItem('cf_in', dIn);
-        localStorage.setItem('cf_out', dOut); localStorage.setItem('cf_p', fonte);
-        localStorage.setItem('reg_' + dIn + nome, 'true');
+    if (p.get('n')) {
+        localStorage.setItem('cf_n', n); localStorage.setItem('cf_c', c);
+        localStorage.setItem('cf_in', i); localStorage.setItem('cf_out', o);
+        localStorage.setItem('cf_l', l);
         window.history.replaceState({}, document.title, window.location.pathname);
     }
 
-    function formatD(s) { if(!s || s.length<8) return "--/--"; return s.substring(6,8)+"/"+s.substring(4,6); }
-
     const dict = {
         it: {
-            greet: `Ciao ${nome}, ti diamo il benvenuto!`,
-            contact: "Per necessità: WhatsApp o +39 348 242 2951",
-            copy: "Copia"
+            greet: `Ciao ${n}, benvenuto!`,
+            expTit: "✨ Grazie di essere stato con noi!",
+            expTxt: "Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. I codici di accesso sono stati disattivati.",
+            sTitExp: "🎁 Scopri la tua sorpresa",
+            revInv: "Lasciaci una recensione a 5 stelle per sbloccare il regalo esclusivo per te e i tuoi amici!",
+            revBtnExp: "🌟 Lascia la Recensione e Scopri il Regalo",
+            promoThx: "GRAZIE! Ecco il tuo codice sconto:",
+            promoDesc: "Usa questo codice per ottenere il <strong>10% di sconto</strong> sul tuo prossimo soggiorno o inoltralo ai tuoi amici per condividerlo!",
+            cTit: "📋 Prima del suo arrivo (self check-in)",
+            cTxt: "In vista del suo arrivo, al fine di ottemperare all’obbligo di registrazione degli ospiti, la invitiamo ad inoltrarci copia di un documento d’identità (carta d’identità o passaporto) suo e dell’ospite che viaggerà con lei.",
+            cBtnF: "📝 Modulo Registrazione",
+            cBtnW: "📸 Invia via WhatsApp",
+            cPs: "I suoi dati saranno utilizzati solo per obblighi di registrazione (PS – Alloggiati Web).",
+            mTit: "🗺️ Come raggiungerci",
+            mTxt: "La struttura è raggiungibile inserendo in Google Maps l’indirizzo Viale della Vittoria, 23, San Pellegrino Terme (BG) oppure:",
+            mBtn: "📍 Indicazioni tramite Maps",
+            kTit: "🔑 Come accedere alla struttura",
+            kTxt: "Una volta arrivato presso la struttura, potrà ritirare le chiavi del suo appartamento all’interno della piccola cassetta nera situata sotto la cassetta postale, accanto all’ingresso (in fotografia).",
+            kCodT: "Codice Segreto:",
+            kPs: "Il codice sarà disponibile dalle ore 06:00 del giorno di arrivo.",
+            kIns: "Dopo averlo inserito, tiri leggermente verso di sé per aprire la cassetta e prelevare le chiavi. Con queste potrà accedere sia alla struttura sia al suo appartamento, che si trova al piano terra, alla prima porta sulla sinistra. Si ricorda che il check-in è consentito a partire dalle ore 14:00.",
+            kBtnV: "🎥 Guarda Video Tutorial Accesso",
+            pTit: "🚗 Parcheggio riservato",
+            pTxt: "È disponibile un posto auto riservato (massimo un veicolo) nei due parcheggi con strisce gialle di fronte alla struttura. È necessario esporre il contrassegno che troverà sul tavolo all’interno dell’appartamento.",
+            pWrn: "Se il parcheggio è occupato per sosta non autorizzata, è possibile usare temporaneamente l'area illustrata nella fotografia sottostante.",
+            wTit: "📶 Wi-Fi",
+            wTxt: "La struttura è dotata di rete Wi-Fi veloce, per accedere:",
+            iTit: "🌿 Altre Info Utili",
+            iQc: "<strong>Convenzione QC Terme:</strong> la struttura è convenzionata con QC Terme. Al suo arrivo troverà un voucher sconto sul tavolo dell’appartamento, da presentare alla reception del centro termale per ottenere lo sconto. Per usufruire correttamente del buono, la invitiamo a prenotare l’ingresso tramite il sito di QC Terme, selezionando l’opzione di pagamento “paga in struttura”. La convenzione potrebbe non essere valida durante ponti e festività, secondo quanto stabilito dal gestore del centro termale.",
+            iTx: "<strong>Tassa soggiorno:</strong> E’ previsto il pagamento della tassa di soggiorno (1€ a notte per ospite). Sul tavolo troverà la ricevuta di pagamento della tassa di soggiorno già compilata. La invitiamo a saldare l’importo lasciando i contanti sul tavolo al termine del soggiorno o condividendo l'importo tramite Paypal a casafranca.avo@gmail.com utilizzando la modalità \"AMICI e/o FAMILIARI\".",
+            iTr: "<strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.",
+            oTit: "🚪 Check-out",
+            oTxt: "Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.",
+            o1: "Chiuda a chiave l’appartamento",
+            o2: "Ricordi di lasciare il contrassegno del parcheggio sul tavolo.",
+            o3: "Imposti il termostato al minimo",
+            o4: "Inserisca le chiavi nella cassetta postale.",
+            sTit: "🎁 Sorpresa di fine soggiorno",
+            sTxt: "Ti sta piacendo il soggiorno? Prima di partire ricordati di lasciare una recensione a 5 stelle: abbiamo riservato una <strong>sorpresa speciale</strong> per te e i tuoi amici!",
+            sNote: "Torna su questa pagina dopo il check-out per scoprire il regalo.",
+            back: "🌍 Torna al sito principale",
+            contactTxt: "Per qualsiasi necessità o informazione aggiuntiva, non esiti a contattarci su WhatsApp o al numero <a href=\"tel:+393482422951\" style=\"color: var(--a); text-decoration: none; font-weight: bold;\">+39 348 242 2951</a>."
         },
         en: {
-            greet: `Hello ${nome}, we welcome you!`,
-            contact: "Contact us: WhatsApp or +39 348 242 2951",
-            copy: "Copy"
+            greet: `Dear ${n}, welcome to Casa Franca! 😊`,
+            expTit: "Thank you for staying with us! 😊",
+            expTxt: "We hope you enjoyed your stay at Casa Franca. Your access codes have now been deactivated.",
+            sTitExp: "🎁 Discover Your Surprise",
+            revInv: "Leave us a 5-star review to unlock an exclusive gift for you and your friends! ✨",
+            revBtnExp: "🌟 Leave a Review & Discover Your Gift",
+            promoThx: "THANK YOU! Here is your discount code:",
+            promoDesc: "Use this code to get <strong>10% off</strong> your next booking or share it with your friends!",
+            cTit: "📋 Before your arrival (self check-in)",
+            cTxt: "To comply with guest registration requirements, please send us a copy of your ID or passport (for you and your guest) via WhatsApp or through the form below.",
+            cBtnF: "📝 Registration Form",
+            cBtnW: "📸 Send via WhatsApp",
+            cPs: "Your information will only be used for mandatory registration purposes (Italian Police portal).",
+            mTit: "🗺️ How to reach us",
+            mTxt: "You can easily reach the property by entering Viale della Vittoria, 23, San Pellegrino Terme (BG) into Google Maps, or by using the link below:",
+            mBtn: "📍 Directions via Maps",
+            kTit: "🔑 Accessing the property",
+            kTxt: "Upon arrival, you can collect the keys from the small black box located under the mailbox next to the entrance (see the photo).",
+            kCodT: "Secret Code:",
+            kPs: "The code will be available from 06:00 AM on the day of arrival.",
+            kIns: "Once you entered the code please pull the box to open it. The keys will give you access to both the main building and your apartment, which is on the ground floor — the first door on the left. Please note that the apartment will be available for check-in from 2:00 PM.",
+            kBtnV: "🎥 Watch Access Video Tutorial",
+            pTit: "🚗 Reserved parking",
+            pTxt: "A reserved parking spot is available (maximum one vehicle) in front of the property (yellow-striped spaces in photo). You must display inside your car the parking permit that you’ll find on the table inside the apartment.",
+            pWrn: "If the parking spot is occupied, you may temporarily park in the area shown below.",
+            wTit: "📶 Wi-Fi",
+            wTxt: "Fast Wi-Fi available:",
+            iTit: "🌿 Other Useful Info",
+            iQc: "<strong>🧖 QC Terme Discount:</strong> thanks to your stay at Casa Franca, you are entitled to a 10% discount at QC Terme. Upon arrival, you will find a discount voucher on the table inside the apartment. Please present it at the spa reception to receive the discount. To use the voucher correctly, please book your entrance through the QC Terme website and select the payment option “pay at the reception”. Please note that the agreement may not be valid during holidays and public holiday weekends, according to QC Terme policies.",
+            iTx: "<strong>💶 Tourist Tax:</strong> A tourist tax of €1 per guest, per night applies. You will find the tourist tax receipt already prepared on the table inside the apartment. We kindly ask you to pay the amount in cash by leaving it on the table before departure. If you do not have cash, you may also send the payment via PayPal to casafranca.avo@gmail.com using the “Friends and Family” option.",
+            iTr: "<strong>♻️ Waste Disposal:</strong> Please separate waste using the bins located under the sink.",
+            oTit: "🚪 Check-out",
+            oTxt: "Check-out is by 10:00 AM. Before leaving, please:",
+            o1: "Lock the apartment door",
+            o2: "Leave the parking permit on the table",
+            o3: "Set the thermostat to the minimum temperature",
+            o4: "Drop the keys into the mailbox",
+            sTit: "🎁 End-of-Stay Gift",
+            sTxt: "Enjoying your stay? Before leaving, don’t forget to leave us a 5-star review — we’ve prepared a special surprise for you and your friends! ✨",
+            sNote: "Come back to this page after check-out to discover your gift.",
+            back: "🌍 Back to main site",
+            contactTxt: "For any questions or additional needs, feel free to contact us via WhatsApp or at <a href=\"tel:+393482422951\" style=\"color: var(--a); text-decoration: none; font-weight: bold;\">+39 348 242 2951</a>."
         }
     };
 
     function updateUI() {
-        const t = dict[lang];
+        const t = dict[l];
         document.getElementById('greet').innerText = t.greet;
-        document.getElementById('contact-txt').innerText = t.contact;
-        document.getElementById('btn-copy').innerText = t.copy;
-        document.getElementById('date-in').innerText = formatD(dIn);
-        document.getElementById('date-out').innerText = formatD(dOut);
+        document.getElementById('exp-title').innerText = t.expTit;
+        document.getElementById('exp-text').innerText = t.expTxt;
+        document.getElementById('s-tit-exp').innerText = t.sTitExp;
+        document.getElementById('rev-inv').innerText = t.revInv;
+        document.getElementById('rev-btn-exp').innerText = t.revBtnExp;
+        document.getElementById('promo-thx').innerText = t.promoThx;
+        document.getElementById('promo-desc').innerHTML = t.promoDesc;
+        document.getElementById('c-tit').innerText = t.cTit;
+        document.getElementById('c-txt').innerText = t.cTxt;
+        document.getElementById('c-btn-f').innerText = t.cBtnF;
+        document.getElementById('c-btn-w').innerText = t.cBtnW;
+        document.getElementById('c-ps').innerText = t.cPs;
+        document.getElementById('m-tit').innerText = t.mTit;
+        document.getElementById('m-txt').innerText = t.mTxt;
+        document.getElementById('m-btn').innerText = t.mBtn;
+        document.getElementById('k-tit').innerText = t.kTit;
+        document.getElementById('k-txt').innerText = t.kTxt;
+        document.getElementById('k-cod-tit').innerText = t.kCodT;
+        document.getElementById('key-ps').innerText = t.kPs;
+        document.getElementById('k-instr').innerText = t.kIns;
+        document.getElementById('k-btn-v').innerText = t.kBtnV;
+        document.getElementById('p-tit').innerText = t.pTit;
+        document.getElementById('p-txt').innerText = t.pTxt;
+        document.getElementById('p-warn').innerText = t.pWrn;
+        document.getElementById('w-tit').innerText = t.wTit;
+        document.getElementById('w-txt').innerText = t.wTxt;
+        document.getElementById('i-tit').innerText = t.iTit;
+        document.getElementById('i-qc').innerHTML = t.iQc;
+        document.getElementById('i-tx').innerHTML = t.iTx;
+        document.getElementById('i-tr').innerHTML = t.iTr;
+        document.getElementById('o-tit').innerText = t.oTit;
+        document.getElementById('o-txt').innerText = t.oTxt;
+        document.getElementById('o-1').innerText = t.o1;
+        document.getElementById('o-2').innerText = t.o2;
+        document.getElementById('o-3').innerText = t.o3;
+        document.getElementById('o-4').innerText = t.o4;
+        document.getElementById('s-tit').innerText = t.sTit;
+        document.getElementById('s-txt').innerHTML = t.sTxt;
+        document.getElementById('s-note').innerText = t.sNote;
+        document.getElementById('back-site').innerText = t.back;
+        document.getElementById('contact-txt').innerHTML = t.contactTxt;
     }
 
-    function copyWifi() {
-        navigator.clipboard.writeText("Atene001").then(() => {
-            const b = document.getElementById('btn-copy');
-            b.innerText = (lang === 'it') ? "Copiato!" : "Copied!";
-            setTimeout(() => { b.innerText = dict[lang].copy; }, 2000);
-        });
+    function toggleLang() { l = (l === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', l); updateUI(); }
+    
+    function mostraSorpresa() { 
+        document.getElementById('box-sorpresa').style.display = 'block'; 
+        const msg = encodeURIComponent("Ciao! Ti consiglio Casa Franca a San Pellegrino Terme. Se prenoti dal loro sito www.casafranca.eu usa il codice FRANCA10 per avere il 10% di sconto!");
+        document.getElementById('share-wa').href = "https://wa.me/?text=" + msg;
+        document.getElementById('share-mail').href = "mailto:?subject=Consiglio Soggiorno a San Pellegrino&body=" + msg;
     }
 
-    function toggleLang() { lang = (lang === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', lang); updateUI(); }
-    function mostraSorpresa() { document.getElementById('box-sorpresa').style.display = 'block'; }
+    function isEarly() { return i && new Date() < new Date(i.substring(0,4), i.substring(4,6)-1, i.substring(6,8), 6, 0, 0); }
+    // Modificato orario uscita a 10:30 (10, 30, 0)
+    function isOut() { return o && new Date() > new Date(o.substring(0,4), o.substring(4,6)-1, o.substring(6,8), 10, 30, 0); }
 
-    const ogg = new Date();
-    const cIn = dIn ? new Date(dIn.substring(0,4), dIn.substring(4,6)-1, dIn.substring(6,8), 6, 0, 0) : null;
-    const cOut = dOut ? new Date(dOut.substring(0,4), dOut.substring(4,6)-1, dOut.substring(6,8), 10, 30, 0) : null;
-
-    if (dOut && ogg > cOut) { 
-        document.getElementById('area-scaduta').style.display = 'block'; updateUI();
+    if (isOut()) { 
+        document.getElementById('area-scaduta').style.display = 'block'; 
+        updateUI();
     } else if (localStorage.getItem('cf_n')) {
-        document.getElementById('area-ospite').style.display = 'block'; updateUI();
-        if (cIn && ogg < cIn) { document.getElementById('code-box').innerText = "----"; } 
-        else { document.getElementById('code-box').innerText = cod; document.getElementById('key-ps').style.display="none"; document.getElementById('wifi-val').innerText="Atene001"; }
-    } else { document.getElementById('area-errore').style.display = 'block'; }
+        document.getElementById('area-ospite').style.display = 'block'; 
+        updateUI();
+        if (isEarly()) {
+            document.getElementById('code-box').innerText = "----";
+        } else {
+            document.getElementById('code-box').innerText = c;
+            document.getElementById('key-ps').style.display = "none";
+            document.getElementById('wifi-val').innerText = "Atene001";
+        }
+    } else {
+        document.getElementById('area-errore').style.display = 'block';
+    }
 </script>
 
 </body>
