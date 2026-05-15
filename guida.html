@@ -200,7 +200,7 @@
         return str.substring(6,8) + "/" + str.substring(4,6); 
     }
 
-    // IL NUOVO URL DELLO SCRIPT GOOGLE
+    // IL TUO URL DELLO SCRIPT 
     const scriptURL = "https://script.google.com/macros/s/AKfycbwNZ2hTpjRpfiqf7kwi-oQLqrzjij8R5dx26r0P4gPCOcjGLZR3lbg2Q6iNUS-n0cZr/exec";
 
     if (p.get('n')) {
@@ -209,7 +209,7 @@
         localStorage.setItem('cf_l', l);
         localStorage.setItem('cf_s', cognome); localStorage.setItem('cf_p', fonte);
         
-        // Tracking al Registro Letture (Avviene una sola volta)
+        // Tracking al Registro Letture (Una sola volta)
         if (!localStorage.getItem('reg_' + i + n)) {
             fetch(`${scriptURL}?nome=${encodeURIComponent(n)}&cognome=${encodeURIComponent(cognome)}&fonte=${encodeURIComponent(fonte)}&checkin=${encodeURIComponent(formatFullD(i))}&checkout=${encodeURIComponent(formatFullD(o))}`, { mode: 'no-cors' });
             localStorage.setItem('reg_' + i + n, 'true');
@@ -389,11 +389,11 @@
         updateUI();
     } else if (localStorage.getItem('cf_n')) {
         
-        // --- CONTROLLO CANCELLAZIONE LIVE (Interroga il server) ---
-        fetch(`${scriptURL}?azione=check&nome=${encodeURIComponent(n)}&checkin=${i}`)
-            .then(res => res.json())
+        // --- CONTROLLO CANCELLAZIONE LIVE SEMPLIFICATO ---
+        fetch(`${scriptURL}?azione=check&nome=${encodeURIComponent(n)}`)
+            .then(res => res.text()) // Modificato in testo per evitare errori
             .then(data => {
-                if(data.cancellato) {
+                if(data.trim() === "CANCELLATO") {
                     document.getElementById('area-ospite').style.display = 'none';
                     document.getElementById('area-negata').style.display = 'block';
                 } else {
@@ -401,7 +401,7 @@
                 }
             })
             .catch(err => {
-                // In caso di errore rete, fa vedere l'area normalmente
+                // Se manca la rete, mostra normalmente l'area ospite
                 document.getElementById('area-ospite').style.display = 'block'; 
             });
 
