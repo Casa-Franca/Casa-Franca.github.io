@@ -8,14 +8,8 @@
         :root { --p: #2c3e50; --a: #d4af37; --bg: #f4f7f6; --w: #ffffff; --d: #e74c3c; }
         body { font-family: -apple-system, sans-serif; line-height: 1.6; color: #333; background: var(--bg); margin: 0; padding: 0; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { text-align: center; margin-bottom: 30px; position: relative; min-height: 80px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        .header { text-align: center; margin-bottom: 30px; position: relative; min-height: 80px; display: flex; align-items: center; justify-content: center; }
         .btn-lang { position: absolute; top: 10px; right: 0; background: var(--w); border: 1px solid #ddd; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 14px; z-index: 100; }
-        
-        .dates-banner { background: var(--p); color: white; padding: 15px; border-radius: 16px; margin-bottom: 25px; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; box-sizing: border-box; }
-        .dates-banner div { text-align: center; }
-        .dates-banner label { display: block; font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: var(--a); margin-bottom: 4px; }
-        .dates-banner span { font-weight: bold; font-size: 1.1em; }
-
         .card { background: var(--w); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 4px solid transparent; }
         .card h3 { margin-top: 0; color: var(--p); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .code-display { font-size: 38px; font-weight: 900; letter-spacing: 5px; color: var(--p); margin: 10px 0; background: #eee; padding: 15px; border-radius: 12px; display: inline-block; min-width: 160px; border: 2px solid var(--a); }
@@ -24,10 +18,6 @@
         .btn-map { background: #4285F4; }
         .btn-video { background: var(--d); margin-top: 15px; }
         .btn-email { background: #555; }
-        
-        .wifi-box { background: #f8f9fa; border: 1px solid #ddd; padding: 15px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
-        .copy-btn { background: var(--a); color: white; border: none; padding: 8px 15px; border-radius: 10px; cursor: pointer; font-size: 0.8em; font-weight: bold; }
-
         .guide-img { width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 15px 0; }
         .ps-text { font-size: 0.85em; color: var(--d); font-weight: bold; margin-bottom: 15px; display: block; }
         .promo-box { display: none; background: #fdfbf7; border: 2px dashed var(--a); padding: 20px; border-radius: 12px; margin-top: 20px; animation: fadeIn 0.8s ease forwards; }
@@ -36,8 +26,7 @@
         ul.checklist { padding-left: 0; list-style: none; }
         ul.checklist li { margin-bottom: 15px; padding-left: 30px; position: relative; }
         ul.checklist li::before { content: "✓"; color: var(--a); position: absolute; left: 0; font-weight: bold; }
-        
-        #area-ospite, #area-scaduta, #area-errore, #area-negata { display: none; }
+        #area-ospite, #area-scaduta, #area-errore { display: none; }
         .contact-box { background: #eef2f5; padding: 15px; border-radius: 12px; text-align: center; margin-top: 20px; font-size: 0.9em; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -48,19 +37,13 @@
     <div class="header">
         <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
         <a href="https://www.casafranca.eu">
-            <img src="logo-casa-franca.webp" alt="Casa Franca" style="max-height: 80px;">
+            <img src="logo-casa-franca.png" alt="Casa Franca" style="max-height: 80px;">
         </a>
     </div>
 
     <div id="area-errore" class="card" style="border-top-color: var(--d); text-align: center;">
         <h3 style="justify-content: center;">⚠️ Link non valido</h3>
         <p>Il link è incompleto. Per favore usa il link originale inviato dall'host.</p>
-    </div>
-    
-    <div id="area-negata" class="card" style="border-top-color: var(--d); text-align: center;">
-        <h2 style="color: var(--d); margin-bottom: 10px;">🚫 Accesso Negato</h2>
-        <p>Questa prenotazione risulta cancellata o non più attiva.</p>
-        <p>Se ritieni sia un errore, contatta l'host.</p>
     </div>
 
     <div id="area-scaduta" class="card" style="border-top-color: var(--p); text-align: center;">
@@ -87,13 +70,7 @@
     </div>
 
     <div id="area-ospite">
-        <h2 id="greet" style="color: var(--p); text-align: center; margin-bottom: 25px; font-size: 1.6em;"></h2>
-
-        <div class="dates-banner">
-            <div><label id="lbl-checkin">Check-in</label><span id="date-in">--/--</span></div>
-            <div style="font-size: 1.5em; opacity: 0.5;">→</div>
-            <div><label id="lbl-checkout">Check-out</label><span id="date-out">--/--</span></div>
-        </div>
+        <h2 id="greet" style="color: var(--p); text-align: center; margin-bottom: 25px;"></h2>
 
         <div class="card" style="border-top-color: #25D366;">
             <h3 id="c-tit">📋 Prima del suo arrivo (self check-in)</h3>
@@ -113,7 +90,7 @@
             <h3 id="k-tit" style="justify-content: center;">🔑 Come accedere alla struttura</h3>
             <p id="k-txt" style="text-align: left;">Una volta arrivato presso la struttura, potrà ritirare le chiavi del suo appartamento all’interno della piccola cassetta nera situata sotto la cassetta postale, accanto all’ingresso (in fotografia).</p>
             
-            <img src="porta-cassetta.webp" alt="Cassetta chiavi" class="guide-img">
+            <img src="porta-cassetta.jpg" alt="Cassetta chiavi" class="guide-img">
             
             <p style="text-align: left; font-weight: bold; margin-bottom: 5px;" id="k-cod-tit">Codice Segreto:</p>
             <div id="code-box" class="code-display">----</div>
@@ -127,18 +104,15 @@
         <div class="card">
             <h3 id="p-tit">🚗 Parcheggio riservato</h3>
             <p id="p-txt">È disponibile un posto auto riservato (massimo un veicolo) nei due parcheggi con strisce gialle di fronte alla struttura. È necessario esporre il contrassegno che troverà sul tavolo all’interno dell’appartamento.</p>
-            <img src="parcheggio-principale.webp" class="guide-img">
+            <img src="parcheggio-principale.jpg" class="guide-img">
             <p id="p-warn" style="font-size: 0.9em; background: #fff8e1; padding: 10px; border-radius: 8px;">Se il parcheggio è occupato per sosta non autorizzata, è possibile usare temporaneamente l'area illustrata nella fotografia sottostante.</p>
-            <img src="parcheggio-temporaneo.webp" class="guide-img">
+            <img src="parcheggio-temporaneo.jpg" class="guide-img">
         </div>
 
         <div class="card">
             <h3 id="w-tit">📶 Wi-Fi</h3>
             <p id="w-txt">La struttura è dotata di rete Wi-Fi veloce, per accedere:</p>
-            <div class="wifi-box">
-                <div><strong>Network:</strong> APP.1<br><strong>Password:</strong> <span id="wifi-val" style="font-family: monospace;">••••••••</span></div>
-                <button class="copy-btn" onclick="copyWifi()" id="btn-copy">Copia</button>
-            </div>
+            <p><strong>Network:</strong> APP.1<br><strong>Password:</strong> <span id="wifi-val">••••••••</span></p>
         </div>
 
         <div class="card">
@@ -186,44 +160,19 @@
     let i = dec(p.get('in')) || localStorage.getItem('cf_in');
     let o = dec(p.get('out')) || localStorage.getItem('cf_out');
     let l = p.get('l') || localStorage.getItem('cf_l') || 'it';
-    
-    let cognome = dec(p.get('s')) || localStorage.getItem('cf_s') || "";
-    let fonte = dec(p.get('p')) || localStorage.getItem('cf_p') || "Diretta";
-
-    function formatFullD(str) { 
-        if(!str || str.length < 8) return "--/--/----"; 
-        return str.substring(6,8) + "/" + str.substring(4,6) + "/" + str.substring(0,4); 
-    }
-    
-    function formatBannerD(str) { 
-        if(!str || str.length < 8) return "--/--"; 
-        return str.substring(6,8) + "/" + str.substring(4,6); 
-    }
-
-    // IL TUO URL DELLO SCRIPT 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwNZ2hTpjRpfiqf7kwi-oQLqrzjij8R5dx26r0P4gPCOcjGLZR3lbg2Q6iNUS-n0cZr/exec";
 
     if (p.get('n')) {
         localStorage.setItem('cf_n', n); localStorage.setItem('cf_c', c);
         localStorage.setItem('cf_in', i); localStorage.setItem('cf_out', o);
         localStorage.setItem('cf_l', l);
-        localStorage.setItem('cf_s', cognome); localStorage.setItem('cf_p', fonte);
-        
-        // Tracking al Registro Letture (Una sola volta)
-        if (!localStorage.getItem('reg_' + i + n)) {
-            fetch(`${scriptURL}?nome=${encodeURIComponent(n)}&cognome=${encodeURIComponent(cognome)}&fonte=${encodeURIComponent(fonte)}&checkin=${encodeURIComponent(formatFullD(i))}&checkout=${encodeURIComponent(formatFullD(o))}`, { mode: 'no-cors' });
-            localStorage.setItem('reg_' + i + n, 'true');
-        }
-
         window.history.replaceState({}, document.title, window.location.pathname);
     }
 
     const dict = {
         it: {
-            greet: `Ciao ${n}, ti diamo il benvenuto a Casa Franca!`,
-            copy: "Copia",
+            greet: `Ciao ${n}, benvenuto!`,
             expTit: "✨ Grazie di essere stato con noi!",
-            expTxt: "Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. L'accesso ai codici è terminato.",
+            expTxt: "Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. I codici di accesso sono stati disattivati.",
             sTitExp: "🎁 Scopri la tua sorpresa",
             revInv: "Lasciaci una recensione a 5 stelle per sbloccare il regalo esclusivo per te e i tuoi amici!",
             revBtnExp: "🌟 Lascia la Recensione e Scopri il Regalo",
@@ -265,8 +214,7 @@
             contactTxt: "Per qualsiasi necessità o informazione aggiuntiva, non esiti a contattarci su WhatsApp o al numero <a href=\"tel:+393482422951\" style=\"color: var(--a); text-decoration: none; font-weight: bold;\">+39 348 242 2951</a>."
         },
         en: {
-            greet: `Hello ${n}, welcome to Casa Franca! 😊`,
-            copy: "Copy",
+            greet: `Dear ${n}, welcome to Casa Franca! 😊`,
             expTit: "Thank you for staying with us! 😊",
             expTxt: "We hope you enjoyed your stay at Casa Franca. Your access codes have now been deactivated.",
             sTitExp: "🎁 Discover Your Surprise",
@@ -355,24 +303,9 @@
         document.getElementById('s-note').innerText = t.sNote;
         document.getElementById('back-site').innerText = t.back;
         document.getElementById('contact-txt').innerHTML = t.contactTxt;
-        
-        document.getElementById('date-in').innerText = formatBannerD(i);
-        document.getElementById('date-out').innerText = formatBannerD(o);
-        document.getElementById('lbl-checkin').innerText = "Check-in";
-        document.getElementById('lbl-checkout').innerText = "Check-out";
-        document.getElementById('btn-copy').innerText = t.copy;
     }
 
     function toggleLang() { l = (l === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', l); updateUI(); }
-    
-    function copyWifi() {
-        navigator.clipboard.writeText("Atene001").then(() => {
-            const btn = document.getElementById('btn-copy');
-            const originalTxt = btn.innerText;
-            btn.innerText = (l === 'it') ? "Copiato!" : "Copied!";
-            setTimeout(() => { btn.innerText = originalTxt; }, 2000);
-        });
-    }
     
     function mostraSorpresa() { 
         document.getElementById('box-sorpresa').style.display = 'block'; 
@@ -382,31 +315,15 @@
     }
 
     function isEarly() { return i && new Date() < new Date(i.substring(0,4), i.substring(4,6)-1, i.substring(6,8), 6, 0, 0); }
+    // Modificato orario uscita a 10:30 (10, 30, 0)
     function isOut() { return o && new Date() > new Date(o.substring(0,4), o.substring(4,6)-1, o.substring(6,8), 10, 30, 0); }
 
     if (isOut()) { 
         document.getElementById('area-scaduta').style.display = 'block'; 
         updateUI();
     } else if (localStorage.getItem('cf_n')) {
-        
-        // --- CONTROLLO CANCELLAZIONE LIVE SEMPLIFICATO ---
-        fetch(`${scriptURL}?azione=check&nome=${encodeURIComponent(n)}`)
-            .then(res => res.text()) // Modificato in testo per evitare errori
-            .then(data => {
-                if(data.trim() === "CANCELLATO") {
-                    document.getElementById('area-ospite').style.display = 'none';
-                    document.getElementById('area-negata').style.display = 'block';
-                } else {
-                    document.getElementById('area-ospite').style.display = 'block'; 
-                }
-            })
-            .catch(err => {
-                // Se manca la rete, mostra normalmente l'area ospite
-                document.getElementById('area-ospite').style.display = 'block'; 
-            });
-
+        document.getElementById('area-ospite').style.display = 'block'; 
         updateUI();
-        
         if (isEarly()) {
             document.getElementById('code-box').innerText = "----";
         } else {
