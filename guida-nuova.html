@@ -189,7 +189,7 @@
         </div>
     </div>
     
-    <div class="contact-box">
+    <div class="contact-box" id="box-contatti" style="display: none;">
         <p id="contact-txt" style="margin: 0; color: var(--p);">Per qualsiasi necessità o informazione aggiuntiva, non esiti a contattarci su WhatsApp o al numero <a href="tel:+393482422951" style="color: var(--a); text-decoration: none; font-weight: bold;">+39 348 242 2951</a>.</p>
     </div>
 </div>
@@ -212,13 +212,11 @@
         return str.substring(6,8) + "/" + str.substring(4,6) + "/" + str.substring(0,4); 
     }
     
-    // FORMATTER AGGIORNATO (es. 12/03/26)
     function formatBannerD(str) { 
         if(!str || str.length < 8) return "--/--/--"; 
         return str.substring(6,8) + "/" + str.substring(4,6) + "/" + str.substring(2,4); 
     }
 
-    // IL TUO URL DELLO SCRIPT 
     const scriptURL = "https://script.google.com/macros/s/AKfycbwNZ2hTpjRpfiqf7kwi-oQLqrzjij8R5dx26r0P4gPCOcjGLZR3lbg2Q6iNUS-n0cZr/exec";
 
     if (p.get('n')) {
@@ -227,7 +225,6 @@
         localStorage.setItem('cf_l', l);
         localStorage.setItem('cf_s', cognome); localStorage.setItem('cf_p', fonte);
         
-        // Tracking al Registro Letture (Una sola volta)
         if (!localStorage.getItem('reg_' + i + n)) {
             fetch(`${scriptURL}?nome=${encodeURIComponent(n)}&cognome=${encodeURIComponent(cognome)}&fonte=${encodeURIComponent(fonte)}&checkin=${encodeURIComponent(formatFullD(i))}&checkout=${encodeURIComponent(formatFullD(o))}`, { mode: 'no-cors' });
             localStorage.setItem('reg_' + i + n, 'true');
@@ -350,7 +347,6 @@
         document.getElementById('promo-thx').innerText = t.promoThx;
         document.getElementById('promo-desc').innerHTML = t.promoDesc;
         
-        // Nuovi Testi Orario
         document.getElementById('arr-tit').innerText = t.arrTit;
         document.getElementById('arr-txt').innerHTML = t.arrTxt;
         document.getElementById('arr-opt0').innerText = t.arrOpt0;
@@ -398,9 +394,11 @@
         document.getElementById('lbl-checkout').innerText = "Check-out";
         document.getElementById('btn-copy').innerText = t.copy;
 
-        // Se l'orario era già stato scelto, ricaricalo
         const oraSalvata = localStorage.getItem('cf_ora');
         if(oraSalvata) document.getElementById('select-orario').value = oraSalvata;
+
+        // IL FOOTER APPARE SOLO QUANDO LA PAGINA È PRONTA AL 100%
+        document.getElementById('box-contatti').style.display = 'block';
     }
 
     function toggleLang() { l = (l === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', l); updateUI(); }
@@ -414,7 +412,6 @@
         });
     }
 
-    // FUNZIONE INVIO ORARIO AL GOOGLE SHEET
     function inviaOrario() {
         const ora = document.getElementById('select-orario').value;
         const btn = document.getElementById('btn-orario');
