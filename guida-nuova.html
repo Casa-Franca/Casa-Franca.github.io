@@ -45,7 +45,7 @@
 <body>
 
 <div class="container">
-    <div class="header">
+    <div class="header" id="main-header" style="display: none;">
         <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
         <a href="https://www.casafranca.eu">
             <img src="logo-casa-franca.webp" alt="Casa Franca" style="max-height: 80px;">
@@ -443,12 +443,14 @@
     if (isOut()) { 
         document.getElementById('area-scaduta').style.display = 'block'; 
         updateUI();
-        document.getElementById('box-contatti').style.display = 'block'; // Il footer appare solo ora
+        
+        // APPARE TUTTO INSIEME (Header + Footer)
+        document.getElementById('main-header').style.display = 'flex';
+        document.getElementById('box-contatti').style.display = 'block'; 
     } else if (localStorage.getItem('cf_n')) {
         
-        updateUI(); // Pre-traduce i testi in background
+        updateUI(); 
         
-        // Questo è il passaggio incriminato che richiedeva tempo.
         fetch(`${scriptURL}?azione=check&nome=${encodeURIComponent(n)}`)
             .then(res => res.text()) 
             .then(data => {
@@ -458,11 +460,17 @@
                 } else {
                     document.getElementById('area-ospite').style.display = 'block'; 
                 }
-                document.getElementById('box-contatti').style.display = 'block'; // Il footer appare INSIEME al blocco centrale
+                
+                // APPARE TUTTO INSIEME (Header + Footer) DOPO IL CONTROLLO
+                document.getElementById('main-header').style.display = 'flex';
+                document.getElementById('box-contatti').style.display = 'block'; 
             })
             .catch(err => {
                 document.getElementById('area-ospite').style.display = 'block'; 
-                document.getElementById('box-contatti').style.display = 'block'; // Appare anche se c'è un errore di connessione
+                
+                // APPARE TUTTO INSIEME ANCHE IN CASO DI ERRORE RETE
+                document.getElementById('main-header').style.display = 'flex';
+                document.getElementById('box-contatti').style.display = 'block'; 
             });
 
         if (isEarly()) {
@@ -474,6 +482,7 @@
         }
     } else {
         document.getElementById('area-errore').style.display = 'block';
+        document.getElementById('main-header').style.display = 'flex';
     }
 </script>
 
