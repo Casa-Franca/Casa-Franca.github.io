@@ -14,12 +14,12 @@
         .dates-banner { background: var(--p); color: white; padding: 15px; border-radius: 16px; margin-bottom: 25px; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; box-sizing: border-box; }
         .dates-banner div { text-align: center; }
         .dates-banner label { display: block; font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; color: var(--a); margin-bottom: 4px; }
-        .dates-banner span { font-weight: bold; font-size: 1.1em; }
+        .dates-banner span { font-weight: bold; font-size: 1.2em; letter-spacing: 1px; }
 
         .card { background: var(--w); padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-top: 4px solid transparent; }
         .card h3 { margin-top: 0; color: var(--p); display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .code-display { font-size: 38px; font-weight: 900; letter-spacing: 5px; color: var(--p); margin: 10px 0; background: #eee; padding: 15px; border-radius: 12px; display: inline-block; min-width: 160px; border: 2px solid var(--a); }
-        .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; box-sizing: border-box; width: 100%; text-align: center; margin-bottom: 10px; }
+        .btn { display: inline-block; padding: 12px 25px; background: var(--p); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; cursor: pointer; border: none; box-sizing: border-box; width: 100%; text-align: center; margin-bottom: 10px; transition: background 0.3s ease; }
         .btn-wa { background: #25D366; }
         .btn-map { background: #4285F4; }
         .btn-video { background: var(--d); margin-top: 15px; }
@@ -90,9 +90,26 @@
         <h2 id="greet" style="color: var(--p); text-align: center; margin-bottom: 25px; font-size: 1.6em;"></h2>
 
         <div class="dates-banner">
-            <div><label id="lbl-checkin">Check-in</label><span id="date-in">--/--</span></div>
+            <div><label id="lbl-checkin">Check-in</label><span id="date-in">--/--/--</span></div>
             <div style="font-size: 1.5em; opacity: 0.5;">→</div>
-            <div><label id="lbl-checkout">Check-out</label><span id="date-out">--/--</span></div>
+            <div><label id="lbl-checkout">Check-out</label><span id="date-out">--/--/--</span></div>
+        </div>
+
+        <div class="card" style="border-top-color: var(--a);">
+            <h3 id="arr-tit">🕒 Orario di arrivo</h3>
+            <p id="arr-txt" style="margin-bottom: 15px;">Per organizzare al meglio la tua accoglienza, indicaci l'orario in cui prevedi di arrivare. <br><strong>Ti preghiamo di segnalarlo almeno 24h prima del tuo arrivo.</strong><br>Per diversi accordi contattaci al numero <a href="tel:+393482422951" style="color: var(--a); font-weight: bold; text-decoration: none;">+39 348 242 2951</a>.</p>
+            
+            <select id="select-orario" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ddd; margin-bottom: 15px; font-size: 1em; background: #fff;">
+                <option value="Non specificato" id="arr-opt0">Seleziona una fascia...</option>
+                <option value="14:00 - 15:00">14:00 - 15:00</option>
+                <option value="15:00 - 16:00">15:00 - 16:00</option>
+                <option value="16:00 - 17:00">16:00 - 17:00</option>
+                <option value="17:00 - 18:00">17:00 - 18:00</option>
+                <option value="18:00 - 19:00">18:00 - 19:00</option>
+                <option value="19:00 - 20:00">19:00 - 20:00</option>
+                <option value="Dopo le 20:00" id="arr-opt-late">Dopo le 20:00</option>
+            </select>
+            <button onclick="inviaOrario()" id="btn-orario" class="btn" style="background: var(--a);">Conferma Orario</button>
         </div>
 
         <div class="card" style="border-top-color: #25D366;">
@@ -195,9 +212,10 @@
         return str.substring(6,8) + "/" + str.substring(4,6) + "/" + str.substring(0,4); 
     }
     
+    // FORMATTER AGGIORNATO (es. 12/03/26)
     function formatBannerD(str) { 
-        if(!str || str.length < 8) return "--/--"; 
-        return str.substring(6,8) + "/" + str.substring(4,6); 
+        if(!str || str.length < 8) return "--/--/--"; 
+        return str.substring(6,8) + "/" + str.substring(4,6) + "/" + str.substring(2,4); 
     }
 
     // IL TUO URL DELLO SCRIPT 
@@ -222,6 +240,11 @@
         it: {
             greet: `Ciao ${n}, ti diamo il benvenuto a Casa Franca!`,
             copy: "Copia",
+            arrTit: "🕒 Orario di arrivo",
+            arrTxt: "Per organizzare al meglio la tua accoglienza, indicaci l'orario in cui prevedi di arrivare. <br><strong>Ti preghiamo di segnalarlo almeno 24h prima del tuo arrivo.</strong><br>Per diversi accordi contattaci al numero <a href=\"tel:+393482422951\" style=\"color: var(--a); font-weight: bold; text-decoration: none;\">+39 348 242 2951</a>.",
+            arrOpt0: "Seleziona una fascia...",
+            arrOptLate: "Dopo le 20:00",
+            arrBtn: "Conferma Orario",
             expTit: "✨ Grazie di essere stato con noi!",
             expTxt: "Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. L'accesso ai codici è terminato.",
             sTitExp: "🎁 Scopri la tua sorpresa",
@@ -267,6 +290,11 @@
         en: {
             greet: `Hello ${n}, welcome to Casa Franca! 😊`,
             copy: "Copy",
+            arrTit: "🕒 Expected Arrival Time",
+            arrTxt: "To best organize your welcome, please let us know your expected arrival time. <br><strong>Please notify us at least 24h before your arrival.</strong><br>For different arrangements, contact us at <a href=\"tel:+393482422951\" style=\"color: var(--a); font-weight: bold; text-decoration: none;\">+39 348 242 2951</a>.",
+            arrOpt0: "Select a time slot...",
+            arrOptLate: "After 20:00 (8 PM)",
+            arrBtn: "Confirm Time",
             expTit: "Thank you for staying with us! 😊",
             expTxt: "We hope you enjoyed your stay at Casa Franca. Your access codes have now been deactivated.",
             sTitExp: "🎁 Discover Your Surprise",
@@ -321,6 +349,14 @@
         document.getElementById('rev-btn-exp').innerText = t.revBtnExp;
         document.getElementById('promo-thx').innerText = t.promoThx;
         document.getElementById('promo-desc').innerHTML = t.promoDesc;
+        
+        // Nuovi Testi Orario
+        document.getElementById('arr-tit').innerText = t.arrTit;
+        document.getElementById('arr-txt').innerHTML = t.arrTxt;
+        document.getElementById('arr-opt0').innerText = t.arrOpt0;
+        document.getElementById('arr-opt-late').innerText = t.arrOptLate;
+        document.getElementById('btn-orario').innerText = t.arrBtn;
+
         document.getElementById('c-tit').innerText = t.cTit;
         document.getElementById('c-txt').innerText = t.cTxt;
         document.getElementById('c-btn-f').innerText = t.cBtnF;
@@ -361,6 +397,10 @@
         document.getElementById('lbl-checkin').innerText = "Check-in";
         document.getElementById('lbl-checkout').innerText = "Check-out";
         document.getElementById('btn-copy').innerText = t.copy;
+
+        // Se l'orario era già stato scelto, ricaricalo
+        const oraSalvata = localStorage.getItem('cf_ora');
+        if(oraSalvata) document.getElementById('select-orario').value = oraSalvata;
     }
 
     function toggleLang() { l = (l === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', l); updateUI(); }
@@ -372,6 +412,28 @@
             btn.innerText = (l === 'it') ? "Copiato!" : "Copied!";
             setTimeout(() => { btn.innerText = originalTxt; }, 2000);
         });
+    }
+
+    // FUNZIONE INVIO ORARIO AL GOOGLE SHEET
+    function inviaOrario() {
+        const ora = document.getElementById('select-orario').value;
+        const btn = document.getElementById('btn-orario');
+        const checkinPulito = formatFullD(i).split('/')[0] + "/" + formatFullD(i).split('/')[1]; 
+        
+        btn.innerText = (l === 'it') ? "Invio in corso..." : "Sending...";
+        btn.style.opacity = "0.5";
+
+        fetch(`${scriptURL}?azione=orario&nome=${encodeURIComponent(n)}&checkin=${encodeURIComponent(checkinPulito)}&orario=${encodeURIComponent(ora)}`)
+            .then(() => {
+                btn.innerText = (l === 'it') ? "✅ Orario Aggiornato!" : "✅ Arrival Updated!";
+                btn.style.background = "#25D366";
+                btn.style.opacity = "1";
+                localStorage.setItem('cf_ora', ora); 
+                setTimeout(() => { 
+                    btn.style.background = "var(--a)"; 
+                    btn.innerText = dict[l].arrBtn; 
+                }, 3000);
+            });
     }
     
     function mostraSorpresa() { 
@@ -389,9 +451,8 @@
         updateUI();
     } else if (localStorage.getItem('cf_n')) {
         
-        // --- CONTROLLO CANCELLAZIONE LIVE SEMPLIFICATO ---
         fetch(`${scriptURL}?azione=check&nome=${encodeURIComponent(n)}`)
-            .then(res => res.text()) // Modificato in testo per evitare errori
+            .then(res => res.text()) 
             .then(data => {
                 if(data.trim() === "CANCELLATO") {
                     document.getElementById('area-ospite').style.display = 'none';
@@ -401,7 +462,6 @@
                 }
             })
             .catch(err => {
-                // Se manca la rete, mostra normalmente l'area ospite
                 document.getElementById('area-ospite').style.display = 'block'; 
             });
 
