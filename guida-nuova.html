@@ -396,9 +396,6 @@
 
         const oraSalvata = localStorage.getItem('cf_ora');
         if(oraSalvata) document.getElementById('select-orario').value = oraSalvata;
-
-        // IL FOOTER APPARE SOLO QUANDO LA PAGINA È PRONTA AL 100%
-        document.getElementById('box-contatti').style.display = 'block';
     }
 
     function toggleLang() { l = (l === 'it') ? 'en' : 'it'; localStorage.setItem('cf_l', l); updateUI(); }
@@ -446,8 +443,12 @@
     if (isOut()) { 
         document.getElementById('area-scaduta').style.display = 'block'; 
         updateUI();
+        document.getElementById('box-contatti').style.display = 'block'; // Il footer appare solo ora
     } else if (localStorage.getItem('cf_n')) {
         
+        updateUI(); // Pre-traduce i testi in background
+        
+        // Questo è il passaggio incriminato che richiedeva tempo.
         fetch(`${scriptURL}?azione=check&nome=${encodeURIComponent(n)}`)
             .then(res => res.text()) 
             .then(data => {
@@ -457,13 +458,13 @@
                 } else {
                     document.getElementById('area-ospite').style.display = 'block'; 
                 }
+                document.getElementById('box-contatti').style.display = 'block'; // Il footer appare INSIEME al blocco centrale
             })
             .catch(err => {
                 document.getElementById('area-ospite').style.display = 'block'; 
+                document.getElementById('box-contatti').style.display = 'block'; // Appare anche se c'è un errore di connessione
             });
 
-        updateUI();
-        
         if (isEarly()) {
             document.getElementById('code-box').innerText = "----";
         } else {
