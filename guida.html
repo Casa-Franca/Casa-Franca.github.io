@@ -124,13 +124,6 @@
             </ul>
         </div>
 
-        <!-- NUOVA CARD: CONVENZIONE RISTORANTE DA FRANCO -->
-        <div class="card" style="border-top-color: var(--a);">
-            <h3 id="f-tit">🍽️ Ristorante Partner "Da Franco" (-10%)</h3>
-            <p id="f-txt">Per i nostri ospiti è riservato uno <strong>speciale sconto del 10%</strong> presso il Ristorante "Da Franco". Presenta il biglietto da visita che trovi sul tavolo dell'appartamento direttamente in cassa prima del conto.</p>
-            <img src="biglietto-franco.webp" alt="Biglietto Ristorante Da Franco" class="guide-img">
-        </div>
-
         <div class="card" style="border-top-color: var(--d);">
             <h3 id="o-tit">🚪 Check-out</h3>
             <p id="o-txt" style="font-weight: bold; margin-top:0;">Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.</p>
@@ -186,7 +179,7 @@
             promoThx: "GRAZIE! Ecco il tuo codice sconto:",
             promoDesc: "Usa questo codice per ottenere il <strong>10% di sconto</strong> sul tuo prossimo soggiorno o inoltralo ai tuoi amici per condividerlo!",
             cTit: "📋 Prima del suo arrivo (self check-in)",
-            cTxt: "In vista del suo arrivo, al fine di ottemperare all’obbligo di registrazione degli ospiti, la invitiamo ad inoltrarci copia di un documento d’identità (carta d’identità o passaporto), suo e dell’ospite che viaggerà con lei.",
+            cTxt: "In vista del suo arrivo, al fine di ottemperare all’obbligo di registrazione degli ospiti, la invitiamo ad inoltrarci copia di un documento d’identità (carta d’identità o passaporto) suo e dell’ospite che viaggerà con lei.",
             cBtnF: "📝 Modulo Registrazione",
             cBtnW: "📸 Invia via WhatsApp",
             cPs: "I suoi dati saranno utilizzati solo per obblighi di registrazione (PS – Alloggiati Web).",
@@ -208,8 +201,6 @@
             iQc: "<strong>Convenzione QC Terme:</strong> la struttura è convenzionata con QC Terme. Al suo arrivo troverà un voucher sconto sul tavolo dell’appartamento, da presentare alla reception del centro termale per ottenere lo sconto. Per usufruire correttamente del buono, la invitiamo a prenotare l’ingresso tramite il sito di QC Terme, selezionando l’opzione di pagamento “paga in struttura”. La convenzione potrebbe non essere valida durante ponti e festività, secondo quanto stabilito dal gestore del centro termale.",
             iTx: "<strong>Tassa soggiorno:</strong> E’ previsto il pagamento della tassa di soggiorno (1€ a notte per ospite). Sul tavolo troverà la ricevuta di pagamento della tassa di soggiorno già compilata. La invitiamo a saldare l’importo lasciando i contanti sul tavolo al termine del soggiorno o condividendo l'importo tramite Paypal a casafranca.avo@gmail.com utilizzando la modalità \"AMICI e/o FAMILIARI\".",
             iTr: "<strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.",
-            fTit: "🍽️ Ristorante Partner \"Da Franco\" (-10%)",
-            fTxt: "Per i nostri ospiti è riservato uno <strong>speciale sconto del 10%</strong> presso il Ristorante \"Da Franco\". Presenta il biglietto da visita che trovi sul tavolo dell'appartamento direttamente in cassa prima del conto.",
             oTit: "🚪 Check-out",
             oTxt: "Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.",
             o1: "Chiuda a chiave l’appartamento",
@@ -254,8 +245,6 @@
             iQc: "<strong>🧖 QC Terme Discount:</strong> thanks to your stay at Casa Franca, you are entitled to a 10% discount at QC Terme. Upon arrival, you will find a discount voucher on the table inside the apartment. Please present it at the spa reception to receive the discount. To use the voucher correctly, please book your entrance through the QC Terme website and select the payment option “pay at the reception”. Please note that the agreement may not be valid during holidays and public holiday weekends, according to QC Terme policies.",
             iTx: "<strong>💶 Tourist Tax:</strong> A tourist tax of €1 per guest, per night applies. You will find the tourist tax receipt already prepared on the table inside the apartment. We kindly ask you to pay the amount in cash by leaving it on the table before departure. If you do not have cash, you may also send the payment via PayPal to casafranca.avo@gmail.com using the “Friends and Family” option.",
             iTr: "<strong>♻️ Waste Disposal:</strong> Please separate waste using the bins located under the sink.",
-            fTit: "🍽️ Partner Restaurant \"Da Franco\" (-10%)",
-            fTxt: "Our guests are entitled to a <strong>special 10% discount</strong> at the \"Da Franco\" Restaurant. Just show the business card found on the table inside your apartment directly at the cash register before paying.",
             oTit: "🚪 Check-out",
             oTxt: "Check-out is by 10:00 AM. Before leaving, please:",
             o1: "Lock the apartment door",
@@ -303,8 +292,6 @@
         document.getElementById('i-qc').innerHTML = t.iQc;
         document.getElementById('i-tx').innerHTML = t.iTx;
         document.getElementById('i-tr').innerHTML = t.iTr;
-        document.getElementById('f-tit').innerText = t.fTit;
-        document.getElementById('f-txt').innerHTML = t.fTxt;
         document.getElementById('o-tit').innerText = t.oTit;
         document.getElementById('o-txt').innerText = t.oTxt;
         document.getElementById('o-1').innerText = t.o1;
@@ -328,6 +315,7 @@
     }
 
     function isEarly() { return i && new Date() < new Date(i.substring(0,4), i.substring(4,6)-1, i.substring(6,8), 6, 0, 0); }
+    // Modificato orario uscita a 10:30 (10, 30, 0)
     function isOut() { return o && new Date() > new Date(o.substring(0,4), o.substring(4,6)-1, o.substring(6,8), 10, 30, 0); }
 
     if (isOut()) { 
@@ -335,14 +323,13 @@
         updateUI();
     } else if (localStorage.getItem('cf_n')) {
         document.getElementById('area-ospite').style.display = 'block'; 
-      2  updateUI();
+        updateUI();
         if (isEarly()) {
             document.getElementById('code-box').innerText = "----";
         } else {
-            document.getElementById('code-box').png;
             document.getElementById('code-box').innerText = c;
             document.getElementById('key-ps').style.display = "none";
-            document.getElementById('wifi-val').innerText = "Atene001`;
+            document.getElementById('wifi-val').innerText = "Atene001";
         }
     } else {
         document.getElementById('area-errore').style.display = 'block';
