@@ -167,6 +167,12 @@
             </ul>
         </div>
 
+        <div class="card" style="border-top-color: var(--a);">
+            <h3 id="f-tit">🍽️ Ristorante Partner "Da Franco" (-10%)</h3>
+            <p id="f-txt">Per i nostri ospiti è riservato uno <strong>speciale sconto del 10%</strong> presso il Ristorante "Da Franco". Presenta il biglietto da visita che trovi sul tavolo dell'appartamento direttamente in cassa prima del conto.</p>
+            <img src="biglietto-franco.webp" alt="Biglietto Ristorante Da Franco" class="guide-img">
+        </div>
+
         <div class="card" style="border-top-color: var(--d);">
             <h3 id="o-tit">🚪 Check-out</h3>
             <p id="o-txt" style="font-weight: bold; margin-top:0;">Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.</p>
@@ -272,6 +278,8 @@
             iQc: "<strong>Convenzione QC Terme:</strong> la struttura è convenzionata con QC Terme. Al suo arrivo troverà un voucher sconto sul tavolo dell’appartamento, da presentare alla reception del centro termale per ottenere lo sconto. Per usufruire correttamente del buono, la invitiamo a prenotare l’ingresso tramite il sito di QC Terme, selezionando l’opzione di pagamento “paga in struttura”. La convenzione potrebbe non essere valida durante ponti e festività, secondo quanto stabilito dal gestore del centro termale.",
             iTx: "<strong>Tassa soggiorno:</strong> E’ previsto il pagamento della tassa di soggiorno (1€ a notte per ospite). Sul tavolo troverà la ricevuta di pagamento della tassa di soggiorno già compilata. La invitiamo a saldare l’importo lasciando i contanti sul tavolo al termine del soggiorno o condividendo l'importo tramite Paypal a casafranca.avo@gmail.com utilizzando la modalità \"AMICI e/o FAMILIARI\".",
             iTr: "<strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.",
+            fTit: "🍽️ Ristorante Partner \"Da Franco\" (-10%)",
+            fTxt: "Per i nostri ospiti è riservato uno <strong>speciale sconto del 10%</strong> presso il Ristorante \"Da Franco\". Presenta il biglietto da visita che trovi sul tavolo dell'appartamento direttamente in cassa prima del conto.",
             oTit: "🚪 Check-out",
             oTxt: "Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.",
             o1: "Chiuda a chiave l’appartamento",
@@ -322,6 +330,8 @@
             iQc: "<strong>🧖 QC Terme Discount:</strong> thanks to your stay at Casa Franca, you are entitled to a 10% discount at QC Terme. Upon arrival, you will find a discount voucher on the table inside the apartment. Please present it at the spa reception to receive the discount. To use the voucher correctly, please book your entrance through the QC Terme website and select the payment option “pay at the reception”. Please note that the agreement may not be valid during holidays and public holiday weekends, according to QC Terme policies.",
             iTx: "<strong>💶 Tourist Tax:</strong> A tourist tax of €1 per guest, per night applies. You will find the tourist tax receipt already prepared on the table inside the apartment. We kindly ask you to pay the amount in cash by leaving it on the table before departure. If you do not have cash, you may also send the payment via PayPal to casafranca.avo@gmail.com using the “Friends and Family” option.",
             iTr: "<strong>♻️ Waste Disposal:</strong> Please separate waste using the bins located under the sink.",
+            fTit: "🍽️ Partner Restaurant \"Da Franco\" (-10%)",
+            fTxt: "Our guests are entitled to a <strong>special 10% discount</strong> at the \"Da Franco\" Restaurant. Just show the business card found on the table inside your apartment directly at the cash register before paying.",
             oTit: "🚪 Check-out",
             oTxt: "Check-out is by 10:00 AM. Before leaving, please:",
             o1: "Lock the apartment door",
@@ -376,6 +386,8 @@
         document.getElementById('i-qc').innerHTML = t.iQc;
         document.getElementById('i-tx').innerHTML = t.iTx;
         document.getElementById('i-tr').innerHTML = t.iTr;
+        document.getElementById('f-tit').innerText = t.fTit;
+        document.getElementById('f-txt').innerHTML = t.fTxt;
         document.getElementById('o-tit').innerText = t.oTit;
         document.getElementById('o-txt').innerText = t.oTxt;
         document.getElementById('o-1').innerText = t.o1;
@@ -444,7 +456,6 @@
         document.getElementById('area-scaduta').style.display = 'block'; 
         updateUI();
         
-        // APPARE TUTTO INSIEME (Header + Footer)
         document.getElementById('main-header').style.display = 'flex';
         document.getElementById('box-contatti').style.display = 'block'; 
     } else if (localStorage.getItem('cf_n')) {
@@ -461,14 +472,12 @@
                     document.getElementById('area-ospite').style.display = 'block'; 
                 }
                 
-                // APPARE TUTTO INSIEME (Header + Footer) DOPO IL CONTROLLO
                 document.getElementById('main-header').style.display = 'flex';
                 document.getElementById('box-contatti').style.display = 'block'; 
             })
             .catch(err => {
                 document.getElementById('area-ospite').style.display = 'block'; 
                 
-                // APPARE TUTTO INSIEME ANCHE IN CASO DI ERRORE RETE
                 document.getElementById('main-header').style.display = 'flex';
                 document.getElementById('box-contatti').style.display = 'block'; 
             });
