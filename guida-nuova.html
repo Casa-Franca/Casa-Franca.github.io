@@ -45,25 +45,25 @@
 <body>
 
 <div class="container">
-    <div class="header" id="main-header" style="display: none;">
+    <div class="header" id="main-header">
         <button class="btn-lang" onclick="toggleLang()">IT / EN</button>
         <a href="https://www.casafranca.eu">
-            <img src="logo-casa-franca.webp" alt="Casa Franca" style="max-height: 80px;">
+            <img src="logo-casa-franca.webp" alt="Casa Franca" style="max-height: 80px;" loading="eager">
         </a>
     </div>
 
-    <div id="area-errore" class="card" style="border-top-color: var(--d); text-align: center;">
+    <div id="area-errore" class="card" style="border-top-color: var(--d); text-align: center; display: none;">
         <h3 style="justify-content: center;">⚠️ Link non valido</h3>
         <p>Il link è incompleto. Per favore usa il link originale inviato dall'host.</p>
     </div>
     
-    <div id="area-negata" class="card" style="border-top-color: var(--d); text-align: center;">
+    <div id="area-negata" class="card" style="border-top-color: var(--d); text-align: center; display: none;">
         <h2 style="color: var(--d); margin-bottom: 10px;">🚫 Accesso Negato</h2>
         <p>Questa prenotazione risulta cancellata o non più attiva.</p>
         <p>Se ritieni sia un errore, contatta l'host.</p>
     </div>
 
-    <div id="area-scaduta" class="card" style="border-top-color: var(--p); text-align: center;">
+    <div id="area-scaduta" class="card" style="border-top-color: var(--p); text-align: center; display: none;">
         <h2 id="exp-title">✨ Grazie di essere stato con noi!</h2>
         <p id="exp-text">Speriamo che il soggiorno a Casa Franca sia stato di tuo gradimento. L'accesso ai codici è terminato.</p>
         
@@ -130,7 +130,7 @@
             <h3 id="k-tit" style="justify-content: center;">🔑 Come accedere alla struttura</h3>
             <p id="k-txt" style="text-align: left;">Una volta arrivato presso la struttura, potrà ritirare le chiavi del suo appartamento all’interno della piccola cassetta nera situata sotto la cassetta postale, accanto all’ingresso (in fotografia).</p>
             
-            <img src="porta-cassetta.webp" alt="Cassetta chiavi" class="guide-img">
+            <img src="porta-cassetta.webp" alt="Cassetta chiavi" class="guide-img" loading="lazy">
             
             <p style="text-align: left; font-weight: bold; margin-bottom: 5px;" id="k-cod-tit">Codice Segreto:</p>
             <div id="code-box" class="code-display">----</div>
@@ -144,9 +144,9 @@
         <div class="card">
             <h3 id="p-tit">🚗 Parcheggio riservato</h3>
             <p id="p-txt">È disponibile un posto auto riservato (massimo un veicolo) nei due parcheggi con strisce gialle di fronte alla struttura. È necessario esporre il contrassegno che troverà sul tavolo all’interno dell’appartamento.</p>
-            <img src="parcheggio-principale.webp" class="guide-img">
+            <img src="parcheggio-principale.webp" class="guide-img" loading="lazy">
             <p id="p-warn" style="font-size: 0.9em; background: #fff8e1; padding: 10px; border-radius: 8px;">Se il parcheggio è occupato per sosta non autorizzata, è possibile usare temporaneamente l'area illustrata nella fotografia sottostante.</p>
-            <img src="parcheggio-temporaneo.webp" class="guide-img">
+            <img src="parcheggio-temporaneo.webp" class="guide-img" loading="lazy">
         </div>
 
         <div class="card">
@@ -170,7 +170,8 @@
         <div class="card" style="border-top-color: var(--a);">
             <h3 id="f-tit">🍽️ Ristorante Partner "Da Franco" (-10%)</h3>
             <p id="f-txt">Per i nostri ospiti è riservato uno <strong>speciale sconto del 10%</strong> presso il Ristorante "Da Franco". Presenta il biglietto da visita che trovi sul tavolo dell'appartamento direttamente in cassa prima del conto.</p>
-            <img src="biglietto-franco.webp" alt="Biglietto Ristorante Da Franco" class="guide-img">
+            <img src="biglietto-franco.webp" alt="Biglietto Ristorante Da Franco" class="guide-img" loading="lazy">
+            <a href="https://share.google/fHPa51cKeFQnsxe5n" target="_blank" class="btn btn-map" id="f-btn">📍 Apri la posizione su Maps</a>
         </div>
 
         <div class="card" style="border-top-color: var(--d);">
@@ -195,7 +196,7 @@
         </div>
     </div>
     
-    <div class="contact-box" id="box-contatti" style="display: none;">
+    <div class="contact-box" id="box-contatti">
         <p id="contact-txt" style="margin: 0; color: var(--p);">Per qualsiasi necessità o informazione aggiuntiva, non esiti a contattarci su WhatsApp o al numero <a href="tel:+393482422951" style="color: var(--a); text-decoration: none; font-weight: bold;">+39 348 242 2951</a>.</p>
     </div>
 </div>
@@ -231,10 +232,8 @@
         localStorage.setItem('cf_l', l);
         localStorage.setItem('cf_s', cognome); localStorage.setItem('cf_p', fonte);
         
-        if (!localStorage.getItem('reg_' + i + n)) {
-            fetch(`${scriptURL}?nome=${encodeURIComponent(n)}&cognome=${encodeURIComponent(cognome)}&fonte=${encodeURIComponent(fonte)}&checkin=${encodeURIComponent(formatFullD(i))}&checkout=${encodeURIComponent(formatFullD(o))}`, { mode: 'no-cors' });
-            localStorage.setItem('reg_' + i + n, 'true');
-        }
+        // Log in background senza bloccare il caricamento
+        fetch(`${scriptURL}?nome=${encodeURIComponent(n)}&cognome=${encodeURIComponent(cognome)}&fonte=${encodeURIComponent(fonte)}&checkin=${encodeURIComponent(formatFullD(i))}&checkout=${encodeURIComponent(formatFullD(o))}`, { mode: 'no-cors' });
 
         window.history.replaceState({}, document.title, window.location.pathname);
     }
@@ -280,6 +279,7 @@
             iTr: "<strong>Rifiuti:</strong> Differenzia nei bidoncini sotto il lavello.",
             fTit: "🍽️ Ristorante Partner \"Da Franco\" (-10%)",
             fTxt: "Per i nostri ospiti è riservato uno <strong>speciale sconto del 10%</strong> presso il Ristorante \"Da Franco\". Presenta il biglietto da visita che trovi sul tavolo dell'appartamento direttamente in cassa prima del conto.",
+            fBtn: "📍 Apri la posizione su Maps",
             oTit: "🚪 Check-out",
             oTxt: "Il check-out deve essere effettuato entro le ore 10:00, salvo diversi accordi.",
             o1: "Chiuda a chiave l’appartamento",
@@ -332,6 +332,7 @@
             iTr: "<strong>♻️ Waste Disposal:</strong> Please separate waste using the bins located under the sink.",
             fTit: "🍽️ Partner Restaurant \"Da Franco\" (-10%)",
             fTxt: "Our guests are entitled to a <strong>special 10% discount</strong> at the \"Da Franco\" Restaurant. Just show the business card found on the table inside your apartment directly at the cash register before paying.",
+            fBtn: "📍 Open Location on Maps",
             oTit: "🚪 Check-out",
             oTxt: "Check-out is by 10:00 AM. Before leaving, please:",
             o1: "Lock the apartment door",
@@ -388,6 +389,7 @@
         document.getElementById('i-tr').innerHTML = t.iTr;
         document.getElementById('f-tit').innerText = t.fTit;
         document.getElementById('f-txt').innerHTML = t.fTxt;
+        document.getElementById('f-btn').innerText = t.fBtn;
         document.getElementById('o-tit').innerText = t.oTit;
         document.getElementById('o-txt').innerText = t.oTxt;
         document.getElementById('o-1').innerText = t.o1;
@@ -452,35 +454,23 @@
     function isEarly() { return i && new Date() < new Date(i.substring(0,4), i.substring(4,6)-1, i.substring(6,8), 6, 0, 0); }
     function isOut() { return o && new Date() > new Date(o.substring(0,4), o.substring(4,6)-1, o.substring(6,8), 10, 30, 0); }
 
+    // RENDER IMMEDIATO PER MASSIMA VELOCITÀ DI CARICAMENTO
     if (isOut()) { 
         document.getElementById('area-scaduta').style.display = 'block'; 
         updateUI();
-        
-        document.getElementById('main-header').style.display = 'flex';
-        document.getElementById('box-contatti').style.display = 'block'; 
-    } else if (localStorage.getItem('cf_n')) {
-        
+    } else if (localStorage.getItem('cf_n') || p.get('n')) {
         updateUI(); 
-        
+        document.getElementById('area-ospite').style.display = 'block'; 
+
+        // Controllo cancellazione in background (non blocca la UI)
         fetch(`${scriptURL}?azione=check&nome=${encodeURIComponent(n)}`)
             .then(res => res.text()) 
             .then(data => {
                 if(data.trim() === "CANCELLATO") {
                     document.getElementById('area-ospite').style.display = 'none';
                     document.getElementById('area-negata').style.display = 'block';
-                } else {
-                    document.getElementById('area-ospite').style.display = 'block'; 
                 }
-                
-                document.getElementById('main-header').style.display = 'flex';
-                document.getElementById('box-contatti').style.display = 'block'; 
-            })
-            .catch(err => {
-                document.getElementById('area-ospite').style.display = 'block'; 
-                
-                document.getElementById('main-header').style.display = 'flex';
-                document.getElementById('box-contatti').style.display = 'block'; 
-            });
+            }).catch(err => {});
 
         if (isEarly()) {
             document.getElementById('code-box').innerText = "----";
@@ -491,7 +481,6 @@
         }
     } else {
         document.getElementById('area-errore').style.display = 'block';
-        document.getElementById('main-header').style.display = 'flex';
     }
 </script>
 
