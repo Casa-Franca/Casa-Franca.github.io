@@ -230,20 +230,20 @@
         @keyframes shine { to { background-position: 200% center; } }
         .hero-content p { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold-light); font-style: italic; opacity: 0.95; margin-top: 5px; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
  
-        /* === KINTSUGI CRACK SVG DIVIDER (Vero vaso spaccato con venature d'oro) === */
+        /* === VERE CREPE KINTSUGI TRIDIMENSIONALI (ISPIRATE AL TUO DESIGN) === */
         .kintsugi-crack-wrapper {
             width: 100%;
             max-width: 1100px;
-            margin: 50px auto;
+            margin: 60px auto;
             padding: 0 20px;
             position: relative;
             text-align: center;
         }
         .kintsugi-svg-crack {
             width: 100%;
-            height: 50px;
+            height: 70px;
             overflow: visible;
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.8)) drop-shadow(0 2px 4px rgba(0,0,0,0.9));
         }
         .kintsugi-node {
             position: absolute;
@@ -257,7 +257,7 @@
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 0.9rem;
-            box-shadow: 0 0 15px var(--gold);
+            box-shadow: 0 0 20px var(--gold);
             z-index: 5;
         }
 
@@ -425,7 +425,7 @@
         .host-text { font-family: 'Playfair Display', serif; font-style: normal; font-size: 1.25rem; color: #e5dfd3; line-height: 1.8; margin-bottom: 25px; font-weight: 300; }
         .host-signature { display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--gold-light); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; border-top: 1px solid rgba(212,175,55,0.4); padding-top: 15px; }
  
-        /* === SEZIONE RECENSIONI & AWARDS (Subito sotto Booking) === */
+        /* === SEZIONE RECENSIONI & AWARDS === */
         #recensioni { padding: 80px 20px; background-color: var(--bg-butter); border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); transition: opacity 0.3s; text-align: center; position: relative; box-shadow: inset 0 0 30px rgba(0,0,0,0.8); }
         
         .reviews-container-unified {
@@ -864,21 +864,28 @@
     </div>
 </div>
  
-<!-- VERO SEPARATORE A CREPA KINTSUGI SVG -->
+<!-- SEPARATORE CON VERE CREPE KINTSUGI TRIDIMENSIONALI (ISPIRATE ALL'IMMAGINE) -->
 <div class="kintsugi-crack-wrapper">
     <div class="kintsugi-node">✦</div>
-    <svg class="kintsugi-svg-crack" viewBox="0 0 1200 60" preserveAspectRatio="none">
-        <path d="M0,30 Q120,5 250,42 T550,18 T850,48 T1200,30" fill="none" stroke="url(#gold-grad)" stroke-width="3.5" />
-        <path d="M180,24 L220,5 L260,32" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
-        <path d="M480,28 L520,55 L570,22" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
-        <path d="M820,35 L870,8 L910,40" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+    <svg class="kintsugi-svg-crack" viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <!-- Linee principali di frattura irregolare -->
+        <path d="M-10,40 Q180,10 380,48 T750,22 T1210,50" fill="none" stroke="url(#gold-grad-3d)" stroke-width="4.5" stroke-linejoin="round" />
+        <path d="M380,48 Q480,75 560,78 T680,55" fill="none" stroke="url(#gold-grad-3d)" stroke-width="3" />
+        
+        <!-- Ramificazioni secondarie organiche -->
+        <path d="M220,29 L280,5 L320,38" fill="none" stroke="url(#gold-grad-3d)" stroke-width="2.2" />
+        <path d="M330,42 L250,75" fill="none" stroke="url(#gold-grad-3d)" stroke-width="1.8" />
+        <path d="M520,36 L590,5 L640,32" fill="none" stroke="url(#gold-grad-3d)" stroke-width="2.2" />
+        <path d="M710,34 L820,72 L890,45" fill="none" stroke="url(#gold-grad-3d)" stroke-width="2.5" />
+        <path d="M850,58 L940,15" fill="none" stroke="url(#gold-grad-3d)" stroke-width="1.6" />
+        
         <defs>
-            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#8a641b" />
-                <stop offset="35%" stop-color="#d4af37" />
-                <stop offset="50%" stop-color="#fff6cc" />
-                <stop offset="65%" stop-color="#d4af37" />
-                <stop offset="100%" stop-color="#8a641b" />
+            <linearGradient id="gold-grad-3d" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#5c4210" />
+                <stop offset="25%" stop-color="#b8860b" />
+                <stop offset="50%" stop-color="#ffeaa5" />
+                <stop offset="75%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#4a340b" />
             </linearGradient>
         </defs>
     </svg>
@@ -948,20 +955,20 @@
     <img id="img-lightbox-dinamico" src="volantino-qc-it.webp" alt="Voucher Sconto Schermo Intero" onclick="event.stopPropagation()">
 </div>
  
-<!-- KINTSUGI CRACK SVG -->
+<!-- SECONDO SEPARATORE A CREPA TRIDIMENSIONALE -->
 <div class="kintsugi-crack-wrapper">
     <div class="kintsugi-node">✦</div>
-    <svg class="kintsugi-svg-crack" viewBox="0 0 1200 60" preserveAspectRatio="none">
-        <path d="M0,30 Q150,55 300,20 T600,45 T900,12 T1200,30" fill="none" stroke="url(#gold-grad)" stroke-width="3.5" />
-        <path d="M250,38 L300,58 L340,25" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
-        <path d="M680,25 L730,52 L780,18" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+    <svg class="kintsugi-svg-crack" viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M-10,35 Q220,65 420,25 T820,58 T1210,35" fill="none" stroke="url(#gold-grad-3d)" stroke-width="4.5" stroke-linejoin="round" />
+        <path d="M310,40 L370,72 L420,38" fill="none" stroke="url(#gold-grad-3d)" stroke-width="2.2" />
+        <path d="M750,42 L820,12 L870,45" fill="none" stroke="url(#gold-grad-3d)" stroke-width="2.2" />
         <defs>
-            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#8a641b" />
-                <stop offset="35%" stop-color="#d4af37" />
-                <stop offset="50%" stop-color="#fff6cc" />
-                <stop offset="65%" stop-color="#d4af37" />
-                <stop offset="100%" stop-color="#8a641b" />
+            <linearGradient id="gold-grad-3d" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#5c4210" />
+                <stop offset="25%" stop-color="#b8860b" />
+                <stop offset="50%" stop-color="#ffeaa5" />
+                <stop offset="75%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#4a340b" />
             </linearGradient>
         </defs>
     </svg>
@@ -1049,20 +1056,19 @@
     </div>
 </section>
  
-<!-- KINTSUGI CRACK SVG -->
+<!-- TERZO SEPARATORE A CREPA TRIDIMENSIONALE -->
 <div class="kintsugi-crack-wrapper">
     <div class="kintsugi-node">✦</div>
-    <svg class="kintsugi-svg-crack" viewBox="0 0 1200 60" preserveAspectRatio="none">
-        <path d="M0,30 Q200,10 400,40 T800,20 T1200,30" fill="none" stroke="url(#gold-grad)" stroke-width="3.5" />
-        <path d="M350,28 L400,8 L440,35" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
-        <path d="M850,32 L900,55 L950,22" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+    <svg class="kintsugi-svg-crack" viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M-10,45 Q150,15 350,55 T780,28 T1210,42" fill="none" stroke="url(#gold-grad-3d)" stroke-width="4.5" stroke-linejoin="round" />
+        <path d="M520,38 L570,68 L620,32" fill="none" stroke="url(#gold-grad-3d)" stroke-width="2.2" />
         <defs>
-            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#8a641b" />
-                <stop offset="35%" stop-color="#d4af37" />
-                <stop offset="50%" stop-color="#fff6cc" />
-                <stop offset="65%" stop-color="#d4af37" />
-                <stop offset="100%" stop-color="#8a641b" />
+            <linearGradient id="gold-grad-3d" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#5c4210" />
+                <stop offset="25%" stop-color="#b8860b" />
+                <stop offset="50%" stop-color="#ffeaa5" />
+                <stop offset="75%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#4a340b" />
             </linearGradient>
         </defs>
     </svg>
