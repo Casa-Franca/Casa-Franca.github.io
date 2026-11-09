@@ -140,8 +140,7 @@
             --gold-light: #f3e5ab;
             --gold-dark: #8a641b;
             --gold-gradient: linear-gradient(135deg, #8a641b 0%, #d4af37 35%, #fff6cc 50%, #d4af37 65%, #8a641b 100%);
-            --kintsugi-gold-line: linear-gradient(90deg, transparent, #8a641b, #d4af37, #fff, #d4af37, #8a641b, transparent);
-            --bg-dark: #070707;
+            --bg-dark: #050505;
             --bg-butter: #12100e; 
             --card-white: #faf9f6; 
             --text-dark: #1c1a17;
@@ -155,8 +154,7 @@
             font-family: 'Montserrat', sans-serif; margin: 0; background-color: var(--bg-dark); 
             color: #f4f4f4; line-height: 1.6; overflow-x: hidden;
             -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-            /* Sfondo globale con trama ceramica scura e riflessi oro impercettibili */
-            background-image: radial-gradient(circle at 50% 0%, #1a1612 0%, #070707 70%);
+            background-image: radial-gradient(circle at 50% 0%, #16120e 0%, #050505 80%);
         }
  
         /* === PRELOADER === */
@@ -174,11 +172,11 @@
         /* === HEADER KINTSUGI === */
         header { 
             height: 120px; display: flex; align-items: center; justify-content: center; 
-            background: rgba(7, 7, 7, 0.88); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border-bottom: 2px solid;
-            border-image: var(--kintsugi-gold-line) 1;
+            background: rgba(5, 5, 5, 0.88); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--gold);
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; 
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 4px 20px rgba(212,175,55,0.2);
         }
         .header-logo { height: 85px; width: auto; max-width: 100%; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); filter: drop-shadow(0 4px 10px rgba(212,175,55,0.3)); }
         
@@ -232,31 +230,35 @@
         @keyframes shine { to { background-position: 200% center; } }
         .hero-content p { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold-light); font-style: italic; opacity: 0.95; margin-top: 5px; text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
  
-        /* === KINTSUGI GOLDEN CRACK SEPARATOR (Il vaso si spacca e brilla d'oro) === */
-        .kintsugi-crack {
+        /* === KINTSUGI CRACK SVG DIVIDER (Vero vaso spaccato con venature d'oro) === */
+        .kintsugi-crack-wrapper {
             width: 100%;
-            height: 4px;
-            background: var(--kintsugi-gold-line);
-            margin: 60px auto;
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
             position: relative;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), inset 0 0 5px #fff;
-            filter: drop-shadow(0 0 8px var(--gold));
+            text-align: center;
         }
-        .kintsugi-crack::before {
-            content: '✦';
+        .kintsugi-svg-crack {
+            width: 100%;
+            height: 50px;
+            overflow: visible;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
+        }
+        .kintsugi-node {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: var(--bg-dark);
-            padding: 0 20px;
+            border: 1.5px solid var(--gold);
             color: var(--gold-light);
-            font-size: 1.2rem;
-            text-shadow: 0 0 10px var(--gold);
-            border: 1px solid rgba(212,175,55,0.3);
+            width: 38px; height: 38px;
             border-radius: 50%;
-            width: 40px; height: 40px;
             display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem;
+            box-shadow: 0 0 15px var(--gold);
+            z-index: 5;
         }
 
         /* === CONTAINER PRINCIPALE & GRID BOOKING === */
@@ -369,7 +371,7 @@
  
         /* CALENDARI */
         .calendar-drawer { max-height: 0; overflow: hidden; transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1); background: var(--bg-butter); position: relative; z-index: 30; }
-        .calendar-drawer.open { max-height: 700px; border-top: 2px solid; border-image: var(--kintsugi-gold-line) 1; }
+        .calendar-drawer.open { max-height: 700px; border-top: 2px solid var(--gold); }
         .cal-header-minimal { padding: 12px; text-align: center; background: var(--bg-butter); color: var(--gold-light); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; border-bottom: 1px solid rgba(212,175,55,0.2); }
         .cal-wrapper { position: relative; height: 480px; width: 100%; background: #000; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; overflow: hidden; }
         .cal-wrapper iframe { width: 100%; height: 100%; border: none; }
@@ -419,12 +421,12 @@
  
         /* === BENVENUTI (HOST SECTION) === */
         .host-section { max-width: 800px; margin: 0 auto 60px auto; padding: 0 20px; text-align: center; }
-        .host-line { width: 80px; height: 2px; background: var(--kintsugi-gold-line); margin: 0 auto 25px auto; }
+        .host-line { width: 80px; height: 2px; background: var(--gold); margin: 0 auto 25px auto; box-shadow: 0 0 10px var(--gold); }
         .host-text { font-family: 'Playfair Display', serif; font-style: normal; font-size: 1.25rem; color: #e5dfd3; line-height: 1.8; margin-bottom: 25px; font-weight: 300; }
         .host-signature { display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 600; color: var(--gold-light); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; border-top: 1px solid rgba(212,175,55,0.4); padding-top: 15px; }
  
-        /* === SEZIONE RECENSIONI & AWARDS KINTSUGI (Subito dopo booking) === */
-        #recensioni { padding: 80px 20px; background-color: var(--bg-butter); border-top: 3px solid; border-image: var(--kintsugi-gold-line) 1; transition: opacity 0.3s; text-align: center; position: relative; }
+        /* === SEZIONE RECENSIONI & AWARDS (Subito sotto Booking) === */
+        #recensioni { padding: 80px 20px; background-color: var(--bg-butter); border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); transition: opacity 0.3s; text-align: center; position: relative; box-shadow: inset 0 0 30px rgba(0,0,0,0.8); }
         
         .reviews-container-unified {
             max-width: 1100px;
@@ -500,7 +502,7 @@
             }
         }
 
-        /* LIGHTBOX SCHERMO INTERO CON EFFETTO GIORNALE/BOOMERANG */
+        /* LIGHTBOX SCHERMO INTERO */
         #voucher-lightbox {
             position: fixed; inset: 0; background: rgba(5, 5, 5, 0.96); backdrop-filter: blur(12px);
             z-index: 100002; display: flex; align-items: center; justify-content: center;
@@ -576,7 +578,7 @@
         .faq-overlay.open { opacity: 1; visibility: visible; }
         .faq-sidebar { position: fixed; top: 0; right: -100%; width: 100%; max-width: 500px; height: 100vh; background: rgba(18,16,14,0.98); border-left: 2px solid var(--gold); z-index: 100001; transition: right 0.5s cubic-bezier(0.25, 1, 0.5, 1); overflow-y: auto; box-shadow: -20px 0 50px rgba(0,0,0,0.9); }
         .faq-sidebar.open { right: 0; }
-        .faq-sidebar-header { padding: 30px; border-bottom: 2px solid; border-image: var(--kintsugi-gold-line) 1; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: rgba(18,16,14,0.98); z-index: 10; }
+        .faq-sidebar-header { padding: 30px; border-bottom: 2px solid var(--gold); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: rgba(18,16,14,0.98); z-index: 10; }
         .faq-sidebar-header h3 { color: var(--gold-light); font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 0; text-shadow: 0 0 10px rgba(212,175,55,0.4); }
         .close-faq-btn { background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; transition: color 0.3s; } 
         @media (hover: hover) { .close-faq-btn:hover { color: var(--gold); } }
@@ -605,9 +607,8 @@
  
         section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; text-align: center; }
         .section-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #fff; margin: 0; transition: opacity 0.3s; font-weight: 400; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
-        .divider { width: 70px; height: 2px; background: var(--kintsugi-gold-line); margin: 25px auto 40px; box-shadow: 0 0 10px rgba(212,175,55,0.5); }
         
-        footer { background: var(--bg-butter); padding: 60px 20px 100px; text-align: center; border-top: 3px solid; border-image: var(--kintsugi-gold-line) 1; color: #888; font-size: 0.85rem; transition: opacity 0.3s; }
+        footer { background: var(--bg-butter); padding: 60px 20px 100px; text-align: center; border-top: 3px solid var(--gold); color: #888; font-size: 0.85rem; transition: opacity 0.3s; box-shadow: inset 0 10px 20px rgba(0,0,0,0.9); }
         .phone-link { color: var(--gold-light); font-weight: 500; text-decoration: none; transition: color 0.3s; }
         .footer-divider { width: 40px; height: 1px; background: rgba(212,175,55,0.4); margin: 25px auto; }
         .copyright { opacity: 0.7; font-size: 0.75rem; font-weight: 300; margin-bottom: 10px; color: #ccc; }
@@ -635,7 +636,6 @@
             .lang-switch { right: 15px; top: 15px; transform: none; font-size: 0.75rem; }
             .btn-guida-top { left: 15px; top: 15px; transform: none; font-size: 0.65rem; padding: 6px 10px; }
 
-            .checkin-buttons { flex-direction: column; gap: 10px; }
             .card-body { padding: 30px 20px; }
             .secondary-actions { flex-direction: column; gap: 15px; align-items: center; }
             .carousel-btn { opacity: 0.8; visibility: visible; transform: translateY(-50%) scale(0.9); }
@@ -864,12 +864,30 @@
     </div>
 </div>
  
-<div class="kintsugi-crack"></div>
+<!-- VERO SEPARATORE A CREPA KINTSUGI SVG -->
+<div class="kintsugi-crack-wrapper">
+    <div class="kintsugi-node">✦</div>
+    <svg class="kintsugi-svg-crack" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,30 Q120,5 250,42 T550,18 T850,48 T1200,30" fill="none" stroke="url(#gold-grad)" stroke-width="3.5" />
+        <path d="M180,24 L220,5 L260,32" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+        <path d="M480,28 L520,55 L570,22" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+        <path d="M820,35 L870,8 L910,40" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+        <defs>
+            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8a641b" />
+                <stop offset="35%" stop-color="#d4af37" />
+                <stop offset="50%" stop-color="#fff6cc" />
+                <stop offset="65%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#8a641b" />
+            </linearGradient>
+        </defs>
+    </svg>
+</div>
 
-<!-- 2. POI LE RECENSIONI E GLI AWARDS -->
+<!-- 2. POI LE RECENSIONI E GLI AWARDS + 3. VOUCHER SCONTO -->
 <section id="recensioni" class="reveal" data-fade>
     <h2 class="section-title" data-it="Dicono di noi" data-en="Guest Reviews">Dicono di noi</h2>
-    <div class="divider"></div>
+    <div style="width: 70px; height: 2px; background: var(--gold); margin: 25px auto 40px; box-shadow: 0 0 10px var(--gold);"></div>
     
     <div class="reviews-container-unified">
         <div class="awards-sidebar-col">
@@ -881,7 +899,7 @@
                 <div class="glint-wow"></div>
             </div>
 
-            <!-- 3. POI IL VOUCHER SCONTO SUBITO SOTTO LE RECENSIONI -->
+            <!-- 3. VOUCHER SCONTO SUBITO SOTTO GLI AWARDS -->
             <h3 class="section-title" style="font-size: 1.1rem; color: var(--gold-light); margin-bottom: 15px; letter-spacing: 1px;" data-it="Il Tuo Voucher Sconto" data-en="Your Discount Voucher">Il Tuo Voucher Sconto</h3>
             <div class="voucher-showcase" style="margin-bottom: 0;">
                 <div class="voucher-card-3d" onclick="apriLightboxVoucher()" title="Apri Voucher">
@@ -930,12 +948,29 @@
     <img id="img-lightbox-dinamico" src="volantino-qc-it.webp" alt="Voucher Sconto Schermo Intero" onclick="event.stopPropagation()">
 </div>
  
-<div class="kintsugi-crack"></div>
+<!-- KINTSUGI CRACK SVG -->
+<div class="kintsugi-crack-wrapper">
+    <div class="kintsugi-node">✦</div>
+    <svg class="kintsugi-svg-crack" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,30 Q150,55 300,20 T600,45 T900,12 T1200,30" fill="none" stroke="url(#gold-grad)" stroke-width="3.5" />
+        <path d="M250,38 L300,58 L340,25" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+        <path d="M680,25 L730,52 L780,18" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+        <defs>
+            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8a641b" />
+                <stop offset="35%" stop-color="#d4af37" />
+                <stop offset="50%" stop-color="#fff6cc" />
+                <stop offset="65%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#8a641b" />
+            </linearGradient>
+        </defs>
+    </svg>
+</div>
 
 <!-- SERVIZI -->
 <section id="servizi" class="reveal" data-fade>
     <h2 class="section-title" data-it="I Nostri Servizi" data-en="Our Amenities">I Nostri Servizi</h2>
-    <div class="divider"></div>
+    <div style="width: 70px; height: 2px; background: var(--gold); margin: 25px auto 40px; box-shadow: 0 0 10px var(--gold);"></div>
     <div class="amenities-wrapper">
         <div class="amenities-grid">
             <div class="amenity-card">
@@ -1014,12 +1049,29 @@
     </div>
 </section>
  
-<div class="kintsugi-crack"></div>
+<!-- KINTSUGI CRACK SVG -->
+<div class="kintsugi-crack-wrapper">
+    <div class="kintsugi-node">✦</div>
+    <svg class="kintsugi-svg-crack" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,30 Q200,10 400,40 T800,20 T1200,30" fill="none" stroke="url(#gold-grad)" stroke-width="3.5" />
+        <path d="M350,28 L400,8 L440,35" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+        <path d="M850,32 L900,55 L950,22" fill="none" stroke="url(#gold-grad)" stroke-width="1.8" />
+        <defs>
+            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8a641b" />
+                <stop offset="35%" stop-color="#d4af37" />
+                <stop offset="50%" stop-color="#fff6cc" />
+                <stop offset="65%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#8a641b" />
+            </linearGradient>
+        </defs>
+    </svg>
+</div>
 
 <!-- DOVE SIAMO -->
 <section id="posizione" class="reveal" data-fade>
     <h2 class="section-title" data-it="Dove Siamo" data-en="Location">Dove Siamo</h2>
-    <div class="divider"></div>
+    <div style="width: 70px; height: 2px; background: var(--gold); margin: 25px auto 40px; box-shadow: 0 0 10px var(--gold);"></div>
     <div class="map-wrapper">
         <iframe class="map-frame" src="https://maps.google.com/maps?q=Viale%20della%20Vittoria%2023,%20San%20Pellegrino%20Terme&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Mappa della posizione di Casa Franca" allowfullscreen=""></iframe>
         
